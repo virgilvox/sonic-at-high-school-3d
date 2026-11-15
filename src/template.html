@@ -69,11 +69,20 @@ h1 { margin: 0; font: 400 clamp(30px, 7vw, 68px)/1.1 var(--pixel); color: var(--
 .part b { font: 400 11px/1 var(--pixel); color: var(--accent); }
 .part b::before { content: "ACT "; color: #9fc2ff; }
 .part span { color: #fff; font-size: 14px; line-height: 1.3; }
-.credits { margin-top: 28px; color: #c8d3ff; font-size: 12px; line-height: 1.6; max-width: 90ch; background: rgba(7, 19, 56, .7); padding: 12px 14px; clip-path: var(--step); }
-.foot { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 22px; }
-.foot .hb { height: 54px; width: auto; }
-.foot a { font: 400 10px/1 var(--pixel); color: #fff; text-decoration: none; background: #e8322b; padding: 12px 14px; clip-path: var(--step); box-shadow: inset 0 -4px 0 #9b1d18; }
-.foot a:hover { filter: brightness(1.1); }
+.top { position: absolute; top: 14px; right: 16px; z-index: 2; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end; max-width: calc(100% - 32px); }
+.top .hb { height: 52px; width: auto; }
+.top nav { display: flex; gap: 8px; flex-wrap: wrap; }
+.top a { font: 400 9px/1 var(--pixel); color: #fff; text-decoration: none; background: #e8322b; padding: 10px 12px; clip-path: var(--step); box-shadow: inset 0 -4px 0 #9b1d18; }
+.top a:hover { filter: brightness(1.1); }
+#picker .sheet { padding-top: 64px; }
+.credits { margin-top: 30px; background: rgba(7, 19, 56, .78); padding: 18px 18px 8px; clip-path: var(--step); display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 4px 26px; }
+.credits h5 { grid-column: 1 / -1; font: 400 11px/1.4 var(--pixel); color: var(--accent); margin: 0 0 8px; text-shadow: 2px 2px 0 var(--red); }
+.credits section { margin-bottom: 14px; }
+.credits h6 { font: 400 9px/1.4 var(--pixel); color: #7fb0ff; margin: 0 0 6px; letter-spacing: .06em; }
+.credits p { margin: 0 0 5px; color: #e3e9ff; font-size: 12.5px; line-height: 1.4; }
+.credits p small { color: #9aa8d8; }
+.credits .fine { grid-column: 1 / -1; color: #9aa8d8; font-size: 11.5px; border-top: 1px solid rgba(255,255,255,.12); padding-top: 10px; }
+@media (max-width: 640px) { .top { position: static; justify-content: flex-start; margin: 0 0 14px; } #picker .sheet { padding-top: 0; } .top .hb { height: 36px; } }
 .ring { width: 54px; height: 54px; margin: 0 auto 18px; border-radius: 50%; border: 9px solid var(--accent); box-shadow: inset 0 0 0 3px #c99a00, 0 0 0 3px #c99a00; animation: spin 1s steps(8) infinite; }
 @keyframes spin { to { transform: rotateY(360deg); } }
 .track { width: min(420px, 80vw); height: 14px; background: #071338; margin-top: 22px; clip-path: var(--step); }
@@ -85,13 +94,15 @@ h1 { margin: 0; font: 400 clamp(30px, 7vw, 68px)/1.1 var(--pixel); color: var(--
 #voicePanel button { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 6px 11px; }
 .vhead { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
 .vmodes { display: flex; gap: 6px; flex-wrap: wrap; }
-.vmodes button.on { background: var(--accent); color: #2a1a00; font-weight: 700; border-color: var(--accent); }
+#voicePanel .vmodes button.on { background: var(--accent); color: #2a1a00; font-weight: 700; border-color: var(--accent); }
 .vnote { color: var(--dim); font-size: 13px; margin: 10px 0; }
 .vrows { display: grid; gap: 6px; margin-bottom: 10px; }
 .vrow { display: grid; grid-template-columns: 110px minmax(120px, 1fr) auto auto auto; gap: 8px; align-items: center; font-size: 12px; color: var(--dim); }
 .vrow select { background: #1c1930; color: var(--ink); border: 1px solid rgba(255,255,255,.15); border-radius: 6px; padding: 4px; min-width: 0; }
 .vrow input[type=range] { width: 80px; vertical-align: middle; }
 .vname { color: var(--c, #fff); font-weight: 700; font-size: 13px; }
+.krows { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 4px 16px; margin: 6px 0; }
+.krow { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; color: var(--dim); border-bottom: 1px solid rgba(255,255,255,.06); padding: 3px 0; }
 @media (max-width: 640px) { .vrow { grid-template-columns: 1fr 1fr; } }
 #bar button.on { background: var(--accent); color: #2a1a00; }
 #picker, #loading, #card { height: 100dvh; }
@@ -167,19 +178,22 @@ h1 { margin: 0; font: 400 clamp(30px, 7vw, 68px)/1.1 var(--pixel); color: var(--
   <div class="track" style="margin-inline:auto"><div id="loadBar"></div></div><div id="loadText">LOADING THE CAST</div>
 </div></div>
 
-<div id="picker" hidden><div class="sheet">
+<div id="picker" hidden>
+<header class="top">
+  /*HBLOGO*/
+  <nav>
+    <a href="https://github.com/virgilvox/sonic-at-high-school-3d" target="_blank" rel="noopener">GITHUB</a>
+    <a id="ytLink" href="/*YT*/" target="_blank" rel="noopener">YOUTUBE</a>
+    <a href="https://www.youtube.com/playlist?list=PLRxk4957KpcxexcS8N13wW0BW2MupqD1m" target="_blank" rel="noopener">THE ORIGINAL</a>
+  </nav>
+</header>
+<div class="sheet">
   <div class="kicker">SONIC AT HIGH SCHOOL 3</div>
   <h1>LOVE STORY</h1>
   <p class="blurb">tarasdiary's 39-part YouTube saga, the one with the fan art slideshows and the emo songs, acted out in 3D and fully voiced. A meme remake. Space pauses, right arrow skips a line, N and P jump scenes, F frees the camera.</p>
   <button id="playBtn" class="pbtn">PRESS START</button><button id="voicePick" class="pbtn">VOICES</button><button id="galleryBtn" class="pbtn">MODELS</button>
   <div id="parts"></div>
-  <div class="foot">
-    /*HBLOGO*/
-    <a href="https://github.com/virgilvox/sonic-at-high-school-3d" target="_blank" rel="noopener">GITHUB</a>
-    <a id="ytLink" href="/*YT*/" target="_blank" rel="noopener">YOUTUBE</a>
-    <a href="https://www.youtube.com/playlist?list=PLRxk4957KpcxexcS8N13wW0BW2MupqD1m" target="_blank" rel="noopener">THE ORIGINAL</a>
-  </div>
-  <p class="credits">/*CREDITS*/</p>
+  <div class="credits">/*CREDITS*/</div>
 </div></div>
 
 <div id="gallery" hidden>

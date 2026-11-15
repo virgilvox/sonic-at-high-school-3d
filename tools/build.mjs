@@ -38,18 +38,24 @@ function collect() {
   return { banks, models };
 }
 
+// The credits on the title screen, as titled sections (HTML).
 function credits(models) {
   const C = readJson('assets/vrm/CREDITS.json'), music = readJson('assets/music/CREDITS.json');
-  const people = models.filter((m) => !m.startsWith('x-')).map((m) => { const c = C[m + '.vrm'] || {}; return `${c.title || m} by ${c.author || 'unknown author'}${c.source ? ` (${c.source})` : ''}`; });
-  const songs = Object.entries(music).filter(([k]) => !k.startsWith('_')).map(([, t]) => `"${t}"`).join(', ');
-  return 'A fan remake of tarasdiary\'s "Sonic at High School 3: Love Story" (YouTube). Sonic the Hedgehog characters belong to SEGA. '
-    + 'Not affiliated with SEGA or tarasdiary; made for fun, not for sale. Character models: ' + people.join('; ') + '. '
-    + 'Background students: VRoid Project sample avatars by pixiv (CC0). Motion: Quaternius Universal Animation Library (CC0). '
-    + 'Voices: Kyutai Pocket TTS built-in voices, or your browser\'s speech. '
-    + (songs ? `Music: ${songs} by Kevin MacLeod (incompetech.com), licensed under Creative Commons: By Attribution 4.0. ` : '')
-    + 'Sets: Kenney Furniture, Nature, Car, Retro Urban and City kits (kenney.nl), CC0. '
-    + 'Footsteps: "Footsteps on different surfaces" by congusbongus (OpenGameArt), from recordings by swuing (freesound.org), CC BY 3.0. '
-    + 'Crowd ambience: "Crowd Shouting/Speaking Ambience" (OpenGameArt), CC0. School chatter made with Pocket TTS voices.';
+  const esc = (t) => String(t).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]);
+  const sec = (h, rows) => `<section><h6>${h}</h6>${rows.map((r) => `<p>${r}</p>`).join('')}</section>`;
+  const people = models.filter((m) => !m.startsWith('x-')).map((m) => { const c = C[m + '.vrm'] || {}; return `${esc(c.title || m)} <small>by ${esc(c.author || 'unknown author')}${c.source ? ', ' + esc(c.source) : ''}</small>`; });
+  const songs = Object.entries(music).filter(([k]) => !k.startsWith('_')).map(([, t]) => `"${esc(t)}"`);
+  return '<h5>CREDITS</h5>'
+    + sec('STORY', ['<i>Sonic at High School 3: Love Story</i> <small>by tarasdiary, YouTube</small>', 'Sonic the Hedgehog characters <small>belong to SEGA</small>'])
+    + sec('CHARACTER MODELS', people)
+    + sec('BACKGROUND STUDENTS', ['VRoid Project sample avatars <small>by pixiv, CC0</small>'])
+    + sec('MUSIC', [songs.join(', '), '<small>Kevin MacLeod (incompetech.com), licensed under Creative Commons: By Attribution 4.0</small>'])
+    + sec('VOICES', ['Kyutai Pocket TTS <small>built-in voices; see VOICES for who is who</small>'])
+    + sec('MOTION', ['Quaternius Universal Animation Library <small>CC0</small>'])
+    + sec('SETS', ['Kenney Furniture, Nature, Car, Retro Urban and City kits <small>kenney.nl, CC0</small>'])
+    + sec('SOUND', ['"Footsteps on different surfaces" <small>by congusbongus, from recordings by swuing, CC BY 3.0</small>', '"Crowd Shouting/Speaking Ambience" <small>OpenGameArt, CC0</small>', 'School chatter <small>made with Pocket TTS voices</small>'])
+    + sec('BUILT WITH', ['three.js, @pixiv/three-vrm <small>MIT</small>'])
+    + '<p class="fine">A fan remake made for fun. Not affiliated with SEGA or tarasdiary, not for sale. Model authors who want a change or removal: open an issue on GitHub.</p>';
 }
 
 // The hack.build YouTube channel for the title screen footer; the link is hidden while this is empty.

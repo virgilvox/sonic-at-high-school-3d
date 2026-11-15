@@ -1,3 +1,4 @@
+import KYUTAI from '../tools/voices/cast.json';
 // The voice settings panel: choose Kyutai (baked) voices, live browser voices or no voices, and in browser mode
 // swap any character's system voice, pitch and rate, with a test button. Settings persist through Voices.save().
 const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
@@ -29,6 +30,7 @@ export class VoicePanel {
 
   render() {
     const v = this.voices, mode = v.mode;
+    let rowsK = '';
     const opts = v.list.map((x) => x.name);
     const rows = mode !== 'browser' ? '' : this.cast.map((c) => {
       const st = v.settings(c);
@@ -40,10 +42,15 @@ export class VoicePanel {
         <button data-act="test" title="Hear a test line">Test</button>
       </div>`;
     }).join('');
+    if (mode === 'kyutai') {   // who speaks with which built-in Pocket TTS voice (tools/voices/cast.json)
+      const row = (c) => { const k = KYUTAI[c.id]; if (!k) return ''; const st = k.semitones ? ` ${k.semitones > 0 ? '+' : ''}${k.semitones} st` : '';
+        return `<div class="krow"><span class="vname" style="--c:${c.color}">${esc(c.name || c.id)}</span><span>${esc(k.voice)}${st}${k.fx ? ' · ' + esc(k.fx) : ''}</span></div>`; };
+      rowsK = `<div class="krows">${this.cast.map(row).join('')}</div><p class="vnote">Pitch shifts are in semitones. Voices are Pocket TTS's built-in ones; nobody's real voice was cloned.</p>`;
+    }
     this.el.innerHTML = `<div class="vhead"><b>Voices</b><button data-act="close" aria-label="Close">Close</button></div>
       <div class="vmodes">${v.modes.map((m) => `<button data-mode="${m}" class="${m === mode ? 'on' : ''}">${LABEL[m]}</button>`).join('')}</div>
       <p class="vnote">${NOTE[mode]}${!v.bank ? ' (This build has no Kyutai voice bank; run tools/voices/bake.py and rebuild.)' : ''}</p>
-      ${rows ? `<div class="vrows">${rows}</div><button data-act="reset">Reset all to defaults</button>` : ''}`;
+      ${rowsK}${rows ? `<div class="vrows">${rows}</div><button data-act="reset">Reset all to defaults</button>` : ''}`;
   }
 
   click(e) {
