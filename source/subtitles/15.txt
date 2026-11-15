@@ -1,0 +1,86 @@
+      [no subtitles for 14s: pictures over music]
+  0   14.0  9.0s #a2bbdb *slams door open and walks into Sports Stadium*
+  1   24.0  8.0s #f0ece8 Dude , what s up with you?
+  2   33.0 10.0s #fffbf0 He's got a point you re In such a mood al 7of a sudden
+  3   44.5 12.5s #dad7d3 Wel l whatever it is, it better be a good reason why we re here
+  4   58.0  6.5s #e4dfd6 D Guess what?
+  5   65.5  7.0s #100d0e Amy 'S pregnant?
+  6   73.5  8.0s #eae9df KNUCKLES J ARES YOU MAD?I
+  7   82.5  5.5s #fffbfa HAHANAHA!
+  8   91.5  6.0s #fffdf4 2 ? ? *looks at Shadow*
+  9   99.0  8.0s #fff9f5 - didn t do it this t ime
+ 10  108.5  9.0s #f4e5ce You punched himp Sonic? *looks at Sonic*
+ 11  119.0 11.5s #e8ccbb You'd think L'd just let him make jokes about Any?
+ 12  132.0  8.0s #cfcedf We l Vt could be true
+ 13  143.5  9.5s #fffdf4 Really, you just had to do that again?
+ 14  154.0  8.0s #d1c8da That was Shadow this time
+ 15  163.0 10.5s #f8eeea Yeah causé he's being an idiot
+ 16  175.0  9.5s #d9cac6 Can you jush tel l us what's up?
+ 17  185.5  7.0s #d1e5fa Well...
+ 18  193.5 13.5s #c5d4eb We're playing against Scourge in the championship league
+ 19  208.0  5.5s #fefaef SCOURGE? !
+ 20  215.0  9.5s #e7756b SHOULDNNT HE BE ARRESTED?!
+ 21  226.0 10.5s #fcfcff No cause all he got was a cr iminal record!
+ 22  238.0  7.5s #cacac6 Hmph, I'm not scared of him
+ 23  246.5  8.5s #f8e8e4 HE ALMOST GOT AMY KILLED!
+ 24  256.5 14.5s #fffbf9 So.. you think he's on ly in the games so he could sneakly Kidnap Amy and murder  her?
+ 25  272.5  8.5s #efcbad MAYBE, BECAUSE THAT I'S POSSIBLE!
+ 26  282.0 11.0s #ecf3f4 or maybe(he wants Safly back
+ 27  295.0  6.5s #f7fbff vor Sonia...
+ 28  302.5 11.5s #fffcfa What are you gonna do about it? You might- not even take part in the game
+ 29  315.5  5.5s #f4fbff Well I am now
+ 30  322.0  8.5s #f0e6d6 What about Amy? Have you told her?
+ 31  331.5 13.5s #98adc1 Not yet,  but will try. But m defiantly playing to also keep an eye on Scourge.. for Amy S sake
+ 32  346.0 11.0s #fff9f8 So can I just ask, why are we in the stadium?
+ 33  358.0  8.5s #f2fbff because we 're gonna practice
+ 34  367.5  2.0s #e2e7f2 *Coach said to fake right
+ 35  369.5  1.0s #e6eaf8 and break left!
+ 36  372.0  1.5s #e6e9f7 Gotta run the give and-go.
+ 37  373.5  1.0s #e7eaf6 LM And take the ball to the hole
+ 38  374.5  1.0s #e5ebf9 But don't be afraid,
+ 39  375.5  1.5s #e5eaf7 To shoot the outside "J"
+ 40  377.0  4.0s #e7eaf8 Just keep ya head in the game
+ 41  382.0  1.5s #e6eaf7 To shoot the outside "J"
+ 42  383.5  1.5s #d2cad8 Just keep ya head in the game
+ 43  385.5  1.5s #e6e9f7 Get'cha get'cha head in the game,
+ 44  387.0  2.0s #e9e9eb We gotta, Get our, get our, get our, get our head in the game
+ 45  390.0  1.0s #e5eaf8 Get'cha get'cha head in the game
+ 46  391.5  2.0s #eaeae9 We gotta, Get our, get our, get our, get our head in the game
+ 47  394.0  1.5s #e5e9f8 Get'cha get'cha head in the game
+ 48  395.5  2.0s #e9e9e9 We gotta, Get our, get our, get our, get our head in the game
+ 49  398.0  1.5s #e6eaf7 We gotta get'cha get'cha head in the game
+ 50  400.0  2.0s #e9e9e9 ump We gotta, Get our, get our, get our, get our head in the game
+ 51  404.0  1.0s #e1e4f3 Let's make sure
+ 52  405.5  1.0s #e6eaf6 That we get the rebound
+ 53  407.5  1.5s #dedfe1 Then the crowd willl go willd
+ 54  409.5  1.0s #e7e9f7 Gotta grab it and go
+ 55  410.5  1.0s #e6e9f6 Maybe this time A6
+ 56  412.0  3.0s #e3e5f1 36 We'll hit the right notes
+ 57  416.0  1.0s #e6e9f5 It's not the time or place
+ 58  418.0  1.5s #e5eaf9 Get my head in the game
+ 59  420.0  1.5s #e7eaf6 Get my head in the game
+ 60  421.5  1.5s #e6e9f6 Wait a minute
+ 61  423.5  1.5s #e5e7f4 Get my, get my head in the game
+ 62  425.0  2.5s #eaeaea You gotta, Get'cha, get'cha, get'cha, get'cha head in the game
+ 63  428.0  1.5s #e5e9f6 Get my, get my head in the game
+ 64  429.5  2.0s #e9eaeb You gotta, Get'cha, get'cha, get'cha, get'cha head in the game
+ 65  432.0  1.5s #e4e9f7 Get my, get my head in the game
+ 66  433.5  2.0s #e9eaeb You gotta, Get'cha, get'cha, get'cha, get'cha head in the game
+ 67  436.0  2.0s #e8eaf4 C gotta get my, get my head in the game
+ 68  438.0  2.0s #e9eaea You gotta, Get'cha, get'cha, get'cha, get'cha head in the game
+ 69  441.0  3.5s #e3eaf7 Why am feeling so wrong
+ 70  444.5  1.5s #a0adc9 My head's in the game
+ 71  446.0  2.0s #e4e8f6 But my heart's in the song
+ 72  448.0  2.5s #e5eaf7 She makes this feel so right
+ 73  451.0  2.0s #e2eaf9 Should I go for it?
+ 74  453.0  1.5s #e4eaf9 I'm gonna shake this
+ 75  454.5  1.5s #e2ebfc Yikes!
+ 76  456.0  4.5s #ede8dd Shadow® "passes ball to him*
+ 77  461.0  4.5s #f1e5e0 nump *catches ball and stärts running*
+ 78  466.0  4.5s #aaa9bc * Knuckles! dasses ball to Knuckles*
+ 79  471.0  4.5s #baa4af Don't hit me in the face this time
+ 80  476.0  3.0s #e5dedc ~scatches ball*
+ 81  479.5  4.0s #f4e5e2 Sonic! *throws ball to him*
+ 82  484.0  4.0s #e7e8f6 Mt *catches ball and jumps*
+ 83  488.5  2.5s #e6eaf7 Fgotta get my, get my head in the game
+ 84  491.0  2.0s #eaeaea 56 You gotta, Get'cha, get'cha, get'chä, get'cha head in the game'

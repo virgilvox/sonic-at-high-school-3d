@@ -1,0 +1,338 @@
+{
+ "part": 29,
+ "title": "Game Day",
+ "scenes": [
+  {
+   "set": "lockerroom",
+   "time": "day",
+   "cast": [
+    "sonic"
+   ],
+   "beats": [
+    {
+     "song": "tense",
+     "title": "the stadium fills up before the game",
+     "dur": 20
+    },
+    {
+     "do": "idle",
+     "who": "sonic",
+     "cap": "*in the changing room*"
+    },
+    {
+     "do": "pickup",
+     "who": "sonic",
+     "cap": "*picks up shirt*"
+    },
+    {
+     "say": "sonic",
+     "text": "I will win this for you, Amy...",
+     "emote": "sad"
+    },
+    {
+     "do": "use",
+     "who": "sonic",
+     "cap": "*putting on the shirt*"
+    },
+    {
+     "say": "sonic",
+     "text": "Even if you're not there to watch..",
+     "emote": "sad"
+    },
+    {
+     "enter": "vector",
+     "cap": "*entering the changing room*"
+    },
+    {
+     "say": "vector",
+     "text": "Hey Sonic, your team's waiting for you",
+     "to": "sonic",
+     "emote": "neutral",
+     "do": "beckon"
+    },
+    {
+     "say": "sonic",
+     "text": "Coming, coach *takes off bracelet and places next to his shoes*",
+     "to": "vector",
+     "emote": "sad",
+     "do": "pickup"
+    }
+   ]
+  },
+  {
+   "set": "field",
+   "time": "day",
+   "cast": [
+    "cream",
+    "amy"
+   ],
+   "beats": [
+    {
+     "say": "cream",
+     "text": "Amy, shall we sit with Silver and the gang? *entering the stadium*",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "amy",
+     "text": "*sigh* Sure",
+     "to": "cream",
+     "emote": "sad",
+     "do": "sigh"
+    },
+    {
+     "sfx": "crowd",
+     "cap": "*everyone cheering*"
+    },
+    {
+     "enter": "scourge"
+    },
+    {
+     "say": "scourge",
+     "text": "*chuckles* This is gonna be great",
+     "emote": "smirk",
+     "do": "smirk"
+    },
+    {
+     "enter": "rouge"
+    },
+    {
+     "say": "rouge",
+     "text": "Alright, girls! Are ya ready to cheer, for our guys?",
+     "emote": "excited"
+    },
+    {
+     "say": "fangirls",
+     "text": "Yeah!",
+     "emote": "excited",
+     "do": "cheer"
+    },
+    {
+     "enter": "tikal",
+     "cap": "*sits by Cream and Tikal*"
+    },
+    {
+     "say": "tikal",
+     "text": "Amy.. you both love each other, it's just an argument like me and Knuckles had",
+     "to": "amy",
+     "emote": "worried"
+    }
+   ]
+  },
+  {
+   "set": "bedroom",
+   "time": "dream",
+   "cast": [
+    "amy",
+    "sonic"
+   ],
+   "beats": [
+    {
+     "say": "sonic",
+     "text": "YOU KNOW WHAT? MAYBE I DON'T WANT THAT DATE ANYMORE!",
+     "to": "amy",
+     "emote": "angry"
+    },
+    {
+     "say": "amy",
+     "text": "NEITHER DO I!",
+     "to": "sonic",
+     "emote": "angry"
+    },
+    {
+     "do": "cry",
+     "who": "amy",
+     "cap": "*pout* *heart thumping* *tears falling*"
+    },
+    {
+     "say": "sonic",
+     "text": "...Very well then. *dashes out the house*",
+     "emote": "annoyed",
+     "do": "run",
+     "to": "off"
+    }
+   ]
+  },
+  {
+   "set": "field",
+   "time": "day",
+   "cast": [
+    "amy",
+    "sonic",
+    "scourge",
+    "knuckles",
+    "tails",
+    "shadow"
+   ],
+   "beats": [
+    {
+     "say": "narrator",
+     "text": "LADIES AND GENTLEMEN! PUT YOUR HANDS TOGETHER FOR... SEGA!!",
+     "emote": "excited"
+    },
+    {
+     "sfx": "crowd",
+     "cap": "*everyone cheering as they walk onto the pitch*"
+    },
+    {
+     "say": "amy",
+     "text": "S-Sonic... SONIC!!",
+     "emote": "crying"
+    },
+    {
+     "say": "sonic",
+     "text": "Huh? *raises his ears and looks around the crowd*",
+     "emote": "surprised",
+     "do": "turn"
+    },
+    {
+     "think": "sonic",
+     "text": "( I'm probably just hearing things, it just sounded a lot like.. Amy.. )"
+    },
+    {
+     "think": "sonic",
+     "text": "( FOCUS, SONIC! We'll worry about Amy later... I gotta win this! )"
+    },
+    {
+     "say": "sonic",
+     "text": "Hey, Scourge *walking towards him onto the pitch*",
+     "to": "scourge",
+     "emote": "smirk",
+     "do": "walk"
+    },
+    {
+     "say": "scourge",
+     "text": "So you decided to show up after all",
+     "to": "sonic",
+     "emote": "smirk"
+    },
+    {
+     "say": "sonic",
+     "text": "Don't keep your hopes up",
+     "to": "scourge",
+     "emote": "angry"
+    },
+    {
+     "say": "sonic",
+     "text": "because it's now or never",
+     "to": "scourge",
+     "emote": "smirk"
+    },
+    {
+     "song": "happy",
+     "title": "the team cheer song while the game gets going",
+     "dur": 20
+    },
+    {
+     "say": "crowd",
+     "text": "Scourge, they might win!",
+     "to": "scourge",
+     "emote": "worried"
+    },
+    {
+     "say": "scourge",
+     "text": "Oh don't worry I have a surprise just for Sonic..",
+     "emote": "smirk"
+    },
+    {
+     "say": "scourge",
+     "text": "Bye bye, pretty boy *kicks him*",
+     "to": "sonic",
+     "emote": "smirk",
+     "do": "hit"
+    },
+    {
+     "do": "fall",
+     "who": "sonic",
+     "cap": "*falls onto ground*"
+    },
+    {
+     "think": "sonic",
+     "text": "( Amy... I'm sorry... )"
+    },
+    {
+     "think": "sonic",
+     "text": "( I am a jerk... a real jerk! )"
+    },
+    {
+     "say": "amy",
+     "text": "SOOONNNNIIIICCCC!",
+     "emote": "crying"
+    },
+    {
+     "song": "love",
+     "title": "Amy urges Sonic on from the stands",
+     "dur": 18
+    },
+    {
+     "think": "amy",
+     "text": "( I'm sorry, Sonic... )"
+    },
+    {
+     "song": "happy",
+     "title": "the cheerleaders rally the crowd",
+     "dur": 8
+    },
+    {
+     "say": "shadow",
+     "text": "Hey, faker! You alright?",
+     "to": "sonic",
+     "emote": "neutral",
+     "do": "getup"
+    },
+    {
+     "say": "sonic",
+     "text": "Yeah!",
+     "to": "shadow",
+     "emote": "excited",
+     "do": "getup"
+    },
+    {
+     "say": "tails",
+     "text": "We're tied! We've gotta score once more!",
+     "emote": "worried"
+    },
+    {
+     "song": "tense",
+     "title": "the team plays on, one point left to score",
+     "dur": 10
+    },
+    {
+     "say": "sonic",
+     "text": "KNUCKLES! *passes ball*",
+     "to": "knuckles",
+     "emote": "excited",
+     "do": "throw"
+    },
+    {
+     "say": "knuckles",
+     "text": "TAILS! *jumps in air and throws ball*",
+     "to": "tails",
+     "emote": "excited",
+     "do": "throw"
+    },
+    {
+     "say": "scourge",
+     "text": "I'M NOT LETTING YOU WIN THIS!",
+     "emote": "angry"
+    },
+    {
+     "say": "tails",
+     "text": "SONIC! THIS IS YOUR LAST CHANCE! *throws ball*",
+     "to": "sonic",
+     "emote": "excited",
+     "do": "throw"
+    },
+    {
+     "say": "narrator",
+     "text": "AND THAT IS IT! SEGA HAS WON THE CHAMPIONSHIP LEAGUE!",
+     "emote": "excited"
+    },
+    {
+     "sfx": "crowd",
+     "cap": "*the crowd goes wild*"
+    }
+   ]
+  }
+ ]
+}

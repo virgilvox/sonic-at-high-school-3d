@@ -1,0 +1,34 @@
+{
+ "meta": {
+  "title": "Sonia the Hedgehog",
+  "author": "DetexkiModels",
+  "licenseName": "CC_BY",
+  "otherLicenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+  "source": "https://sketchfab.com/3d-models/sonia-the-hedgehog-de1ab379f8c04370928b4f352253596f"
+ },
+ "suffix": "_Amy_skeleton",
+ "bones": {
+  "hips": "HipsTranslation",
+  "spine": "Spine",
+  "chest": "Spine1",
+  "neck": "Neck",
+  "head": "Head",
+  "leftShoulder": "Shoulder_L",
+  "leftUpperArm": "UpperArm_L",
+  "leftLowerArm": "ForeArm_L",
+  "leftHand": "Hand_L",
+  "rightShoulder": "Shoulder_R",
+  "rightUpperArm": "UpperArm_R",
+  "rightLowerArm": "ForeArm_R",
+  "rightHand": "Hand_R",
+  "leftUpperLeg": "Thigh_L",
+  "leftLowerLeg": "Calf_L",
+  "leftFoot": "Foot_L",
+  "leftToes": "Toe_L",
+  "rightUpperLeg": "Thigh_R",
+  "rightLowerLeg": "Calf_R",
+  "rightFoot": "Foot_R",
+  "rightToes": "Toe_R"
+ },
+ "yaw": 180
+}

@@ -1,0 +1,120 @@
+      [no subtitles for 14s: pictures over music]
+  0   13.5 11.0s #fff8fe Look... know half of you liked the musical and half of you didn't
+  1   25.0 13.0s #fffafe but don't you realise? This is our last chance to do something together !
+  2   39.0 11.0s #fff5fc - really think what Cream did was really special
+  3   50.5 13.0s #8c8188 So can't  we all stop fighting? And let's do this show together?
+  4   64.5  6.0s #7f757f TOGETHER? !  WITH HIM?!
+  5   71.0  4.0s #aa9f9b WATCH IT!
+  6   75.5  8.5s #687068 NO OFFENSE, BUT YOU'RE MAKING IT WORST
+  7   84.0 10.0s #0e0c0d YOU'RE MAKING IT WORST BY SAYING THAT !
+  8   94.0  8.0s #0c0c0c *everyone arguing again*
+  9  102.0  5.5s #936268 *sigh*
+ 10  108.5  6.0s #92929a I'm in
+ 11  114.5  8.5s #242424 *everyone stays quiet*
+ 12  123.5  6.5s #e3e8e3 *lights -turn back on**
+ 13  131.0 11.0s #e9c48d Amy 8 riant this his is our last chance to something together
+ 14  143.0 15.5s #fafeff Of course we have a game coming, but doesn't mean we can' t have a final musical together
+ 15  159.5  9.0s #fbfdff I'11 adm it it, the musical ain't half bad
+ 16  169.5  9.0s #f8fdff So - Say, are we a team? Or are we Loners?
+ 17  180.0  4.0s #e76d5b WHATI TEAM?E
+ 18  185.0  4.0s #f2ebdc SEGA!
+ 19  190.5  3.5s #fffaf5 WHAT TEAM?!
+ 20  195.5  3.0s #fffdf9 SEGA!
+ 21  200.5  3.5s #fff2f2 SEGA!
+ 22  205.0  7.5s #282828 EVERYONE: GETCHA HEAD IN THE GAME!
+ 23  213.0 10.5s #cec8e7 HEY, CREAM! HIT THE MUSIC UP! *walking onto the stage*
+ 24  225.0 10.0s #faedfd AND YOU! *pushes Amy off the stage* THIS IS MY STAGE!
+ 25  236.5  5.0s #d1d7f8 AAHH!
+ 26  245.0  7.0s #fffbfa S Your we l come
+ 27  253.5  6.5s #f5faff Ames , are you ok?
+ 28  261.5  6.5s #d1d2d9 Yeah.u. donst worry
+ 29  269.5 11.0s #fff4ff TAILS! GET ON THE STAGE. NEED YOU TO BE MY PARTNER!
+ 30  281.5  8.5s #d0cac7 Great, now what is she doina a
+ 31  290.5  2.5s #f7e1f5 Imagine having everything we ever dreamed
+ 32  297.0  2.0s #f7e4f6 Imagine first audtition after collegel
+ 33  299.0  1.0s #efbae7 I get the lead!
+ 34  300.0  1.0s #f1e9da A part from me?
+ 35  302.5  1.0s #f7e3f6 You gotta believé it!
+ 36  304.5  1.0s #f8e2f5 You and I, all the fame
+ 37  306.0  1.5s #efe9e3 Sharpay and what's-his-name*
+ 38  310.0  1.0s #f3e9dc Listening
+ 39  311.0  5.5s #f2e2db Alright we get it, can you stop please?
+ 40  317.0  1.0s #f1e9dd Nin the part!
+ 41  318.0  1.0s #fae2f9 Think better!
+ 42  319.5  2.0s #f1eadf Become superstars,
+ 43  321.5  1.0s #fae2f8 That's better!
+ 44  323.0  1.0s #f7e4f6 Don't you see that
+ 45  324.5  1.0s #f8e2f8 Bigger is better
+ 46  325.5  1.5s #e2b0d7 and better iS bigger
+ 47  327.5  1.5s #f5e3f6 A little bit is never enough-
+ 48  330.0  1.0s #f6e4f3 Don't you want it all?
+ 49  331.5  3.0s #f6e3f5 You want it, you know that you want it
+ 50  334.5  2.5s #f9e2f8 The fame and the fortune and more!
+ 51  337.0  1.0s #f6e5f4 You want it all!,
+ 52  338.5  5.5s #e9dcd6 Can you please get hef to shut up?!
+ 53  344.5  4.0s #e3d4cf Oh stop complaining! This is good!
+ 54  349.0  1.0s #f8e2f8 Sing it!
+ 55  352.5  1.5s #eaeae9 want it, I want it, I want it
+ 56  354.0  2.5s #eae9eb My name in lights at Carnegie Hall
+ 57  356.5  2.0s #e9ecee - want it all!
+ 58  358.5  1.0s #f8e2f5 Can't you see it?
+ 59  359.5  1.0s #f1eadf Yeah!
+ 60  360.5  1.5s #f6e4f5 They re gonna love me!
+ 61  362.5  2.0s #f8e3f7 mean, us
+ 62  364.5  1.5s #f6e4f5 Red carpet, rose bouquets
+ 63  366.5  1.5s #f7e4f6 2004 Crowd waiting backstage
+ 64  368.0  1.5s #f2e9db I'm with her, don't stop me!
+ 65  369.5  1.5s #efeae4 I'm not the paparazzi
+ 66  371.5  1.0s #f9e4f7 Invitations
+ 67  372.5  2.0s #f8e4f6 standing ovations
+ 68  376.0  2.0s #ebeaeb Gotta be celebrities!
+ 69  378.5  7.0s #e6e9f6 ROUGE! GET OFF ME! *getting * dragged onto stage
+ 70  386.5  1.5s #eaeaea Sequels, hey better
+ 71  389.0  3.5s #e5e8f6 TAILS!
+ 72  392.5  6.0s #eedfe4 ROUGE! GET YOUR HANDS OFF HIM!
+ 73  399.5  1.5s #eaeaeb W Amy and better us bigger!
+ 74  401.5  2.0s #eae9ea A little bit IS never enough
+ 75  405.5  3.5s #f0e5f0 UGHHI MAKE THIS STOPI!
+ 76  410.0  5.5s #ebdade SOMEBODY GET HER OFF MY MAN!
+ 77  416.5  3.0s #f4e4e0 Serves him right
+ 78  420.0  1.0s #eae9eb glam and the press
+ 79  421.0  3.0s #e9e9e9 Only givin' you the best reviews
+ 80  424.5  1.0s #eceaea - want it all!
+ 81  425.5  1.0s #ebeaea I want (t, want it, want it
+ 82  428.0  2.0s #ebeaec Radio, CD Music Hall
+ 83  430.0  2.0s #ebeaeb We want it all!
+ 84  432.5  3.0s #ddd2e7 UGH! *rubs cheek*
+ 85  436.5  2.0s #efe8d3 Look at who we are .. Avd
+ 86  438.5  2.5s #f7e3f6 When Broadway knows your name
+ 87  441.0  3.5s #eaeaea You know that you're a star!
+ 88  445.0  4.0s #f4e7e5 GET OFF ME) ygetting dragged*
+ 89  450.0  1.5s #f2eae0 Dance!
+ 90  451.5  7.0s #d1cccc WILL YOU STOP FLIRTING WITH THOSE IDIOTS?!
+ 91  459.0  4.0s #f7e3e7 AAH! *gets grabbed by Rouge*
+ 92  463.5  2.0s #f7e4e6 Again.
+ 93  465.5  2.0s #e8bfca She wants you on the show
+ 94  469.0  1.5s #f5e5e8 They're gonna have to get back to you
+ 95  471.0  5.0s #f8e0f7 Thank you, darling *pushes her into Sonic*
+ 96  478.0  2.0s #eae9eb I want it, I-I-I want it, I want it
+ 97  480.0  1.0s #eae9ea - want it, I-I-I want it, want it
+ 98  481.0  2.5s #eae9eb I want it, I-I-1 want it, I want it all
+ 99  484.0  3.0s #e9e9e9 I want it, I-I-1 want it, I want it
+100  487.5  1.0s #e9e9e8 I want it, -I-l want it, I want it all
+101  488.5  2.0s #e9e9e9 1 want it, 4-I want it, I want it all
+102  491.0  2.0s #e9eae9 I want it, I-I-I want it, I want it
+103  494.0  4.0s #cdccd2 Amy uwe'he leaving
+104  498.5  4.0s #f4e3e4 Aw c'mon Sonic, this isn't bad after all!
+105  503.5  1.0s #ebe9eb I WANT IT ALLI
+106  504.5  2.5s #e8e9e8 - want it, want it, want it
+107  507.5  2.0s #ebeaea The fame and the fortune and more!
+108  510.0  3.0s #d9d5d6 GIRLS?I N
+109  513.5  5.0s #87a4ce Oh Amy please don't sing a-
+110  519.0  1.0s #e7eaec glam and the press
+111  520.5  2.5s #eae9ea Only givin' me the best reviews
+112  525.0  1.0s #f1eae3 London!
+113  529.5  1.5s #f1e9e1 Buenos Aires!
+114  533.0  1.0s #f8e3f7 Bollywood!
+115  535.0  2.5s #eae9e9 NEW YORK CITY!
+116  537.5  4.0s #e3e9f6 THEY'RE ALL SINGING NOW!
+117  542.0  3.5s #e8eaec AAALLLLLLLLLLLLLLLLLLL!
+118  546.0  1.5s #757472 ALL!

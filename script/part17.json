@@ -1,0 +1,66 @@
+{ "part": 17, "title": "Scourge and Sonic", "scenes": [
+  { "set": "park", "time": "day", "cast": ["blaze", "amy"], "beats": [
+    { "song": "dream", "title": "pictures of Amy and Blaze over music", "dur": 14 },
+    { "say": "blaze", "text": "So Scourge is against Sonic in the game? *walking with Amy*", "to": "amy", "do": "walk", "emote": "worried" },
+    { "say": "amy", "text": "*sigh* Yeah. I can tell Sonic has a frightful feeling", "to": "blaze", "emote": "sad" },
+    { "say": "blaze", "text": "Since when is Sonic scared of Scourge? After teasing him all these years", "to": "amy", "emote": "surprised" },
+    { "say": "amy", "text": "Well since he almost killed me, Sally and Manic, he's evil", "to": "blaze", "emote": "annoyed" },
+    { "say": "blaze", "text": "Has Sonic ever told you about Kindergarden?", "to": "amy", "emote": "neutral" },
+    { "say": "amy", "text": "Not really, why?", "to": "blaze", "emote": "surprised" },
+    { "say": "blaze", "text": "Well... Sonic and Scourge have known each other since Kindergarden, they were best friends", "to": "amy", "emote": "relaxed" },
+    { "say": "amy", "text": "That's unbelievable!", "emote": "shocked" },
+    { "say": "blaze", "text": "That's what everyone says, but it's true.", "to": "amy", "emote": "neutral" },
+    { "say": "blaze", "text": "So it all started when Sonic was getting bullied by the 6th graders", "emote": "sad" },
+    { "say": "blaze", "text": "Apparantly, they teased him because he was the only hedgehog", "emote": "sad" },
+    { "say": "amy", "text": "What about Manic and Sonia?", "to": "blaze", "emote": "worried" },
+    { "say": "blaze", "text": "They both were separated in other kindergardens", "emote": "neutral" },
+    { "say": "blaze", "text": "Sonic had to always run in the toilets to hide, but that's when things get worst", "emote": "sad" },
+    { "say": "amy", "text": "Oh!", "emote": "shocked" },
+    { "say": "blaze", "text": "Until one day, a new student came", "emote": "neutral" }
+  ] },
+  { "set": "classroom", "time": "dream", "cast": ["sonic", "narrator", "scourge", "crowd"], "at": { "narrator": "teacher" }, "beats": [
+    { "say": "narrator", "text": "Children, we have a new boy, let's welcome him to our kindergarden!", "emote": "happy" },
+    { "say": "narrator", "text": "Everyone this is Scourge", "to": "crowd", "do": "present", "emote": "happy" },
+    { "say": "crowd", "text": "Hi!", "emote": "happy" },
+    { "say": "scourge", "text": "Hello!", "to": "sonic", "emote": "happy" },
+    { "say": "sonic", "text": "I'm Sonic the Hedgehog!", "to": "scourge", "emote": "happy", "do": "wave" },
+    { "say": "scourge", "text": "!!! You're a hedgehog too?", "to": "sonic", "emote": "surprised" },
+    { "say": "sonic", "text": "You're an hedgehog?!", "to": "scourge", "emote": "surprised" },
+    { "say": "scourge", "text": "Yeah!", "emote": "excited" }
+  ] },
+  { "set": "park", "time": "day", "cast": ["blaze", "amy"], "beats": [
+    { "say": "blaze", "text": "They both became best friends, they had fun together and even visited each other's house", "to": "amy", "emote": "happy" },
+    { "say": "blaze", "text": "They even had sleepovers, man they loved to tickle each other", "to": "amy", "emote": "smirk" },
+    { "say": "amy", "text": "So when did Scourge do something bad that made Sonic hate him?", "to": "blaze", "emote": "worried" },
+    { "say": "blaze", "text": "Actually, Amy.. it wasn't Scourge who started the riot, it was Sonic", "to": "amy", "emote": "sad" },
+    { "say": "amy", "text": "But.. how?", "emote": "shocked" },
+    { "say": "blaze", "text": "Well after a couple of years later, in grade 4 Sonic notices something about Scourge", "emote": "neutral" },
+    { "say": "blaze", "text": "that everytime Scourge comes over and sees Sonia. He always flirts around her", "emote": "neutral" },
+    { "say": "blaze", "text": "and that's because... he was in love with her", "emote": "relaxed" },
+    { "say": "blaze", "text": "Sonic didn't understand love, so he got a little fishy", "emote": "worried" }
+  ] },
+  { "set": "livingroom", "time": "dream", "cast": ["sonic", "scourge"], "beats": [
+    { "say": "sonic", "text": "Why are you getting so close to my sister?!", "to": "scourge", "emote": "angry" },
+    { "say": "scourge", "text": "I told you she's my girlfriend!", "to": "sonic", "emote": "angry" },
+    { "say": "sonic", "text": "NO, SHE'S NOT!", "to": "scourge", "emote": "angry", "do": "point" },
+    { "enter": "sonia", "cap": "*Sonia comes walking down the stairs*" },
+    { "do": "hit", "who": "sonic", "to": "scourge", "cap": "*Sonic kicked him, punched him then grabbed him*" },
+    { "do": "grab", "who": "sonic", "to": "scourge", "cap": "*he threatens Scourge to never go near Sonia again*" },
+    { "do": "punch", "who": "scourge", "to": "sonic", "cap": "*Scourge punched Sonic back saying \"She's mine!\"*" },
+    { "say": "sonia", "text": "SCOURGE! WHAT DO YOU THINK YOU'RE DOING TO MY BROTHER?!", "to": "scourge", "emote": "angry" },
+    { "say": "scourge", "text": "HE DID IT BEFORE! HE EVEN THREATENED ME TO NEVER GO NEAR YOU AGAIN!", "to": "sonia", "emote": "angry" },
+    { "say": "sonia", "text": "I DON'T CARE! YOU SHOULD NEVER HARM ANY OF MY BROTHERS, NOW GET OUT!", "to": "scourge", "emote": "angry" },
+    { "say": "scourge", "text": "BUT SONIA, I WASN'T GONNA JUST SIT THERE AND GET-", "to": "sonia", "emote": "sad" },
+    { "say": "sonia", "text": "I DON'T WANT TO SEE YOU AGAIN IN THIS HOUSE!", "to": "scourge", "emote": "angry" },
+    { "say": "sonia", "text": "WE'RE OVER!", "to": "scourge", "emote": "angry" },
+    { "say": "scourge", "text": "FINE! But just you wait, Sonic the Hedgehog.. I'LL GET MY REVENGE.. someday", "to": "sonic", "emote": "angry", "do": "point" }
+  ] },
+  { "set": "park", "time": "day", "cast": ["blaze", "amy"], "beats": [
+    { "say": "blaze", "text": "And that's when it all started... Scourge's heart turns to dark.. and so has Sonic's.. but not until he met you", "to": "amy", "emote": "sad" },
+    { "say": "amy", "text": "Now I understand.. why he wants me.. no wonder why he tried to kill me", "emote": "sad" },
+    { "say": "amy", "text": "So.. did I make this worst?", "to": "blaze", "emote": "worried" },
+    { "say": "blaze", "text": "No, you made it much better. You finally showed Sonic what love is, if you never came.. Sonic and Scourge would've kept fighting", "to": "amy", "emote": "happy" },
+    { "say": "blaze", "text": "Trust me, Scourge's not gonna leave Sonic alone till he gets what he wants", "to": "amy", "emote": "worried" },
+    { "say": "blaze", "text": "and Sonic will protect you at all cost, because he loves you very much, Amy", "to": "amy", "emote": "happy" }
+  ] }
+] }

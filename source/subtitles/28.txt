@@ -1,0 +1,44 @@
+      [no subtitles for 32s: pictures over music]
+  0   31.5  9.0s #7fa0ca *walking down the hal lway*
+  1   41.0 10.5s #fffdf6 Hey Sonic! " wish you best of luck for the game! *running pass*
+  2   52.5  9.0s #fafdff Thanks Cream *cont inues walking*
+  3   62.5  9.0s #fff6ff Good luck *wink* *walking by him*
+  4   72.0  9.0s #f9fdff Thanks! *cont inues walking*
+  5   82.0  9.5s #f8fff7 Hey bro, we re gonña be cheer ing for you at the gamel *walking by*
+  6   92.5 12.0s #aabfdb Thanks, bro *continues walking without looking*
+  7  105.0  9.0s #1f1f22 *acidentally bumps into someone*
+  8  116.5  7.0s #c1d4ee *both stop walking*
+  9  124.5  6.5s #bdbdce *walks pass each other*
+ 10  132.0  9.5s #fffbff *turns her head and notices Sonic's bracelet*
+ 11  142.5  6.0s #cbc0b9 *cont inues walking away*
+ 12  149.5  8.0s #fff7f2 *turns back to her palm*
+ 13  158.5  4.5s #ebdaca #sigh*
+ 14  164.0  6.5s #c7e1ea *cont inues walk ing\ away*
+ 15  171.5  3.5s #e9f2f9 *sigh*
+ 16  176.5 10.5s #fffaf6 Heeyy pal *walking towards him and puts his arm around him* Excited?
+ 17  187.5  6.5s #e9eff8 Excited for what?
+ 18  194.5  9.5s #ccccde The game, how could you not forget?!
+ 19  205.0  9.5s #cdd3db 0h... yes *drops his ears and puts his head down while walking*
+ 20  215.5  7.5s #f0e0d8 Sonic? Are you alright?
+ 21  224.0  7.5s #c6cfda Yeah *cont inues walking*
+ 22  232.5  9.5s #a397a9 C'mon Sonic, there 's something wr ong
+ 23  242.5  8.0s #d1dff2 Don't worry, it's nothing
+ 24  251.5 13.0s #fffbf8 Then how come your ears are layed back and you keep facing the ground as you' re walking
+ 25  265.5  7.5s #bfc5d1 Oh *lifts his head and ears*
+ 26  274.0 12.0s #fff9f5 ( Something has to be wrong with him... He s act ing strange so sudden
+ 27  287.0 11.0s #f7feff *walking into the cafetar ia with Knuck les*
+ 28  298.5 10.5s #fff7f2 How about we sit with Tails and the girls?
+ 29  310.0  7.5s #b9bfc5 *looks over to the table*
+ 30  318.0  4.5s #fdf9f5 *giggles*
+ 31  324.0  9.0s #fffdf2 Hey look! s Sonic and Knuckles!
+ 32  340.5  9.5s #f4d89c There's no way I.' m way I'm sithina there
+ 33  350.5 10.5s #f4e3c6 Dude . Fit's your best friend wi th our girlsl Even your gir Ifriend!
+ 34  362.0  7.5s #f7e6e7 Hmph *walking to another table*
+ 35  370.5  7.5s #fffaf6 SONIC! *fol lows him*
+ 36  378.5  9.0s #fef2ec What's wr ong Wi th Sonic?
+ 37  388.5 10.5s #fffef6 l'[lgo find out what 's up *wa Iks away*
+ 38  400.5  5.0s #fff9f6 JEPIKX *sigh*
+ 39  405.5  1.0s #fffaf8 UETI *sigh*
+ 40  406.5  1.0s #ad7a63 UETI
+ 41  408.0  9.0s #fffef6 *walking towards Sonic' s table* Can I ask ask, what 's wrong?
+ 42  418.0  7.0s #fffcf7 Yeah. what's wrong?

@@ -1,0 +1,63 @@
+{ "part": 34, "title": "Stolen Spotlight", "scenes": [
+  { "set": "stage", "time": "night", "cast": ["sonic", "amy"], "beats": [
+    { "song": "love", "title": "The duet ends and the whole school cheers", "dur": 14 }
+  ] },
+  { "set": "hallway", "time": "night", "cast": ["rouge"], "beats": [
+    { "say": "rouge", "text": "UGH! *stomps into her dresser room*", "emote": "angry", "do": "walk" },
+    { "enter": "espio", "cap": "*steps by the door*" },
+    { "say": "espio", "text": "Rouge, are you- *steps by the door*", "to": "rouge", "emote": "worried" },
+    { "say": "rouge", "text": "WHAT DO YOU THINK YOU WERE DOING?! EMBARRISING ME IN FRONT OF OVER 100'S OF PEOPLE!", "to": "espio", "emote": "angry", "do": "point" },
+    { "say": "espio", "text": "Actually, if nobody came onto the stage, you'd be embarrassed", "to": "rouge", "emote": "neutral", "do": "crossarms" },
+    { "say": "rouge", "text": "IDIOT! SHADOW WAS COMING ONTO STAGE!", "to": "espio", "emote": "angry" },
+    { "enter": "shadow", "cap": "*walking towards him*" },
+    { "say": "rouge", "text": "ESPIO! WHY YOU I'M GONNA KI- *walking towards him*", "to": "espio", "emote": "angry", "do": "walk" },
+    { "say": "rouge", "text": "WHY WEREN'T YOU ON THE STAGE WHEN IT WAS YOUR PART?!", "to": "shadow", "emote": "angry", "do": "point" },
+    { "say": "shadow", "text": "What are you talking about?!", "to": "rouge", "emote": "surprised" },
+    { "say": "rouge", "text": "YOU WERE SUPPOSED TO COME ON STAGE AFTER I SAID 'EVEN IF WE'RE MILES APART'!", "to": "shadow", "emote": "angry" },
+    { "say": "shadow", "text": "Huh? Nobody told me to come on stage at that part", "to": "rouge", "emote": "annoyed" },
+    { "say": "espio", "text": "but instead Sonic told me to come on stage at that part", "to": "rouge", "emote": "neutral" },
+    { "say": "rouge", "text": "WHAT?!", "emote": "shocked" },
+    { "enter": "sonic", "cap": "*jogging towards them*" },
+    { "say": "sonic", "text": "Hey guys! Great performance right? *jogging towards them*", "emote": "happy", "do": "run" },
+    { "say": "espio", "text": "Sonic... Grr...", "to": "sonic", "emote": "angry", "do": "glare" },
+    { "say": "rouge", "text": "YOU USED ME YOU F**KING BASTARD!", "to": "sonic", "emote": "angry", "do": "point" },
+    { "say": "sonic", "text": "No need for the language, it was Shadow's fault for not coming onto stage", "to": "rouge", "emote": "smirk", "do": "shrug" },
+    { "say": "rouge", "text": "and how come you can sing again? I thought you said you couldn't", "to": "sonic", "emote": "annoyed" },
+    { "say": "sonic", "text": "Well... I felt better", "emote": "smirk", "do": "shrug" },
+    { "say": "shadow", "text": "Grr Grr...", "to": "sonic", "emote": "angry", "do": "glare" },
+    { "say": "sonic", "text": "What's up with him?", "emote": "worried" },
+    { "say": "shadow", "text": "COME HERE YOU LITTLE SH**!", "to": "sonic", "emote": "angry", "do": "run" },
+    { "say": "sonic", "text": "*girly scream* *runs out*", "emote": "scared", "do": "run" },
+    { "exit": "sonic", "cap": "*runs out*", "run": true },
+    { "do": "run", "who": "shadow", "to": "off", "cap": "*follows Sonic*" },
+    { "exit": "shadow", "cap": "*follows Sonic*", "run": true }
+  ] },
+  { "set": "hallway", "time": "night", "cast": ["shadow"], "beats": [
+    { "say": "shadow", "text": "Wait, where did he go?", "emote": "surprised" },
+    { "say": "shadow", "text": "He probably went this way! *takes a corridor*", "emote": "angry", "do": "run" },
+    { "exit": "shadow", "cap": "*takes a corridor*", "run": true },
+    { "enter": "sonic", "cap": "*peeking out*" },
+    { "think": "sonic", "text": "Ha, idiot" }
+  ] },
+  { "set": "hallway", "time": "night", "cast": ["rouge", "tails"], "beats": [
+    { "say": "tails", "text": "Uhm... Rouge *walks by the door*", "to": "rouge", "emote": "worried", "do": "walk" },
+    { "say": "rouge", "text": "WHAT?!", "to": "tails", "emote": "angry" },
+    { "say": "tails", "text": "Fiona's performing your song", "to": "rouge", "emote": "worried" }
+  ] },
+  { "set": "stage", "time": "night", "cast": ["fiona", "sally", "sonic", "shadow"], "beats": [
+    { "sfx": "crowd", "cap": "*Everyone cheering*" },
+    { "song": "happy", "title": "Fiona takes the stage and the crowd asks who she is", "dur": 20 },
+    { "song": "happy", "title": "Fiona sings about the night of nights", "dur": 19 },
+    { "say": "sally", "text": "You guys gotta check this out", "emote": "excited", "do": "beckon" },
+    { "say": "sonic", "text": "Is that Rouge?", "emote": "surprised" },
+    { "song": "happy", "title": "Fiona and the crowd sing together", "dur": 4 },
+    { "song": "happy", "title": "Fiona sings about this being their night", "dur": 3 },
+    { "say": "shadow", "text": "*chuckles* That's Rouge alright", "emote": "smirk", "do": "laugh" },
+    { "song": "happy", "title": "The song ends on a high note", "dur": 4 },
+    { "sfx": "crowd", "cap": "*Everyone cheering*" },
+    { "enter": "rouge", "cap": "*stomps onto the stage*" },
+    { "say": "rouge", "text": "Next time don't even think about stealing my spotlight", "to": "fiona", "emote": "angry", "do": "point" },
+    { "say": "fiona", "text": "Psh *walks off the stage*", "emote": "smirk", "do": "walk" },
+    { "exit": "fiona", "cap": "*walks off the stage*" }
+  ] }
+] }

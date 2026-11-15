@@ -1,0 +1,58 @@
+      [no subtitles for 14s: pictures over music]
+  0   13.5  8.5s #b5bdb5 Alright elass! Today we-
+  1   23.0  8.5s #f4f6f6 *walking into the Stadium*
+  2   32.5  8.5s #f6fbf6 Mar ia! What are you doiing here?
+  3   42.0 10.5s #f8feff The pitch is taken for today, so me and my class has no wher e for sports.
+  4   53.5  8.5s #2d2d2d *Maria's class comes into the stadium*
+  5   62.5  6.5s #e5e4da Hey Sonic!
+  6   70.0  7.0s #eae7e9 Hey Pal!
+  7   78.0 10.5s #f6fbf6 Hold on a secondh We can't have 2 classes together!
+  8   89.5  8.5s #f2f4f4 How come? There's no rule about it
+  9   99.5 10.5s #fff9f5 She's got a point,  you know. ..
+ 10  111.0 10.5s #f9fffa But I was planning a fun game of 4 vs 4 dodgeba| | with my class!
+ 11  122.5 10.5s #f9ffff Why not 8 vs 8? We ve played dodgebaIl before
+ 12  134.0  9.0s #f8fff8 Yeah but who's gonna be in what team?
+ 13  144.0  8.0s #f6f8f9 My c ass Vs your class
+ 14  153.5 11.0s #92a196 *notices Rouge*  Oh boy. . I have to go against Rouge?!
+ 15  166.0 10.5s #f9fff9 Alright then, but do you have a team captain? Minels ight here *point ing at Sonic*
+ 16  177.5  6.5s #e5ccbe *walking to Vector*
+ 17  185.0 11.5s #f7feff Of cour se have a team captain, Team Captain come over here!
+ 18  197.5  7.0s #b9bdd0 *steps thr ough the cr owd*
+ 19  212.5  8.0s #e2d4b4 Sonic?! *waiking towards him*
+ 20  221.5  7.0s #fafeff Amy!
+ 21  229.0 11.0s #c1b5a8 FIONA FOX You do realise almost every per son is against their loved one's
+ 22  240.0  1.0s #fbfb92 FIONA FOX
+ 23  241.5  5.0s #d2d6c9 Manic!
+ 24  247.5  2.0s #fcfdf4 Do Loo7 Sally!
+ 25  249.5  2.0s #fbfef7 Do Coo7 Sally!
+ 26  251.5  2.5s #fcfef7 De 10o7 Sally!
+ 27  254.0  1.0s #fefefe Do L0o7
+ 28  255.0  6.5s #f9f9f9 Blaze!
+ 29  262.5  5.5s #d8e3ec Silver?!
+ 30  269.5  7.0s #fffbf2 Cream?!
+ 31  278.5  4.5s #fffaef Tails!o
+ 32  283.0  1.5s #fffcf3 -Jails!
+ 33  285.5  6.5s #e9c6d9 Shadow!
+ 34  293.5  5.5s #fffdfa Rouge!!
+ 35  300.5  6.0s #f3decd Knuckles!
+ 36  307.5  7.0s #faf7df Tikal!
+ 37  316.0  7.0s #c8c1c9 Espio!
+ 38  324.0  7.5s #c7c0c9 RUINER ALERT! *pointslat Espio*
+ 39  332.5 11.5s #f1f3f2 Look, just try play the Tgame. . . Now Team Captains decide who gets the ball first
+ 40  345.5  7.0s #c6cbd5 Ladies first *giving the ball to Amy*
+ 41  354.0  8.0s #fffbfb No, | insist. you first *giving the ball back to Sonic*
+ 42  363.0  7.5s #f0f8ff No, you! *gives her the ball*
+ 43  371.5  8.0s #bab8b9 No, youtx*passes ball back to him*
+ 44  379.5  1.0s #b6442f JETIX
+ 45  380.5  8.0s #fbfcff - love you *passes ba  l back to her*
+ 46  389.5  9.0s #fff9f7 - love you too *passes ball back to him*
+ 47  399.5  9.5s #fffbf7 OH GIVE ME THATI *shatches ball off Sonio and thr OWwS 4t at Tikal*
+ 48  409.0  1.0s #fefefe Tley'
+ 49  410.5  7.0s #ede4dc HEY! *gets hit by ball*
+ 50  419.0  8.0s #e2c7c0 WHAT WAS THAT FOR?!
+ 51  428.5  6.0s #f9fef8 Tikal's out
+ 52  435.5  9.0s #f4f6fa but Fiona's out as we l cause she cheated
+ 53  445.5  7.0s #dedb9f Oh please *sits onto bench*
+ 54  453.5  7.5s #fff5ff GAME ON! *grabs ball
+ 55  462.0  9.5s #f5f7f4 Sally! Get the other bail! *throws another ball onto pitch*
+ 56  472.5  8.0s #fafcfd *running to grab ste  ball*

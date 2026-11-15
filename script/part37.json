@@ -1,0 +1,307 @@
+{
+ "part": 37,
+ "title": "Before Graduation",
+ "scenes": [
+  {
+   "set": "cafeteria",
+   "time": "night",
+   "cast": [
+    "sonic",
+    "amy"
+   ],
+   "beats": [
+    {
+     "song": "love",
+     "title": "Soft music plays while they wait for dinner",
+     "dur": 14
+    },
+    {
+     "enter": "bunnie",
+     "cap": "*places spagetti on table*"
+    },
+    {
+     "say": "bunnie",
+     "text": "*places spagetti on table* Dinner is served!",
+     "emote": "happy",
+     "do": "present"
+    },
+    {
+     "say": "sonic",
+     "text": "Uhm... I'm sure we ordered 2 spagettis...",
+     "to": "bunnie",
+     "emote": "worried"
+    },
+    {
+     "say": "amy",
+     "text": "Oh, it's alright Sonic.. You can have it",
+     "to": "sonic",
+     "emote": "blush"
+    },
+    {
+     "say": "sonic",
+     "text": "No, I insist, you can have it",
+     "to": "amy",
+     "emote": "relaxed",
+     "do": "hands"
+    },
+    {
+     "say": "bunnie",
+     "text": "No! You share! It's part of the romantic date!",
+     "emote": "excited",
+     "do": "point"
+    },
+    {
+     "say": "amy",
+     "text": "Oh...",
+     "emote": "blush"
+    },
+    {
+     "say": "bunnie",
+     "text": "Enjoy! *walks away*",
+     "emote": "happy",
+     "do": "wave"
+    },
+    {
+     "exit": "bunnie",
+     "cap": "*walks away*"
+    },
+    {
+     "say": "sonic",
+     "text": "*blushing madly*",
+     "emote": "blush",
+     "do": "blush"
+    },
+    {
+     "say": "amy",
+     "text": "Sonikku? Are you okay?",
+     "to": "sonic",
+     "emote": "worried"
+    },
+    {
+     "say": "sonic",
+     "text": "Yeah, let's eat",
+     "to": "amy",
+     "emote": "happy",
+     "do": "eat"
+    },
+    {
+     "card": "While eating"
+    },
+    {
+     "song": "love",
+     "title": "They share one plate of spaghetti and the music plays on",
+     "dur": 16
+    },
+    {
+     "do": "idle",
+     "who": "sonic",
+     "to": "amy",
+     "cap": "*They both lean across the table*"
+    },
+    {
+     "say": "sonic",
+     "text": "*chuckles* *blush*",
+     "emote": "blush",
+     "do": "laugh"
+    },
+    {
+     "say": "amy",
+     "text": "*giggles* *blush*",
+     "emote": "blush",
+     "do": "laugh"
+    }
+   ]
+  },
+  {
+   "set": "balcony",
+   "time": "night",
+   "cast": [
+    "amy",
+    "sonic"
+   ],
+   "beats": [
+    {
+     "say": "sonic",
+     "text": "Enjoyed it? *walking into her room*",
+     "to": "amy",
+     "emote": "happy",
+     "do": "walk"
+    },
+    {
+     "say": "amy",
+     "text": "Yeah",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "smile"
+    },
+    {
+     "do": "walk",
+     "who": "amy",
+     "to": "off",
+     "cap": "*lets go of his hand and walks onto balcony*"
+    },
+    {
+     "say": "sonic",
+     "text": "Amy?",
+     "to": "amy",
+     "emote": "worried"
+    },
+    {
+     "say": "amy",
+     "text": "Sonic... *sigh* I'm scared",
+     "emote": "sad",
+     "do": "sigh"
+    },
+    {
+     "say": "sonic",
+     "text": "*walks onto balcony* You're scared? Why?",
+     "to": "amy",
+     "emote": "worried",
+     "do": "walk"
+    },
+    {
+     "say": "amy",
+     "text": "It's graduation tomorrow.. and..",
+     "to": "sonic",
+     "emote": "sad"
+    },
+    {
+     "say": "sonic",
+     "text": "We're still gonna see our friends, don't worry",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "say": "amy",
+     "text": "No, Sonic.. what if we both get separated into different colleges?",
+     "to": "sonic",
+     "emote": "worried"
+    },
+    {
+     "say": "sonic",
+     "text": "Ames, we'll still be together-",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "say": "amy",
+     "text": "Sonic, do you know how far apart each college is?",
+     "to": "sonic",
+     "emote": "sad"
+    },
+    {
+     "say": "sonic",
+     "text": "Not really",
+     "to": "amy",
+     "emote": "neutral",
+     "do": "shrug"
+    },
+    {
+     "say": "amy",
+     "text": "Miles apart! That's why we're all moving into our very own apartments",
+     "to": "sonic",
+     "emote": "sad"
+    },
+    {
+     "say": "amy",
+     "text": "That's why I'm scared.. that if we'd separate.. we might not see each other ever again",
+     "to": "sonic",
+     "emote": "crying",
+     "do": "cry"
+    },
+    {
+     "say": "sonic",
+     "text": "Hey... we're gonna be together, no matter what",
+     "to": "amy",
+     "emote": "relaxed",
+     "do": "hug"
+    },
+    {
+     "say": "sonic",
+     "text": "You know I wouldn't let that happen, I'm never gonna lose you",
+     "to": "amy",
+     "emote": "happy",
+     "do": "hug"
+    },
+    {
+     "song": "love",
+     "title": "On the balcony they dream of a moment that never ends",
+     "dur": 20
+    },
+    {
+     "song": "love",
+     "title": "Tomorrow can wait, right here and right now",
+     "dur": 20
+    },
+    {
+     "song": "love",
+     "title": "Sonic and Amy hold each other under the stars",
+     "dur": 20
+    },
+    {
+     "song": "love",
+     "title": "The second chorus swells as they hold on",
+     "dur": 20
+    },
+    {
+     "song": "love",
+     "title": "Everything changes but they stay together",
+     "dur": 20
+    },
+    {
+     "song": "love",
+     "title": "The song fades out softly",
+     "dur": 15
+    },
+    {
+     "say": "amy",
+     "text": "I guess you're right Sonic, there's nothing to worry about",
+     "to": "sonic",
+     "emote": "relaxed",
+     "do": "smile"
+    },
+    {
+     "say": "sonic",
+     "text": "told you",
+     "to": "amy",
+     "emote": "smirk",
+     "do": "wink"
+    },
+    {
+     "say": "amy",
+     "text": "but remember you still have that speach to say before you graduate",
+     "to": "sonic",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "*chuckles* I know",
+     "to": "amy",
+     "emote": "happy",
+     "do": "laugh"
+    },
+    {
+     "say": "amy",
+     "text": "*yawn* I wish you luck",
+     "to": "sonic",
+     "emote": "relaxed",
+     "do": "sleep"
+    },
+    {
+     "say": "sonic",
+     "text": "Thanks, Ames! *yawn*",
+     "to": "amy",
+     "emote": "relaxed",
+     "do": "sleep"
+    },
+    {
+     "say": "amy",
+     "text": "Sweet dreams.",
+     "to": "sonic",
+     "emote": "relaxed",
+     "do": "sleep"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,352 @@
+{
+ "part": 4,
+ "title": "Ball Games",
+ "scenes": [
+  {
+   "set": "gym",
+   "time": "day",
+   "cast": [
+    "sonic",
+    "amy",
+    "knuckles",
+    "shadow",
+    "rouge",
+    "silver",
+    "espio",
+    "sonia",
+    "sally",
+    "manic",
+    "blaze",
+    "cream",
+    "tails",
+    "cosmo",
+    "crowd"
+   ],
+   "beats": [
+    {
+     "song": "tense",
+     "title": "the dodgeball game heats up",
+     "dur": 14
+    },
+    {
+     "do": "throw",
+     "who": "rouge",
+     "to": "sally",
+     "cap": "*throws ball at Sally*"
+    },
+    {
+     "do": "jump",
+     "who": "sally",
+     "cap": "*jumps into mid air*"
+    },
+    {
+     "sfx": "thud",
+     "cap": "*ball hits Sonia*"
+    },
+    {
+     "say": "sonia",
+     "text": "Ow!",
+     "emote": "angry",
+     "do": "knockback"
+    },
+    {
+     "do": "throw",
+     "who": "sally",
+     "to": "rouge",
+     "cap": "*grabs ball and throws at Rouge*"
+    },
+    {
+     "do": "throw",
+     "who": "sonic",
+     "to": "rouge",
+     "cap": "*grabs ball next to SonLen and throws at Rouge*"
+    },
+    {
+     "sfx": "thud",
+     "cap": "*ball hits Cosmo*"
+    },
+    {
+     "exit": "cosmo",
+     "cap": "*walking off the pitch*"
+    },
+    {
+     "do": "idle",
+     "who": "cream",
+     "cap": "*other ball bounces off wall towards Cream*"
+    },
+    {
+     "say": "cream",
+     "text": "The ball's coming back at us!",
+     "emote": "scared"
+    },
+    {
+     "do": "run",
+     "who": "tails",
+     "to": "cream",
+     "cap": "*runs in front of Cream and catches ball*"
+    },
+    {
+     "say": "tails",
+     "text": "Your welcome *throws ball at Shadow*",
+     "to": "cream",
+     "emote": "smirk",
+     "do": "throw"
+    },
+    {
+     "say": "shadow",
+     "text": "*runs and catches ball* Your out",
+     "to": "tails",
+     "emote": "smirk",
+     "do": "run"
+    },
+    {
+     "sfx": "thud",
+     "cap": "*other ball hits Shadow*"
+    },
+    {
+     "say": "amy",
+     "text": "You're out!",
+     "to": "shadow",
+     "emote": "happy",
+     "do": "point"
+    },
+    {
+     "do": "throw",
+     "who": "knuckles",
+     "to": "amy",
+     "cap": "*grabs ball and throws at Amy*"
+    },
+    {
+     "say": "sonic",
+     "text": "*runs behind Amy's back and catches ball* Thanks, pal",
+     "to": "knuckles",
+     "emote": "smirk",
+     "do": "run"
+    },
+    {
+     "say": "knuckles",
+     "text": "CHEATER!",
+     "to": "sonic",
+     "emote": "angry",
+     "do": "point"
+    },
+    {
+     "say": "amy",
+     "text": "Thanks, Sonic",
+     "to": "sonic",
+     "emote": "blush"
+    },
+    {
+     "say": "sonic",
+     "text": "No, problem",
+     "to": "amy",
+     "emote": "happy",
+     "do": "wink"
+    },
+    {
+     "do": "throw",
+     "who": "blaze",
+     "to": "manic",
+     "cap": "*grabs the other ball and throws at Manic*"
+    },
+    {
+     "sfx": "thud",
+     "cap": "*ball hits Manic*"
+    },
+    {
+     "do": "throw",
+     "who": "sonic",
+     "to": "espio",
+     "cap": "*throws ball at Espio*"
+    },
+    {
+     "sfx": "thud",
+     "cap": "*ball hits Espio*"
+    },
+    {
+     "do": "throw",
+     "who": "silver",
+     "to": "knuckles",
+     "cap": "*throws ball at Knuckles*"
+    },
+    {
+     "do": "jump",
+     "who": "knuckles",
+     "cap": "*dives out the way*"
+    },
+    {
+     "sfx": "thud",
+     "cap": "*ball hits Blaze*"
+    },
+    {
+     "say": "silver",
+     "text": "BLAZE! I'M SO SORRY!",
+     "to": "blaze",
+     "emote": "scared"
+    },
+    {
+     "do": "throw",
+     "who": "rouge",
+     "to": "cream",
+     "cap": "*throws ball at Cream*"
+    },
+    {
+     "sfx": "thud",
+     "cap": "*ball hits Cream*"
+    },
+    {
+     "say": "cream",
+     "text": "Hey!",
+     "emote": "surprised"
+    },
+    {
+     "say": "knuckles",
+     "text": "Alright you don't wanna hurt your girlfriend? Fine, I'll hit her. You can hit Rouge",
+     "to": "sonic",
+     "emote": "angry",
+     "do": "point"
+    },
+    {
+     "say": "sonic",
+     "text": "You mean if you hit her *grabs ball and throws at Rouge*",
+     "to": "knuckles",
+     "emote": "annoyed",
+     "do": "throw"
+    },
+    {
+     "say": "knuckles",
+     "text": "AT THIS POWER IT WILL HIT HER HARD! *throws ball at Amy*",
+     "to": "amy",
+     "emote": "angry",
+     "do": "throw"
+    },
+    {
+     "say": "sonic",
+     "text": "KNUCKLES!!",
+     "to": "knuckles",
+     "emote": "shocked"
+    },
+    {
+     "sfx": "thud",
+     "cap": "*ball hits Rouge*"
+    },
+    {
+     "do": "gasp",
+     "who": "amy",
+     "cap": "*notices ball heading towards her*"
+    },
+    {
+     "do": "grab",
+     "who": "amy",
+     "cap": "*catches ball*"
+    },
+    {
+     "do": "idle",
+     "who": "sonic",
+     "cap": "*other ball rolls back to Sonic's side*"
+    },
+    {
+     "say": "knuckles",
+     "text": "This is what happens when you try to mess with my girl",
+     "emote": "angry",
+     "to": "sonic",
+     "do": "crossarms"
+    },
+    {
+     "say": "knuckles",
+     "text": "Hmph *walking off the pitch*",
+     "emote": "annoyed",
+     "do": "walk"
+    },
+    {
+     "exit": "knuckles"
+    },
+    {
+     "say": "amy",
+     "text": "Sorry Sal... *throws ball at Sally*",
+     "to": "sally",
+     "emote": "worried",
+     "do": "throw"
+    },
+    {
+     "say": "sally",
+     "text": "!!! *gets hit and falls to ground*",
+     "emote": "shocked",
+     "do": "fall"
+    },
+    {
+     "say": "sally",
+     "text": "*stands back up* Don't worry, I'm fine! Good hit, Amy!",
+     "to": "amy",
+     "emote": "happy",
+     "do": "getup"
+    },
+    {
+     "say": "amy",
+     "text": "Thanks!",
+     "to": "sally",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "*uses his foot to pass ball to Amy*",
+     "to": "amy",
+     "emote": "neutral",
+     "do": "use"
+    },
+    {
+     "say": "amy",
+     "text": "What are you doing?!",
+     "to": "sonic",
+     "emote": "surprised"
+    },
+    {
+     "say": "sonic",
+     "text": "I don't wanna hurt you",
+     "to": "amy",
+     "emote": "sad"
+    },
+    {
+     "say": "amy",
+     "text": "but I don't wanna hurt you too!",
+     "to": "sonic",
+     "emote": "sad"
+    },
+    {
+     "say": "crowd",
+     "text": "AMY! AMY!",
+     "emote": "excited",
+     "do": "cheer"
+    },
+    {
+     "say": "crowd",
+     "text": "SONIC! SONIC!",
+     "emote": "excited",
+     "do": "cheer"
+    },
+    {
+     "do": "idle",
+     "who": "sonic",
+     "cap": "*At the same time Sonic lets go of his ball and Amy lets go of hers*"
+    },
+    {
+     "do": "walk",
+     "who": "sonic",
+     "to": "off",
+     "cap": "*They both walk off the pitch*"
+    },
+    {
+     "do": "walk",
+     "who": "amy",
+     "to": "off",
+     "cap": "*They both walk off the pitch*"
+    },
+    {
+     "sfx": "bell",
+     "cap": "RIIINNNNGGGG!"
+    }
+   ],
+   "game": "dodgeball"
+  }
+ ]
+}

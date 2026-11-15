@@ -1,0 +1,360 @@
+{
+ "part": 3,
+ "title": "Dodgeball Showdown",
+ "scenes": [
+  {
+   "set": "gym",
+   "time": "day",
+   "cast": [
+    "vector",
+    "sonic",
+    "tails",
+    "knuckles",
+    "shadow",
+    "rouge",
+    "silver",
+    "espio",
+    "sonia",
+    "tikal",
+    "fiona"
+   ],
+   "beats": [
+    {
+     "song": "happy",
+     "title": "pictures over music as class begins",
+     "dur": 14
+    },
+    {
+     "say": "vector",
+     "text": "Alright class! Today we-",
+     "emote": "happy",
+     "do": "present"
+    },
+    {
+     "enter": "maria",
+     "cap": "*walking into the Stadium*"
+    },
+    {
+     "say": "vector",
+     "text": "Maria! What are you doing here?",
+     "to": "maria",
+     "emote": "surprised"
+    },
+    {
+     "say": "maria",
+     "text": "The pitch is taken for today, so me and my class has nowhere for sports.",
+     "to": "vector",
+     "emote": "worried",
+     "do": "shrug"
+    },
+    {
+     "enter": "crowd",
+     "cap": "*Maria's class comes into the stadium*"
+    },
+    {
+     "say": "tails",
+     "text": "Hey Sonic!",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "wave"
+    },
+    {
+     "say": "sonic",
+     "text": "Hey Pal!",
+     "to": "tails",
+     "emote": "happy",
+     "do": "wave"
+    },
+    {
+     "say": "vector",
+     "text": "Hold on a second! We can't have 2 classes together!",
+     "to": "maria",
+     "emote": "annoyed",
+     "do": "hands"
+    },
+    {
+     "say": "maria",
+     "text": "How come? There's no rule about it",
+     "to": "vector",
+     "emote": "neutral",
+     "do": "shrug"
+    },
+    {
+     "say": "knuckles",
+     "text": "She's got a point, you know...",
+     "emote": "neutral",
+     "do": "shrug"
+    },
+    {
+     "say": "vector",
+     "text": "But I was planning a fun game of 4 vs 4 dodgeball with my class!",
+     "to": "maria",
+     "emote": "worried"
+    },
+    {
+     "say": "maria",
+     "text": "Why not 8 vs 8? We've played dodgeball before",
+     "to": "vector",
+     "emote": "happy"
+    },
+    {
+     "say": "vector",
+     "text": "Yeah but who's gonna be in what team?",
+     "to": "maria",
+     "emote": "neutral",
+     "do": "think"
+    },
+    {
+     "say": "maria",
+     "text": "My class vs your class",
+     "to": "vector",
+     "emote": "happy",
+     "do": "point"
+    },
+    {
+     "think": "shadow",
+     "text": "*notices Rouge* ( Oh boy... I have to go against Rouge?! )"
+    },
+    {
+     "say": "vector",
+     "text": "Alright then, but do you have a team captain? Mine's right here *pointing at Sonic*",
+     "to": "maria",
+     "emote": "happy",
+     "do": "point"
+    },
+    {
+     "do": "walk",
+     "who": "sonic",
+     "to": "vector",
+     "cap": "*walking to Vector*"
+    },
+    {
+     "say": "maria",
+     "text": "Of course I have a team captain, Team Captain come over here!",
+     "to": "vector",
+     "emote": "smirk",
+     "do": "beckon"
+    },
+    {
+     "enter": "amy",
+     "cap": "*steps through the crowd*"
+    },
+    {
+     "say": "amy",
+     "text": "Sonic?! *walking towards him*",
+     "to": "sonic",
+     "emote": "surprised",
+     "do": "walk"
+    },
+    {
+     "say": "sonic",
+     "text": "Amy!",
+     "to": "amy",
+     "emote": "surprised"
+    },
+    {
+     "enter": "fiona",
+     "cap": "FIONA FOX"
+    },
+    {
+     "say": "fiona",
+     "text": "You do realise almost every person is against their loved one's",
+     "emote": "smirk",
+     "do": "crossarms"
+    },
+    {
+     "enter": "sally"
+    },
+    {
+     "enter": "manic"
+    },
+    {
+     "enter": "blaze"
+    },
+    {
+     "enter": "cream"
+    },
+    {
+     "say": "sally",
+     "text": "Manic!",
+     "to": "manic",
+     "emote": "surprised"
+    },
+    {
+     "say": "manic",
+     "text": "Sally!",
+     "to": "sally",
+     "emote": "surprised"
+    },
+    {
+     "say": "silver",
+     "text": "Blaze!",
+     "to": "blaze",
+     "emote": "surprised"
+    },
+    {
+     "say": "blaze",
+     "text": "Silver?!",
+     "to": "silver",
+     "emote": "surprised"
+    },
+    {
+     "say": "tails",
+     "text": "Cream?!",
+     "to": "cream",
+     "emote": "surprised"
+    },
+    {
+     "say": "cream",
+     "text": "Tails!",
+     "to": "tails",
+     "emote": "surprised"
+    },
+    {
+     "say": "rouge",
+     "text": "Shadow!",
+     "to": "shadow",
+     "emote": "surprised"
+    },
+    {
+     "say": "shadow",
+     "text": "Rouge!!",
+     "to": "rouge",
+     "emote": "surprised"
+    },
+    {
+     "say": "tikal",
+     "text": "Knuckles!",
+     "to": "knuckles",
+     "emote": "surprised"
+    },
+    {
+     "say": "knuckles",
+     "text": "Tikal!",
+     "to": "tikal",
+     "emote": "surprised"
+    },
+    {
+     "say": "sonia",
+     "text": "Espio!",
+     "to": "espio",
+     "emote": "surprised"
+    },
+    {
+     "say": "sonia",
+     "text": "RUINER ALERT! *points at Espio*",
+     "to": "espio",
+     "emote": "annoyed",
+     "do": "point"
+    },
+    {
+     "say": "maria",
+     "text": "Look, just try play the game... Now Team Captains decide who gets the ball first",
+     "emote": "neutral",
+     "do": "present"
+    },
+    {
+     "say": "sonic",
+     "text": "Ladies first *giving the ball to Amy*",
+     "to": "amy",
+     "emote": "happy",
+     "do": "present"
+    },
+    {
+     "say": "amy",
+     "text": "No, I insist.. you first *giving the ball back to Sonic*",
+     "to": "sonic",
+     "emote": "blush",
+     "do": "present"
+    },
+    {
+     "say": "sonic",
+     "text": "No, you! *gives her the ball*",
+     "to": "amy",
+     "emote": "happy",
+     "do": "present"
+    },
+    {
+     "say": "amy",
+     "text": "No, you! *passes ball back to him*",
+     "to": "sonic",
+     "emote": "blush",
+     "do": "present"
+    },
+    {
+     "say": "sonic",
+     "text": "I love you *passes ball back to her*",
+     "to": "amy",
+     "emote": "blush",
+     "do": "present"
+    },
+    {
+     "say": "amy",
+     "text": "I love you too *passes ball back to him*",
+     "to": "sonic",
+     "emote": "blush",
+     "do": "present"
+    },
+    {
+     "say": "fiona",
+     "text": "OH GIVE ME THAT! *snatches ball off Sonic and throws it at Tikal*",
+     "emote": "angry",
+     "do": "throw",
+     "to": "tikal"
+    },
+    {
+     "say": "tikal",
+     "text": "HEY! *gets hit by ball*",
+     "emote": "shocked",
+     "do": "knockback"
+    },
+    {
+     "say": "knuckles",
+     "text": "WHAT WAS THAT FOR?!",
+     "to": "fiona",
+     "emote": "angry"
+    },
+    {
+     "say": "vector",
+     "text": "Tikal's out",
+     "emote": "neutral",
+     "do": "point"
+    },
+    {
+     "say": "maria",
+     "text": "but Fiona's out as well cause she cheated",
+     "to": "fiona",
+     "emote": "annoyed",
+     "do": "point"
+    },
+    {
+     "say": "fiona",
+     "text": "Oh please *sits onto bench*",
+     "emote": "annoyed",
+     "do": "sit",
+     "to": "bench"
+    },
+    {
+     "say": "rouge",
+     "text": "GAME ON! *grabs ball*",
+     "emote": "excited",
+     "do": "pickup"
+    },
+    {
+     "say": "vector",
+     "text": "Sally! Get the other ball! *throws another ball onto pitch*",
+     "to": "sally",
+     "emote": "excited",
+     "do": "throw"
+    },
+    {
+     "do": "run",
+     "who": "sally",
+     "cap": "*running to grab the ball*"
+    }
+   ],
+   "game": "dodgeball",
+   "coach": "vector"
+  }
+ ]
+}

@@ -1,0 +1,64 @@
+      [no subtitles for 14s: pictures over music]
+  0   14.0  7.5s #d2bbd5 *throws balllat Sally*
+  1   23.0  1.0s #fafdff Srvese D * jumps into mid air*
+  2   24.0  1.5s #fbfeff Jrnye 2 * jumps into mid air*
+  3   26.5  1.5s #fbfeff Sonse D0 * jumps into mid air*
+  4   28.0  1.0s #fbfeff Sengee 8 * jumps into mid air*
+  5   30.5  7.0s #090909 *ball hits Sonia*
+  6   38.5  6.0s #fdedfb Ow!
+  7   46.0  9.0s #f6f7f7 Srngee 80 *gr abs ball and thr ows at Rouge*
+  8   55.0  1.0s #fcf8f1 Jengse 1o
+  9   56.0  9.5s #e5d3b2 *grabs barl next to Son len and thr ows át Rouge*
+ 10   69.5  6.0s #3f3f3f *ball hits Cosmo*
+ 11   76.0  8.0s #8fa3a1 *walking off the pitch*
+ 12   85.0  9.0s #fbfbfb *other ball bounces off wall towards Cr eam*
+ 13   94.5  8.0s #fffcf3 The bal ls coming back at us!
+ 14  103.5  9.0s #55534e *runs in front of Cream and catches ball*
+ 15  112.5  9.5s #fffef9 Your welcome *thr ows ba l at Shadow*
+ 16  123.5  9.5s #fffcf9 *runs and catches bal | * Your out
+ 17  134.0  6.5s #242424 *other ball hits Shadow*
+ 18  141.0  8.0s #f9dbf4 You're outl Re SD
+ 19  149.5  1.0s #f9dff6 AMO ROSO
+ 20  150.5  8.5s #faece9 *gr abs bal and throws at Amy*
+ 21  160.0 10.0s #fafdff *runs behind Amy's back and cat ches bal l* Thanks, pal
+ 22  171.0  8.5s #f2bead CHEATER!
+ 23  181.5  5.5s #fffcfb tnanks, Sontc
+ 24  187.0  1.0s #fffbfb APR hanks, Sonic
+ 25  188.0  1.5s #fdfdfd HAPR D-DAIT
+ 26  189.5  5.5s #fcfdff APRI No, prob lem
+ 27  196.5  9.5s #ccc9c6 *grabs the other ball and throws at Man i Ca
+ 28  207.0  6.0s #7f7f7f *ball hits Manic*
+ 29  213.0  8.5s #b6a3ad *thr ows ball at Espio*
+ 30  222.5  5.5s #3f3f3f *ball hits Espio*
+ 31  228.5  8.0s #fefdfd *throws ball at Knuckles*
+ 32  237.5  7.5s #bbaab8 *dives out the way*
+ 33  246.0  5.5s #353535 *ball hits Blaze*
+ 34  259.5  7.5s #f1f0f0 BLAZE! I'M SO SORRY!
+ 35  268.0  9.0s #5c6299 *throws ball at Cream*
+ 36  278.0  5.5s #f3f3f3 *ball hits Cr eam*
+ 37  284.0  6.0s #eae5de Hey!
+ 38  291.5 12.5s #fffaf8 Alright you don + wanna hürt your girlfriend? Fine / Il hit her . You can hit Rouge
+ 39  306.0  9.0s #d6e1f3 You mean if you hit her *grabs ball and throws at Rouge*
+ 40  316.0 11.5s #efefeb AT THIS POWER IT WILL HITKER HARD ! *thr OWS ball at Amy*
+ 41  328.5  6.5s #f6cc8e KNUCKLES!!
+ 42  336.0  7.5s #3f3f3f *ball hits Rouge*
+ 43  344.0  7.5s #dacbc7 *notices ball heading towards her*
+ 44  352.0  1.0s #f4e4e5 Hiose *catches ball*
+ 45  353.0  5.0s #fffaf8 Hiose *catches ball*
+ 46  358.0  1.0s #f40ccb hose *C
+ 47  359.0  9.5s #353535 *other ball rolls back to Sonic's side*
+ 48  369.0 11.0s #f2f2fc This is what happens when you try to mess Wi th my girl
+ 49  381.5  8.5s #fffbf8 Hmph *wa IKing off the pitch*
+ 50  391.0  7.5s #fff9f7 Sorry Sal... *thr ows ball at Sally*
+ 51  399.0  9.0s #f6fdff ! ! ! *gets it and falls to gr ound*
+ 52  408.5 11.0s #d3dbe3 *stands back up* Don't worry, I'm fine! Good hit, Amy!
+ 53  421.0  6.5s #f1e4e5 Thanks!
+ 54  428.5  8.0s #d0c0cf *uses his foot to pass ball to Amy*
+ 55  437.5  8.5s #fffafc What are you doing?!
+ 56  447.0  9.5s #f7fcff | don wanna hurt you
+ 57  457.5  9.0s #e5e8ec but I don don't wanna hurt you too!
+ 58  467.5  5.5s #fcfcfd AMY !  AMY !
+ 59  474.0  8.0s #feffff SON IC! SONIC!
+ 60  483.0 10.0s #fcfdfe *At the same time Sonic lets go of his bal l  and Amy lets go of hers*
+ 61  493.5  7.0s #c7c7c7 •They both walk off the pitch*
+ 62  500.5  7.5s #969696 RI INNNNNGGGG!

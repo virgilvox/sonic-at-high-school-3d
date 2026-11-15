@@ -1,0 +1,332 @@
+{
+ "part": 25,
+ "title": "Bunnie's Diner",
+ "scenes": [
+  {
+   "set": "cafeteria",
+   "time": "day",
+   "cast": [
+    "knuckles",
+    "tikal"
+   ],
+   "beats": [
+    {
+     "song": "happy",
+     "title": "pictures over music at lunchtime",
+     "dur": 14
+    },
+    {
+     "say": "tikal",
+     "text": "Aw, Knuckie! You have longer hair than a load of girls!",
+     "to": "knuckles",
+     "emote": "happy"
+    },
+    {
+     "say": "knuckles",
+     "text": "You tryin to call me a girl now?",
+     "to": "tikal",
+     "emote": "annoyed"
+    },
+    {
+     "say": "tikal",
+     "text": "You know I wouldn't *giggles*",
+     "to": "knuckles",
+     "emote": "happy",
+     "do": "laugh"
+    },
+    {
+     "enter": "amy",
+     "cap": "*walking towards their table*"
+    },
+    {
+     "say": "amy",
+     "text": "Hey, guys *walking towards their table* Have you seen Sonic anywhere?",
+     "emote": "neutral",
+     "do": "walk"
+    },
+    {
+     "say": "tikal",
+     "text": "No, maybe he's at practice",
+     "to": "amy",
+     "emote": "neutral"
+    },
+    {
+     "say": "knuckles",
+     "text": "There's no practice today",
+     "to": "tikal",
+     "emote": "neutral"
+    },
+    {
+     "say": "knuckles",
+     "text": "He's probably home sick, he missed all our classes today",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "say": "amy",
+     "text": "That's strange.. This is the first time I've heard Sonic being home sick",
+     "emote": "worried"
+    },
+    {
+     "say": "knuckles",
+     "text": "*chuckles* I said maybe, pig tails",
+     "to": "amy",
+     "emote": "smirk",
+     "do": "laugh"
+    },
+    {
+     "say": "amy",
+     "text": "What's that supposed to mean?!",
+     "to": "knuckles",
+     "emote": "angry"
+    },
+    {
+     "say": "knuckles",
+     "text": "It's the first time seeing you wear pig tails *chuckles*",
+     "to": "amy",
+     "emote": "smirk",
+     "do": "laugh"
+    },
+    {
+     "say": "amy",
+     "text": "and is that a problem?",
+     "to": "knuckles",
+     "emote": "annoyed",
+     "do": "crossarms"
+    },
+    {
+     "say": "knuckles",
+     "text": "Nope but it's funny *laughing*",
+     "to": "amy",
+     "emote": "happy",
+     "do": "laugh"
+    },
+    {
+     "do": "laugh",
+     "who": "knuckles",
+     "to": "amy",
+     "cap": "*laughing*"
+    },
+    {
+     "say": "tikal",
+     "text": "Ignore him, Amy! Your hair looks nice",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "amy",
+     "text": "Thanks, Tikal *walking away*",
+     "to": "tikal",
+     "emote": "happy",
+     "do": "walk"
+    },
+    {
+     "exit": "amy",
+     "cap": "*walking away*"
+    }
+   ]
+  },
+  {
+   "set": "diner",
+   "time": "day",
+   "cast": [
+    "sonic"
+   ],
+   "beats": [
+    {
+     "card": "Now with Sonic..."
+    },
+    {
+     "say": "sonic",
+     "text": "*running around town* Where the heck is that restaurant?!",
+     "emote": "worried",
+     "do": "run"
+    },
+    {
+     "say": "sonic",
+     "text": "Man, I'm gonna get detention when I come back",
+     "emote": "worried",
+     "do": "run"
+    },
+    {
+     "say": "sonic",
+     "text": "Gotta do this for Ames.. *not looking where he's going*",
+     "emote": "excited",
+     "do": "run"
+    },
+    {
+     "sfx": "door",
+     "cap": "*crashes through the doors*"
+    }
+   ]
+  },
+  {
+   "set": "diner",
+   "time": "day",
+   "cast": [
+    "sonic",
+    "bunnie"
+   ],
+   "at": {
+    "sonic": "seat1"
+   },
+   "beats": [
+    {
+     "say": "sonic",
+     "text": "Agh... Ow.. *getting up* I gotta stop doing that..",
+     "emote": "annoyed",
+     "do": "getup"
+    },
+    {
+     "say": "bunnie",
+     "text": "Whoa! Are you ok, sugar? *standing in front of him*",
+     "to": "sonic",
+     "emote": "surprised"
+    },
+    {
+     "say": "sonic",
+     "text": "Yeah *standing onto his feet* Thanks",
+     "to": "bunnie",
+     "emote": "relaxed",
+     "do": "stand"
+    },
+    {
+     "say": "bunnie",
+     "text": "Sorry but we're closed at the moment! We'll be open tomorrow night!",
+     "to": "sonic",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "Wait, what is this place?",
+     "to": "bunnie",
+     "emote": "surprised"
+    },
+    {
+     "say": "bunnie",
+     "text": "How could you not know? It's the most famous restaurant in town!",
+     "to": "sonic",
+     "emote": "surprised"
+    },
+    {
+     "say": "sonic",
+     "text": "Bunnie's de diner?",
+     "to": "bunnie",
+     "emote": "surprised"
+    },
+    {
+     "say": "bunnie",
+     "text": "Yes!",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "nod"
+    },
+    {
+     "say": "sonic",
+     "text": "Oh thank goodness... this is the restaurant I'm looking for!",
+     "to": "bunnie",
+     "emote": "happy"
+    },
+    {
+     "say": "bunnie",
+     "text": "So what could I do for ya, honey?",
+     "to": "sonic",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "Well, I'm supposed to have a very special date with my girlfriend tomorrow night to celebrate our anniversary",
+     "to": "bunnie",
+     "emote": "relaxed"
+    },
+    {
+     "say": "bunnie",
+     "text": "Oh! You're Sonic, right?",
+     "to": "sonic",
+     "emote": "surprised"
+    },
+    {
+     "say": "sonic",
+     "text": "Yup, that's me",
+     "to": "bunnie",
+     "emote": "smirk"
+    },
+    {
+     "say": "bunnie",
+     "text": "Don't worry about your date, it hasn't be cancelled",
+     "to": "sonic",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "No, it's not that. I have a game for the championship league tomorrow at the exact same time as my date. So I'm wondering if there is any chance to have the date the next day?",
+     "to": "bunnie",
+     "emote": "worried"
+    },
+    {
+     "say": "bunnie",
+     "text": "I'm not so sure if I could do that, loads of people have dates on the day after tomorrow",
+     "to": "sonic",
+     "emote": "worried",
+     "do": "no"
+    },
+    {
+     "say": "sonic",
+     "text": "But can't you at least ask a couple to have their date tomorrow and we'll take their place instead?",
+     "to": "bunnie",
+     "emote": "worried",
+     "do": "hands"
+    },
+    {
+     "say": "bunnie",
+     "text": "Look, I'd help.. but I'm also gonna need Amy's permission for this, does she know about this?",
+     "to": "sonic",
+     "emote": "neutral"
+    },
+    {
+     "say": "sonic",
+     "text": "I'm gonna tell her after school",
+     "to": "bunnie",
+     "emote": "relaxed"
+    },
+    {
+     "say": "bunnie",
+     "text": "Good cause I'm gonna need a phone call from Amy accepting the date on another day",
+     "to": "sonic",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "Ok, thank you... *walking out the restaurant*",
+     "to": "bunnie",
+     "emote": "relaxed",
+     "do": "walk"
+    },
+    {
+     "exit": "sonic",
+     "cap": "*walking out the restaurant*"
+    }
+   ]
+  },
+  {
+   "set": "street",
+   "time": "day",
+   "cast": [
+    "sonic"
+   ],
+   "beats": [
+    {
+     "do": "phone",
+     "who": "sonic",
+     "cap": "*checks his watch*"
+    },
+    {
+     "say": "sonic",
+     "text": "School only lasts 10 more minutes for the day, I suggest I'll just have a walk and wait at Amy's house",
+     "emote": "relaxed",
+     "do": "walk"
+    }
+   ]
+  }
+ ]
+}

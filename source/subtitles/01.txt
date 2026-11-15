@@ -1,0 +1,41 @@
+      [no subtitles for 14s: pictures over music]
+  0   13.5  8.5s #fbfdff Amy? *wallking through the corridors*
+  1   23.0  9.0s #f6f8ff C mon Ames okes over We gotta get to class!
+  2   33.0  4.5s #837e80 Sonic!
+  3   38.0  8.0s #f9fdff Amy?! *tur ns around*
+  4   54.0  7.0s #feeeb9 Huh?
+  5   61.5  6.5s #585858 Why hello there, Sonic
+  6   68.5  5.5s #fcfdff WHA? ! *turns back*
+  7   75.0 10.0s #7b7976 What are you doing here wander ing around the cor pidors?
+  8   86.0  8.0s #d7dae3 I'm looking for Amy, sir
+  9   95.0 10.0s #636260 Well... she's nigh there *moves out l'of Sonic' lay*
+ 10  106.0  6.5s #817d7f UGH!  LET GO OF ME!
+ 11  113.5  7.5s #e8e9ce AMY!I *running towards her*
+ 12  121.5  9.5s #f5f4f3 wou l dn do that if I were you
+ 13  140.0 10.5s #fbfdff W' N00O! ! ! sabout to hit robot but forcel ly stops*
+ 14  151.5  8.0s #e5dda4 MHAT?I CAN' T  MOVE!
+ 15  160.5  7.5s #fffdff SONN I 1 I CCC!
+ 16  169.5  7.5s #e5ebe4 *trying to move*
+ 17  187.0  7.5s #fffbfe *falls to ground*
+ 18  196.0  4.5s #d1d4db NO!
+ 19  201.5  8.5s #d3d6e1 AAAAMMMMMMMMMMMYYYYYY! !
+ 20  210.0  7.5s #cccccc RRI I I NNNGGGGGG!
+ 21  218.0  6.0s #fae4c9 *wakes up*
+ 22  224.5  2.0s #fafafa La
+ 23  236.5  9.0s #eff6f6 *lays back onto his bed* Phew.. . What a nightmare...
+ 24  246.5  7.0s #eaebf1 *grabs picture*
+ 25  254.5  9.5s #f8fdff I' I1 never let anyone harm you again, Amy promise..
+ 26  265.0 11.0s #f6faff *gets off his bed and walks out his room*
+ 27  276.5  7.5s #d4d4d5 Tu Ching abrushes his teeth*
+ 28  284.0  1.0s #cccccc Ching
+ 29  285.0  6.5s #d2d2d3 Tu Ching *Sp| t*
+ 30  292.0  1.0s #d5d5d5 Tu Ching
+ 31  293.0  9.0s #d9dbe1 Looking good, handsome *smirk*
+ 32  303.5 10.5s #f6f8ff Morning, bro! *walking out the bathroom*
+ 33  315.5  7.0s #d9effa Morning!
+ 34  324.0  8.0s #f9f3f0 So how's Sal? *smirk*
+ 35  333.5  9.5s #ceccc0 Uhm. . good why do you need to know?
+ 36  344.5  7.5s #f4e3c8 No reason *wink*
+ 37  353.5  9.0s #f5f6fe You wanna walk with me to school today?
+ 38  364.5 10.5s #f7fff6 The be down in a bita walking nto the bathroom  ingee
+ 39  377.0  7.5s #fbfdff Kay, bro *wa lking downstairs*

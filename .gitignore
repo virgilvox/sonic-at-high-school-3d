@@ -1,0 +1,7 @@
+node_modules/
+dist/
+build/
+shots/
+script/parts.json
+source/rigs/unused/
+.DS_Store

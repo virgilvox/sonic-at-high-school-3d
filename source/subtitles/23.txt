@@ -1,0 +1,42 @@
+      [no subtitles for 14s: pictures over music]
+  0   14.0  5.5s #f4efe0 Now ya eady?
+  1   20.5  7.5s #c68e85 Where'd you get these flowers from?
+  2   29.0 13.0s #fbf9fe *chuck les* Don't worry about them, now go! Make a move! *pushes him towards Tikal's table*
+  3   43.0 12.0s #fff1ec ^ Here goes nothing ~ *walking towards Tikal's table*
+  4   56.5  5.0s #fffdf5 That s so, cool!
+  5   63.0  9.5s #f7ffff I know right! I m so using them for the prom
+  6   74.0  5.0s #fffbf8 can t wait!
+  7   80.5  5.5s #fff5ea «sigh* Me
+  8   87.0  4.5s #5c5855 Good afternoon, ladies
+  9   97.0  4.5s #fefdfd Hi Knuckles!
+ 10  102.5 12.0s #9c8e8d Someone is looking very pretty today, this may be her dlucky day! *giving flowers to Tikal*
+ 11  115.5  7.0s #fffdf6 *taking the f lowers*
+ 12  123.5  9.5s #ddb6ad *looking on the piecevot/ paper* My beaut tfull. . (beaur iful-
+ 13  134.0  6.5s #fffdf4 I can't chear you over the crowds!
+ 14  141.5 10.0s #ddded0 EVERYONEV CAN HAVE YOUR ATTENTION PLEASE?
+ 15  152.0  8.0s #0d0d0d *Everyone stops talking and looks towards Sonic*
+ 16  160.5 10.5s #f9fdff My friend, Knuckles. Has something very important to say
+ 17  172.0  8.5s #dbc1bf ^ Great you've made it even worst for me pal
+ 18  181.5  9.5s #808080 *Ever yone stays completely silence and stares at Knuckles*
+ 19  191.5  9.5s #c8ae94 Go ahead Knuckles, we're waiting
+ 20  202.0  8.5s #dcbbb1 *gulp* *reading the lines on the paper * My beaut iful beautiful... ady
+ 21  211.5  7.5s #fff5ef - love you sweet as roses, that fly by my face
+ 22  220.5  7.5s #e9e2e0 *giggles* Sonic wrote that
+ 23  229.0 12.5s #fffaf5 I'm very sorry for being a.. big ass grump to you lately A SONIC!
+ 24  242.0  7.5s #242424 *some people chuckling/giggling*
+ 25  250.0  6.0s #e2c4ba So will you=
+ 26  257.0 13.0s #bebfc8 him* You're ser lous lyusing a sheet just to say such romantic sentances?
+ 27  271.0  7.5s #dbd6c7 Look, all m trying to say is wi l l you
+ 28  282.0  9.5s #fffcf1 Enough talking, I'd love to go to the prom with you
+ 29  294.0  7.0s #080808 *ever yone cheer ing*
+ 30  301.5  7.5s #fffcfa NOw ever ybody 's happy again!
+ 31  309.5  1.0s #9aa191 LPDTU
+ 32  311.0  8.5s #fffdf7 I'm guess ing Sonia wrote that novel for you
+ 33  321.0  4.5s #fefcfb How d you know?
+ 34  326.5  7.0s #fffdf8 *shows him the bot tom of the paper*
+ 35  334.5  9.5s #595959 Sonic wrote this, because Knuckles iS stupid >:D'
+ 36  344.5  8.5s #fffcfa SOOOOOONNNNNN LI II/I CCCCC!!
+ 37  354.0  5.5s #e2e3e0 *chucklies neryous l y.
+ 38  361.0  9.0s #fff9ff *walks into cafetar ia* WHO STOLE MY FLOWERS?!
+ 39  371.5  9.5s #fcfdff guess should get going.. *dashes out the cafetar 1a*
+ 40  381.5  6.0s #0d0d0d SOOONNN I 1 1 CCC!

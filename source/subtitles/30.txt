@@ -1,0 +1,124 @@
+      [no subtitles for 24s: pictures over music]
+  0   23.5  5.0s #b7ceec *in the changing room*
+  1   29.5  7.5s #aaabb8 *picks up shirt*
+  2   38.0  7.5s #f1f6ff I will win this for you, Amy...
+  3   46.5  6.0s #9598a3 *putting on the shirt*
+  4   53.0  8.0s #f8e9ef Even if you're not there to watch..
+  5   62.5 10.0s #f4f7e3 Hey Sonic, rour team s waiting for you *entering the changing room*
+  6   74.0 11.0s #fae1cf Coming, coach *takes off bracelet and places next to his shoes®
+  7   88.0 11.5s #fceee3 Amy, shall we sit with Silver and the gang? *enter ing the stadium*
+  8  101.0  4.5s #ffede8 &L45DS *sigh* Suré
+  9  106.5  6.5s #363636 *everyone cheer ing*
+ 10  113.5  6.0s #fafefa *chuckles* Thist is gonna be great
+ 11  121.0 11.0s #fff5ff Alright, girls! Are ya ready to cheer, for our guys?
+ 12  133.0  5.0s #fbfbfb Yeah!
+ 13  138.5  7.5s #e0d3d3 *sits by Cream and Tika|*
+ 14  147.0 12.5s #fff8f0 Amy. you both love each other, it's just an argument like me and Knuckles had
+ 15  166.0  8.5s #d9d9d9 YOU IKNOW WHAT? MAYBE | DON'T WANT THAT DATE ANYMORE!
+ 16  176.0  6.5s #eaeaea NEITHER DO I!
+ 17  184.0  6.5s #dcdcdc Pout *hear t thump ing* *tears falling*
+ 18  191.5  9.0s #dadada Re NE. Very well then. then.  *dashes out the house*
+ 19  207.0  8.5s #bbbbbb LADIES AND GENTLEMEN! PUT YOUR HANDS TOGETHER FOR... SEGA!!
+ 20  216.0 11.0s #fbfbf8 *ever yone cheer ing as they walk onto the pitch*
+ 21  228.5  6.5s #f3dfdf S-Sonic.  SONIC!!
+ 22  236.5 11.0s #d0dbda Huh? *raises his ears and looks around the crowd*
+ 23  256.0 11.5s #edf4fc ( I'm probably just hear ing things,
+ 24  269.0 11.5s #f1f6ff ( FOCUS, SONIC! We' Il worry about Amy later . o o I gotta win this!
+ 25  281.5  9.5s #e7ecf0 Hey , Scour ge *walking towards him onto the pitch*
+ 26  292.0  5.5s #e5eee4 So you decided to show up after all
+ 27  298.5  5.5s #e5e8ef Don't keep your hopes up
+ 28  305.0  3.0s #e2e6f0 0 because it's now or never
+ 29  308.5  1.0s #cbbfa3 LET'S GO TEAM!
+ 30  309.5  2.0s #d6d7dd Gotta get it together! it
+ 31  311.5  1.5s #e7ebf4 Yeah, pull up and shoot!!
+ 32  314.0  1.0s #e6eaf3 Are you ready? Are you with me?
+ 33  315.5  2.5s #eae9e8 5 TEAM, TEAM, TEAM, YEAH!
+ 34  318.0  1.5s #e6ebf5 Shake'em with the crossover?
+ 35  320.5  1.0s #e7eaf4 Tell me what are we here for?
+ 36  321.5  1.0s #e7e7e7 TO WIN!
+ 37  322.5  1.0s #eaeaec 'cause we know we're the best team!
+ 38  323.5  1.5s #baaf7f Comze on bous! Come an boys!
+ 39  325.0  1.0s #d0cbb9 COME ON!
+ 40  328.5  1.5s #e3e9f4 is what we leave behind!
+ 41  330.5  2.0s #e0e0de It all comes down to right now
+ 42  332.5  1.5s #eaeaea it's up to usa
+ 43  335.0  2.0s #e9e8e8 So what we're gonna be?
+ 44  337.0  2.0s #eae9ea T-E-A-M Team!
+ 45  339.0  1.5s #eae7ee Gotta work it out
+ 46  340.5  1.0s #e8dedc Turn it on!
+ 47  342.0  1.0s #3b5c6e This IS the last tims
+ 48  343.5  1.0s #e4eaf5 to get it right! it
+ 49  345.5  1.0s #e3eaf3 to make it or not!
+ 50  347.0  1.5s #e8e9ef what we're all about!
+ 51  349.0  1.5s #e9eced WORK TOGETHER!N
+ 52  350.5  1.0s #ddd6cf This is the last chance
+ 53  351.5  1.0s #e1e8ef A to make your mark
+ 54  352.5  1.0s #93c1dc H story will know
+ 55  354.5  1.0s #ebeaea This is the last game
+ 56  356.0  1.0s #e5e9f3 So make it count it's
+ 57  357.0  2.0s #efe9e4 NOW OR NEVER!
+ 58  359.0  3.0s #ece9e7 S-E-G-A
+ 59  363.5  3.0s #eee8eb S-E-G-A
+ 60  367.5  1.5s #e9e9e9 CHAOS HIGH KNIGHTS, HEY!
+ 61  369.0  1.5s #efe9eb YEAH, WE'RE DOING IT RIGHT
+ 62  370.5  1.0s #eec9d8 OH YEAH!
+ 63  371.5  2.0s #eae9ee S-E-G-A
+ 64  374.5  1.5s #9fd2f0 IT'S NOW THE TIME!
+ 65  376.0  2.5s #b0b0b9 Gotta get inside, downlow
+ 66  378.5  1.0s #e5eaf5 In the pain now shoot!
+ 67  381.0  1.0s #e6eaf3 We gotta work it together
+ 68  382.0  1.5s #ede9e4 Gimme the ball!
+ 69  385.0  1.0s #e5ebf5 Keep the ball in control
+ 70  386.0  1.5s #e5e8f0 Let it fly from downtown
+ 71  387.5  1.5s #ebebeb THREE! FOURI
+ 72  389.0  1.0s #eaeaea Show'em we can do it better!
+ 73  391.5  1.0s #c7c4b1 Come on boys!
+ 74  393.0  2.0s #dae3da The way we play tonight®
+ 75  395.5  1.5s #e7ebf3 is what we leave behind!
+ 76  397.5  2.0s #efe9e4 It all comes down to right now
+ 77  399.5  1.5s #eaeaea it's up to us!
+ 78  402.0  2.0s #edeae8 So what we're gonna be?
+ 79  404.0  1.5s #ebeaea T-E-A-M Team!
+ 80  406.0  1.5s #e8e8f2 Gotta work it out
+ 81  408.5  5.5s #e9e9e9 Scourge, they might win!
+ 82  415.0  6.5s #d9e0da Oh don't worry l have a surprise just for Sonic..
+ 83  421.5  1.0s #dfe2e0 This is the last game
+ 84  422.5  1.5s #e5eaf4 So make it count it's
+ 85  424.0  3.5s #e4e8e4 Bye bye, pretty boy "kicks him*
+ 86  428.0  2.0s #dde8f9 *falls onto ground*
+ 87  431.5  4.5s #d8e6f4 Amy... I'm sorry... )
+ 88  437.0  5.0s #e1e8f1 (I 'am a jerk... a real jerk!
+ 89  443.0  2.5s #f1e9e7 SOOONNNNIIIICCCC! I
+ 90  445.5  3.0s #e4e9f3 Right now I can hardly breath
+ 91  448.5  1.5s #f0e7e5 Oooh, you can do it
+ 92  450.5  3.0s #f1e5e6 /just know that I believe!
+ 93  453.5  2.5s #e8e8ef And that's all I really need
+ 94  456.0  1.0s #f4e7e1 Then come on!
+ 95  457.5  1.0s #e4e9f4 Make me strong!
+ 96  458.5  1.5s #e4e9f2 It's time to turn it up!
+ 97  460.0  1.0s #a0abbd GAME ON!
+ 98  461.5  1.5s #ede8eb SEGA! GO TEAR IT UP!
+ 99  463.0  1.0s #e6e9ea UGO SEGA
+100  464.0  1.0s #f1e7ea YEAH, WE'RE NUMBER ONE!
+101  465.5  4.0s #f0e1de I'm sorry, Sonic.
+102  470.0  1.5s #e9ebec CHAOS HIGH KNIGHTS, HEY!
+103  471.5  1.0s #eaeaee YEAH, WE'RE PUTTING UP A FIGHT!
+104  473.5  1.0s #d2c7da WELL NEVER QUIT IT
+105  476.0  2.0s #ede9e7 HEY HEY HEY HEY HEY!
+106  478.0  4.5s #eee4e0 Hey, faker! You alright?
+107  483.5  2.5s #ece6f3 Yeah!
+108  487.0  5.5s #c0bab1 We're tied! We've gotta score once more!
+109  493.5  1.0s #e7eaf2 TEAMWORKI
+110  494.5  1.0s #eaeaea This is the last time*
+111  495.5  1.0s #e0e6f1 it get it right
+112  496.5  1.0s #eae4d9 This is the last chancer
+113  499.5  1.0s #e9eaf2 what we're all about
+114  501.0  2.0s #cdd5e0 WORK TOGETHER!
+115  503.0  3.5s #cfcbcb nump KNUCKLES! *patses ball*
+116  507.0  1.0s #cecdcd nump This is the lasPgame
+117  508.0  1.0s #e4e5ee so make it count, it's
+118  509.5  5.5s #f0e7e6 TAILS! *jumps in air and throws ball*
+119  516.0  5.5s #c6c385 I'M NOT LETTING YOU WIN THIS!
+120  522.5  5.5s #e7e0d9 SONIC! THIS IS YOUR LAST CHANCE! throws ball*
+121  534.0  1.0s #d5b1b2 36
+122  538.0  6.5s #898989 AND THAT IS IT! SEGA HAS WON THE CHAMPIONSHIP LEAGUE!

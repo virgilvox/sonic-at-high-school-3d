@@ -1,0 +1,193 @@
+{
+ "part": 35,
+ "title": "Night of Nights",
+ "scenes": [
+  {
+   "set": "bedroom",
+   "time": "night",
+   "cast": [
+    "sonic"
+   ],
+   "at": {
+    "sonic": "bed"
+   },
+   "beats": [
+    {
+     "song": "happy",
+     "title": "Everyone gets ready for the prom night",
+     "dur": 20
+    },
+    {
+     "song": "happy",
+     "title": "Panic over tuxes and dresses, makeovers and corsages",
+     "dur": 20
+    },
+    {
+     "song": "happy",
+     "title": "Hair, shavers and lip gloss, one last mirror check",
+     "dur": 20
+    },
+    {
+     "song": "happy",
+     "title": "Dates arrive at doorways and nervous fathers stare",
+     "dur": 20
+    }
+   ]
+  },
+  {
+   "set": "prom",
+   "time": "night",
+   "cast": [
+    "sonic",
+    "amy",
+    "blaze",
+    "silver",
+    "sally",
+    "knuckles",
+    "tikal",
+    "scourge",
+    "sonia",
+    "crowd"
+   ],
+   "beats": [
+    {
+     "song": "happy",
+     "title": "Couples pour into the prom and a beautiful girl catches an eye",
+     "dur": 12
+    },
+    {
+     "say": "blaze",
+     "text": "Oh my goodness, we're finally here!",
+     "emote": "excited"
+    },
+    {
+     "say": "sonic",
+     "text": "Yeah!",
+     "emote": "happy"
+    },
+    {
+     "do": "idle",
+     "who": "crowd",
+     "cap": "*all couples split except one*"
+    },
+    {
+     "song": "happy",
+     "title": "The dance floor fills up and everyone wonders who the mystery guest is",
+     "dur": 20
+    },
+    {
+     "song": "happy",
+     "title": "The whole prom dances on the night of nights",
+     "dur": 20
+    },
+    {
+     "song": "happy",
+     "title": "The dancing keeps going",
+     "dur": 10
+    },
+    {
+     "say": "sonic",
+     "text": "*cough* I think someone wants to dance with you",
+     "to": "scourge",
+     "emote": "smirk",
+     "do": "point"
+    },
+    {
+     "say": "sonia",
+     "text": "Hi Scourge..",
+     "to": "scourge",
+     "emote": "blush",
+     "do": "wave"
+    },
+    {
+     "say": "scourge",
+     "text": "H-Hey Sonia.. *takes her hand*",
+     "to": "sonia",
+     "emote": "blush",
+     "do": "hands"
+    },
+    {
+     "say": "sonic",
+     "text": "Now to have my dance...",
+     "emote": "smirk"
+    },
+    {
+     "song": "love",
+     "title": "The prom sings together and the crowd roars",
+     "dur": 20
+    },
+    {
+     "song": "love",
+     "title": "Everyone dances and the night goes on",
+     "dur": 12
+    },
+    {
+     "say": "sonic",
+     "text": "So... Amy *slow dance*",
+     "to": "amy",
+     "emote": "smirk",
+     "do": "dance"
+    },
+    {
+     "say": "amy",
+     "text": "Yes?",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "dance"
+    },
+    {
+     "say": "sonic",
+     "text": "Is it alright if we leave early?",
+     "to": "amy",
+     "emote": "smirk"
+    },
+    {
+     "say": "amy",
+     "text": "What? Why?",
+     "to": "sonic",
+     "emote": "surprised"
+    },
+    {
+     "say": "sonic",
+     "text": "Well... it's a secret",
+     "to": "amy",
+     "emote": "smirk",
+     "do": "wink"
+    },
+    {
+     "say": "amy",
+     "text": "but Sonic, what about our friends? It's our last time being together till Graduation tomorrow",
+     "to": "sonic",
+     "emote": "worried"
+    },
+    {
+     "say": "sonic",
+     "text": "Hey... Hey. You worry too much.. It's not like we're never gonna see them again",
+     "to": "amy",
+     "emote": "relaxed",
+     "do": "hands"
+    },
+    {
+     "say": "amy",
+     "text": "Who knows where they're going though?",
+     "to": "sonic",
+     "emote": "sad"
+    },
+    {
+     "say": "sonic",
+     "text": "Oh come on, Ames. Please?",
+     "to": "amy",
+     "emote": "smirk",
+     "do": "beckon"
+    },
+    {
+     "say": "amy",
+     "text": "Alright",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "smile"
+    }
+   ]
+  }
+ ]
+}

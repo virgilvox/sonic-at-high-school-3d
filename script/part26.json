@@ -1,0 +1,438 @@
+{
+ "part": 26,
+ "title": "The Big Fight",
+ "scenes": [
+  {
+   "set": "street",
+   "time": "day",
+   "cast": [
+    "amy"
+   ],
+   "beats": [
+    {
+     "song": "dream",
+     "title": "a quiet walk home",
+     "dur": 14
+    },
+    {
+     "say": "amy",
+     "text": "*walking on her way home* ( What if Sonic is actually home sick? )",
+     "do": "walk",
+     "emote": "worried"
+    },
+    {
+     "say": "amy",
+     "text": "( Then he'll miss our date for tomorrow. *sigh* What about the games? When is it? )",
+     "emote": "sad",
+     "do": "sigh"
+    }
+   ]
+  },
+  {
+   "set": "garden",
+   "time": "day",
+   "cast": [
+    "amy"
+   ],
+   "beats": [
+    {
+     "do": "walk",
+     "who": "amy",
+     "cap": "*walking inside*"
+    },
+    {
+     "enter": "mom"
+    },
+    {
+     "say": "mom",
+     "text": "Welcome home, sweetie!",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "amy",
+     "text": "Thanks, mom!",
+     "to": "mom",
+     "emote": "happy"
+    },
+    {
+     "say": "mom",
+     "text": "You have a visitor waiting for you in the garden",
+     "to": "amy",
+     "emote": "smirk"
+    },
+    {
+     "say": "amy",
+     "text": "Who?",
+     "to": "mom",
+     "emote": "surprised"
+    },
+    {
+     "say": "mom",
+     "text": "Go find out for yourself!",
+     "to": "amy",
+     "emote": "smirk"
+    },
+    {
+     "say": "amy",
+     "text": "Okay... *walks outside into the garden*",
+     "do": "walk",
+     "to": "off",
+     "emote": "neutral"
+    }
+   ]
+  },
+  {
+   "set": "park",
+   "time": "day",
+   "cast": [
+    "sonic"
+   ],
+   "at": {
+    "sonic": "bench"
+   },
+   "beats": [
+    {
+     "enter": "amy",
+     "cap": "*sees Sonic resting on a branch of the tree*"
+    },
+    {
+     "say": "amy",
+     "text": "Sonikku?",
+     "to": "sonic",
+     "emote": "surprised"
+    },
+    {
+     "say": "sonic",
+     "text": "Is there any other blue hedgehog that would rest in your tree?",
+     "to": "amy",
+     "emote": "smirk"
+    },
+    {
+     "say": "amy",
+     "text": "Of course not! Just checking that it's not Manic",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "crossarms"
+    },
+    {
+     "say": "sonic",
+     "text": "Ames you know I wouldn't make him do that again",
+     "to": "amy",
+     "emote": "annoyed",
+     "do": "hands"
+    },
+    {
+     "say": "amy",
+     "text": "Good, now get down from that tree",
+     "to": "sonic",
+     "emote": "neutral",
+     "do": "crossarms"
+    },
+    {
+     "say": "sonic",
+     "text": "*chuckles* But I like this tr-",
+     "emote": "happy"
+    },
+    {
+     "do": "fall",
+     "who": "sonic",
+     "cap": "*branch breaks and Sonic falls off*"
+    },
+    {
+     "sfx": "thud",
+     "cap": "*CRACK*"
+    },
+    {
+     "say": "amy",
+     "text": "You were saying?",
+     "to": "sonic",
+     "emote": "smirk"
+    },
+    {
+     "say": "sonic",
+     "text": "...I never liked that tree",
+     "emote": "annoyed"
+    },
+    {
+     "say": "amy",
+     "text": "Good boy",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "smile"
+    },
+    {
+     "say": "amy",
+     "text": "Now tell me why weren't you at school?",
+     "to": "sonic",
+     "emote": "angry",
+     "do": "crossarms"
+    },
+    {
+     "say": "sonic",
+     "text": "Oh uhm...",
+     "emote": "scared"
+    },
+    {
+     "think": "sonic",
+     "text": "( Lie or tell her the truth?! I DON'T KNOW! )"
+    },
+    {
+     "think": "sonic",
+     "text": "( Wait! She's wearing pig tails! Never seen that before )"
+    },
+    {
+     "say": "sonic",
+     "text": "Ames, I like your pig tails... It's really nice",
+     "to": "amy",
+     "emote": "blush"
+    },
+    {
+     "say": "amy",
+     "text": "Aww, thanks!",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "blush"
+    },
+    {
+     "say": "sonic",
+     "text": "S0o o o what do you wanna do?",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "say": "amy",
+     "text": "Why don't we play on the swing?",
+     "to": "sonic",
+     "emote": "excited"
+    },
+    {
+     "say": "sonic",
+     "text": "Sounds good to me",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "Ready?",
+     "to": "amy",
+     "emote": "excited"
+    },
+    {
+     "say": "amy",
+     "text": "Yes!",
+     "to": "sonic",
+     "emote": "excited"
+    },
+    {
+     "say": "amy",
+     "text": "WOOOO!",
+     "emote": "excited",
+     "do": "cheer"
+    },
+    {
+     "say": "sonic",
+     "text": "Hang on tight, Ames.",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "*her pig tails fly out without noticing* *giggling*",
+     "emote": "happy",
+     "do": "laugh"
+    },
+    {
+     "say": "sonic",
+     "text": "I love you, Amy.",
+     "to": "amy",
+     "emote": "blush"
+    },
+    {
+     "song": "love",
+     "title": "a sweet afternoon together",
+     "dur": 12
+    }
+   ]
+  },
+  {
+   "set": "bedroom",
+   "time": "day",
+   "cast": [
+    "sonic",
+    "amy"
+   ],
+   "beats": [
+    {
+     "say": "amy",
+     "text": "I can't wait for tomorrow!",
+     "to": "sonic",
+     "emote": "excited",
+     "do": "hug"
+    },
+    {
+     "say": "amy",
+     "text": "So when is the ga-",
+     "to": "sonic",
+     "emote": "happy"
+    },
+    {
+     "say": "amy",
+     "text": "OOF *gets thrown onto bed*",
+     "do": "fall",
+     "emote": "surprised"
+    },
+    {
+     "say": "amy",
+     "text": "Son-",
+     "to": "sonic",
+     "emote": "shocked"
+    },
+    {
+     "say": "sonic",
+     "text": "Sorry... I just wanted to make this more romantic",
+     "to": "amy",
+     "emote": "blush"
+    },
+    {
+     "say": "amy",
+     "text": "No way, cowboy *pushing him back* I want my answer, first",
+     "to": "sonic",
+     "emote": "annoyed",
+     "do": "push"
+    },
+    {
+     "say": "sonic",
+     "text": "*sigh* Ames... the truth is..",
+     "to": "amy",
+     "emote": "worried",
+     "do": "sigh"
+    },
+    {
+     "say": "sonic",
+     "text": "The game... it's t-tomorrow..",
+     "to": "amy",
+     "emote": "scared"
+    },
+    {
+     "say": "amy",
+     "text": "Thanks for finally telling me, so I wish you luck for-",
+     "to": "sonic",
+     "emote": "relaxed"
+    },
+    {
+     "say": "amy",
+     "text": "WAIT, TOMORROW?! *pushes him back*",
+     "to": "sonic",
+     "emote": "shocked",
+     "do": "push"
+    },
+    {
+     "say": "sonic",
+     "text": "I-I tried to tell you but I just got too scared...",
+     "to": "amy",
+     "emote": "worried"
+    },
+    {
+     "say": "amy",
+     "text": "SONIC! YOU KNOW I WOULDN'T BE MAD AT YOU, BUT NOW I AM! CAUSE YOU COULD'VE TOLD ME SOON ENOUGH!",
+     "to": "sonic",
+     "emote": "angry"
+    },
+    {
+     "say": "sonic",
+     "text": "LOOK, I'M SORRY! I CAN'T LET MY TEAM DOWN!",
+     "to": "amy",
+     "emote": "angry"
+    },
+    {
+     "say": "amy",
+     "text": "SO YOU LET OUR ANNIVERSARY DOWN?!",
+     "to": "sonic",
+     "emote": "angry",
+     "do": "point"
+    },
+    {
+     "say": "sonic",
+     "text": "NO! BUT IF YOU PHONE BUNNIE THEN SHE CAN LET US HAVE OUR DATE THE-",
+     "to": "amy",
+     "emote": "angry"
+    },
+    {
+     "say": "amy",
+     "text": "NO! FORGET ABOUT IT! YOU CAN HAVE YOUR 'GAME'!! I JUST WISH YOU TOLD ME!",
+     "to": "sonic",
+     "emote": "angry"
+    },
+    {
+     "say": "sonic",
+     "text": "I JUST DID! HAPPY?!",
+     "to": "amy",
+     "emote": "angry"
+    },
+    {
+     "say": "amy",
+     "text": "So are you trying to tell me that this game is more important than me?!",
+     "to": "sonic",
+     "emote": "angry"
+    },
+    {
+     "say": "sonic",
+     "text": "Everything's not about you, Amy... Of course the game's not more important but-",
+     "to": "amy",
+     "emote": "annoyed"
+    },
+    {
+     "say": "amy",
+     "text": "SINCE WHEN WAS EVERYTHING ABOUT ME, I'M NOT FORCING YOU ON A DATE!",
+     "to": "sonic",
+     "emote": "angry"
+    },
+    {
+     "say": "sonic",
+     "text": "BUT YOU'RE COMPLAINING ABOUT IT RIGHT NOW!",
+     "to": "amy",
+     "emote": "angry"
+    },
+    {
+     "say": "amy",
+     "text": "JUST GET OUT OF MY HOUSE!",
+     "to": "sonic",
+     "emote": "angry",
+     "do": "point"
+    },
+    {
+     "say": "sonic",
+     "text": "YOU KNOW WHAT? MAYBE I DON'T WANT THAT DATE ANYMORE!",
+     "to": "amy",
+     "emote": "angry"
+    },
+    {
+     "say": "amy",
+     "text": "NEITHER DO I!",
+     "to": "sonic",
+     "emote": "angry"
+    },
+    {
+     "do": "cry",
+     "who": "amy",
+     "cap": "*pout* *heart thumping* *tears falling*"
+    },
+    {
+     "say": "sonic",
+     "text": "Very well then. *dashes out the house*",
+     "emote": "annoyed",
+     "do": "run",
+     "to": "off"
+    },
+    {
+     "exit": "sonic"
+    },
+    {
+     "think": "amy",
+     "text": "( What have I done? )"
+    }
+   ]
+  }
+ ]
+}

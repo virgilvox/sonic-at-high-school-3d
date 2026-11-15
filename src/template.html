@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Love Story</title>
+<style>
+:root {
+  --bg: #0b0a12; --ink: #f6f3ff; --dim: #a39fb8; --accent: #ff5fa2; --blue: #3b7bff; --panel: rgba(16, 14, 28, .86);
+  --cap-font: "Lucida Console", "DejaVu Sans Mono", Menlo, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); font: 15px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; overflow: hidden; }
+canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+#cap { position: fixed; left: 0; right: 0; bottom: 7vh; text-align: center; pointer-events: none; padding: 0 16px; z-index: 5; }
+.line { display: inline-block; max-width: min(1100px, 94vw); font: 700 clamp(18px, 2.6vw, 34px)/1.25 var(--cap-font); letter-spacing: .02em;
+  color: color-mix(in srgb, var(--c, #fff) 55%, #fff);
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 10px rgba(0,0,0,.7); }
+.line small { display: block; font: 600 .5em/1.6 system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--c, #fff); text-shadow: 0 1px 2px #000; }
+.line i { font-style: normal; color: #e8e4ff; }
+.line.action { color: #e8e4ff; }
+.line.think { font-style: italic; opacity: .9; }
+.line.sfx { font-size: clamp(26px, 5vw, 64px); color: #ffe066; transform: rotate(-3deg); }
+.line.song { font-family: Georgia, serif; font-style: italic; font-weight: 400; color: #ffd6ec; }
+
+#card { position: fixed; inset: 0; display: grid; place-items: center; z-index: 6; pointer-events: none; opacity: 0; transition: opacity .4s;
+  background: radial-gradient(ellipse at center, rgba(40, 20, 60, .9), rgba(0, 0, 0, .96));
+  font: 400 clamp(26px, 4.4vw, 56px)/1.2 "Brush Script MT", "Segoe Script", cursive; color: #f3e9ff; text-align: center; padding: 16px; white-space: pre-line; }
+#card.on { opacity: 1; }
+#letterbox::before, #letterbox::after { content: ""; position: fixed; left: 0; right: 0; height: 0; background: #000; z-index: 4; transition: height .8s; }
+#letterbox::before { top: 0; } #letterbox::after { bottom: 0; }
+#letterbox.on::before, #letterbox.on::after { height: 11vh; }
+#songTitle { position: fixed; top: 3vh; left: 0; right: 0; text-align: center; z-index: 5; font: italic 400 16px Georgia, serif; color: #ffb8da; letter-spacing: .12em; }
+#veil { position: fixed; inset: 0; pointer-events: none; z-index: 3; opacity: 0; transition: opacity .6s; }
+#veil.flash { background: #fff; opacity: 1; transition: none; }
+#veil.black { background: #000; opacity: 1; }
+#veil.dream, #veil.dreamhold { background: radial-gradient(ellipse at center, transparent 40%, rgba(120, 60, 180, .55)); opacity: 1; }
+
+#bar { position: fixed; top: 12px; left: 12px; right: 12px; display: flex; gap: 6px; align-items: center; z-index: 7; opacity: .25; transition: opacity .3s; flex-wrap: wrap; }
+#bar:hover, #bar:focus-within { opacity: 1; }
+#bar button { background: var(--panel); padding: 7px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,.12); }
+#bar button.off { opacity: .45; text-decoration: line-through; }
+#where { margin-left: auto; color: var(--dim); font-size: 13px; background: var(--panel); padding: 7px 12px; border-radius: 8px; }
+
+#picker, #loading { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: 16px;
+  background: radial-gradient(ellipse at 50% 20%, #2a1847 0%, #0b0a12 70%); overflow: auto; }
+#picker[hidden], #loading[hidden], #bar[hidden] { display: none; }
+.sheet { width: min(980px, 100%); }
+h1 { margin: 0; font: 400 clamp(40px, 8vw, 92px)/1 "Brush Script MT", "Segoe Script", cursive; color: #fff; text-shadow: 0 0 24px rgba(255, 95, 162, .55); }
+.kicker { font: 700 12px/1 system-ui, sans-serif; letter-spacing: .3em; text-transform: uppercase; color: #9fb7ff; margin-bottom: 10px; }
+.blurb { color: var(--dim); max-width: 60ch; margin: 12px 0 20px; }
+#voicePick { margin-left: 8px; padding: 12px 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,.25); }
+#playBtn { background: var(--accent); color: #1a0b14; font-weight: 800; padding: 12px 24px; border-radius: 999px; font-size: 17px; }
+#parts { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-top: 22px; }
+.part { text-align: left; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 10px 12px; display: flex; gap: 10px; align-items: baseline; }
+.part:hover { background: rgba(255, 95, 162, .16); border-color: rgba(255, 95, 162, .5); }
+.part b { font-size: 20px; color: #ffb8da; min-width: 1.6em; }
+.part span { color: var(--dim); font-size: 13px; }
+.credits { margin-top: 24px; color: #6f6a86; font-size: 12px; max-width: 80ch; }
+.track { width: min(420px, 80vw); height: 6px; background: rgba(255,255,255,.1); border-radius: 3px; overflow: hidden; margin-top: 18px; }
+#loadBar { height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+#loadText { color: var(--dim); margin-top: 8px; font-size: 13px; }
+#voicePanel { position: fixed; top: 56px; right: 12px; z-index: 12; width: min(760px, calc(100vw - 24px)); max-height: calc(100vh - 80px); overflow: auto;
+  background: var(--panel); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 14px 16px; backdrop-filter: blur(8px); }
+#voicePanel[hidden] { display: none; }
+#voicePanel button { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 6px 11px; }
+.vhead { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.vmodes { display: flex; gap: 6px; flex-wrap: wrap; }
+.vmodes button.on { background: var(--accent); color: #1a0b14; font-weight: 700; border-color: var(--accent); }
+.vnote { color: var(--dim); font-size: 13px; margin: 10px 0; }
+.vrows { display: grid; gap: 6px; margin-bottom: 10px; }
+.vrow { display: grid; grid-template-columns: 110px minmax(120px, 1fr) auto auto auto; gap: 8px; align-items: center; font-size: 12px; color: var(--dim); }
+.vrow select { background: #1c1930; color: var(--ink); border: 1px solid rgba(255,255,255,.15); border-radius: 6px; padding: 4px; min-width: 0; }
+.vrow input[type=range] { width: 80px; vertical-align: middle; }
+.vname { color: var(--c, #fff); font-weight: 700; font-size: 13px; }
+@media (max-width: 640px) { .vrow { grid-template-columns: 1fr 1fr; } }
+#bar button.on { background: var(--accent); color: #1a0b14; }
+#picker, #loading, #card { height: 100dvh; }
+/* touch screens: no hover, so the bar stays visible (tap the picture to hide it); bigger touch targets */
+@media (hover: none) {
+  #bar { opacity: .9; }
+  #bar button { padding: 10px 12px; min-height: 40px; }
+  body.hidebar #bar { opacity: 0; pointer-events: none; }
+}
+@media (max-width: 640px) {
+  #bar { top: 8px; left: 8px; right: 8px; gap: 4px; }
+  #bar button { font-size: 13px; padding: 8px 9px; }
+  #where { display: none; }
+  #cap { bottom: 4vh; }
+  #parts { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+}
+</style>
+</head>
+<body>
+<canvas id="view"></canvas>
+<div id="veil"></div>
+<div id="letterbox"></div><div id="songTitle"></div>
+<div id="cap" aria-live="polite"></div>
+<div id="card"></div>
+
+<div id="bar" hidden>
+  <button id="menu">Parts</button>
+  <button id="prevScene" title="Previous scene (P)">Prev scene</button>
+  <button id="pause" title="Space">Pause</button>
+  <button id="skip" title="Right arrow">Next line</button>
+  <button id="nextScene" title="Next scene (N)">Next scene</button>
+  <button id="cc" title="Captions (C)">Captions</button>
+  <button id="voice">Voices</button>
+  <button id="freecam" title="Orbit and pan freely (F)">Free cam</button>
+  <span id="where"></span>
+</div>
+
+<div id="loading"><div class="sheet" style="text-align:center">
+  <div class="kicker">Sonic at High School 3</div><h1>Love Story</h1>
+  <div class="track" style="margin-inline:auto"><div id="loadBar"></div></div><div id="loadText">Loading the cast</div>
+</div></div>
+
+<div id="picker" hidden><div class="sheet">
+  <div class="kicker">Sonic at High School 3</div>
+  <h1>Love Story</h1>
+  <p class="blurb">The whole series acted out in 3D and fully voiced. Space pauses, the right arrow skips a line, N and P jump scenes, F frees the camera (drag to orbit, right-drag or two fingers to pan, scroll or pinch to zoom).</p>
+  <button id="playBtn">Play from the start</button> <button id="voicePick" class="ghost">Voices</button>
+  <div id="parts"></div>
+  <p class="credits">/*CREDITS*/</p>
+</div></div>
+
+/*DATA*/
+<script>/*APP*/</script>
+</body>
+</html>

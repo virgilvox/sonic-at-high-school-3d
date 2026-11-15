@@ -1,0 +1,103 @@
+      [no subtitles for 20s: pictures over music]
+  0   19.5  2.0s #e7eaf9 Guess now its official
+  1   22.5  2.0s #cfa98e Can't back out
+  2   24.5  1.5s #ebeae9 Getting ready
+  3   26.0  2.0s #eceae8 for the night of nights
+  4   28.5  2.0s #eae9e8 The night of nights, alright
+  5   30.5  1.0s #e0dde6 Don't panic
+  6   32.0  3.0s #dfe9eb Now do we have to dress for the up prom?
+  7   35.0  3.0s #efe6e2 Dude I dont think we have the choice
+  8   38.0  2.0s #eee9e5 Yeah its the night of all nights/
+  9   40.0  1.5s #f1e8df gotta look justaright!
+ 10   42.0  2.5s #f3e4f9 Dressing to impress the boys
+ 11   44.5  2.5s #f4e6e1 Do I want classic or vintage or plaid?
+ 12   48.5  1.5s #ececec - think this tux is too baggy
+ 13   50.0  1.5s #e4e6f7 Too tight, it makes me look weird!
+ 14   52.0  2.0s #f3e7e2 Should I go movie star glamorous?
+ 15   54.0  1.0s #f1e4f7 Sassy or sweet?
+ 16   55.0  1.5s #f0e9e2 Don't know. but no one better
+ 17   56.5  2.0s #f0e6da wear the same dress as me
+ 18   59.0  1.0s #e8eaea Its the night of our nightmares
+ 19   60.5  1.5s #ececec Its the night of our dreams
+ 20   62.5  2.0s #ebeaea Its too late to back out of it
+ 21   64.5  2.5s #e7d0b2 Hey, makeovers, massages*
+ 22   67.0  2.0s #cbc1b6 Dont know what a corsage IS
+ 23   69.0  2.0s #ebebec Been waiting all our lives for this
+ 24   71.5  1.5s #eaeaea Its gonna be a night!
+ 25   74.0  1.0s #ebe8eb To remember!
+ 26   75.5  1.0s #ebe0e6 Come on now!
+ 27   76.5  1.0s #ede9e8 Big fun!
+ 28   77.5  2.5s #bdb3b9 Alright! It's gonna be the night!
+ 29   81.0  1.0s #eae9e8 To last forever
+ 30   83.0  2.0s #eae9e8 Well never ever ever forget!
+ 31   87.0  2.5s #eaeae8 Gettin Ready, Get Gettin Ready
+ 32   90.0  2.5s #eaeae6 Gettin Ready, Get Gettin Ready
+ 33   93.0  1.0s #fae2f6 Go!
+ 34   94.0  2.0s #e4d3e2 Hey you been in there an hour man
+ 35   96.0  3.5s #efe7ef So, what shoulloNL do with my hair?
+ 36   99.5  1.0s #ebebeb Wheres my shaver?,
+ 37  103.0  3.0s #e9e9eb Its gettin later already should-be there
+ 38  109.0  1.5s #ebeaec Her mother opens the door.
+ 39  111.0  2.0s #e9eae9 I'm shaking inside, yeah
+ 40  113.0  3.5s #e9e9e9 Blaze the Cat He's here, its time, the hours arrived
+ 41  116.5  3.5s #ebe9e9 Dont know why, her fathers staring me 77h down
+ 42  120.0  1.5s #e9e9e8 Wheres my purse?Lip gloss T'M
+ 43  121.5  2.5s #c9a896 Now Im really freaking out!
+ 44  124.0  2.0s #e8d9cd Then something changes my world
+ 45  126.0  1.5s #ebeae9 The most beautiful gürl
+ 46  128.0  1.5s #ebebeb Right in front of my eyes
+ 47  129.5  1.5s #d9ccea Its gonna be a night!
+ 48  132.0  1.0s #e9e8e7 To remember!
+ 49  133.5  1.0s #e4c290 Comé on nowl
+ 50  134.5  1.0s #e7ccb5 Big fun!
+ 51  135.5  2.5s #e3e0e5 Alright! It's gonna be the night!,
+ 52  138.0  1.0s #e5ebee Yeah, tonight!
+ 53  139.0  1.0s #ebe9e8 To last forever
+ 54  140.0  1.0s #ede9e9 Forever more!
+ 55  141.0  3.5s #eae8e7 Well never ever ever forget!
+ 56  146.5  4.0s #f3e7e7 Oh my goodness, we' re finally here!
+ 57  151.0  2.0s #d8deed Yeah!
+ 58  153.5  4.0s #e9e9e9 *all couples split except one*
+ 59  157.5  1.0s #ece8e5 Who's that girl?
+ 60  159.0  1.5s #ecebeb She's so fine
+ 61  161.0  1.0s #ece8e6 Who's that guy?
+ 62  162.0  2.0s #ebeaea I don't recognize
+ 63  164.5  1.0s #e9e8e7 Who's that girl?
+ 64  165.5  2.5s #ebe8e5 She looks so good, yeah
+ 65  168.0  1.5s #ebeaea Guess you'll never really notice-
+ 66  170.0  1.5s #ebe8e7 but you probably should
+ 67  171.5  1.5s #ececec BIG FUN!
+ 68  173.0  1.0s #abadb8 WWW.DEVIARR ARTIOMN (c) MEDO-GIBLSA .cOm on the night of nights
+ 69  175.0  1.5s #e8c58b The night of nights.
+ 70  176.5  1.5s #ececec Tonightll
+ 71  178.0  1.5s #eaeaea Let's dance!
+ 72  180.0  1.5s #e8eaeb On the night of nights,
+ 73  181.5  2.5s #d5c8c0 You know were gonna do it right
+ 74  184.5  1.5s #eaeaea Its gonna be a night!
+ 75  186.5  2.0s #edebed O remember!
+ 76  191.0  2.0s #ebeaeb It's gonna be the night!
+ 77  193.0  2.5s #dddfd4 To last forever
+ 78  198.0  6.5s #e6e8f5 *cough* I think someone wants to dance with you
+ 79  205.0  3.5s #b190aa Hi Scourge..ft
+ 80  209.0  4.5s #c6d0c3 H-Hey Sonia.. *takes her hand*
+ 81  214.0  4.0s #e9eaf4 Now to have my dance...
+ 82  218.5  1.5s #e9e9ea It's gonna be the night!
+ 83  220.5  2.0s #edeced To last forever
+ 84  223.0  2.0s #eaeaea Well never ever ever forget!-
+ 85  225.0  2.5s #ebe8e8 Its gonna be a night!
+ 86  227.5  1.0s #ece9ed All together!
+ 87  232.0  1.5s #e9ebe7 Its gonna be a night!
+ 88  234.5  1.0s #edecec to remember!
+ 89  235.5  1.0s #edecec Hear the crowd!
+ 90  237.0  2.0s #ebebeb And never ever ever never ever ever
+ 91  239.0  2.5s #ebeced never ever never ever ever
+ 92  243.5  7.5s #f7fcff So.b Amy *slow dance*
+ 93  252.5  3.0s #fff7fe Yes?
+ 94  257.0  7.5s #fbfdff Is it alright if we leave ear ly?
+ 95  266.0  4.0s #fefefe d What? Why?l
+ 96  271.0  7.5s #f8f7fa Well!! it s a secret
+ 97  279.5 11.0s #f2e7eb but Sonic. wha't about our friends? It's our ast time being together till Graduation tomor r ow
+ 98  291.5 11.0s #fafdff Hey... Hey . S.% You worry too much.. It's not like we're never gonna see them again
+ 99  303.5  8.0s #f7eef3 Who knows where they re going though?
+100  312.5  7.5s #fcfeff Oh come on, Ames.o Please?
+101  321.0  5.0s #fff8f8 Alright

@@ -1,0 +1,415 @@
+{
+ "part": 5,
+ "title": "A Gift and a Warning",
+ "scenes": [
+  {
+   "set": "lockerroom",
+   "time": "day",
+   "cast": [
+    "sonic"
+   ],
+   "beats": [
+    {
+     "song": "happy",
+     "title": "pictures over music after the game",
+     "dur": 14
+    },
+    {
+     "do": "walk",
+     "who": "sonic",
+     "cap": "*walking out from the Men's changing room*"
+    },
+    {
+     "enter": "espio"
+    },
+    {
+     "say": "espio",
+     "text": "Yo, Sonic. Good game, even though we tied",
+     "to": "sonic",
+     "emote": "relaxed",
+     "do": "crossarms"
+    },
+    {
+     "say": "sonic",
+     "text": "Heh heh... thanks.",
+     "to": "espio",
+     "emote": "happy",
+     "do": "hands"
+    },
+    {
+     "exit": "espio"
+    },
+    {
+     "enter": "amy"
+    },
+    {
+     "enter": "tikal"
+    },
+    {
+     "do": "gasp",
+     "who": "sonic",
+     "to": "amy",
+     "cap": "*notices Amy walking with Tikal*"
+    },
+    {
+     "say": "sonic",
+     "text": "Ames! Hold up *running towards her*",
+     "to": "amy",
+     "emote": "excited",
+     "do": "run"
+    },
+    {
+     "say": "amy",
+     "text": "Hey Sonikku!",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "wave"
+    },
+    {
+     "say": "amy",
+     "text": "Congratulations for getting into the championship league! *hugs him*",
+     "to": "sonic",
+     "emote": "excited",
+     "do": "hug"
+    },
+    {
+     "say": "sonic",
+     "text": "Thanks, Ames",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "So anyways, I have something for you",
+     "to": "amy",
+     "emote": "smirk",
+     "do": "hands"
+    },
+    {
+     "say": "amy",
+     "text": "What is it?",
+     "to": "sonic",
+     "emote": "surprised"
+    },
+    {
+     "say": "sonic",
+     "text": "It's for our 1st anniversary date.. and it's your 1st anniversary gift but I wanted to give it to you now",
+     "to": "amy",
+     "emote": "blush",
+     "do": "present"
+    },
+    {
+     "say": "sonic",
+     "text": "Don't worry, it's only in four more days",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "say": "sonic",
+     "text": "Well.. it was the last one so...",
+     "to": "amy",
+     "emote": "blush"
+    },
+    {
+     "say": "amy",
+     "text": "It's.. it's so beautiful..",
+     "to": "sonic",
+     "emote": "blush",
+     "do": "blush"
+    },
+    {
+     "say": "sonic",
+     "text": "Do you like it?",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "amy",
+     "text": "LIKE IT?! *squeezes him* I LOVE IT!",
+     "to": "sonic",
+     "emote": "excited",
+     "do": "hug"
+    },
+    {
+     "say": "amy",
+     "text": "BUT NOT AS MUCH AS I LOVE YOU THOUGH",
+     "to": "sonic",
+     "emote": "excited"
+    },
+    {
+     "say": "sonic",
+     "text": "Amy...",
+     "to": "amy",
+     "emote": "worried",
+     "do": "struggle"
+    },
+    {
+     "say": "amy",
+     "text": "OH THANK YOU! THANK YOU SO MUCH!!",
+     "to": "sonic",
+     "emote": "excited"
+    },
+    {
+     "say": "sonic",
+     "text": "You're squeezing me too.. hard....",
+     "to": "amy",
+     "emote": "scared",
+     "do": "struggle"
+    },
+    {
+     "say": "amy",
+     "text": "Oh! *lets go* I'm sorry!",
+     "to": "sonic",
+     "emote": "worried"
+    },
+    {
+     "say": "sonic",
+     "text": "Phew... it's ok",
+     "to": "amy",
+     "emote": "relaxed",
+     "do": "sigh"
+    },
+    {
+     "say": "tikal",
+     "text": "Goodness... that must've cost you a fortune!",
+     "to": "sonic",
+     "emote": "surprised"
+    },
+    {
+     "say": "sonic",
+     "text": "Don't worry about it, as long as it makes my girl happy, I'm happy too",
+     "to": "tikal",
+     "emote": "smirk"
+    },
+    {
+     "say": "sonic",
+     "text": "Well it was from the Chaos Jewerly store",
+     "to": "tikal",
+     "emote": "smirk",
+     "do": "present"
+    },
+    {
+     "say": "sonic",
+     "text": "So-",
+     "emote": "neutral"
+    },
+    {
+     "enter": "vector"
+    },
+    {
+     "say": "vector",
+     "text": "Sorry to interrupt *walking towards them* But may I speak with you, Sonic?",
+     "to": "sonic",
+     "emote": "neutral",
+     "do": "approach"
+    },
+    {
+     "say": "sonic",
+     "text": "( I'm in trouble ) Yes, Sir",
+     "to": "vector",
+     "emote": "worried"
+    },
+    {
+     "say": "sonic",
+     "text": "I'll cya after class, Ames *follows Vector*",
+     "to": "amy",
+     "emote": "neutral",
+     "do": "walk"
+    },
+    {
+     "exit": "sonic"
+    },
+    {
+     "exit": "vector"
+    },
+    {
+     "say": "amy",
+     "text": "*sigh*",
+     "emote": "sad",
+     "do": "sigh"
+    },
+    {
+     "say": "tikal",
+     "text": "What's wrong, Amy? You should be happy that Sonic is such a gentleman",
+     "to": "amy",
+     "emote": "worried"
+    },
+    {
+     "say": "tikal",
+     "text": "and Knuckles is such a grump!",
+     "emote": "annoyed",
+     "do": "crossarms"
+    },
+    {
+     "say": "amy",
+     "text": "Of course I'm happy, don't worry about it",
+     "to": "tikal",
+     "emote": "sad"
+    },
+    {
+     "say": "tikal",
+     "text": "Alright, c'mon we don't wanna be late *begins walking with Amy*",
+     "to": "amy",
+     "emote": "neutral",
+     "do": "walk"
+    },
+    {
+     "exit": "tikal"
+    },
+    {
+     "exit": "amy"
+    }
+   ]
+  },
+  {
+   "set": "office",
+   "time": "day",
+   "cast": [
+    "vector"
+   ],
+   "beats": [
+    {
+     "enter": "sonic",
+     "cap": "*walking into Vector's office*"
+    },
+    {
+     "say": "vector",
+     "text": "Look, Sonic... That was a pretty bad move you did back there in the Stadium",
+     "to": "sonic",
+     "emote": "annoyed",
+     "do": "crossarms"
+    },
+    {
+     "say": "sonic",
+     "text": "I'm sorry, sir. But-",
+     "to": "vector",
+     "emote": "worried"
+    },
+    {
+     "say": "vector",
+     "text": "Yes, I know you love Amy very much. But you can't always let her be in the way of your career",
+     "to": "sonic",
+     "emote": "neutral"
+    },
+    {
+     "say": "sonic",
+     "text": "What career?! You can't speak about my girlfriend like that!",
+     "to": "vector",
+     "emote": "angry",
+     "do": "point"
+    },
+    {
+     "say": "vector",
+     "text": "Alright then, what if that wasn't Amy in the stadium? Would you still quit?",
+     "to": "sonic",
+     "emote": "neutral"
+    },
+    {
+     "say": "sonic",
+     "text": "...No.",
+     "emote": "sad"
+    },
+    {
+     "say": "vector",
+     "text": "See? That's exactly what I mean!",
+     "to": "sonic",
+     "emote": "annoyed",
+     "do": "point"
+    },
+    {
+     "say": "sonic",
+     "text": "I didn't wanna hurt her!",
+     "to": "vector",
+     "emote": "angry"
+    },
+    {
+     "say": "vector",
+     "text": "She's a tough cookie, my boy. She can handle any pain.",
+     "to": "sonic",
+     "emote": "neutral"
+    },
+    {
+     "say": "sonic",
+     "text": "Look, after what happened last year I made a promise about Amy, and I'm not gonna break it",
+     "to": "vector",
+     "emote": "angry"
+    },
+    {
+     "say": "vector",
+     "text": "Alright, I get it, I'm not trying to get involved in your relationships but you gotta think about your team as well",
+     "to": "sonic",
+     "emote": "neutral"
+    },
+    {
+     "say": "vector",
+     "text": "Especially for the championship, it's in 4 days so we better be ready",
+     "to": "sonic",
+     "emote": "neutral"
+    },
+    {
+     "say": "sonic",
+     "text": "4 DAYS?!",
+     "to": "vector",
+     "emote": "shocked"
+    },
+    {
+     "say": "vector",
+     "text": "I know it's so soon but-",
+     "to": "sonic",
+     "emote": "neutral",
+     "do": "hands"
+    },
+    {
+     "say": "sonic",
+     "text": "NO! I HAVE MY 1ST ANNIVERSARY DATE WITH AMY ON THAT DAY!",
+     "to": "vector",
+     "emote": "angry"
+    },
+    {
+     "say": "vector",
+     "text": "Well, you're gonna have to cancel it cause we can't change anything now",
+     "to": "sonic",
+     "emote": "annoyed"
+    },
+    {
+     "say": "sonic",
+     "text": "I'M NOT CANCELLING IT! ME AND AMY HAVE BEEN PLANNING FOR THIS DATE!",
+     "to": "vector",
+     "emote": "angry",
+     "do": "fist"
+    },
+    {
+     "say": "vector",
+     "text": "It's either that or you're out the team",
+     "to": "sonic",
+     "emote": "annoyed",
+     "do": "crossarms"
+    },
+    {
+     "say": "vector",
+     "text": "Think about it, Sonic. You have a choice.",
+     "to": "sonic",
+     "emote": "neutral"
+    },
+    {
+     "say": "vector",
+     "text": "Now get to class, you have 30 seconds before it starts. I'm sure the fastest thing alive can handle it",
+     "to": "sonic",
+     "emote": "smirk",
+     "do": "point"
+    },
+    {
+     "say": "sonic",
+     "text": "Yes, sir *dashes out the office*",
+     "to": "vector",
+     "emote": "annoyed",
+     "do": "run"
+    },
+    {
+     "exit": "sonic",
+     "run": true
+    }
+   ]
+  }
+ ]
+}

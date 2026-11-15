@@ -1,0 +1,234 @@
+{
+ "part": 19,
+ "title": "Cream's Song",
+ "scenes": [
+  {
+   "set": "classroom",
+   "time": "day",
+   "cast": [
+    "cream"
+   ],
+   "beats": [
+    {
+     "song": "happy",
+     "title": "pictures over music, Tails dodges the crowd",
+     "dur": 14
+    },
+    {
+     "enter": "tails",
+     "run": true
+    },
+    {
+     "say": "tails",
+     "text": "AAAHH! *runs into music studio and shuts door behind him*",
+     "emote": "scared",
+     "do": "run"
+    },
+    {
+     "say": "cream",
+     "text": "Huh? *turns around* TAILS?!",
+     "to": "tails",
+     "emote": "surprised",
+     "do": "turn"
+    },
+    {
+     "say": "tails",
+     "text": "CREAM!",
+     "to": "cream",
+     "emote": "surprised"
+    },
+    {
+     "say": "cream",
+     "text": "W-What are you doing here?",
+     "to": "tails",
+     "emote": "worried"
+    },
+    {
+     "say": "tails",
+     "text": "I was about to ask you the same thing",
+     "to": "cream",
+     "emote": "surprised"
+    },
+    {
+     "say": "cream",
+     "text": "Well, I'm writing a song for Sonic and Amy",
+     "to": "tails",
+     "emote": "happy",
+     "do": "present"
+    },
+    {
+     "say": "tails",
+     "text": "At least you weren't getting chased by fangirls",
+     "to": "cream",
+     "emote": "relaxed",
+     "do": "sigh"
+    },
+    {
+     "say": "cream",
+     "text": "*giggles*",
+     "emote": "happy",
+     "do": "laugh"
+    },
+    {
+     "think": "tails",
+     "text": "( She has a really cute giggle... )"
+    },
+    {
+     "say": "tails",
+     "text": "So.. could I check out the song so far?",
+     "to": "cream",
+     "emote": "blush"
+    },
+    {
+     "say": "cream",
+     "text": "Sure! *picks up her lyric sheet and walks towards Tails*",
+     "to": "tails",
+     "emote": "happy",
+     "do": "pickup"
+    },
+    {
+     "say": "cream",
+     "text": "AAHH! *trips over wire*",
+     "emote": "scared",
+     "do": "fall"
+    },
+    {
+     "say": "tails",
+     "text": "Cream?! *trips backwards*",
+     "to": "cream",
+     "emote": "shocked",
+     "do": "fall"
+    },
+    {
+     "say": "tails",
+     "text": "AAAH! *Tails falls onto ground and Cream falls onto Tails*",
+     "emote": "scared",
+     "do": "fall"
+    },
+    {
+     "say": "cream",
+     "text": "I-I'm so sorry!",
+     "to": "tails",
+     "emote": "blush",
+     "do": "blush"
+    },
+    {
+     "do": "getup",
+     "who": "tails",
+     "cap": "*They both stand back onto their feet*"
+    },
+    {
+     "do": "getup",
+     "who": "cream",
+     "cap": "*They both stand back onto their feet*"
+    },
+    {
+     "say": "tails",
+     "text": "Don't worry about it, Cream",
+     "to": "cream",
+     "emote": "relaxed"
+    },
+    {
+     "say": "cream",
+     "text": "Here *gives him the lyric sheet and looks away*",
+     "to": "tails",
+     "emote": "blush",
+     "do": "present"
+    },
+    {
+     "do": "think",
+     "who": "tails",
+     "cap": "*reads lyric sheet*"
+    },
+    {
+     "say": "tails",
+     "text": "Cream, that's beautiful",
+     "to": "cream",
+     "emote": "happy"
+    },
+    {
+     "say": "cream",
+     "text": "Thanks, I'm glad you-",
+     "to": "tails",
+     "emote": "happy"
+    },
+    {
+     "say": "tails",
+     "text": "Just like.. you are..",
+     "to": "cream",
+     "emote": "blush"
+    },
+    {
+     "say": "cream",
+     "text": "!!!! *blush*",
+     "emote": "blush",
+     "do": "blush"
+    },
+    {
+     "say": "tails",
+     "text": "So anyways.. I wanna make it up to ya for not going to the dance with you",
+     "to": "cream",
+     "emote": "blush"
+    },
+    {
+     "say": "cream",
+     "text": "Oh, don't worry about it, it's fi-",
+     "to": "tails",
+     "emote": "happy"
+    },
+    {
+     "say": "tails",
+     "text": "Do you want to go to prom with me?",
+     "to": "cream",
+     "emote": "blush"
+    },
+    {
+     "say": "cream",
+     "text": "...Y-Yes!",
+     "to": "tails",
+     "emote": "excited",
+     "do": "cheer"
+    }
+   ]
+  },
+  {
+   "set": "balcony",
+   "time": "night",
+   "cast": [
+    "tails",
+    "sonic",
+    "amy"
+   ],
+   "beats": [
+    {
+     "song": "love",
+     "title": "a love song plays over pictures of Sonic and Amy, Tails and Cream",
+     "dur": 20
+    },
+    {
+     "say": "tails",
+     "text": "Alright, now wait on the balcony for Sonic to make his way through the audience",
+     "to": "amy",
+     "emote": "happy",
+     "do": "point"
+    },
+    {
+     "song": "love",
+     "title": "the song goes on, Sonic crosses the crowd",
+     "dur": 20
+    },
+    {
+     "say": "tails",
+     "text": "Ok now walk towards each other",
+     "emote": "happy",
+     "do": "beckon"
+    },
+    {
+     "song": "love",
+     "title": "the song ends with Sonic and Amy together",
+     "dur": 12
+    }
+   ]
+  }
+ ]
+}

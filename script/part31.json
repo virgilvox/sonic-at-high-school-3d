@@ -1,0 +1,406 @@
+{
+ "part": 31,
+ "title": "Sonic's Trophy",
+ "scenes": [
+  {
+   "set": "infirmary",
+   "time": "night",
+   "cast": [
+    "vanilla",
+    "sonic"
+   ],
+   "at": {
+    "sonic": "bed"
+   },
+   "beats": [
+    {
+     "song": "sad",
+     "title": "the long wait at the infirmary",
+     "dur": 20
+    },
+    {
+     "say": "vanilla",
+     "text": "I guess you're gonna have to stay here for tonight Sonic.",
+     "to": "sonic",
+     "emote": "worried"
+    },
+    {
+     "say": "vanilla",
+     "text": "Don't you worry, I will take care of you *tucking him in bed*",
+     "to": "sonic",
+     "emote": "relaxed",
+     "do": "use"
+    },
+    {
+     "exit": "vanilla",
+     "cap": "*walks out the room*"
+    }
+   ]
+  },
+  {
+   "set": "livingroom",
+   "time": "night",
+   "cast": [
+    "tails",
+    "amy",
+    "knuckles",
+    "cream"
+   ],
+   "at": {
+    "tails": "couch",
+    "amy": "couch",
+    "knuckles": "couch"
+   },
+   "beats": [
+    {
+     "enter": "vanilla"
+    },
+    {
+     "say": "vanilla",
+     "text": "Sonic will be staying here for the night",
+     "emote": "neutral"
+    },
+    {
+     "say": "knuckles",
+     "text": "So you're leaving him all alone in school?!",
+     "to": "vanilla",
+     "emote": "annoyed"
+    },
+    {
+     "say": "vanilla",
+     "text": "Of course not, silly! I'll be watching over him",
+     "to": "knuckles",
+     "emote": "happy"
+    },
+    {
+     "say": "cream",
+     "text": "So do we have to go home?",
+     "to": "vanilla",
+     "emote": "worried"
+    },
+    {
+     "say": "vanilla",
+     "text": "You're going home sweetie, grandma will take care of you",
+     "to": "cream",
+     "emote": "relaxed"
+    },
+    {
+     "say": "vanilla",
+     "text": "but, is there any of you 3 that would like to stay with Sonic",
+     "emote": "neutral"
+    },
+    {
+     "say": "amy",
+     "text": "I will",
+     "to": "vanilla",
+     "emote": "worried",
+     "do": "stand"
+    },
+    {
+     "say": "vanilla",
+     "text": "Thank you, Amy",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "tails",
+     "text": "I'll stay too",
+     "emote": "neutral"
+    },
+    {
+     "say": "knuckles",
+     "text": "I would stay but I think Sonic's got enough company",
+     "emote": "neutral"
+    },
+    {
+     "say": "vanilla",
+     "text": "Knuckles, could you please take my daughter home safely?",
+     "to": "knuckles",
+     "emote": "neutral"
+    },
+    {
+     "say": "knuckles",
+     "text": "Sure",
+     "to": "vanilla",
+     "emote": "neutral",
+     "do": "nod"
+    },
+    {
+     "say": "vanilla",
+     "text": "Thank you, Amy and Tails. Right this way please *taking them towards the door*",
+     "emote": "happy",
+     "do": "beckon",
+     "to": "door"
+    },
+    {
+     "exit": "knuckles"
+    },
+    {
+     "exit": "cream"
+    },
+    {
+     "song": "sad",
+     "title": "Amy and Tails follow the nurse to Sonic's bed",
+     "dur": 13
+    }
+   ]
+  },
+  {
+   "set": "bedroom",
+   "time": "night",
+   "cast": [
+    "sonic",
+    "vanilla",
+    "amy",
+    "tails"
+   ],
+   "at": {
+    "sonic": "bed"
+   },
+   "beats": [
+    {
+     "say": "tails",
+     "text": "He's still unconscious?",
+     "to": "vanilla",
+     "emote": "worried"
+    },
+    {
+     "say": "vanilla",
+     "text": "Yes, that's why he must stay...",
+     "to": "tails",
+     "emote": "worried"
+    },
+    {
+     "say": "amy",
+     "text": "I-Is he gonna be alright?!",
+     "to": "vanilla",
+     "emote": "scared"
+    },
+    {
+     "say": "vanilla",
+     "text": "Of course he will, I could try to get him awake by using the oxygen mask",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "say": "amy",
+     "text": "Okay, as long as it doesn't do any more damage to him",
+     "to": "vanilla",
+     "emote": "worried"
+    },
+    {
+     "say": "vanilla",
+     "text": "Oh don't worry, it just gives him some energy. It won't last very long though",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "do": "use",
+     "who": "vanilla",
+     "to": "sonic",
+     "cap": "*putting the oxygen mask onto him*"
+    },
+    {
+     "exit": "vanilla"
+    },
+    {
+     "say": "amy",
+     "text": "*sigh* *takes his hand*",
+     "to": "sonic",
+     "emote": "sad",
+     "do": "sigh"
+    },
+    {
+     "say": "amy",
+     "text": "I don't know what to say though..",
+     "emote": "sad"
+    },
+    {
+     "say": "sonic",
+     "text": "Ugh... was this another nightmare?",
+     "emote": "worried",
+     "do": "wake"
+    },
+    {
+     "think": "sonic",
+     "text": "( Me and Amy had an argument... I thought I lost her... but I won the games but I wanted her the most... then I ended up saving Scourge's life )"
+    },
+    {
+     "say": "amy",
+     "text": "Sonic... it wasn't a dream, you actually did save Scourge's life.. but did you really mean that about me?",
+     "to": "sonic",
+     "emote": "sad"
+    },
+    {
+     "say": "sonic",
+     "text": "Huh? *turns to Amy* Ames?",
+     "to": "amy",
+     "emote": "surprised",
+     "do": "turn"
+    },
+    {
+     "say": "sonic",
+     "text": "*turns to Tails* Tails?",
+     "to": "tails",
+     "emote": "surprised",
+     "do": "turn"
+    },
+    {
+     "say": "sonic",
+     "text": "So I guess it wasn't a dream after all...",
+     "emote": "relaxed"
+    },
+    {
+     "say": "sonic",
+     "text": "Of course I meant what I said, Ames you're more important than the game",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "say": "amy",
+     "text": "You've won, Sonic... it doesn't matter anymore..",
+     "to": "sonic",
+     "emote": "sad"
+    },
+    {
+     "say": "sonic",
+     "text": "Ames, what's with the frown? Aren't you happy?",
+     "to": "amy",
+     "emote": "worried"
+    },
+    {
+     "say": "amy",
+     "text": "I still feel bad after that argument... I'm really really sorry",
+     "to": "sonic",
+     "emote": "sad"
+    },
+    {
+     "say": "sonic",
+     "text": "Hey.. hey.. it's all fine now.. arguments are apart of life. All couples get it, don't worry",
+     "to": "amy",
+     "emote": "happy",
+     "do": "smile"
+    },
+    {
+     "say": "tails",
+     "text": "I'm not trying to interrupt but what about your trophy?",
+     "to": "sonic",
+     "emote": "neutral"
+    },
+    {
+     "say": "sonic",
+     "text": "You can have it, Tails",
+     "to": "tails",
+     "emote": "relaxed"
+    },
+    {
+     "say": "tails",
+     "text": "W-What?",
+     "emote": "surprised"
+    },
+    {
+     "say": "sonic",
+     "text": "I already have my trophy, here, *takes Amy's hand*",
+     "to": "amy",
+     "emote": "happy",
+     "do": "grab"
+    },
+    {
+     "say": "amy",
+     "text": "Sonic.",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "blush"
+    },
+    {
+     "say": "sonic",
+     "text": "besides if it wasn't for you Tails.. I wouldn't of score the final goal",
+     "to": "tails",
+     "emote": "happy"
+    },
+    {
+     "say": "tails",
+     "text": "Thanks Sonic",
+     "to": "sonic",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "and Ames... when I was knocked out by Scourge in the game, I thought I'd give up, till I saw a light shine into my eyes",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "say": "sonic",
+     "text": "I first thought to myself 'was that an angel?' until then I knew it was you... You gave me the spirit to win this game",
+     "to": "amy",
+     "emote": "blush"
+    },
+    {
+     "say": "amy",
+     "text": "I love you, Sonic",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "blush"
+    },
+    {
+     "say": "sonic",
+     "text": "I...",
+     "emote": "blush"
+    },
+    {
+     "say": "sonic",
+     "text": "I...",
+     "emote": "blush"
+    },
+    {
+     "say": "amy",
+     "text": "Sonikku?",
+     "to": "sonic",
+     "emote": "worried"
+    },
+    {
+     "say": "sonic",
+     "text": "I-love..",
+     "emote": "blush",
+     "do": "faint"
+    },
+    {
+     "say": "amy",
+     "text": "Sonic..",
+     "to": "sonic",
+     "emote": "scared"
+    },
+    {
+     "say": "sonic",
+     "text": "you...",
+     "emote": "blush"
+    },
+    {
+     "say": "tails",
+     "text": "I guess his time has ran out",
+     "emote": "worried"
+    },
+    {
+     "say": "amy",
+     "text": "He's not dead, right?",
+     "to": "tails",
+     "emote": "scared"
+    },
+    {
+     "say": "tails",
+     "text": "Don't be silly Amy! He's only unconscious",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "amy",
+     "text": "I will stay with you... no matter what happens, Sonikku",
+     "to": "sonic",
+     "emote": "relaxed",
+     "do": "smile"
+    }
+   ]
+  }
+ ]
+}

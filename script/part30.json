@@ -1,0 +1,458 @@
+{
+ "part": 30,
+ "title": "Scourge's Revenge",
+ "scenes": [
+  {
+   "set": "field",
+   "time": "day",
+   "cast": [
+    "sonic",
+    "scourge",
+    "knuckles",
+    "tikal",
+    "tails",
+    "cream",
+    "amy",
+    "shadow"
+   ],
+   "beats": [
+    {
+     "song": "happy",
+     "title": "the final buzzer and a stadium on its feet",
+     "dur": 14
+    },
+    {
+     "say": "scourge",
+     "text": "WHAT?!",
+     "emote": "shocked"
+    },
+    {
+     "sfx": "crowd",
+     "cap": "*Everyone cheering*"
+    },
+    {
+     "do": "run",
+     "who": "tikal",
+     "to": "knuckles",
+     "cap": "KNUCKLES!! *running towards him*"
+    },
+    {
+     "say": "tikal",
+     "text": "I KNEW YOU GUYS COULD DO IT!",
+     "to": "knuckles",
+     "emote": "excited",
+     "do": "hug"
+    },
+    {
+     "say": "knuckles",
+     "text": "Thanks, Tikal",
+     "to": "tikal",
+     "emote": "happy"
+    },
+    {
+     "do": "run",
+     "who": "cream",
+     "to": "tails",
+     "cap": "TAILS! *running towards him*"
+    },
+    {
+     "say": "tails",
+     "text": "CRE-",
+     "to": "cream",
+     "emote": "surprised"
+    },
+    {
+     "do": "hug",
+     "who": "cream",
+     "cap": "*hugs Tails*"
+    },
+    {
+     "do": "face",
+     "who": "sonic",
+     "to": "tails",
+     "cap": "*looking at them*"
+    },
+    {
+     "do": "walk",
+     "who": "amy",
+     "to": "sonic",
+     "cap": "*walking onto the pitch*"
+    },
+    {
+     "do": "turn",
+     "who": "sonic",
+     "to": "amy",
+     "cap": "*turns around*"
+    },
+    {
+     "song": "love",
+     "title": "Amy steps onto the pitch toward Sonic",
+     "dur": 13
+    },
+    {
+     "do": "run",
+     "who": "amy",
+     "to": "sonic",
+     "cap": "*runs towards him*"
+    },
+    {
+     "say": "amy",
+     "text": "I'm so sorry?.. *sniff*",
+     "to": "sonic",
+     "emote": "crying",
+     "do": "hug"
+    },
+    {
+     "say": "amy",
+     "text": "I love you...",
+     "to": "sonic",
+     "emote": "crying"
+    },
+    {
+     "do": "walk",
+     "who": "amy",
+     "to": "off",
+     "cap": "*lets go of him and about to walk away*"
+    },
+    {
+     "do": "grab",
+     "who": "sonic",
+     "to": "amy",
+     "cap": "*grabs her arm*"
+    },
+    {
+     "say": "sonic",
+     "text": "You're the one that gave me the strength to win...",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "song": "love",
+     "title": "Sonic and Amy make up in the middle of the pitch",
+     "dur": 14
+    },
+    {
+     "say": "sonic",
+     "text": "Amy... I was a selfish jerk... I was only paying attention to the game, please forgive me..",
+     "to": "amy",
+     "emote": "sad"
+    },
+    {
+     "say": "amy",
+     "text": "Don't worry... I will always love you, no matter what",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "hug"
+    },
+    {
+     "say": "scourge",
+     "text": "I'M NOT FINISHED YET! *Kicks Sonic across the stadium*",
+     "emote": "angry",
+     "do": "hit"
+    },
+    {
+     "say": "sonic",
+     "text": "AAAAHHH! *flies across*",
+     "emote": "shocked",
+     "do": "knockback"
+    },
+    {
+     "say": "amy",
+     "text": "SONIC!",
+     "emote": "scared"
+    },
+    {
+     "say": "scourge",
+     "text": "and now... my sweet revenge *walking towards Amy*",
+     "to": "amy",
+     "emote": "smirk",
+     "do": "approach"
+    },
+    {
+     "say": "sonic",
+     "text": "NO! AMMMMYYYY!",
+     "emote": "scared"
+    },
+    {
+     "say": "amy",
+     "text": "SCOURGE! YOU DON'T HAVE TO DO THIS!",
+     "to": "scourge",
+     "emote": "scared"
+    },
+    {
+     "say": "scourge",
+     "text": "*grabs Amy* I should've killed you when I had the chance",
+     "to": "amy",
+     "emote": "angry",
+     "do": "grab"
+    },
+    {
+     "say": "amy",
+     "text": "LISTEN, SONIC NEVER KILLED ANYONE YOU LOVED, DIDN'T HE?!",
+     "to": "scourge",
+     "emote": "scared"
+    },
+    {
+     "say": "scourge",
+     "text": "No, instead he took away the person I loved... he ruined my life",
+     "emote": "angry"
+    },
+    {
+     "say": "amy",
+     "text": "BUT DON'T YOU REMEMBER HOW MUCH YOU AND SONIC WERE CLOSE?",
+     "to": "scourge",
+     "emote": "worried"
+    },
+    {
+     "say": "scourge",
+     "text": "DON'T EVEN REMIND ME, THAT'S BEFORE HE BETRAYED ME! *throws Amy onto the ground*",
+     "emote": "angry",
+     "do": "throw"
+    },
+    {
+     "say": "amy",
+     "text": "But... that's because he didn't understand love...",
+     "emote": "sad"
+    },
+    {
+     "do": "run",
+     "who": "sonic",
+     "to": "scourge",
+     "cap": "*charges into Scourge*"
+    },
+    {
+     "say": "amy",
+     "text": "SONIC, NO!!",
+     "emote": "scared"
+    },
+    {
+     "do": "fall",
+     "who": "scourge",
+     "cap": "*crashes onto the ground*"
+    },
+    {
+     "say": "sonic",
+     "text": "TIME TO FEEL THE PAIN YOU'VE CAUSED TO MY FRIENDS! *charging towards him*",
+     "emote": "angry",
+     "do": "run",
+     "to": "scourge"
+    },
+    {
+     "say": "amy",
+     "text": "STOP IT, SONIC! *stands in his way*",
+     "to": "sonic",
+     "emote": "angry",
+     "do": "stand"
+    },
+    {
+     "say": "sonic",
+     "text": "AMY, ARE YOU INSANE?! HE ALMOST KILLED YOU!",
+     "to": "amy",
+     "emote": "shocked"
+    },
+    {
+     "say": "amy",
+     "text": "THAT'S BECAUSE YOU MADE SONIA HATE HIM FOR NO REASON! THAT'S WHY HE'S THAT DESPERATE TO GET RID OF ME",
+     "to": "sonic",
+     "emote": "angry"
+    },
+    {
+     "say": "amy",
+     "text": "You could've told me this before!",
+     "to": "sonic",
+     "emote": "annoyed"
+    },
+    {
+     "say": "sonic",
+     "text": "I was trying to keep you safe from the truth",
+     "to": "amy",
+     "emote": "sad"
+    },
+    {
+     "say": "amy",
+     "text": "I could've helped you both to stop this violence... You each deserve a second chance",
+     "to": "sonic",
+     "emote": "worried"
+    },
+    {
+     "say": "shadow",
+     "text": "AGGHH! *charges towards Scourge*",
+     "to": "scourge",
+     "emote": "angry",
+     "do": "run"
+    },
+    {
+     "say": "sonic",
+     "text": "SHADOW, WAIT!",
+     "to": "shadow",
+     "emote": "scared"
+    },
+    {
+     "say": "scourge",
+     "text": "*throws Shadow onto ground* Stay out of this",
+     "to": "shadow",
+     "emote": "angry",
+     "do": "throw"
+    },
+    {
+     "say": "shadow",
+     "text": "CHAOS... *charging towards him*",
+     "to": "scourge",
+     "emote": "angry",
+     "do": "run"
+    },
+    {
+     "say": "sonic",
+     "text": "SHADOW, NO!!",
+     "emote": "scared"
+    }
+   ]
+  },
+  {
+   "set": "classroom",
+   "time": "dream",
+   "cast": [
+    "scourge",
+    "sonic",
+    "sonia"
+   ],
+   "beats": [
+    {
+     "say": "narrator",
+     "text": "Children, we have a new boy, let's welcome him to our kindergarden!",
+     "emote": "happy"
+    },
+    {
+     "say": "narrator",
+     "text": "Everyone, this is Scourge",
+     "emote": "happy",
+     "do": "present"
+    },
+    {
+     "say": "sonic",
+     "text": "Hi!",
+     "to": "scourge",
+     "emote": "happy",
+     "do": "wave"
+    },
+    {
+     "say": "scourge",
+     "text": "Hello",
+     "to": "sonic",
+     "emote": "neutral"
+    },
+    {
+     "say": "sonic",
+     "text": "I'm Sonic the Hedgehog!",
+     "to": "scourge",
+     "emote": "excited"
+    },
+    {
+     "say": "scourge",
+     "text": "Why are you getting so close to my sister?!",
+     "to": "sonic",
+     "emote": "angry"
+    },
+    {
+     "say": "sonic",
+     "text": "I told you she's my girlfriend!",
+     "to": "scourge",
+     "emote": "angry"
+    },
+    {
+     "say": "scourge",
+     "text": "NO, SHE'S NOT!",
+     "to": "sonic",
+     "emote": "angry"
+    },
+    {
+     "say": "sonia",
+     "text": "I DON'T WANT TO SEE YOU AGAIN IN THIS HOUSE!",
+     "to": "sonic",
+     "emote": "angry"
+    },
+    {
+     "say": "sonia",
+     "text": "WE'RE OVER!",
+     "to": "sonic",
+     "emote": "angry"
+    }
+   ]
+  },
+  {
+   "set": "gym",
+   "time": "day",
+   "cast": [
+    "sonic",
+    "scourge",
+    "shadow",
+    "amy",
+    "knuckles",
+    "tails"
+   ],
+   "beats": [
+    {
+     "say": "sonic",
+     "text": "SCOUUURRGEEE! *jumps in front of him and gets hit by Shadow's chaos spear*",
+     "to": "scourge",
+     "emote": "scared",
+     "do": "jump"
+    },
+    {
+     "do": "fall",
+     "who": "sonic",
+     "cap": "*falls to the ground*"
+    },
+    {
+     "say": "shadow",
+     "text": "HUH?!",
+     "emote": "shocked"
+    },
+    {
+     "say": "amy",
+     "text": "SONIC!",
+     "emote": "crying"
+    },
+    {
+     "say": "scourge",
+     "text": "W-What have I done?",
+     "emote": "shocked"
+    },
+    {
+     "say": "tails",
+     "text": "SONIC! SONIC!",
+     "emote": "scared"
+    },
+    {
+     "say": "amy",
+     "text": "SONIC! PLEASE WAKE UP!",
+     "to": "sonic",
+     "emote": "crying"
+    },
+    {
+     "say": "tails",
+     "text": "Knuckles, get the nurse QUICKLY!",
+     "to": "knuckles",
+     "emote": "scared"
+    },
+    {
+     "say": "knuckles",
+     "text": "ON IT! *dashes out the stadium*",
+     "emote": "worried",
+     "do": "run",
+     "to": "off"
+    },
+    {
+     "exit": "knuckles"
+    },
+    {
+     "say": "amy",
+     "text": "S-Sonic... *tears fall from her face*",
+     "to": "sonic",
+     "emote": "crying",
+     "do": "cry"
+    }
+   ]
+  }
+ ]
+}

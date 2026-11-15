@@ -1,0 +1,76 @@
+{ "part": 8, "title": "The Great Chase", "scenes": [
+  { "set": "hallway", "time": "day", "cast": ["sonia"], "beats": [
+    { "song": "tense", "title": "the chase tears through the school", "dur": 14 },
+    { "enter": "cream", "cap": "*running as fast as she can*", "run": true },
+    { "do": "brush", "who": "sonia", "cap": "*cleaning the windows*" },
+    { "say": "cream", "text": "Excuse me! Coming through! *running pass Sonia*", "emote": "worried", "do": "run" },
+    { "say": "sonia", "text": "Cream?!", "to": "cream", "emote": "surprised" },
+    { "enter": "blaze", "cap": "*runs pass Sonia*", "run": true },
+    { "say": "sonia", "text": "Blaze!", "to": "blaze", "emote": "surprised" },
+    { "enter": "manic", "cap": "*running towards her*", "run": true },
+    { "say": "manic", "text": "Sis!", "to": "sonia", "emote": "happy" },
+    { "say": "sonia", "text": "Manic... don't tell me you used that male spray ag-", "to": "manic", "emote": "annoyed" },
+    { "say": "manic", "text": "*notices smell* Actually you smell nice! But why are they-", "to": "sonia", "emote": "surprised" },
+    { "say": "sonia", "text": "No time for chatting, we've gotta find out what's going on!", "to": "manic", "emote": "worried", "do": "beckon" },
+    { "say": "manic", "text": "Quickly before they catch up!", "emote": "worried", "do": "run" },
+    { "say": "manic", "text": "What are you crazy? A race in the- *notices Tails and Sonic catching up*", "to": "sonia", "emote": "surprised" },
+    { "enter": "tails", "run": true }, { "enter": "sonic", "run": true },
+    { "say": "sonia", "text": "WAIT FOR ME, MANIC! *follows him*", "emote": "angry", "do": "run" },
+    { "exit": "manic" }, { "exit": "sonia" }
+  ] },
+  { "set": "hallway", "time": "day", "cast": ["sonic", "tails", "shadow", "knuckles", "silver", "rouge"], "beats": [
+    { "say": "shadow", "text": "Sonic! Why aren't you running at super sonic speed?!", "to": "sonic", "emote": "annoyed" },
+    { "say": "sonic", "text": "Dude, I only do that when I'm late for class cause no one's around the corridors, but loads of people are at the moment so I don't wanna crash into anyone!", "to": "shadow", "emote": "annoyed", "do": "hands" },
+    { "say": "rouge", "text": "I have an idea! How about we split up?", "emote": "smirk" },
+    { "say": "knuckles", "text": "GUYS, WAIT UP! *running with Silver but far behind*", "emote": "worried", "do": "run" },
+    { "say": "shadow", "text": "NO YOU IDIOT! IT'S YOUR FAULT FOR CRASHING INTO SILVER!", "to": "knuckles", "emote": "angry" },
+    { "say": "knuckles", "text": "HE WAS IN THE WAY!", "to": "shadow", "emote": "angry" },
+    { "say": "silver", "text": "HEY, IT'S NOT MY FAULT THAT CREAM ACCIDENTALLY CRASHED INTO ME!", "emote": "angry" },
+    { "say": "tails", "text": "GUYS, CAN'T WE JUST LISTEN TO THE GIRL FOR ONCE?!", "emote": "annoyed" },
+    { "say": "rouge", "text": "THIS IS WHY I LIKE TAILS! AT LEAST HE LISTENS!", "to": "tails", "emote": "happy" },
+    { "say": "sonic", "text": "CAN YOU ALL JUST STOP YELLING AND LET ROUGE TELL US THE PLAN?!", "emote": "angry" },
+    { "say": "rouge", "text": "Alright, I know that they're heading to the Performance Stadium, there are loads of entrances.", "do": "point" },
+    { "say": "rouge", "text": "We can split up in 2's and take an entrance. Sonic you go with Tails, I'll go with Shadow and Knuckles go with Silver", "do": "present" },
+    { "say": "silver", "text": "WHAT DID SHE SAY?!", "emote": "surprised" },
+    { "say": "shadow", "text": "SHE SAID SPLIT UP CAUSE THEY'RE HEADING TO THE PERFORMANCE STADIUM!", "to": "silver", "emote": "annoyed" },
+    { "say": "knuckles", "text": "ALRIGHT, SILVER THIS WAY! *he runs through another corridor*", "do": "run", "to": "off" },
+    { "exit": "knuckles" }, { "exit": "silver" },
+    { "say": "shadow", "text": "YOU GUYS TAKE THE MAIN ENTRANCE! LET'S GO ROUGE *grabs her hand and runs through another corridor*", "do": "run", "to": "off" },
+    { "exit": "shadow" }, { "exit": "rouge" },
+    { "say": "tails", "text": "I see Manic and Sonia chasing after them too!", "emote": "surprised", "do": "point" },
+    { "say": "sonic", "text": "Man, I'm starting to think how many people are after them", "emote": "worried" }
+  ] },
+  { "set": "hallway", "time": "day", "cast": ["tikal", "espio"], "beats": [
+    { "say": "tikal", "text": "Hehe, you're so funny, Espio *walking with Espio*", "to": "espio", "emote": "happy", "do": "walk" },
+    { "say": "espio", "text": "Heh heh, good to know that!", "to": "tikal", "emote": "relaxed" },
+    { "enter": "cream", "cap": "*pant* *pant* *runs pass Espio and Tikal*", "run": true },
+    { "enter": "blaze", "cap": "*pant* *pant* *runs pass them*", "run": true },
+    { "say": "espio", "text": "Uhm... what just happened?", "to": "tikal", "emote": "surprised" },
+    { "enter": "manic", "cap": "*runs pass them*", "run": true },
+    { "say": "tikal", "text": "I think something's up!", "emote": "worried" },
+    { "say": "tikal", "text": "C'mon, we should check it out *grabs her hand and runs*", "to": "espio", "do": "run", "emote": "excited" },
+    { "exit": "tikal" }, { "exit": "espio" }, { "exit": "manic" },
+    { "say": "tails", "text": "*pant* Now Tikal and Espio are after them! *pant*", "emote": "worried" },
+    { "say": "sonic", "text": "Man, where does Cream get all her energy from?!", "emote": "surprised" }
+  ] },
+  { "set": "schoolfront", "time": "day", "cast": ["cream", "blaze"], "beats": [
+    { "say": "cream", "text": "*runs into the Performance Stadium* BLAZE, SHUT THE DOOR BEHIND YOU!", "to": "blaze", "do": "run", "emote": "worried" },
+    { "say": "blaze", "text": "ON IT! *runs into stadium and shuts door behind her*", "do": "run", "emote": "worried" },
+    { "sfx": "door", "cap": "*door shuts*" },
+    { "exit": "cream" }, { "exit": "blaze" }
+  ] },
+  { "set": "hallway", "time": "day", "cast": ["manic", "sonia"], "beats": [
+    { "say": "manic", "text": "WHOOOAAAAA! *sliding across the corridor*", "emote": "scared", "do": "fall" },
+    { "sfx": "thud", "cap": "*crash*" },
+    { "enter": "tikal", "run": true }, { "enter": "espio", "run": true },
+    { "say": "tikal", "text": "Espio! The door's shut", "to": "espio", "emote": "worried" },
+    { "say": "espio", "text": "Don't worry! We'll take another entrance! *runs with Cream through another corridor*", "emote": "excited", "do": "run" },
+    { "exit": "tikal" }, { "exit": "espio" }
+  ] },
+  { "set": "hallway", "time": "day", "cast": ["cream", "sonic"], "beats": [
+    { "say": "cream", "text": "Phew.. *sinks to ground* *pant* never knew *pant* I could run SO much. *pant* in my life..", "emote": "sad", "do": "sit" },
+    { "say": "sonic", "text": "Oh to me, that was nothing!", "emote": "smirk" },
+    { "say": "cream", "text": "Huh?! *turns around*", "do": "turn", "to": "sonic", "emote": "surprised" },
+    { "say": "sonic", "text": "So, which one of you's are gonna give me an explaination? Or are you just gonna keep on running and still get caught by me?", "to": "cream", "emote": "smirk", "do": "crossarms" }
+  ] }
+] }
