@@ -195,9 +195,9 @@ export class Director {
     // a moving shot that would drift into a prop or a person holds its last good spot and just keeps looking
     // someone walked in front of the subject mid-shot: after 0.8 s, cut wider rather than stay blocked
     const watch = s.subj[s.type === 'ots' ? 1 : 0];
-    if (watch?.eyePos && !['wide', 'establish', 'fixed', 'orbit'].includes(s.type) && this.blocked(this.cam.position, watch.eyePos(V()), watch)) {
+    if (watch?.eyePos && !['establish', 'fixed', 'orbit'].includes(s.type) && (this.blocked(this.cam.position, watch.eyePos(V()), watch) || this.facesHidden(this.cam.position, s.subj))) {
       s.blockT = (s.blockT || 0) + dt;
-      if (s.blockT > 0.8) { this.cut({ type: s.type === 'two' ? 'wide' : 'two', subjects: s.subj.length > 1 ? s.subj : [watch, s.toward].filter(Boolean), force: true }); return; }
+      if (s.blockT > 0.8) { this.cut({ type: s.type === 'wide' ? 'establish' : s.type === 'two' ? 'wide' : 'two', subjects: s.subj.length > 1 ? s.subj : [watch, s.toward].filter(Boolean), force: true }); return; }
     } else s.blockT = 0;
     const lead = s.subj[0], face = lead?.eyePos?.(V());
     if (this.inside(f.pos) && !this.facesHidden(f.pos, s.subj) && !(face && s.type !== 'ots' && this.blocked(f.pos, face, lead))) s.good = f.pos.clone();

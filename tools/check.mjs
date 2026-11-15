@@ -14,7 +14,7 @@ const TIMES = new Set(['day', 'sunset', 'night', 'dream']);
 const MOODS = new Set(['sad', 'love', 'happy', 'tense', 'dream']);
 const FX = new Set(['flash', 'shake', 'dream', 'fadeout', 'fadein']);
 const SPOTS = new Set(['bed', 'couch', 'bench', 'teacher', 'seat1', 'seat2', 'mirror', 'boss', 'center']);
-const KINDS = ['say', 'think', 'do', 'enter', 'exit', 'sfx', 'card', 'song', 'fx', 'wait', 'shot'];
+const KINDS = ['say', 'think', 'do', 'enter', 'exit', 'sfx', 'card', 'song', 'fx', 'wait', 'shot', 'roll'];
 
 const files = process.argv.slice(2).length ? process.argv.slice(2)
   : readdirSync(new URL('../script/', import.meta.url)).filter((f) => /^part\d+\.json$/.test(f)).map((f) => 'script/' + f);

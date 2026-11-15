@@ -153,6 +153,7 @@ export class Character {
   // ----------------------------------------------------------------- per frame
   update(dt) {
     this.t += dt;
+    if (this.tpose) { this.vrm.humanoid.resetNormalizedPose(); this.updateFace(dt); this.vrm.update(dt); return; }   // blooper: animation "breaks"
     this.updateLoco(dt);
     this.updateWeights(dt);
     this.mixer.update(dt);

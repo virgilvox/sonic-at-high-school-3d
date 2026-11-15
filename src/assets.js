@@ -31,3 +31,9 @@ export function bank(name) {
   if (!cache.has(name)) cache.set(name, fetch(`data/${name}.json`).then((r) => (r.ok ? r.json() : null)));
   return cache.get(name);
 }
+
+// Every model file this build carries.
+export function modelNames() {
+  if (WEB) return [...manifest.models];
+  return [...document.querySelectorAll('script[id^="vrm-"]')].map((e) => e.id.slice(4));
+}

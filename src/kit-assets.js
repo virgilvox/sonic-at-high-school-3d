@@ -4,7 +4,6 @@
 // to take the width or depth the set gives). parts stacks pieces: 'top' puts a piece on the one before it.
 // tools/kit.mjs copies these into assets/kit (textures embedded); src/sets.js builds props from them.
 export const KIT = {
-  door: { file: 'furniture-kit/doorway', fit: { h: 2.15 } },
   desk: { file: 'furniture-kit/desk', size: [1.0, 0.76, 0.62] },
   chair: { file: 'furniture-kit/chair', fit: { h: 0.95 } },
   bed: { file: 'furniture-kit/bedSingle', size: [1.05, 0.55, 2.05] },

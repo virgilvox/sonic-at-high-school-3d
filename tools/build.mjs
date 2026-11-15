@@ -52,8 +52,14 @@ function credits(models) {
     + 'Crowd ambience: "Crowd Shouting/Speaking Ambience" (OpenGameArt), CC0. School chatter made with Pocket TTS voices.';
 }
 
+// The hack.build YouTube channel for the title screen footer; the link is hidden while this is empty.
+const HACKBUILD_YOUTUBE = '';
+
 function page(app, data, credit) {
-  return readFileSync('src/template.html', 'utf8').replace('/*CREDITS*/', () => credit).replace('/*DATA*/', () => data).replace('/*APP*/', () => app);
+  let html = readFileSync('src/template.html', 'utf8').replace('/*CREDITS*/', () => credit).replace('/*DATA*/', () => data)
+    .replace('/*HBLOGO*/', () => readFileSync('src/hackbuild-lockup.svg', 'utf8'));
+  html = HACKBUILD_YOUTUBE ? html.replace('/*YT*/', HACKBUILD_YOUTUBE) : html.replace(/\s*<a id="ytLink"[^\n]*<\/a>/, '');
+  return html.replace('/*APP*/', () => app);
 }
 
 function output() {
@@ -91,7 +97,7 @@ function writeWeb(app, banks, models, credit) {
 mergeParts();
 const opts = {
   entryPoints: ['src/main.js'], bundle: true, format: 'iife', target: 'es2020', outfile: 'dist/app.js',
-  minify: !watch, logLevel: 'warning', loader: { '.json': 'json' },
+  minify: !watch, logLevel: 'warning', loader: { '.json': 'json', '.svg': 'text' },
   plugins: [{ name: 'output', setup(b) { b.onEnd((r) => { if (!r.errors.length) output(); }); } }],
 };
 if (watch) await (await esbuild.context(opts)).watch();

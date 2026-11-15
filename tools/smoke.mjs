@@ -12,6 +12,7 @@ const browser = await puppeteer.launch({ executablePath: CHROME, headless: 'new'
 const page = await browser.newPage();
 await page.setViewport({ width: 640, height: 360 });
 const errors = [];
+const problems = new Set();
 page.on('pageerror', (e) => errors.push(e.message));
 page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text().slice(0, 200)); });
 await page.evaluateOnNewDocument(() => { window.__maxDt = 1 / 4; });
@@ -38,6 +39,8 @@ for (let n = first; n <= last; n++) {
       await new Promise((r) => setTimeout(r, 1500));
       await page.screenshot({ path: `shots/smoke/p${String(n).padStart(2, '0')}s${s + 1}.jpg`, quality: 60 });
     }
+    const issues = await page.evaluate(() => __love.runner.presenceCheck().map((x) => x + ' @' + JSON.stringify(__love.runner.at)));
+    for (const x of issues) problems.add(`part ${n}: ${x}`);
     await page.evaluate(() => __love.runner.skip());
     steps++;
     await new Promise((r) => setTimeout(r, 120));
@@ -46,4 +49,5 @@ for (let n = first; n <= last; n++) {
   if (!done) console.log('  stuck at', await page.evaluate(() => JSON.stringify(__love.runner.at)));
   console.log(`part ${n}: ${done ? 'ok' : 'TIMEOUT'} scenes ${lastScene + 1}/${info} skips ${steps} ${Math.round((Date.now() - t0) / 1000)}s` + (errors.length > before ? ' ERRORS: ' + [...new Set(errors.slice(before))].join(' | ') : ''));
 }
+for (const p of problems) console.log('PRESENCE', p);
 await browser.close();

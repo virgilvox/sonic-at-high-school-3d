@@ -1,0 +1,56 @@
+{ "part": 40, "title": "The End (bloopers and credits)", "scenes": [
+  { "set": "bedroom", "time": "day", "cast": ["sonic"], "beats": [
+    { "card": "BLOOPERS" },
+    { "card": "Scene 3, take 5" },
+    { "say": "sonic", "text": "I'll never let anyone harm you again, Amy. I promise...", "emote": "sad", "do": "pickup" },
+    { "do": "laugh", "who": "sonic", "cap": "*bursts out laughing*" },
+    { "say": "sonic", "text": "Sorry! Sorry. I can't say that with a straight face. Again?", "emote": "happy", "do": "hands" },
+    { "say": "narrator", "text": "That was take five, Sonic." },
+    { "say": "sonic", "text": "Okay okay okay. Serious face. *does not have a serious face*", "emote": "smirk" }
+  ] },
+  { "set": "hallway", "time": "day", "cast": ["knuckles", "tails"], "beats": [
+    { "card": "Scene 12, take 2" },
+    { "say": "knuckles", "text": "Dude, what's up with you? *arms go straight out*", "do": "tpose", "emote": "surprised" },
+    { "say": "tails", "text": "Knuckles. Your animation broke again.", "emote": "worried", "to": "knuckles" },
+    { "say": "knuckles", "text": "I can't put my arms down! Why is everyone staring at me?", "emote": "shocked" },
+    { "say": "narrator", "text": "Cut! Somebody reload Knuckles." }
+  ] },
+  { "set": "hallway", "time": "day", "cast": ["sonic"], "beats": [
+    { "card": "Scene 1, take 9" },
+    { "enter": "eggman", "cap": "*makes a dramatic entrance*" },
+    { "do": "knockback", "who": "eggman", "cap": "*walks straight into the door frame*" },
+    { "sfx": "thud", "cap": "*BONK*" },
+    { "say": "eggman", "text": "Who put a door there?! That door was not in the script!", "emote": "angry" },
+    { "say": "sonic", "text": "It's been there the whole time, Doc.", "emote": "smirk", "to": "eggman", "do": "laugh" }
+  ] },
+  { "set": "gym", "time": "day", "cast": ["knuckles", "cream", "vector"], "beats": [
+    { "card": "Scene 4, take 3" },
+    { "say": "vector", "text": "Alright, big throw, and... action!", "do": "point" },
+    { "do": "throw", "who": "knuckles", "cap": "*throws ball with everything he's got*" },
+    { "fx": "shake" },
+    { "sfx": "punch", "cap": "*CRASH*" },
+    { "say": "cream", "text": "Is... is the camera okay?", "emote": "worried" },
+    { "say": "vector", "text": "NOT THE CAMERA! We only have one camera!", "emote": "angry" },
+    { "say": "knuckles", "text": "I said I'd hit her hard. I didn't say I'd aim.", "emote": "smirk", "do": "shrug" }
+  ] },
+  { "set": "field", "time": "day", "cast": ["shadow", "rouge"], "beats": [
+    { "card": "Scene 15, take 14" },
+    { "say": "shadow", "text": "Hmph.", "emote": "annoyed", "do": "crossarms" },
+    { "say": "narrator", "text": "Again, with feeling." },
+    { "say": "shadow", "text": "Hmph.", "emote": "angry" },
+    { "say": "narrator", "text": "More feeling." },
+    { "say": "shadow", "text": "Hmph!", "emote": "shocked" },
+    { "say": "shadow", "text": "Can I get a different line? Any other line?", "emote": "sad", "do": "shrug" },
+    { "say": "rouge", "text": "You have three lines, sweetie. They're all hmph.", "emote": "smirk", "to": "shadow" }
+  ] },
+  { "set": "street", "time": "day", "cast": ["manic", "sonic"], "beats": [
+    { "card": "Scene 2, take 6" },
+    { "say": "manic", "text": "Settle down, there's plenty of Manny for all of-", "emote": "smirk", "do": "wink" },
+    { "say": "fangirls", "text": "MANIIIIC!!!" },
+    { "do": "run", "who": "manic", "to": "off", "cap": "*runs for real this time*" },
+    { "say": "sonic", "text": "Okay, who choreographed that? That was not the blocking.", "emote": "surprised" },
+    { "say": "narrator", "text": "That's a wrap on Sonic at High School 3. Thanks, everyone." },
+    { "do": "cheer", "who": "sonic", "cap": "*the crew cheers*" },
+    { "roll": true }
+  ] }
+] }

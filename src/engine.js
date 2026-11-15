@@ -84,7 +84,7 @@ const ACTS = {
   blush: { emote: 'happy', amount: 0.6 }, wink: { emote: 'happy', amount: 0.7 }, smirk: { emote: 'happy', amount: 0.45 },
   glare: { emote: 'angry' }, gasp: { emote: 'surprised', sfx: 'gasp' }, sigh: { emote: 'sad', amount: 0.5 },
   hug: { close: 0.42, gesture: 'present', emote: 'happy' }, kiss: { close: 0.32, emote: 'happy', hop: 0.03, sfx: 'sparkle' },
-  lie: { lie: true }, sleep: { lie: true, mood: { relaxed: 1 } },
+  lie: { lie: true }, sleep: { lie: true, mood: { relaxed: 1 } }, tpose: { tpose: true },
 };
 // Emote names in the script -> VRM expression mixes.
 const EMOTES = {
@@ -115,12 +115,28 @@ export class Runner {
     this.stats = { walks: 0, timeouts: 0 };   // read by the test harness
   }
 
+  // Test hook: problems with who is on stage right now (empty when all is well).
+  presenceCheck() {
+    if (this.at?.kind === 'roll') return [];   // the credits hide the cast on purpose
+    const out = [], B = this.set?.bounds;
+    for (const a of this.on) {
+      if (!a.root.visible) out.push(a.id + ' invisible');
+      else if (B && (a.pos.x < B.x[0] - 0.5 || a.pos.x > B.x[1] + 0.5 || a.pos.z < B.z[0] - 0.5 || a.pos.z > B.z[1] + 0.5)) out.push(a.id + ' out of the room');
+      else if (!a.lieOn && Math.abs(a.root.position.y) > 0.15) out.push(a.id + ' off the floor ' + a.root.position.y.toFixed(2));
+      else if (!a.root.parent) out.push(a.id + ' not in the scene graph');
+    }
+    for (const h of this.hidden || []) if (h.why === 'script') out.push(h.id + ' hidden without an exit');
+    this.hidden = (this.hidden || []).filter((h) => h.why !== 'script');
+    return out;
+  }
+
   // Solid bodies: run after the actors animate each frame.
   physics(dt = 1 / 60, camera = null) {
     if (!this.set) return;
     this.bodies.actors = [...this.on, ...this.extras.list];
     this.director.actors = this.bodies.actors;
     this.bodies.step();
+    this.set.updateDoors?.(this.bodies.actors, dt);
     // with nobody talking for a couple of seconds (walks, entrances, action), the music comes up to fill the space
     this.sound.swell(!this.talking && performance.now() - (this.quietSince || 0) > 2000);
     // footsteps: a step every stride while moving, louder near the camera, panned to the side they are on
@@ -188,6 +204,7 @@ export class Runner {
     this.set = buildSet(sc.set, sc.time);
     this.scene.add(this.set.group);
     this.lights.apply(this.set);
+    this.set.showCeiling(!this.freeCam);
     this.director.setWorld(this.set.statics, this.set.bounds, this.set.solids);
     this.bodies.use(this.set, []);
     for (const a of this.cast.values()) { a.root.visible = false; a.path = null; a.speaking = false; a.stopOneShot(); a.setBase('Idle_Loop', 0); a.mood = { happy: 0.15 }; a.lieOn = null; }
@@ -245,7 +262,7 @@ export class Runner {
   }
 
   show(a) { a.root.visible = true; this.on.add(a); if (!a.root.parent) this.scene.add(a.root); this.director.actors = [...this.on, ...this.extras.list]; }
-  hide(a) { a.root.visible = false; this.on.delete(a); this.director.actors = [...this.on, ...this.extras.list]; }
+  hide(a, why = 'script') { this.hidden = this.hidden || []; this.hidden.push({ id: a.id, why, at: this.at }); a.root.visible = false; this.on.delete(a); this.director.actors = [...this.on, ...this.extras.list]; }
 
   spot(name) {
     const s = this.set.spots[name];
@@ -321,6 +338,7 @@ export class Runner {
     if (b.song) return this.song(b, tok);
     if (b.fx) return this.fx(b.fx);
     if (b.wait) return this.hold(b.wait);
+    if (b.roll) return this.roll?.(tok);   // the end credits (src/credits.js)
     if (b.shot) return this.cover(b.shot, (b.shot.subjects || []).map((i) => this.actor(i)).filter(Boolean));
   }
 
@@ -367,7 +385,7 @@ export class Runner {
     if (what === 'walk' || what === 'run' || what === 'approach') {
       const dest = this.near(a, b.to || this.nearestOther(a)?.id, b.close || 1.5);
       if (dest) await this.go(a, dest, { speed: what === 'run' ? 3.6 * (this.castInfo(id).run || 1) : a.walkSpeed, face: b.to && this.actor(b.to) ? this.actor(b.to).pos : null });
-      if (b.to === 'off') this.hide(a);
+      if (b.to === 'off') this.hide(a, 'off');
     } else if (what === 'turn' || what === 'face') {
       const t = b.to ? (this.actor(b.to)?.pos || this.near(a, b.to)) : null;
       if (t) a.faceTo(t); else a.faceYaw(a.yaw + Math.PI);
@@ -382,13 +400,15 @@ export class Runner {
         const p = V().copy(tgt.pos).add(V().subVectors(a.pos, tgt.pos).setY(0).setLength(A.close));
         await this.go(a, p, { face: tgt.pos }); a.faceTo(tgt); tgt.faceTo(a);
       }
+      if (A.tpose) { a.tpose = true; setTimeout(() => { a.tpose = false; }, 3500); }
       if (A.lie) { this.lie(a, this.spot('bed') && /bed/.test(b.cap || b.to || '') ? this.spot('bed') : null); if (A.mood) a.mood = { ...A.mood }; }
       if (A.mood) a.mood = { ...a.mood, ...A.mood };
       if (A.emote) this.emote(a, A.emote, A.amount);
       if (A.hop) a.hopFor(0.8, A.hop);
       if (A.sfx) this.sound.sfx(A.sfx);
       if (A.gesture) a.gesture(A.gesture, { target: tgt ? tgt.eyePos(V()) : null, dur: 2.2 });
-      if (A.base) a.setBase(A.base);
+      // long snouts and big moustaches swallow folded arms: those characters keep a neutral stance instead
+      if (A.base && !(A.base === 'Idle_FoldArms_Loop' && this.castInfo(id).noFoldArms)) a.setBase(A.base);
       if (what === 'throw' && this.gameSpots) {
         if (tgt) a.faceTo(tgt);
         a.play('OverhandThrow');
@@ -411,6 +431,11 @@ export class Runner {
   async enter(b) {
     const a = this.actor(b.enter);
     if (!a) return;
+    if (this.on.has(a) && a.root.visible) {   // already here: the script means "comes over", not "walks in again"
+      const gs = this.gameSpots?.[b.enter], to = gs ? V(gs[0], 0, gs[1]) : b.to ? this.near(a, b.to, 1.3) : null;
+      if (to) await this.go(a, to, { speed: b.run ? 3.6 : undefined });
+      return;
+    }
     const [x, z, yaw] = this.set.door;
     a.place(x, z, yaw * DEG);
     const gs = this.gameSpots?.[b.enter];
@@ -432,7 +457,7 @@ export class Runner {
     if (a.lieOn) await this.unlie(a);
     await this.standUp(a);
     const [x, z] = this.set.door;
-    this.go(a, V(x, 0, z), { speed: b.run ? 3.6 : a.walkSpeed }).then(() => { if (!this.set.outdoor) this.sound.sfx('door'); this.hide(a); });
+    this.go(a, V(x, 0, z), { speed: b.run ? 3.6 : a.walkSpeed }).then(() => { if (!this.set.outdoor) this.sound.sfx('door'); this.hide(a, 'exit'); });
     await this.hold(b.run ? 1.2 : 2.0);
     if (b.cap) this.ui.caption('');
   }
@@ -517,13 +542,26 @@ export class Runner {
   // Walk somewhere; "next line" lands the actor at the destination instead of waiting out the walk.
   // Walks route around anyone in the way and give up after a generous time (a blocked path never stalls the film).
   async go(a, dest, opts = {}) {
-    this.bodies.actors = [...this.on];
-    const pts = this.bodies.route(a, dest), speed = opts.speed || a.walkSpeed;
+    this.bodies.actors = [...this.on, ...this.extras.list];
+    const pts = this.bodies.route(a, dest);
     const len = pts.reduce((n, p, i) => n + p.distanceTo(i ? pts[i - 1] : a.pos), 0);
+    const speed = (opts.speed || a.walkSpeed) * (len > 4 && !opts.speed ? 1.5 : 1);   // long crossings at a brisk pace
     const limit = sleep(len / speed * 1.8 + 1.5).then(() => false);
+    // someone standing at the goal holds the walker off it: close and stalled counts as arrived
+    const stalled = new Promise((res) => {
+      let slow = 0;
+      const id = setInterval(() => {
+        if (!a.path) { clearInterval(id); return; }
+        slow = a.speed < 0.25 && Math.hypot(a.pos.x - dest.x, a.pos.z - dest.z) < 1.0 ? slow + 1 : 0;
+        if (slow >= 4) { clearInterval(id); a.path = null; res(true); }
+      }, 100);
+    });
     this.stats.walks++;
-    const done = await Promise.race([a.walk(pts, opts).then(() => true), this.waitSkip().then(() => false), limit.then(() => { this.stats.timeouts++; return false; })]);
-    if (!done) { a.path = null; a.place(dest.x, dest.z, opts.face ? Math.atan2(opts.face.x - dest.x, opts.face.z - dest.z) : a.yaw); }
+    const done = await Promise.race([a.walk(pts, { ...opts, speed }).then(() => true), stalled, this.waitSkip().then(() => false), limit.then(() => { this.stats.timeouts++; return false; })]);
+    if (done) return;
+    a.path = null;
+    const free = this.bodies.clear(dest, a) ? dest : this.bodies.spotNear(a, dest, 0.6);   // never snap into someone
+    a.place(free.x, free.z, opts.face ? Math.atan2(opts.face.x - free.x, opts.face.z - free.z) : a.yaw);
   }
 
   castInfo(id) { return this.info.get(id) || { id, name: id, voice: {} }; }

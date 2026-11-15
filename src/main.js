@@ -13,6 +13,8 @@ import { Voices } from './voice.js';
 import { Sound } from './audio.js';
 import { UI } from './ui.js';
 import { VoicePanel } from './voicepanel.js';
+import { Gallery } from './gallery.js';
+import { Credits } from './credits.js';
 import { CAST, TINTABLE, DEFAULT_HEIGHT } from './cast.js';
 import { PARTS } from './parts.js';
 import { hasModel, model, bank } from './assets.js';
@@ -153,6 +155,24 @@ async function loadActor(id) {
   return a;
 }
 
+// Load any model file as a standalone actor (for the gallery): untinted, fitted to 1.6 m.
+const galleryCache = new Map();
+async function loadFile(file) {
+  if (galleryCache.has(file)) return galleryCache.get(file);
+  const gltf = await loader.parseAsync(await model(file), '');
+  const vrm = gltf.userData.vrm;
+  VRMUtils.rotateVRM0(vrm);
+  fixShade(vrm); shrinkTextures(vrm);
+  vrm.scene.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(vrm.scene, true), h = file.startsWith('x-') ? 1.72 : 1.6;
+  const scale = h / Math.max(0.01, box.max.y - box.min.y);
+  vrm.scene.position.y = -box.min.y * scale;
+  const a = new Character(vrm, animData, { id: file, name: file, scale, voice: {} });
+  galleryCache.set(file, a);
+  if (galleryCache.size > 4) galleryCache.delete(galleryCache.keys().next().value);
+  return a;
+}
+
 // ------------------------------------------------------------------ runtime
 const director = new Director(camera);
 const sound = new Sound();
@@ -183,8 +203,10 @@ orbit.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
 orbit.maxDistance = 30;
 function setFreeCam(on) {
   state.free = on;
+  runner.freeCam = on;
   orbit.enabled = on;
   if (on) orbit.target.copy(director.lookAt);
+  runner.set?.showCeiling(!on);   // fly over the rooms without a roof in the way
   $('freecam').classList.toggle('on', on);
   $('freecam').textContent = on ? 'Director cam' : 'Free cam';
 }
@@ -199,9 +221,15 @@ $('view').addEventListener('pointerup', (e) => {
   if (!moved) document.body.classList.toggle('hidebar');
 });
 
+const gallery = new Gallery({ scene, camera, orbit, load: loadFile, onClose: () => { ui.showPicker(true); if (runner.set) scene.add(runner.set.group); } });
+$('galleryBtn').onclick = () => { runner.stop(); if (runner.set) scene.remove(runner.set.group); for (const a of actors.values()) a.root.visible = false; ui.showPicker(false); $('bar').hidden = true; scene.background = new THREE.Color('#0d1a3a'); gallery.open(); };
+
 const runner = new Runner({ scene, cast: actors, info, director, voices, sound, ui, lights });
 // Load who the scene needs; past MAX_LOADED, free everyone else so long runs do not pile up models.
 const MAX_LOADED = 16;   // main cast plus the background students a scene uses
+const credits = new Credits({ renderer, scene, camera, loadActor, actors, lights, sound, ui, stage: () => runner.set });
+runner.roll = (tok) => credits.play(() => tok === runner.token);
+
 runner.prepare = async (ids) => {
   if (actors.size + ids.filter((id) => !actors.has(id)).length > MAX_LOADED) {
     for (const [id, a] of actors) {
@@ -238,7 +266,8 @@ function loop() {
   if (!runner.paused) {
     if (!window.__freeze) for (const a of actors.values()) if (a.root.visible) a.update(dt);   // ?freeze: bind pose, for model checks
     runner.physics(dt, camera);
-    if (state.free) orbit.update(); else director.update(dt);
+    if (gallery.active) { gallery.update(dt); orbit.update(); }
+    else if (state.free) orbit.update(); else director.update(dt);
   }
   sun.target.position.copy(director.lookAt);
   sun.position.copy(director.lookAt).add(new THREE.Vector3(6, 14, 8));

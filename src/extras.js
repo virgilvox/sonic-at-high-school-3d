@@ -9,10 +9,9 @@ const DEG = Math.PI / 180;
 export const EXTRA_IDS = Array.from({ length: 8 }, (_, i) => 'extra' + (i + 1));
 
 // how many and what they do, per set: walk (patrol), chat (stand in pairs), sit (take free seats), watch, dance
-const PLAN = {
-  hallway: { walk: 2, chat: 2 }, schoolfront: { walk: 3, chat: 2 }, classroom: { sit: 3 }, cafeteria: { sit: 5 },
-  diner: { sit: 2 }, stage: { sit: 6 }, gym: { watch: 4 }, field: { watch: 5 }, prom: { dance: 6 }, lockerroom: { chat: 2 },
-  street: { walk: 2 }, park: { walk: 2 },
+const PLAN = {   // only where a school crowd belongs; never the ball games, sports or quiet places
+  hallway: { walk: 2, chat: 2 }, schoolfront: { walk: 2, chat: 2 }, classroom: { sit: 3 }, cafeteria: { sit: 5 },
+  stage: { sit: 6 }, prom: { dance: 6 },
 };
 
 export class Extras {
@@ -21,7 +20,7 @@ export class Extras {
   // Which extras a scene wants (so the runner can load them first).
   want(sc) {
     const p = PLAN[sc.set];
-    if (!p || sc.time === 'dream') return [];
+    if (!p || sc.time === 'dream' || sc.game) return [];
     const n = Math.min(EXTRA_IDS.length, Object.values(p).reduce((a, b) => a + b, 0));
     const off = (sc.set.length * 3 + (sc.beats?.length || 0)) % EXTRA_IDS.length;   // vary who appears per scene
     return Array.from({ length: n }, (_, i) => EXTRA_IDS[(off + i) % EXTRA_IDS.length]);

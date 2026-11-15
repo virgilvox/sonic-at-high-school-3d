@@ -13,7 +13,8 @@ The original playlist: https://www.youtube.com/playlist?list=PLRxk4957KpcxexcS8N
 
 Pick a part or play from the start. Space pauses, the right arrow skips a line, N and P jump between scenes, C toggles
 captions, F frees the camera (drag to orbit, right-drag or two fingers to pan, scroll or pinch to zoom). The Voices
-button switches between the baked voices and your browser's own speech, where you can recast anyone.
+button switches between the baked voices and your browser's own speech, where you can recast anyone. MODELS opens a
+browser of every model in the film with who made it. Stay for the bloopers and credits after part 39.
 
 It works on phones and tablets (landscape frames best), but the site pulls about 200 MB of models, voices and music,
 so a desktop browser on decent wifi is the comfortable way to watch.
