@@ -104,14 +104,17 @@ export class Character {
   play(name, { fade = 0.25, speed = 1, hold = false, loops = 1 } = {}) {
     const a = this.action(name);
     if (!a) return Promise.resolve();
-    a.reset(); a.setLoop(THREE.LoopRepeat, Infinity); a.timeScale = speed; a.play();
+    a.reset(); a.timeScale = speed;
+    // a held clip (falling down, lying) plays once and stays on its last frame; others repeat for their loop count
+    if (hold) { a.setLoop(THREE.LoopOnce, 1); a.clampWhenFinished = true; } else { a.setLoop(THREE.LoopRepeat, Infinity); a.clampWhenFinished = false; }
+    a.play();
     const dur = (a.getClip().duration * loops) / speed;
     if (this.oneShot && this.oneShot.resolve) this.oneShot.resolve();
     return new Promise((resolve) => { this.oneShot = { name, t: 0, dur, fade, hold, resolve }; });
   }
   stopOneShot() { if (this.oneShot) { this.oneShot.hold = false; this.oneShot.t = Math.max(this.oneShot.t, this.oneShot.dur - this.oneShot.fade); } }
 
-  place(x, z, yaw = 0) { this.pos.set(x, 0, z); this.yaw = yaw; this.speed = 0; this.path = null; this.root.rotation.y = yaw; }
+  place(x, z, yaw = 0) { this.pos.set(x, 0, z); this.yaw = yaw; this.speed = 0; this.path = null; this.turnTarget = null; this.root.rotation.y = yaw; }
 
   walk(points, { speed, face } = {}) {
     if (this.path && this.path.resolve) this.path.resolve();
@@ -120,11 +123,15 @@ export class Character {
     });
   }
 
+  // Seated people keep facing their table, desk or the stage; they follow a conversation with their head (lookAt).
+  get seated() { return this.baseClip?.startsWith('Sitting'); }
+
   faceTo(target, rate = 5) {
+    if (this.seated) return;
     const p = target.isVector3 ? target : target.pos || target;
     this.turnTarget = { yaw: Math.atan2(p.x - this.pos.x, p.z - this.pos.z), rate };
   }
-  faceYaw(yaw, rate = 5) { this.turnTarget = { yaw, rate }; }
+  faceYaw(yaw, rate = 5) { if (!this.seated) this.turnTarget = { yaw, rate }; }
 
   lookAt(target) { this.look.target = target; }
 
@@ -190,6 +197,7 @@ export class Character {
         this.turnTarget = null;
       }
     }
+    if (this.seated) this.turnTarget = null;
     if (!this.path && this.turnTarget) {
       let dy = ((this.turnTarget.yaw - this.yaw + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
       this.yaw += dy * (1 - Math.exp(-this.turnTarget.rate * dt));
@@ -246,8 +254,8 @@ export class Character {
     this.hop.amp = damp(this.hop.amp, on ? this.hop.target : 0, 6, dt);
     if (this.hop.amp > 0.002) {
       const y = this.hop.amp * Math.abs(Math.sin(this.t * Math.PI * 2.3));
-      this.root.position.y = y;
-    } else this.root.position.y = 0;
+      this.root.position.y = (this.floorY || 0) + y;
+    } else this.root.position.y = this.floorY || 0;   // floorY: a bed, a stage, a seat height
   }
 
   // rotate a normalized bone by a world-space delta, keeping parents

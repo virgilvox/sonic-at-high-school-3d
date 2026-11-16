@@ -1,49 +1,289 @@
-{ "part": 36, "title": "Bunnie's Diner", "scenes": [
-  { "set": "street", "time": "night", "cast": ["sonic", "amy"], "beats": [
-    { "song": "love", "title": "Sonic leads Amy out of the prom and into the night", "dur": 14 },
-    { "say": "amy", "text": "Can I open them yet, Sonic?", "to": "sonic", "emote": "worried", "do": "walk" },
-    { "say": "sonic", "text": "Nope", "to": "amy", "emote": "smirk", "do": "walk" },
-    { "say": "amy", "text": "C'mon we've been walking for ages and I have no clue where you're taking me!", "to": "sonic", "emote": "annoyed" },
-    { "say": "sonic", "text": "We're almost there, just hang on for at least a couple more seconds", "to": "amy", "emote": "relaxed" },
-    { "say": "amy", "text": "*sigh*", "emote": "sad", "do": "sigh" },
-    { "say": "sonic", "text": "Hey, I don't want that frown on your face, cause now we're here!", "to": "amy", "emote": "happy", "do": "present" },
-    { "say": "amy", "text": "Finally! Can I open my eyes?", "to": "sonic", "emote": "excited" },
-    { "say": "sonic", "text": "Of course you can", "to": "amy", "emote": "happy", "do": "nod" },
-    { "say": "amy", "text": "*opens eyes* !!!", "emote": "surprised", "do": "gasp" },
-    { "say": "amy", "text": "*sees restaurant sign* 'Bunnie's Diner'", "emote": "surprised" },
-    { "say": "amy", "text": "T-The restaurant where we're supposed to have our", "to": "sonic", "emote": "surprised" },
-    { "say": "amy", "text": "Our very special date... to celebrate our anniversary", "to": "sonic", "emote": "happy", "do": "smile" },
-    { "say": "amy", "text": "Oh, Sonikku! *blushing madly*", "to": "sonic", "emote": "blush", "do": "blush" },
-    { "say": "amy", "text": "LOVE YOU SO MUCH! *squeezes him*", "to": "sonic", "emote": "excited", "do": "hug" },
-    { "say": "sonic", "text": "U-UH AMY!!", "to": "amy", "emote": "shocked", "do": "struggle" },
-    { "say": "sonic", "text": "*blush*", "emote": "blush", "do": "blush" },
-    { "say": "sonic", "text": "Ladies first *opens door for her*", "to": "amy", "emote": "smirk", "do": "present" }
-  ] },
-  { "set": "cafeteria", "time": "night", "cast": ["sonic", "amy"], "beats": [
-    { "enter": "bunnie" },
-    { "say": "bunnie", "text": "How'd ya do, our lovely couple?", "to": "amy", "emote": "happy", "do": "wave" },
-    { "say": "sonic", "text": "We'd like a table for 2, please", "to": "bunnie", "emote": "happy" },
-    { "say": "bunnie", "text": "Right this way, honey dumplings! *walking towards a table*", "emote": "happy", "do": "beckon" },
-    { "say": "sonic", "text": "*pulls chair out* My lady", "to": "amy", "emote": "smirk", "do": "present" },
-    { "say": "amy", "text": "Thank you. *taking her seat*", "to": "sonic", "emote": "happy", "do": "sit" },
-    { "say": "bunnie", "text": "So could I get you anything before the main meal?", "emote": "happy" },
-    { "say": "sonic", "text": "Just two drinks", "to": "bunnie", "emote": "relaxed" },
-    { "say": "bunnie", "text": "On the way, sugar! *walks away*", "emote": "happy" },
-    { "exit": "bunnie", "cap": "*walks away*" },
-    { "say": "sonic", "text": "So Ames-", "to": "amy", "emote": "happy" },
-    { "say": "sonic", "text": "Wait are you ok?", "to": "amy", "emote": "worried" },
-    { "say": "amy", "text": "Y-Yeah! *blushing madly*", "to": "sonic", "emote": "blush", "do": "blush" },
-    { "say": "amy", "text": "It's just warm in here that's all", "emote": "blush" },
-    { "say": "sonic", "text": "I can go get them to cool it down he-", "to": "amy", "emote": "worried", "do": "stand" },
-    { "say": "amy", "text": "Nevermind, I'm fine", "to": "sonic", "emote": "blush" },
-    { "say": "sonic", "text": "Ames, you're acting strange", "to": "amy", "emote": "worried" },
-    { "say": "amy", "text": "H-How?", "to": "sonic", "emote": "surprised" },
-    { "say": "sonic", "text": "You're bright red, you won't say a word and you're mumbling", "to": "amy", "emote": "worried" },
-    { "say": "amy", "text": "Silly! I'm blushing cause this is just so romantic!", "to": "sonic", "emote": "happy", "do": "smile" },
-    { "enter": "bunnie", "cap": "*walking towards their table*" },
-    { "say": "bunnie", "text": "Your drinks! *walking towards their table*", "emote": "happy", "do": "walk" },
-    { "say": "sonic", "text": "Thank you", "to": "bunnie", "emote": "happy" },
-    { "say": "bunnie", "text": "The pleasure is mine! *places drinks on the table and walks away*", "emote": "happy" },
-    { "exit": "bunnie", "cap": "*walks away*" }
-  ] }
-] }
+{
+ "part": 36,
+ "title": "Bunnie's Diner",
+ "scenes": [
+  {
+   "set": "street",
+   "time": "night",
+   "cast": [
+    "sonic",
+    "amy"
+   ],
+   "beats": [
+    {
+     "song": "love",
+     "title": "Sonic leads Amy out of the prom and into the night",
+     "dur": 14
+    },
+    {
+     "say": "amy",
+     "text": "Can I open them yet, Sonic?",
+     "to": "sonic",
+     "emote": "worried",
+     "do": "walk"
+    },
+    {
+     "say": "sonic",
+     "text": "Nope",
+     "to": "amy",
+     "emote": "smirk",
+     "do": "walk"
+    },
+    {
+     "say": "amy",
+     "text": "C'mon we've been walking for ages and I have no clue where you're taking me!",
+     "to": "sonic",
+     "emote": "annoyed"
+    },
+    {
+     "say": "sonic",
+     "text": "We're almost there, just hang on for at least a couple more seconds",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "say": "amy",
+     "text": "*sigh*",
+     "emote": "sad",
+     "do": "sigh"
+    },
+    {
+     "say": "sonic",
+     "text": "Hey, I don't want that frown on your face, cause now we're here!",
+     "to": "amy",
+     "emote": "happy",
+     "do": "present"
+    },
+    {
+     "say": "amy",
+     "text": "Finally! Can I open my eyes?",
+     "to": "sonic",
+     "emote": "excited"
+    },
+    {
+     "say": "sonic",
+     "text": "Of course you can",
+     "to": "amy",
+     "emote": "happy",
+     "do": "nod"
+    },
+    {
+     "say": "amy",
+     "text": "*opens eyes* !!!",
+     "emote": "surprised",
+     "do": "gasp"
+    },
+    {
+     "say": "amy",
+     "text": "*sees restaurant sign* 'Bunnie's Diner'",
+     "emote": "surprised"
+    },
+    {
+     "say": "amy",
+     "text": "T-The restaurant where we're supposed to have our",
+     "to": "sonic",
+     "emote": "surprised"
+    },
+    {
+     "say": "amy",
+     "text": "Our very special date... to celebrate our anniversary",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "smile"
+    },
+    {
+     "say": "amy",
+     "text": "Oh, Sonikku! *blushing madly*",
+     "to": "sonic",
+     "emote": "blush",
+     "do": "blush"
+    },
+    {
+     "say": "amy",
+     "text": "LOVE YOU SO MUCH! *squeezes him*",
+     "to": "sonic",
+     "emote": "excited",
+     "do": "hug"
+    },
+    {
+     "say": "sonic",
+     "text": "U-UH AMY!!",
+     "to": "amy",
+     "emote": "shocked",
+     "do": "struggle"
+    },
+    {
+     "say": "sonic",
+     "text": "*blush*",
+     "emote": "blush",
+     "do": "blush"
+    },
+    {
+     "say": "sonic",
+     "text": "Ladies first *opens door for her*",
+     "to": "amy",
+     "emote": "smirk",
+     "do": "present"
+    }
+   ]
+  },
+  {
+   "set": "diner",
+   "time": "night",
+   "cast": [
+    "sonic",
+    "amy",
+    "bunnie"
+   ],
+   "beats": [
+    {
+     "enter": "bunnie"
+    },
+    {
+     "say": "bunnie",
+     "text": "How'd ya do, our lovely couple?",
+     "to": "amy",
+     "emote": "happy",
+     "do": "wave"
+    },
+    {
+     "say": "sonic",
+     "text": "We'd like a table for 2, please",
+     "to": "bunnie",
+     "emote": "happy"
+    },
+    {
+     "say": "bunnie",
+     "text": "Right this way, honey dumplings! *walking towards a table*",
+     "emote": "happy",
+     "do": "beckon"
+    },
+    {
+     "say": "sonic",
+     "text": "*pulls chair out* My lady",
+     "to": "amy",
+     "emote": "smirk",
+     "do": "present"
+    },
+    {
+     "say": "amy",
+     "text": "Thank you. *taking her seat*",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "sit"
+    },
+    {
+     "say": "bunnie",
+     "text": "So could I get you anything before the main meal?",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "Just two drinks",
+     "to": "bunnie",
+     "emote": "relaxed"
+    },
+    {
+     "say": "bunnie",
+     "text": "On the way, sugar! *walks away*",
+     "emote": "happy"
+    },
+    {
+     "exit": "bunnie",
+     "cap": "*walks away*"
+    },
+    {
+     "say": "sonic",
+     "text": "So Ames-",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "Wait are you ok?",
+     "to": "amy",
+     "emote": "worried"
+    },
+    {
+     "say": "amy",
+     "text": "Y-Yeah! *blushing madly*",
+     "to": "sonic",
+     "emote": "blush",
+     "do": "blush"
+    },
+    {
+     "say": "amy",
+     "text": "It's just warm in here that's all",
+     "emote": "blush"
+    },
+    {
+     "say": "sonic",
+     "text": "I can go get them to cool it down he-",
+     "to": "amy",
+     "emote": "worried",
+     "do": "stand"
+    },
+    {
+     "say": "amy",
+     "text": "Nevermind, I'm fine",
+     "to": "sonic",
+     "emote": "blush"
+    },
+    {
+     "say": "sonic",
+     "text": "Ames, you're acting strange",
+     "to": "amy",
+     "emote": "worried"
+    },
+    {
+     "say": "amy",
+     "text": "H-How?",
+     "to": "sonic",
+     "emote": "surprised"
+    },
+    {
+     "say": "sonic",
+     "text": "You're bright red, you won't say a word and you're mumbling",
+     "to": "amy",
+     "emote": "worried"
+    },
+    {
+     "say": "amy",
+     "text": "Silly! I'm blushing cause this is just so romantic!",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "smile"
+    },
+    {
+     "enter": "bunnie",
+     "cap": "*walking towards their table*"
+    },
+    {
+     "say": "bunnie",
+     "text": "Your drinks! *walking towards their table*",
+     "emote": "happy",
+     "do": "walk"
+    },
+    {
+     "say": "sonic",
+     "text": "Thank you",
+     "to": "bunnie",
+     "emote": "happy"
+    },
+    {
+     "say": "bunnie",
+     "text": "The pleasure is mine! *places drinks on the table and walks away*",
+     "emote": "happy"
+    },
+    {
+     "exit": "bunnie",
+     "cap": "*walks away*"
+    }
+   ],
+   "at": {
+    "sonic": "seat:0",
+    "amy": "seat:1"
+   }
+  }
+ ]
+}

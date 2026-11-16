@@ -122,7 +122,7 @@ export class Sound {
     this.amb = [];
     for (const { name, vol = 0.5 } of list) {
       const g = this.ctx.createGain(); g.gain.value = 0; g.gain.setTargetAtTime(vol, t, 0.6); g.connect(bus);
-      if (name === 'birds' || name === 'crickets' || name === 'traffic') { this.amb.push({ gain: g }); this.synthAmb(name, g); continue; }
+      if (['birds', 'crickets', 'traffic', 'dancebeat', 'squeak', 'rainfall'].includes(name)) { this.amb.push({ gain: g }); this.synthAmb(name, g); continue; }
       this.sample(name).then((buf) => {
         if (!buf || !this.amb.some((x) => x.gain === g)) return;
         const src = this.ctx.createBufferSource(); src.buffer = buf; src.loop = true; src.connect(g);
@@ -137,9 +137,16 @@ export class Sound {
       const t = this.ctx.currentTime + Math.random() * 0.5;
       if (kind === 'birds' && Math.random() < 0.5) { const f = 2400 + Math.random() * 1800; for (let i = 0; i < 2 + (Math.random() * 3 | 0); i++) this.tone(f * (1 + i * 0.04), t + i * 0.09, 0.07, { type: 'sine', vol: 0.05, to, bend: 1.25, verb: 0.3 }); }
       if (kind === 'crickets') for (let i = 0; i < 6; i++) this.tone(4300, t + i * 0.045, 0.025, { type: 'square', vol: 0.012, to, verb: 0.2 });
+      if (kind === 'dancebeat') {   // the dance next door: a muffled four on the floor with a bass line
+        const beat = 60 / 124;
+        for (let i = 0; i < 4; i++) { this.tone(55, t + i * beat, 0.22, { vol: 0.32, bend: 0.5, to, verb: 0.1 }); this.tone([82, 82, 98, 73][i], t + i * beat + beat / 2, 0.18, { type: 'triangle', vol: 0.1, to, verb: 0.1 }); }
+        if (Math.random() < 0.6) this.noise(t + beat, 0.04, { vol: 0.05, freq: 1500, to });
+      }
+      if (kind === 'rainfall') { this.noise(t, 1.2, { vol: 0.16, freq: 5200, type: 'highpass', to }); this.noise(t + 0.3, 1.2, { vol: 0.1, freq: 900, to, q: 0.4 }); }
+      if (kind === 'squeak' && Math.random() < 0.35) this.tone(1900 + Math.random() * 900, t, 0.09, { type: 'sawtooth', vol: 0.025, to, bend: 1.3, verb: 0.3 });
       if (kind === 'traffic' && Math.random() < 0.3) this.noise(t, 2.5, { vol: 0.05, freq: 300 + Math.random() * 200, type: 'lowpass', to });
     };
-    this.ambTimers.push(setInterval(tick, kind === 'crickets' ? 700 : 900));
+    this.ambTimers.push(setInterval(tick, kind === 'crickets' ? 700 : kind === 'dancebeat' ? (60 / 124) * 4000 : kind === 'rainfall' ? 600 : 900));
   }
   // Raise a quiet bed when the scene has no dialogue for a while; back down when someone talks.
   swell(on) {

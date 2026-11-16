@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Love Story</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #071338; --ink: #f6f3ff; --dim: #a9b6e8; --accent: #ffd23f; --red: #e8322b; --blue: #1f5bff; --sky: #2f8cff; --panel: rgba(7, 19, 56, .9);
@@ -131,26 +131,72 @@ h1 { margin: 0; font: 400 clamp(30px, 7vw, 68px)/1.1 var(--pixel); color: var(--
 .ginfo { pointer-events: auto; position: absolute; right: 12px; bottom: 12px; width: min(340px, 46vw); background: var(--panel); border-radius: 12px; padding: 12px 14px; font-size: 13px; }
 .ginfo h3 { margin: 0 0 4px; } .ginfo p { margin: 4px 0; color: var(--dim); } .ginfo b { color: var(--ink); } .ghint { font-size: 12px; }
 @media (max-width: 640px) { .gside { bottom: auto; max-height: 45vh; width: auto; right: 12px; } .ginfo { left: 12px; width: auto; } }
-#roll { position: fixed; inset: 0; z-index: 9; display: grid; grid-template-columns: 1.1fr 1fr; background: #050b22; overflow: hidden; }
+/* credits: the film plays in a window on the left, the roll crawls on the right */
+body.credits #view { width: 60vw; height: 64vh; left: 3vw; top: 18vh; outline: 6px solid #fbf8ef; box-shadow: 0 24px 60px rgba(0,0,0,.7); }
+body.credits #cap { left: 3vw; right: 37vw; bottom: 22vh; }
+body.credits #bar { opacity: 0; }
+#roll { position: fixed; inset: 0; z-index: 2; pointer-events: none; background: #050b22; }
+body.credits #view { z-index: 3; }
 #roll[hidden] { display: none; }
-.rollpics { display: grid; place-items: center; padding: 4vh 3vw; }
-.polaroid { margin: 0; background: #fbf8ef; padding: 12px 12px 40px; transform: rotate(var(--tilt)); box-shadow: 0 18px 40px rgba(0,0,0,.6); width: min(46vw, 620px); animation: drop .7s ease-out; }
-.polaroid img { width: 100%; display: block; image-rendering: auto; }
-.polaroid figcaption { font: 400 clamp(14px, 1.6vw, 22px)/1.3 "Brush Script MT", "Segoe Script", cursive; color: #2a2a2a; text-align: center; margin-top: 12px; }
-@keyframes drop { from { opacity: 0; transform: translateY(-30px) rotate(var(--tilt)); } }
-.rollwin { position: relative; overflow: hidden; -webkit-mask-image: linear-gradient(transparent, #000 15%, #000 85%, transparent); mask-image: linear-gradient(transparent, #000 15%, #000 85%, transparent); }
-.rolltext { position: absolute; left: 0; right: 0; text-align: center; padding: 0 3vw; color: #e8ecff; }
-.rolltext h2 { font: 400 clamp(16px, 2vw, 26px)/1.5 var(--pixel); color: var(--accent); text-shadow: 3px 3px 0 var(--red); margin: 0 0 6vh; }
-.rolltext h4 { font: 400 11px/1 var(--pixel); color: #7fb0ff; margin: 5vh 0 1.6vh; letter-spacing: .08em; }
-.rolltext p { margin: 0 0 1.4vh; font-size: clamp(14px, 1.4vw, 18px); }
-.rolltext small { display: block; color: #8f9cc8; font-size: .75em; }
+.rollwin { position: absolute; top: 0; bottom: 0; right: 0; width: 34vw; overflow: hidden; -webkit-mask-image: linear-gradient(transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(transparent, #000 12%, #000 88%, transparent); }
+.rolltext { position: absolute; left: 0; right: 0; text-align: center; padding: 0 2vw; color: #e8ecff; }
+.rolltext h2 { font: 400 clamp(14px, 1.7vw, 22px)/1.5 var(--pixel); color: var(--accent); text-shadow: 3px 3px 0 var(--red); margin: 0 0 6vh; }
+.rolltext h4 { font: 400 10px/1.5 var(--pixel); color: #7fb0ff; margin: 5vh 0 1.4vh; letter-spacing: .06em; }
+.rolltext p { margin: 0 0 1.3vh; font-size: clamp(13px, 1.25vw, 17px); }
+.rolltext small { display: block; color: #8f9cc8; font-size: .78em; }
 .rolltext .fine { margin-top: 8vh; color: #7f8ab0; font-size: 12px; }
-.theend { text-align: center; grid-column: 1 / -1; }
+.rollpics { position: absolute; left: 3vw; top: 18vh; width: 60vw; height: 64vh; z-index: 4; display: grid; place-items: center; background: #050b22; opacity: 0; transition: opacity .15s; }
+.rollpics.on { opacity: 1; }
+.rollpics.full { left: 0; top: 0; width: 100vw; height: 100vh; }
+.polaroid { margin: 0; background: #fbf8ef; padding: 10px 10px 34px; transform: rotate(var(--tilt)); box-shadow: 0 18px 40px rgba(0,0,0,.6); width: 78%; }
+.polaroid img { width: 100%; display: block; }
+.polaroid figcaption { font: 400 clamp(14px, 1.5vw, 21px)/1.3 "Brush Script MT", "Segoe Script", cursive; color: #2a2a2a; text-align: center; margin-top: 10px; }
+.theend { text-align: center; }
 .theend h2 { font: 400 clamp(32px, 6vw, 72px)/1 var(--pixel); color: var(--accent); text-shadow: 5px 5px 0 var(--red), 10px 10px 0 #0b1b4d; margin: 0 0 30px; }
 .theend .hb { height: 90px; width: auto; }
 .theend p { font: 400 11px/1 var(--pixel); color: #fff; margin-top: 18px; }
-#roll:has(.theend) { grid-template-columns: 1fr; }
-@media (max-width: 760px) { #roll { grid-template-columns: 1fr; grid-template-rows: auto 1fr; } .polaroid { width: 80vw; } }
+#slate { position: fixed; z-index: 6; left: calc(3vw + 14px); top: calc(18vh + 14px); font: 400 11px/1 var(--pixel); color: #fff; background: #111;
+  padding: 10px 12px 10px 12px; border-top: 8px solid; border-image: repeating-linear-gradient(90deg, #fff 0 12px, #111 12px 24px) 8; opacity: 0; }
+#slate.on { animation: slate 2.6s ease-out; }
+@keyframes slate { 0% { opacity: 0; transform: translateY(-8px); } 8%, 75% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@media (max-width: 760px) { body.credits #view { width: 94vw; left: 3vw; top: 4vh; height: 42vh; } .rollpics { width: 94vw; top: 4vh; height: 42vh; } .rollwin { width: 100vw; top: 50vh; } body.credits #cap { right: 3vw; bottom: 52vh; } #slate { top: calc(4vh + 10px); } }
+/* cold open: the original's blue grade, film scratches and cursive titles over the 3D shots */
+#coldopen { position: fixed; inset: 0; z-index: 4; pointer-events: none; }
+#coldopen[hidden] { display: none; }
+body:has(#coldopen:not([hidden])) #bar, body:has(#intro:not([hidden])) #bar, body:has(#coldopen:not([hidden])) #cap { opacity: 0 !important; pointer-events: none; }
+.cograde { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(70, 80, 255, .38), rgba(20, 20, 140, .62)); mix-blend-mode: multiply; }
+.coscratch { position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 140px, rgba(255,255,255,.07) 140px 141px, transparent 141px 333px, rgba(255,255,255,.05) 333px 334px); animation: jitter .2s steps(2) infinite; }
+@keyframes jitter { 50% { transform: translateX(7px); } }
+.cotitle { position: absolute; inset: 0; display: grid; place-items: center; font: 400 clamp(34px, 6vw, 82px)/1 "Great Vibes", "Brush Script MT", cursive; color: #fff; text-shadow: 0 4px 18px rgba(0, 0, 60, .7); opacity: 0; transition: opacity 1.1s; }
+.cotitle.on { opacity: 1; }
+/* intro: hack.build presents, then a 16-bit title screen */
+#intro { position: fixed; inset: 0; z-index: 20; overflow: hidden; background: #000; }
+#intro[hidden], #act[hidden] { display: none; }
+.ibg { position: absolute; inset: 0; opacity: 0; background: linear-gradient(#2f8cff 0 55%, transparent 55%), repeating-conic-gradient(#b5651d 0 25%, #8b4513 0 50%) 0 0 / 64px 64px; animation: ibg 1s steps(6) 2.6s forwards, scroll 1.2s linear infinite; }
+@keyframes ibg { to { opacity: 1; } } @keyframes scroll { to { background-position: 0 0, -64px 0; } }
+.ipresents { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; animation: pres 2.6s steps(10) forwards; }
+.ipresents .hb { height: 110px; width: auto; } .ipresents p { font: 400 12px/1 var(--pixel); color: #fff; margin-top: 18px; letter-spacing: .2em; }
+@keyframes pres { 0% { opacity: 0; } 20%, 80% { opacity: 1; } 100% { opacity: 0; } }
+.ititle { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 22px; opacity: 0; animation: ibg .1s 2.9s forwards; }
+.iribbon { font: 400 clamp(12px, 2.2vw, 22px)/1 var(--pixel); color: #fff; background: #1f5bff; padding: 16px 30px; clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%); box-shadow: 0 6px 0 #0b1b4d; text-shadow: 3px 3px 0 #0b1b4d; transform: translateY(-60vh); animation: drop .5s steps(6) 3.0s forwards; }
+.ilove { font: 400 clamp(36px, 9vw, 110px)/1 var(--pixel); color: var(--accent); text-shadow: 6px 6px 0 var(--red), 12px 12px 0 #0b1b4d; transform: scale(0); animation: pop .4s steps(5) 3.5s forwards; }
+@keyframes drop { to { transform: none; } } @keyframes pop { 70% { transform: scale(1.15); } to { transform: scale(1); } }
+.irings { display: flex; gap: 18px; opacity: 0; animation: ibg .1s 3.9s forwards; }
+.irings i { width: 26px; height: 26px; border-radius: 50%; border: 6px solid var(--accent); box-shadow: inset 0 0 0 2px #c99a00; animation: spin .8s steps(6) infinite; }
+.irings i:nth-child(2) { animation-delay: -.16s; } .irings i:nth-child(3) { animation-delay: -.32s; } .irings i:nth-child(4) { animation-delay: -.48s; } .irings i:nth-child(5) { animation-delay: -.64s; }
+.ipress { font: 400 14px/1 var(--pixel); color: #fff; text-shadow: 3px 3px 0 #0b1b4d; opacity: 0; animation: blink .8s steps(1) 4.2s infinite; }
+@keyframes blink { 50% { opacity: 1; } }
+/* act card, Sonic 2 style */
+#act { position: fixed; inset: 0; z-index: 8; pointer-events: none; overflow: hidden; }
+#act .ablue { position: absolute; left: 0; top: 0; bottom: 0; width: 34vw; background: #1f5bff; box-shadow: 10px 0 0 #0b1b4d; transform: translateX(-110%); }
+#act .ayellow { position: absolute; left: 0; right: 0; top: 54vh; height: 15vh; background: var(--accent); transform: translateX(110%); box-shadow: 0 8px 0 #c99a00; }
+#act .ared { position: absolute; left: 0; right: 0; top: 69vh; height: 3vh; background: var(--red); transform: translateX(-110%); }
+#act .aname { position: absolute; right: 6vw; top: 34vh; font: 400 clamp(18px, 4vw, 48px)/1.15 var(--pixel); color: #fff; text-align: right; text-shadow: 4px 4px 0 #0b1b4d; transform: translateX(120vw); max-width: 80vw; }
+#act .anum { position: absolute; right: 9vw; top: 56vh; display: flex; align-items: center; gap: 14px; transform: translateX(120vw); }
+#act .anum span { font: 400 clamp(14px, 2vw, 22px)/1 var(--pixel); color: #0b1b4d; } #act .anum b { font: 400 clamp(40px, 7vw, 84px)/1 var(--pixel); color: #fff; text-shadow: 5px 5px 0 var(--red); }
+#act.in .ablue, #act.in .ayellow, #act.in .ared, #act.in .aname, #act.in .anum { transform: none; transition: transform .45s steps(7); }
+#act.in .ayellow { transition-delay: .1s; } #act.in .ared { transition-delay: .15s; } #act.in .aname { transition-delay: .25s; } #act.in .anum { transition-delay: .35s; }
+#act.out .ablue { transform: translateX(-110%); transition: transform .35s steps(5); } #act.out .ayellow, #act.out .aname, #act.out .anum { transform: translateX(120vw); transition: transform .35s steps(5); } #act.out .ared { transform: translateX(-110%); transition: transform .35s steps(5); }
 </style>
 </head>
 <body>
@@ -159,6 +205,13 @@ h1 { margin: 0; font: 400 clamp(30px, 7vw, 68px)/1.1 var(--pixel); color: var(--
 <div id="letterbox"></div><div id="songTitle"></div>
 <div id="cap" aria-live="polite"></div>
 <div id="card"></div>
+<div id="coldopen" hidden><div class="cograde"></div><div class="coscratch"></div><div class="cotitle"></div></div>
+<div id="intro" hidden>
+  <div class="ibg"></div>
+  <div class="ipresents">/*HBLOGO*/<p>PRESENTS</p></div>
+  <div class="ititle"><div class="iribbon">SONIC AT HIGH SCHOOL 3</div><div class="ilove">LOVE STORY</div><div class="irings"><i></i><i></i><i></i><i></i><i></i></div><div class="ipress">PRESS START</div></div>
+</div>
+<div id="act" hidden><div class="ablue"></div><div class="ayellow"></div><div class="ared"></div><div class="aname"></div><div class="anum"><span>ACT</span><b></b></div></div>
 
 <div id="bar" hidden>
   <button id="menu">Parts</button>
@@ -201,6 +254,7 @@ h1 { margin: 0; font: 400 clamp(30px, 7vw, 68px)/1.1 var(--pixel); color: var(--
   <div class="ginfo"></div>
 </div>
 
+<div id="slate"></div>
 <div id="roll" hidden><div class="rollpics"></div><div class="rollwin"><div class="rolltext"></div></div></div>
 
 /*DATA*/

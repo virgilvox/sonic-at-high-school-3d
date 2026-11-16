@@ -195,6 +195,7 @@ const PROPS = {
     for (let i = 0; i < w / 0.5; i++) part(geo('sphere', 0.05, 8, 6), toon(cols[i % 5], { emissive: cols[i % 5] }), g, { pos: [-w / 2 + i * 0.5, -Math.sin((i / (w / 0.5)) * Math.PI) * 0.5, 0], outline: false, shadow: false });
   },
   discoball(g) { part(geo('sphere', 0.35, 12, 8), toon('#dfe6ee', { emissive: '#5a6070' }), g, { pos: [0, 0, 0] }); part(geo('cyl', 0.01, 0.01, 1.2, 4), '#888', g, { pos: [0, 0.75, 0], outline: false }); },
+  ledge(g, o) { part(BOX(o.w || 8, 0.5, 0.6), '#7d8494', g, { pos: [0, 0.25, 0] }); part(BOX(o.w || 8, 0.06, 0.66), '#9aa1b0', g, { pos: [0, 0.52, 0] }); },
   // film crew props for the behind-the-scenes photos
   camrig(g) {
     for (let i = 0; i < 3; i++) { const a = (i / 3) * Math.PI * 2; part(geo('cyl', 0.02, 0.02, 1.5, 6), '#222', g, { pos: [Math.sin(a) * 0.3, 0.7, Math.cos(a) * 0.3], rot: [Math.cos(a) * 0.38, 0, -Math.sin(a) * 0.38] }); }
@@ -250,19 +251,19 @@ export const SETS = {
     props: [['lockers', -3.4, -3.5, 0, { n: 8 }], ['lockers', 3.8, -3.5, 0, { n: 8 }], ['door', 0.3, -3.7, 0], ['lockers', 0, 3.5, 180, { n: 10 }], ['poster', -0.2, -3.67, 0, { y: 1.5, color: '#f39c12' }]] },
   classroom: { size: [9, 8], h: 3.2, wall: '#f0ead8', floor: '#b48a5a', trim: '#2e5a46', door: [4.2, 3.3, -90],
     props: [['board', 0, -3.95, 0], ['desk', 0, -2.6, 0, { color: '#8a5a34' }],
-      ...[-2.4, 0, 2.4].flatMap((x) => [0.2, 1.8].flatMap((z) => [['desk', x, z, 0], ['chair', x, z + 0.55, 180]]))],
+      ...[-2.4, 0, 2.4].flatMap((x) => [0.2, 1.8].flatMap((z) => [['schooldesk', x, z, 0], ['chair', x, z + 0.55, 180]]))],
     spots: { teacher: [0, -3.1, 0], seat1: [-2.4, 0.75, 180, 0], seat2: [0, 0.75, 180, 0] },
     seats: [-2.4, 0, 2.4].flatMap((x) => [0.75, 2.35].map((z) => [x, z, 180])), front: [0, -3.0, 0] },
   bedroom: { size: [7, 6.5], h: 2.9, wall: '#a9c8ee', floor: '#9c7a57', trim: '#ffffff', door: [2.8, 1.6, -90],
     props: [['bed', -1.8, -1.6, 0], ['desk', 1.6, -2.3, 0], ['chair', 1.6, -1.75, 180], ['window', 0, -2.7, 0, { y: 1.6 }], ['shelf', 2.5, -0.6, -90], ['rug', 0, 0.3, 0, { w: 2.2, d: 1.4 }], ['floorlamp', -3.0, 0.6, 0], ['pic', 1.3, -2.68, 0, { y: 1.4 }], ['door', 2.95, 1.6, -90]],
-    spots: { bed: [-1.8, -1.9, 0, 0.62], center: [0, 0.2, 0] } },
+    spots: { bed: [-1.8, -0.95, 0, 0.62], center: [0, 0.2, 0] } },   // the fall lands backwards: root near the foot, head on the pillow
   bathroom: { size: [6, 6], h: 2.9, wall: '#dff1f4', floor: '#ffffff', trim: '#7fa7c9', door: [2.8, 1.2, -90],
     props: [['sink', -0.6, -2.7, 0], ['sink', 0.6, -2.7, 0], ['stall', -2.3, 1.2, 90], ['toilet', -2.3, 1.2, 90], ['trash', 2.4, -2.6, 0]], spots: { mirror: [0, -1.75, 180] } },
   kitchen: { size: [7, 6], h: 2.8, wall: '#f6e7c8', floor: '#d7d2c8', trim: '#c0392b', door: [3.3, 1.5, -90],
     props: [['counter', -1.4, -2.65, 0, { w: 2.6 }], ['stove', 0.3, -2.65, 0], ['fridge', 1.8, -2.6, 0], ['table', 0, 0.4, 0, { w: 1.6, d: 1.0, color: '#b07b4c' }], ['chair', -0.5, 1.1, 180], ['chair', 0.5, -0.3, 0], ['couch', -2.2, 2.2, 180], ['tv', -2.2, 0.4, 0]] },
   livingroom: { size: [7, 6], h: 2.8, wall: '#efe0c2', floor: '#8c6a4c', trim: '#ffffff', door: [3.3, 1.5, -90],
     props: [['couch', 0, 1.6, 180], ['tv', 0, -2.6, 0], ['shelf', -3.2, -1, 90], ['rug', 0, 0, 0, { w: 2.6, d: 1.6 }], ['plant', 3.0, -2.6, 0], ['window', 2, -2.95, 0, { y: 1.6 }], ['door', 3.45, 1.5, -90]],
-    spots: { couch: [0, 1.5, 180, 0.42] } },
+    spots: { couch: [0, 1.5, 180, 0.42] }, seats: [[-0.5, 1.45, 180], [0.5, 1.45, 180]] },
   cafeteria: { size: [14, 10], h: 3.4, wall: '#f3e9d2', floor: '#cfcac0', trim: '#e67e22', door: [-3, 4.3, 180],
     props: [['counter', 0, -4.6, 0, { w: 6 }], ...[-4, 0, 4].flatMap((x) => [-1.4, 1.8].flatMap((z) => [['table', x, z, 0, { w: 2.4, d: 0.9 }], ['bench', x, z - 0.85, 0, { w: 2.2 }], ['bench', x, z + 0.85, 0, { w: 2.2 }]]))],
     seats: [[0, 1.8], [-4, 1.8], [4, 1.8], [0, -1.4]].flatMap(([x, z]) => [-0.6, 0.6].flatMap((dx) => [[x + dx, z - 0.88, 0], [x + dx, z + 0.88, 180]])) },
@@ -272,24 +273,27 @@ export const SETS = {
     props: [['desk', 0, -1.2, 0, { color: '#5b3a24' }], ['chair', 0, -1.8, 0, { color: '#1c1d21' }], ['shelf', -2.4, -2.2, 0], ['shelf', -1.3, -2.2, 0], ['window', 1.6, -2.45, 0, { y: 1.6 }], ['door', 2.95, 1.5, -90], ['plant', -2.6, 2.0, 0], ['rug', 0, -0.6, 0, { w: 2.4, d: 1.6 }]],
     spots: { boss: [0, -1.9, 0] } },
   stage: { size: [14, 12], h: 6, wall: '#2a1e2a', floor: '#6b3f2a', trim: '#7c1d2a', door: [-6.8, 3, 90],
-    props: [['stage', 0, -3.8, 0, { w: 10, d: 4 }], ...[-3, -1, 1, 3].flatMap((x) => [1.5, 2.8, 4.1].map((z) => ['chair', x, z, 180, { color: '#7c1d2a' }]))],
-    seats: [1.5, 2.8, 4.1].flatMap((z) => [-1, 1, -3, 3].map((x) => [x, z, 180])), front: [0, -1.3, 180] },
+    props: [['stage', 0, -3.8, 0, { w: 10, d: 4 }], ...[-4, -2, 0, 2, 4].flatMap((x) => [1.0, 2.2, 3.4, 4.6].map((z) => ['chair', x, z, 180, { color: '#7c1d2a' }]))],
+    seats: [1.0, 2.2, 3.4, 4.6].flatMap((z) => [-2, 0, 2, -4, 4].map((x) => [x, z, 180])), front: [0, -1.3, 180],
+    stageFront: { z: -2.4, h: 0.8, w: 9 } },   // where performers stand: on the platform, facing the audience
   lockerroom: { size: [10, 7], h: 3.0, wall: '#d9e2e8', floor: '#9aa5ad', trim: '#2e86de', door: [4.8, 2.5, -90],
     props: [['lockers', 0, -3.25, 0, { n: 14, color: '#5d6d7e' }], ['lockers', -4.75, 0, 90, { n: 8, color: '#5d6d7e' }], ['bench', 0, -1.6, 0, { w: 4 }], ['bench', 0, 1.2, 0, { w: 4 }], ['trash', 4.3, -3.0, 0]],
     seats: [[-1.2, -1.6, 0], [0, -1.6, 0], [1.2, -1.6, 0], [-1.2, 1.2, 180], [1.2, 1.2, 180]] },
-  diner: { size: [12, 9], h: 3.2, wall: '#f6e2b3', floor: '#e8e2d6', trim: '#c0392b', door: [5.8, 3, -90],
-    props: [['counter', -1, -4.0, 0, { w: 5.6 }], ...[-3, -1, 1].map((x) => ['stoolbar', x, -3.2, 0]), ...[-3.5, 0.5, 4.2].map((x) => ['booth', x, 2.4, 0, { color: '#c0392b' }]),
-      ['window', -2, 4.45, 180, { y: 1.6, w: 3 }], ['window', 2.5, 4.45, 180, { y: 1.6, w: 3 }], ['plant', 5.4, -3.8, 0]],
-    seats: [-3.5, 0.5, 4.2].flatMap((x) => [[x - 0.4, 1.65, 0], [x + 0.4, 3.15, 180]]) },
+  diner: { size: [12, 9], h: 3.2, wall: '#f6e2b3', floor: '#e8e2d6', trim: '#c0392b', door: [5.3, 2.6, -90],
+    props: [['counter', -1, -4.0, 0, { w: 5.6 }], ...[-3, -1.6, -0.2, 1.2].map((x) => ['stoolbar', x, -3.25, 0]),
+      ...[[-3.5, 0.6], [0.5, 0.6], [-3.5, 3.0], [0.5, 3.0], [4.0, -0.4]].flatMap(([x, z]) => [['table', x, z, 0, { w: 1.1, d: 0.8 }], ['chair', x, z - 0.72, 0], ['chair', x, z + 0.72, 180]]),
+      ['window', -2, 4.45, 180, { y: 1.6, w: 3 }], ['window', 2.5, 4.45, 180, { y: 1.6, w: 3 }], ['plant', 5.4, -3.8, 0], ['floorlamp', -5.4, 3.8, 0], ['rug', 0.5, 1.8, 0, { w: 7, d: 4.4 }]],
+    seats: [[-3.5, 0.6], [0.5, 0.6], [-3.5, 3.0], [0.5, 3.0], [4.0, -0.4]].flatMap(([x, z]) => [[x, z - 0.72, 0], [x, z + 0.72, 180]]) },
   infirmary: { size: [8, 7], h: 3.0, wall: '#eef3f6', floor: '#dfe6ea', trim: '#7fa7c9', door: [3.8, 2.4, -90],
     props: [['bed', -2.2, -2.2, 0, { sheet: '#ffffff', color: '#9fc5e8' }], ['bed', 1.0, -2.2, 0, { sheet: '#ffffff', color: '#9fc5e8' }], ['curtain', -0.6, -2.2, 90, { w: 2.2 }],
       ['shelf', 3.6, -1.2, -90], ['chair', -1.2, -1.2, -90], ['plant', 3.5, 2.8, 0], ['window', -2, -3.45, 0, { y: 1.6 }]],
-    spots: { bed: [-2.2, -2.5, 0, 0.62], center: [0, 0.6, 0] } },
+    spots: { bed: [-2.2, -1.55, 0, 0.62], center: [0, 0.6, 0] } },
   garden: { outdoor: true, size: [20, 16], ground: '#6fb14f', path: '#d9c79c', door: [0, -5, 180],
     props: [['house', 0, -8, 0], ['fence', -6, 4, 0], ['fence', -2, 4, 0], ['fence', 2, 4, 0], ['fence', 6, 4, 0], ['flowers', -3, -3, 0], ['flowers', -2.4, -3.2, 0], ['flowers', 2.6, -3, 0],
       ['flowers', 3.2, -2.8, 0], ['bush', -5, -4, 0], ['bush', 5, -4, 0], ['tree', 7, -1, 0], ['parkbench', -4, 0.5, 90]],
     seats: [[-4, 0, 90], [-4, 1, 90]] },
   balcony: { outdoor: true, size: [8, 5], ground: '#8a6a4c', path: '#8a6a4c', door: [0, -2, 180],
+    spots: { railing: [0, 1.7, 180] },
     props: [['house', 0, -6.2, 0], ['railing', 0, 2.3, 0, { w: 7 }], ['railing', -3.6, 0, 90, { w: 4.6 }], ['railing', 3.6, 0, 90, { w: 4.6 }], ['plant', -2.8, -1.6, 0], ['plant', 2.8, -1.6, 0]] },
   prom: { size: [18, 12], h: 6, wall: '#2c1f4a', floor: '#3a2d5c', trim: '#ff5fa2', door: [-5, 5.3, 180],
     props: [['banner', 0, -5.9, 0, { y: 4.2, w: 7, text: 'PROM NIGHT', color: '#1b1236', ink: '#ff8ac2' }], ['stringlights', 0, -3, 0, { w: 16, y: 4.5 }], ['stringlights', 0, 2, 0, { w: 16, y: 4.6 }],
@@ -303,6 +307,8 @@ export const SETS = {
     spots: { bench: [0, -2.4, 0, 0.42] }, seats: [[-0.5, -2.4, 0], [0.5, -2.4, 0]] },
   field: { outdoor: true, size: [30, 22], ground: '#5aa548', path: '#b8573a', door: [-14, 0, 90],
     props: [['bleachers', 0, 8.5, 180, { w: 16 }], ['banner', 0, 10, 180, { y: 3.4, w: 8, text: 'CHAMPIONSHIP' }], ['streetlamp', -12, 8, 0], ['streetlamp', 12, 8, 0]] },
+  rooftop: { outdoor: true, size: [12, 10], ground: '#5a6070', path: '#5a6070', door: [-5, 3, 90],
+    props: [['ledge', 0, -0.9, 0, { w: 10 }], ['shop', -7, -14, 0], ['shop', 2, -18, 0], ['shop', 10, -12, 0], ['shop', -14, -20, 0], ['shop', 15, -22, 0], ['house', -4, -26, 0]] },
   void: { outdoor: true, size: [20, 20], ground: '#1a1530', path: '#1a1530', door: [-9, 0, 90], props: [] },
 };
 
@@ -347,6 +353,7 @@ export function buildSet(name, time = 'day') {
     door = [px + inward[0] * 0.75, pz + inward[1] * 0.75, yaw];
   }
   const solids = [];   // prop bounding boxes the camera must not sit in or look through
+  const decks = [];    // raised floors (the stage platform)
   for (const [type, x, z, yaw = 0, o = {}] of props) {
     const g = new THREE.Group();
     const opts = { ...o, night: time === 'night' };
@@ -356,7 +363,8 @@ export function buildSet(name, time = 'day') {
     group.add(g);
     g.updateMatrixWorld(true);
     const box = new THREE.Box3().setFromObject(g);
-    if (!box.isEmpty() && box.max.y > 0.3 && type !== 'door') solids.push(box);   // a door is walked up to, not around
+    if (type === 'stage') decks.push({ box, h: 0.8 });   // a platform you stand on
+    else if (!box.isEmpty() && box.max.y > 0.3 && type !== 'door') solids.push(box);   // a door is walked up to, not around
   }
   // doors swing open (into the room) while anyone is within reach of them, and close behind
   const doors = [];
@@ -384,7 +392,7 @@ export function buildSet(name, time = 'day') {
   const spots = { center: [0, def.outdoor ? 1.5 : 0.4, 0], ...def.spots };
   const m = 0.25;   // stay this far inside the walls
   const bounds = def.outdoor ? { x: [-w, w], z: [-d, d], y: 12 } : { x: [-w / 2 + m, w / 2 - m], z: [-d / 2 + m, d / 2 - m], y: def.h - 0.2 };
-  return { name, def, group, statics, solids, spots, bounds, door, updateDoors, showCeiling, seats: def.seats || [], front: def.front || null, light: L, outdoor: !!def.outdoor, size: def.size };
+  return { name, def, group, statics, solids, decks, spots, bounds, door, updateDoors, showCeiling, seats: def.seats || [], front: def.front || null, light: L, outdoor: !!def.outdoor, size: def.size };
 }
 
 // One prop on its own (kit model when there is one), for scenes built outside the set table such as the credits photos.

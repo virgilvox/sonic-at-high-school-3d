@@ -1,51 +1,297 @@
-{ "part": 39, "title": "The Speech", "scenes": [
-  { "set": "stage", "time": "day", "cast": ["sonic", "crowd"], "beats": [
-    { "song": "happy", "title": "Sonic walks up to the microphone as the graduates settle", "dur": 14 },
-    { "say": "sonic", "text": "Ok.. so... *taps mic*", "emote": "worried", "do": "hands" },
-    { "say": "sonic", "text": "I've gotta say, receiving this degree has been a big honour", "emote": "happy" },
-    { "say": "sonic", "text": "but the bad thing is, we have to go to college now!", "emote": "annoyed", "do": "shrug" },
-    { "sfx": "crowd", "cap": "*everyone laughing*" },
-    { "say": "sonic", "text": "Man... this high school's been a pain! Now college?", "emote": "annoyed" },
-    { "say": "sonic", "text": "Oh jeez.. I wonder if our teachers there won't be as bad as Egghead", "emote": "smirk", "do": "think" },
-    { "sfx": "crowd", "cap": "*everyone laughing*" },
-    { "say": "sonic", "text": "but.. it's not really all about learning", "emote": "relaxed" },
-    { "say": "sonic", "text": "It's about friendship, even your fangirls!", "emote": "smirk", "do": "wink" },
-    { "say": "sonic", "text": "but most importantly.. it's the people you love that remain in your heart", "emote": "relaxed" },
-    { "say": "crowd", "text": "Aaaawww", "emote": "happy" },
-    { "say": "sonic", "text": "So what if this degree is getting me out of here to a new journey of life", "emote": "happy" },
-    { "say": "sonic", "text": "What about my three best buddies? One of them is like a brother to me", "to": "knuckles", "emote": "happy", "do": "present" },
-    { "say": "sonic", "text": "the other one is like my side kick!", "to": "tails", "emote": "happy", "do": "present" },
-    { "say": "sonic", "text": "and we all know, that the last one is the faker", "to": "shadow", "emote": "smirk", "do": "point" },
-    { "say": "sonic", "text": "Oh, wait! I almost forgot! My fangirls!", "to": "fangirls", "emote": "excited", "do": "wave" },
-    { "say": "sonic", "text": "and I haven't forgotten about you, Rouge", "to": "rouge", "emote": "smirk", "do": "wink" },
-    { "say": "sonic", "text": "Another thing, I know I hardly pay attention in class", "emote": "relaxed", "do": "hands" },
-    { "say": "sonic", "text": "but there's that time where I heard 'Keep your friends close, but enemies closer'", "emote": "neutral", "do": "think" },
-    { "say": "sonic", "text": "and I'm just sat there like 'Why the enemies?'", "emote": "annoyed", "do": "shrug" },
-    { "say": "sonic", "text": "but you all remember when I had a massive fight with some certain guy", "emote": "relaxed" },
-    { "say": "sonic", "text": "Who kinda did a lot of crimes...", "emote": "annoyed" },
-    { "say": "sonic", "text": "but when I was finally gonna win the fight.. I realised that the quote.. was meant for me and him..", "emote": "relaxed" },
-    { "say": "sonic", "text": "and that's why I stood in front of him.. almost sacrificing my life for him.. cause he's my friend", "to": "scourge", "emote": "sad" },
-    { "say": "sonic", "text": "and at last.. the love of my life..", "emote": "blush", "do": "smile" },
-    { "say": "sonic", "text": "I know you're out there in the crowds somewhere...", "to": "amy", "emote": "happy" },
-    { "say": "sonic", "text": "but.. you remember the time when we first met?", "to": "amy", "emote": "happy" },
-    { "say": "sonic", "text": "That was the best thing that ever happened to me in my life", "to": "amy", "emote": "happy" },
-    { "say": "sonic", "text": "It's like.. you were supposed to be here.. for me", "to": "amy", "emote": "relaxed" },
-    { "say": "sonic", "text": "It's like a gift from the Angels!", "to": "amy", "emote": "happy" },
-    { "say": "sonic", "text": "I never fell for you cause you're beautiful", "to": "amy", "emote": "relaxed" },
-    { "say": "sonic", "text": "I fell for you.. cause of your heart", "to": "amy", "emote": "happy", "do": "smile" },
-    { "say": "sonic", "text": "but.. I'm just scared, I don't wanna lose any of you..", "emote": "sad" },
-    { "say": "sonic", "text": "No matter what, we will all stay forever united!", "emote": "happy", "do": "fist" },
-    { "say": "sonic", "text": "and I will NEVER.. let us be apart.. Ames...", "to": "amy", "emote": "happy" },
-    { "say": "sonic", "text": "SO LET'S ALL BE HAPPY CAUSE WE'VE DID IT!", "emote": "excited", "do": "cheer" },
-    { "sfx": "crowd", "cap": "*everyone clapping*" },
-    { "song": "happy", "title": "The whole class sings together at graduation", "dur": 20 },
-    { "song": "happy", "title": "Sonic and Amy sing about the future they have started", "dur": 20 },
-    { "song": "happy", "title": "Everyone celebrates where they come from", "dur": 20 },
-    { "song": "happy", "title": "Tails, Rouge and the whole gang remember the best of times", "dur": 20 },
-    { "song": "love", "title": "Knuckles and Tikal, Manic and Sally, Silver and Blaze hold on to each other", "dur": 20 },
-    { "song": "happy", "title": "The friends who have been there all along sing together", "dur": 20 },
-    { "song": "happy", "title": "The world is one big stage and the show will never close", "dur": 20 },
-    { "song": "love", "title": "The whole school sings the final chorus together", "dur": 20 },
-    { "song": "happy", "title": "Everyone cheers as high school lives on forever", "dur": 20 }
-  ] }
-] }
+{
+ "part": 39,
+ "title": "The Speech",
+ "scenes": [
+  {
+   "set": "stage",
+   "time": "day",
+   "cast": [
+    "sonic",
+    "crowd",
+    "amy",
+    "tails",
+    "knuckles",
+    "shadow",
+    "rouge",
+    "cream",
+    "blaze",
+    "silver",
+    "sally",
+    "manic",
+    "tikal",
+    "espio",
+    "sonia",
+    "vector",
+    "scourge"
+   ],
+   "beats": [
+    {
+     "song": "happy",
+     "title": "Sonic walks up to the microphone as the graduates settle",
+     "dur": 14
+    },
+    {
+     "say": "sonic",
+     "text": "Ok.. so... *taps mic*",
+     "emote": "worried",
+     "do": "hands"
+    },
+    {
+     "say": "sonic",
+     "text": "I've gotta say, receiving this degree has been a big honour",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "but the bad thing is, we have to go to college now!",
+     "emote": "annoyed",
+     "do": "shrug"
+    },
+    {
+     "sfx": "crowd",
+     "cap": "*everyone laughing*"
+    },
+    {
+     "say": "sonic",
+     "text": "Man... this high school's been a pain! Now college?",
+     "emote": "annoyed"
+    },
+    {
+     "say": "sonic",
+     "text": "Oh jeez.. I wonder if our teachers there won't be as bad as Egghead",
+     "emote": "smirk",
+     "do": "think"
+    },
+    {
+     "sfx": "crowd",
+     "cap": "*everyone laughing*"
+    },
+    {
+     "say": "sonic",
+     "text": "but.. it's not really all about learning",
+     "emote": "relaxed"
+    },
+    {
+     "say": "sonic",
+     "text": "It's about friendship, even your fangirls!",
+     "emote": "smirk",
+     "do": "wink"
+    },
+    {
+     "say": "sonic",
+     "text": "but most importantly.. it's the people you love that remain in your heart",
+     "emote": "relaxed"
+    },
+    {
+     "say": "crowd",
+     "text": "Aaaawww",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "So what if this degree is getting me out of here to a new journey of life",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "What about my three best buddies? One of them is like a brother to me",
+     "to": "knuckles",
+     "emote": "happy",
+     "do": "present"
+    },
+    {
+     "say": "sonic",
+     "text": "the other one is like my side kick!",
+     "to": "tails",
+     "emote": "happy",
+     "do": "present"
+    },
+    {
+     "say": "sonic",
+     "text": "and we all know, that the last one is the faker",
+     "to": "shadow",
+     "emote": "smirk",
+     "do": "point"
+    },
+    {
+     "say": "sonic",
+     "text": "Oh, wait! I almost forgot! My fangirls!",
+     "to": "fangirls",
+     "emote": "excited",
+     "do": "wave"
+    },
+    {
+     "say": "sonic",
+     "text": "and I haven't forgotten about you, Rouge",
+     "to": "rouge",
+     "emote": "smirk",
+     "do": "wink"
+    },
+    {
+     "say": "sonic",
+     "text": "Another thing, I know I hardly pay attention in class",
+     "emote": "relaxed",
+     "do": "hands"
+    },
+    {
+     "say": "sonic",
+     "text": "but there's that time where I heard 'Keep your friends close, but enemies closer'",
+     "emote": "neutral",
+     "do": "think"
+    },
+    {
+     "say": "sonic",
+     "text": "and I'm just sat there like 'Why the enemies?'",
+     "emote": "annoyed",
+     "do": "shrug"
+    },
+    {
+     "say": "sonic",
+     "text": "but you all remember when I had a massive fight with some certain guy",
+     "emote": "relaxed"
+    },
+    {
+     "say": "sonic",
+     "text": "Who kinda did a lot of crimes...",
+     "emote": "annoyed"
+    },
+    {
+     "say": "sonic",
+     "text": "but when I was finally gonna win the fight.. I realised that the quote.. was meant for me and him..",
+     "emote": "relaxed"
+    },
+    {
+     "say": "sonic",
+     "text": "and that's why I stood in front of him.. almost sacrificing my life for him.. cause he's my friend",
+     "to": "scourge",
+     "emote": "sad"
+    },
+    {
+     "say": "sonic",
+     "text": "and at last.. the love of my life..",
+     "emote": "blush",
+     "do": "smile"
+    },
+    {
+     "say": "sonic",
+     "text": "I know you're out there in the crowds somewhere...",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "but.. you remember the time when we first met?",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "That was the best thing that ever happened to me in my life",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "It's like.. you were supposed to be here.. for me",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "say": "sonic",
+     "text": "It's like a gift from the Angels!",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "I never fell for you cause you're beautiful",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "say": "sonic",
+     "text": "I fell for you.. cause of your heart",
+     "to": "amy",
+     "emote": "happy",
+     "do": "smile"
+    },
+    {
+     "say": "sonic",
+     "text": "but.. I'm just scared, I don't wanna lose any of you..",
+     "emote": "sad"
+    },
+    {
+     "say": "sonic",
+     "text": "No matter what, we will all stay forever united!",
+     "emote": "happy",
+     "do": "fist"
+    },
+    {
+     "say": "sonic",
+     "text": "and I will NEVER.. let us be apart.. Ames...",
+     "to": "amy",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "SO LET'S ALL BE HAPPY CAUSE WE'VE DID IT!",
+     "emote": "excited",
+     "do": "cheer"
+    },
+    {
+     "sfx": "crowd",
+     "cap": "*everyone clapping*"
+    },
+    {
+     "song": "happy",
+     "title": "The whole class sings together at graduation",
+     "dur": 20
+    },
+    {
+     "song": "happy",
+     "title": "Sonic and Amy sing about the future they have started",
+     "dur": 20
+    },
+    {
+     "song": "happy",
+     "title": "Everyone celebrates where they come from",
+     "dur": 20
+    },
+    {
+     "song": "happy",
+     "title": "Tails, Rouge and the whole gang remember the best of times",
+     "dur": 20
+    },
+    {
+     "song": "love",
+     "title": "Knuckles and Tikal, Manic and Sally, Silver and Blaze hold on to each other",
+     "dur": 20
+    },
+    {
+     "song": "happy",
+     "title": "The friends who have been there all along sing together",
+     "dur": 20
+    },
+    {
+     "song": "happy",
+     "title": "The world is one big stage and the show will never close",
+     "dur": 20
+    },
+    {
+     "song": "love",
+     "title": "The whole school sings the final chorus together",
+     "dur": 20
+    },
+    {
+     "song": "happy",
+     "title": "Everyone cheers as high school lives on forever",
+     "dur": 20
+    }
+   ],
+   "onstage": [
+    "sonic"
+   ],
+   "music": "graduation"
+  }
+ ]
+}

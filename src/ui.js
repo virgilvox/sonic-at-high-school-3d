@@ -50,12 +50,38 @@ export class UI {
     this.cap.innerHTML = `<div class="line ${cls}"${col}>${name}${html}</div>`;
   }
 
+  // The opening: hack.build presents, then the 16-bit title screen.
+  async intro(seconds = 7.5) {
+    const el = document.getElementById('intro');
+    el.hidden = false;
+    for (const n of el.querySelectorAll('*')) { n.style.animation = 'none'; void n.offsetWidth; n.style.animation = ''; }
+    await sleep(seconds);
+    el.hidden = true;
+  }
+  // A Sonic 2 style act card for a part: bands sweep in with the part's name as a zone, hold, sweep out.
+  async actCard(n, title, hold = 2.6) {
+    const el = document.getElementById('act');
+    el.querySelector('.aname').textContent = (title || '').toUpperCase() + (/ZONE$/i.test(title || '') ? '' : ' ZONE');
+    el.querySelector('.anum b').textContent = n;
+    el.className = ''; el.hidden = false; void el.offsetWidth;
+    el.className = 'in';
+    await sleep(hold + 0.8);
+    el.className = 'out';
+    await sleep(0.5);
+    el.hidden = true; el.className = '';
+  }
+
   async card(text, dur) {
     this.cardEl.textContent = text;
     this.cardEl.classList.add('on');
     await sleep(dur);
     this.cardEl.classList.remove('on');
     await sleep(0.4);
+  }
+  // A small clapperboard slate in the corner of the picture (used during the credits bloopers).
+  slate(text) {
+    const el = document.getElementById('slate');
+    el.textContent = text; el.classList.remove('on'); void el.offsetWidth; el.classList.add('on');
   }
   letterbox(on, title = '') {
     this.box.classList.toggle('on', on);

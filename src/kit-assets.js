@@ -5,6 +5,7 @@
 // tools/kit.mjs copies these into assets/kit (textures embedded); src/sets.js builds props from them.
 export const KIT = {
   desk: { file: 'furniture-kit/desk', size: [1.0, 0.76, 0.62] },
+  schooldesk: { file: 'furniture-kit/table', size: [0.95, 0.74, 0.6] },   // open legs, so a seated student's knees go under it
   chair: { file: 'furniture-kit/chair', fit: { h: 0.95 } },
   bed: { file: 'furniture-kit/bedSingle', size: [1.05, 0.55, 2.05] },
   shelf: { file: 'furniture-kit/bookcaseOpen', fit: { h: 1.85 } },

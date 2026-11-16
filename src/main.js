@@ -15,6 +15,7 @@ import { UI } from './ui.js';
 import { VoicePanel } from './voicepanel.js';
 import { Gallery } from './gallery.js';
 import { Credits } from './credits.js';
+import { ColdOpen } from './coldopen.js';
 import { CAST, TINTABLE, DEFAULT_HEIGHT } from './cast.js';
 import { PARTS } from './parts.js';
 import { hasModel, model, bank } from './assets.js';
@@ -50,7 +51,7 @@ const lights = {
 };
 
 function resize() {
-  const w = innerWidth, h = innerHeight;
+  const c = $('view'), w = c.clientWidth || innerWidth, h = c.clientHeight || innerHeight;
   renderer.setSize(w, h, false);
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
@@ -148,7 +149,8 @@ async function loadActor(id) {
   const box = new THREE.Box3().setFromObject(vrm.scene, true);
   const scale = (c.height || DEFAULT_HEIGHT) / Math.max(0.01, box.max.y - box.min.y);
   vrm.scene.position.y = -box.min.y * scale;
-  const a = new Character(vrm, animData, { ...c, scale, walkSpeed: 1.25 });
+  const a = new Character(vrm, animData, { ...c, scale, walkSpeed: 1.5 });
+  a.bulk = c.bulk || 0.55;
   a.root.visible = false;
   scene.add(a.root);
   actors.set(id, a);
@@ -227,8 +229,9 @@ $('galleryBtn').onclick = () => { runner.stop(); if (runner.set) scene.remove(ru
 const runner = new Runner({ scene, cast: actors, info, director, voices, sound, ui, lights });
 // Load who the scene needs; past MAX_LOADED, free everyone else so long runs do not pile up models.
 const MAX_LOADED = 16;   // main cast plus the background students a scene uses
+const coldOpen = new ColdOpen({ scene, camera, lights, loadActor, sound });
 const credits = new Credits({ renderer, scene, camera, loadActor, actors, lights, sound, ui, stage: () => runner.set });
-runner.roll = (tok) => credits.play(() => tok === runner.token);
+runner.credits = credits;
 
 runner.prepare = async (ids) => {
   if (actors.size + ids.filter((id) => !actors.has(id)).length > MAX_LOADED) {
@@ -253,6 +256,12 @@ async function start(pi, si) {
   if (voices.mode === 'browser' && window.speechSynthesis) speechSynthesis.speak(new SpeechSynthesisUtterance(''));   // iOS: unlock in the tap
   ui.showPicker(false); ui.setPlaying(true);
   runner.pause(false);
+  if (pi === 0 && si === 0 && !state.introDone) {   // the opening titles, once per visit
+    state.introDone = true;
+    await coldOpen.play();   // the original's moody opening, in 3D
+    sound.startScore('credits', { vol: 0.75 });
+    await ui.intro();
+  }
   const done = await runner.playPart(part, { fromScene: si, onScene: (s) => { state.scene = s; ui.setWhere(part, s, part.scenes.length); } });
   if (done) start(pi + 1, 0);
 }
@@ -264,9 +273,10 @@ function loop() {
   frames++;
   const dt = Math.min(clock.getDelta(), window.__maxDt || 1 / 20);
   if (!runner.paused) {
-    if (!window.__freeze) for (const a of actors.values()) if (a.root.visible) a.update(dt);   // ?freeze: bind pose, for model checks
+    if (!window.__freeze && !coldOpen.active) for (const a of actors.values()) if (a.root.visible) a.update(dt);   // ?freeze: bind pose, for model checks
     runner.physics(dt, camera);
-    if (gallery.active) { gallery.update(dt); orbit.update(); }
+    if (coldOpen.active) coldOpen.update(dt);
+    else if (gallery.active) { gallery.update(dt); orbit.update(); }
     else if (state.free) orbit.update(); else director.update(dt);
   }
   sun.target.position.copy(director.lookAt);
@@ -301,7 +311,18 @@ async function diagnostics(kind) {
   ui.showPicker(false); $('bar').hidden = true;
   const { buildSet } = await import('./sets.js');
   const q = new URLSearchParams(location.search);
-  const set = buildSet(kind === 'set' ? q.get('name') || 'hallway' : 'gym', q.get('time') || 'day'); scene.add(set.group); lights.apply(set);
+  const set = buildSet(kind === 'set' || kind === 'sit' ? q.get('name') || 'hallway' : 'gym', q.get('time') || 'day'); scene.add(set.group); lights.apply(set);
+  if (kind === 'sit') {   // ?test=sit&name=classroom: two actors on the first seats (or Sonic in bed), seen from the side
+    director.setWorld(null, null, []);
+    const ids = ['sonic', 'amy'];
+    for (const id of ids) await loadActor(id);
+    runner.set = set; runner.bodies.use(set, []);
+    if (set.name === 'bedroom') { const a = actors.get('sonic'); runner.lie(a, runner.spot('bed')); a.root.visible = true; }
+    else set.seats.slice(0, 2).forEach(([x, z, yaw], i) => { const a = actors.get(ids[i]); a.place(x, z, yaw * Math.PI / 180); a.setBase('Sitting_Idle_Loop', 0); a.root.visible = true; });
+    const p = set.name === 'bedroom' ? runner.spot('bed') : { x: set.seats[0][0], z: set.seats[0][1] };
+    director.cut({ type: 'fixed', pos: [p.x + 2.6, 1.3, p.z + 0.4], look: [p.x, 0.6, p.z], fov: 45 });
+    return requestAnimationFrame(loop);
+  }
   if (kind === 'set') {   // ?test=set&name=bedroom: the empty set from a high corner, for checking the dressing
     const [w, d] = set.size, B = set.bounds;
     director.setWorld(null, null, []);

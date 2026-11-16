@@ -1,7 +1,7 @@
 // Plays a part's script: loads each scene's set, stages the cast, then runs beats in order (say, think, do,
 // enter, exit, sfx, card, song, fx, wait) with automatic camera coverage. See script/README.md for the format.
 import * as THREE from 'three';
-import { buildSet } from './sets.js';
+import { buildSet, makeProp } from './sets.js';
 import { readTime, speakable } from './voice.js';
 import { Bodies } from './bodies.js';
 import { Dodgeball } from './dodgeball.js';
@@ -16,9 +16,9 @@ const PLACE = {
   hallway: { amb: [{ name: 'amb-hallway', vol: 0.45 }, { name: 'amb-hallway2', vol: 0.35 }], floor: 'tile' },
   cafeteria: { amb: [{ name: 'amb-cafeteria', vol: 0.55 }, { name: 'amb-hallway2', vol: 0.3 }], floor: 'tile' },
   classroom: { amb: [{ name: 'amb-hallway', vol: 0.12 }], floor: 'tile' },
-  gym: { amb: [{ name: 'amb-crowd', vol: 0.25 }], floor: 'wood' },
+  gym: { amb: [{ name: 'amb-gym', vol: 0.4 }, { name: 'squeak', vol: 0.5 }], floor: 'wood' },
   field: { amb: [{ name: 'amb-crowd', vol: 0.35 }, { name: 'birds', vol: 0.3 }], floor: 'grass' },
-  stage: { amb: [{ name: 'amb-cafeteria', vol: 0.18 }], floor: 'wood' },
+  stage: { amb: [{ name: 'amb-audience', vol: 0.3 }], floor: 'wood' },
   schoolfront: { amb: [{ name: 'amb-hallway', vol: 0.2 }, { name: 'birds', vol: 0.5 }], floor: 'grass' },
   street: { amb: [{ name: 'traffic', vol: 0.6 }, { name: 'birds', vol: 0.3 }], floor: 'tile' },
   park: { amb: [{ name: 'birds', vol: 0.7 }], floor: 'grass' },
@@ -27,7 +27,7 @@ const PLACE = {
   infirmary: { amb: [], floor: 'tile' },
   garden: { amb: [{ name: 'birds', vol: 0.7 }], floor: 'grass' },
   balcony: { amb: [{ name: 'crickets', vol: 0.4 }], floor: 'wood' },
-  prom: { amb: [{ name: 'amb-cafeteria', vol: 0.35 }], floor: 'wood' },
+  prom: { amb: [{ name: 'amb-party', vol: 0.45 }, { name: 'dancebeat', vol: 0.55 }], floor: 'wood' },
   office: { amb: [], floor: 'wood' }, bathroom: { amb: [], floor: 'tile' },
   bedroom: { amb: [], floor: 'wood' }, kitchen: { amb: [], floor: 'wood' }, livingroom: { amb: [], floor: 'wood' },
 };
@@ -84,7 +84,7 @@ const ACTS = {
   blush: { emote: 'happy', amount: 0.6 }, wink: { emote: 'happy', amount: 0.7 }, smirk: { emote: 'happy', amount: 0.45 },
   glare: { emote: 'angry' }, gasp: { emote: 'surprised', sfx: 'gasp' }, sigh: { emote: 'sad', amount: 0.5 },
   hug: { close: 0.42, gesture: 'present', emote: 'happy' }, kiss: { close: 0.32, emote: 'happy', hop: 0.03, sfx: 'sparkle' },
-  lie: { lie: true }, sleep: { lie: true, mood: { relaxed: 1 } }, tpose: { tpose: true },
+  lie: { lie: true }, sleep: { lie: true, mood: { relaxed: 1 } }, tpose: { tpose: true }, restrain: { restrain: true }, spin: { gag: 'spin' }, grow: { gag: 'grow' }, sink: { gag: 'sink' }, float: { gag: 'float' }, moonwalk: { gag: 'moonwalk' }, phase: { gag: 'phase' },
 };
 // Emote names in the script -> VRM expression mixes.
 const EMOTES = {
@@ -115,17 +115,56 @@ export class Runner {
     this.stats = { walks: 0, timeouts: 0 };   // read by the test harness
   }
 
+  // People talk with their hands: lines without a scripted action get a gesture that fits what is said.
+  talkGesture(a, text, b, listener) {
+    const t = speakable(text).toLowerCase(), r = Math.random(), tgt = listener ? listener.eyePos(V()) : null;
+    if (a.baseClip.startsWith('Sitting')) { if (r < 0.35) a.gesture(r < 0.2 ? 'hands' : 'think', { dur: 2 }); return null; }
+    if (/^(yes|yeah|yep|ok|okay|sure|right|exactly|of course)\b/.test(t)) return a.play('Yes');
+    if (/^(no|nope|nah|never|don't|stop)\b/.test(t)) return a.play('Idle_No_Loop');
+    if (/\byou\b/.test(t) && tgt && r < 0.45) return a.gesture('point', { target: tgt, dur: 1.8 });
+    if (/\?$/.test(t) && r < 0.6) return a.gesture(r < 0.3 ? 'shrug' : 'hands', { dur: 2 });
+    if (/!$/.test(t) && r < 0.55) return a.gesture(r < 0.2 ? 'cheer' : r < 0.4 ? 'fist' : 'hands', { target: tgt, dur: 1.8 });
+    if (['sad', 'crying', 'worried'].includes(b.emote) && r < 0.5) return a.gesture('think', { dur: 2.4 });
+    if (['happy', 'excited'].includes(b.emote) && r < 0.4) return a.gesture(r < 0.15 ? 'clap' : 'hands', { dur: 2 });
+    if (r < 0.35) return a.gesture(r < 0.15 ? 'present' : 'hands', { target: tgt, dur: 2 });
+    return null;
+  }
+
+  // Camera rigs, light stands and a boom around the edges of the set, so the bloopers look like a studio.
+  dressStudio() {
+    const B = this.set.bounds, [cx, cz] = this.set.spots.center, open = this.director.openDir(V(cx, 0, cz));
+    const edge = (t, side) => this.bodies.walkable(V(cx, 0, cz).addScaledVector(open, t).add(V(open.z, 0, -open.x).multiplyScalar(side)));
+    const kit = [['camrig', edge(2.6, -1.4), 0], ['camrig', edge(2.8, 1.8), 0], ['lightstand', edge(1.6, -2.8), 0.4], ['lightstand', edge(1.6, 3.0), -0.4], ['boom', edge(1.8, 0.4), 0]];
+    for (const [type, p, turn] of kit) {
+      if (p.x < B.x[0] || p.x > B.x[1] || p.z < B.z[0] || p.z > B.z[1]) continue;
+      const g = makeProp(type);
+      g.position.copy(p); g.rotation.y = Math.atan2(cx - p.x, cz - p.z) + turn;
+      this.set.group.add(g);
+    }
+  }
+
   // Test hook: problems with who is on stage right now (empty when all is well).
   presenceCheck() {
+    if (this.creditsMode) return [];   // the credits shoot photos and play gags on purpose
     if (this.at?.kind === 'roll') return [];   // the credits hide the cast on purpose
     const out = [], B = this.set?.bounds;
     for (const a of this.on) {
       if (!a.root.visible) out.push(a.id + ' invisible');
       else if (B && (a.pos.x < B.x[0] - 0.5 || a.pos.x > B.x[1] + 0.5 || a.pos.z < B.z[0] - 0.5 || a.pos.z > B.z[1] + 0.5)) out.push(a.id + ' out of the room');
-      else if (!a.lieOn && Math.abs(a.root.position.y) > 0.15) out.push(a.id + ' off the floor ' + a.root.position.y.toFixed(2));
+      else if (!a.lieOn && !this.creditsMode && Math.abs(a.root.position.y - (a.floorY || 0)) > 0.15) out.push(a.id + ' off the floor ' + a.root.position.y.toFixed(2));
       else if (!a.root.parent) out.push(a.id + ' not in the scene graph');
     }
     for (const h of this.hidden || []) if (h.why === 'script') out.push(h.id + ' hidden without an exit');
+    for (const id of this.notLoaded || []) out.push(id + ' never loaded');
+    // anyone sitting must be on a seat (or a couch, bench or bed spot) and face the way it faces
+    for (const a of this.on) {
+      if (!a.baseClip?.startsWith('Sitting') || a.lieOn) continue;
+      const seats = [...(this.set.seats || []), ...Object.values(this.set.spots || {}).filter((p) => p.length > 3)];
+      const seat = seats.find(([x, z]) => Math.hypot(a.pos.x - x, a.pos.z - z) < 0.35);
+      if (!seat) out.push(a.id + ' sitting off a seat');
+      else if (Math.abs(((a.yaw - (seat[2] || 0) * DEG) % (2 * Math.PI) + 3 * Math.PI) % (2 * Math.PI) - Math.PI) > 0.6) out.push(a.id + ' sitting the wrong way');
+    }
+    this.notLoaded = [];
     this.hidden = (this.hidden || []).filter((h) => h.why !== 'script');
     return out;
   }
@@ -138,7 +177,7 @@ export class Runner {
     this.bodies.step();
     this.set.updateDoors?.(this.bodies.actors, dt);
     // with nobody talking for a couple of seconds (walks, entrances, action), the music comes up to fill the space
-    this.sound.swell(!this.talking && performance.now() - (this.quietSince || 0) > 2000);
+    if (!this.creditsMode) this.sound.swell(!this.talking && performance.now() - (this.quietSince || 0) > 2000);
     // footsteps: a step every stride while moving, louder near the camera, panned to the side they are on
     for (const a of [...this.on, ...this.extras.list]) {
       if (!a.root.visible || a.speed < 0.35 || a.lieOn) { a.stepT = 0; continue; }
@@ -167,8 +206,11 @@ export class Runner {
   // ------------------------------------------------------------------ flow
   async playPart(part, { fromScene = 0, onScene } = {}) {
     const tok = ++this.token;
+    this.creditsMode = !!part.credits;
+    if (part.credits) await this.credits?.begin(() => tok === this.token);
     for (let si = fromScene; si < part.scenes.length; si++) {
       if (tok !== this.token) return false;
+      if (part.credits && si > fromScene) await this.credits?.cut(si - 1);
       onScene?.(si);
       const sc = part.scenes[si];
       this.alias = this.costumes(sc);
@@ -177,7 +219,8 @@ export class Runner {
       this.loadScene(sc);
       const beats = mergeSongs(sc.beats);
       // the opening picture montage of a part is its title: a card over the intro music instead
-      if (si === 0 && beats[0]?.song) { beats.shift(); await this.titleCard(part); }
+      if (part.credits) { /* the credits sequence has its own opening */ }
+      else if (si === 0 && beats[0]?.song) { beats.shift(); await this.titleCard(part); }
       else if (si === 0 && fromScene === 0) await this.titleCard(part);
       for (let bi = 0; bi < beats.length; bi++) {
         const b = beats[bi];
@@ -191,6 +234,8 @@ export class Runner {
         await this.beat(b, tok);
       }
     }
+    if (part.credits && tok === this.token) await this.credits?.end(() => tok === this.token);
+    this.creditsMode = false;
     return tok === this.token;
   }
   stop() { this.extras.clear(); this.token++; this.skipR?.(); this.voices.stop(); this.sound.stopScore(true); this.ui.letterbox(false); }
@@ -204,11 +249,13 @@ export class Runner {
     this.set = buildSet(sc.set, sc.time);
     this.scene.add(this.set.group);
     this.lights.apply(this.set);
+    if (this.creditsMode) this.dressStudio();   // the bloopers show the crew's gear around the set
     this.set.showCeiling(!this.freeCam);
     this.director.setWorld(this.set.statics, this.set.bounds, this.set.solids);
     this.bodies.use(this.set, []);
-    for (const a of this.cast.values()) { a.root.visible = false; a.path = null; a.speaking = false; a.stopOneShot(); a.setBase('Idle_Loop', 0); a.mood = { happy: 0.15 }; a.lieOn = null; }
+    for (const a of this.cast.values()) { a.root.visible = false; a.path = null; a.speaking = false; a.floorY = 0; a.gagging = false; a.root.scale.setScalar(a.scale ? 1 : 1); a.tpose = false; a.stopOneShot(); a.setBase('Idle_Loop', 0); a.mood = { happy: 0.15 }; a.lieOn = null; }
     this.on.clear();
+    this.notLoaded = (sc.cast || []).filter((id) => !this.actor(id) && !['crowd', 'fangirls', 'narrator'].includes(id));
     const ids = (sc.cast || []).filter((id) => this.actor(id));
     const at = sc.at || {};
     this.stageScene(sc, ids.filter((id) => !at[id]));
@@ -218,6 +265,7 @@ export class Runner {
       const spots = this.game.setup(sc, this.set, sceneIds(sc).filter((id) => this.actor(id)));
       for (const [id, [x, z, yaw]] of Object.entries(spots)) { const a = this.actor(id); if (a && this.on.has(a)) a.place(x, z, yaw * DEG); }
       this.gameSpots = spots;
+      this.game.ambient(this);
     } else this.gameSpots = null;
     this.bodies.actors = [...this.on];
     for (let k = 0; k < 12; k++) this.bodies.step();   // settle anyone placed into furniture or each other
@@ -228,8 +276,8 @@ export class Runner {
     const place = PLACE[sc.set] || { amb: [], floor: this.set.outdoor ? 'grass' : 'tile' };
     this.floor = place.floor;
     this.sound.ambience(sc.time === 'dream' ? [] : sc.time === 'night' && this.set.outdoor ? [...place.amb.filter((x) => x.name !== 'birds'), { name: 'crickets', vol: 0.5 }] : place.amb);
-    this.bed = sceneMood(sc);
-    this.sound.startScore(this.bed, { vol: 0.16 });
+    this.bed = sc.music || sceneMood(sc);   // a scene can name its own track
+    if (!this.creditsMode) this.sound.startScore(this.bed, { vol: 0.16 });   // the credits song carries the whole ending
     this.shotN = 0;
     this.lastSpeaker = null;
     this.cover({ type: 'establish', force: true }, ids.map((i) => this.actor(i)));
@@ -241,7 +289,11 @@ export class Runner {
     const set = this.set, seats = [...set.seats], placed = new Set();
     const sit = (id, [x, z, yaw]) => { const a = this.actor(id); a.place(x, z, yaw * DEG); a.setBase('Sitting_Idle_Loop', 0); this.show(a); placed.add(id); };
     const teachers = ids.filter((id) => ['teacher', 'vector', 'eggman'].includes(id));
-    if (sc.set === 'classroom') {
+    if (sc.set === 'stage' && sc.onstage) {   // performers along the front of the platform, everyone else in the seats
+      const F = set.def.stageFront, on = sc.onstage.filter((id) => ids.includes(id));
+      on.forEach((id, i) => { const a = this.actor(id); a.place((i - (on.length - 1) / 2) * 1.6, F.z, 0); a.floorY = F.h; this.show(a); placed.add(id); });
+      for (const id of ids) if (!placed.has(id) && seats.length && !['crowd', 'fangirls'].includes(id)) sit(id, seats.shift());
+    } else if (sc.set === 'classroom') {
       for (const id of teachers) { const a = this.actor(id), [x, z, yaw] = set.front; a.place(x + placed.size * 0.8, z, yaw * DEG); this.show(a); placed.add(id); }
       for (const id of ids) if (!placed.has(id) && seats.length) sit(id, seats.shift());
     } else if (sc.set === 'cafeteria' || sc.set === 'stage' || sc.set === 'diner' || sc.set === 'lockerroom' || (sc.set === 'park' && ids.length <= 2)) {
@@ -265,6 +317,8 @@ export class Runner {
   hide(a, why = 'script') { this.hidden = this.hidden || []; this.hidden.push({ id: a.id, why, at: this.at }); a.root.visible = false; this.on.delete(a); this.director.actors = [...this.on, ...this.extras.list]; }
 
   spot(name) {
+    const m = /^seat:(\d+)$/.exec(name || '');
+    if (m) { const q = this.set.seats?.[+m[1]]; return q ? { x: q[0], z: q[1], yaw: q[2] * DEG, y: 0.45 } : null; }   // a numbered seat
     const s = this.set.spots[name];
     return s ? { x: s[0], z: s[1], yaw: (s[2] || 0) * DEG, y: s[3] } : null;
   }
@@ -274,20 +328,20 @@ export class Runner {
     if (!s) return;
     if (instant) a.place(s.x, s.z, s.yaw);
     if (name === 'bed' || s.y > 0.55) this.lie(a, s);
-    else if (s.y != null) { a.setBase('Sitting_Idle_Loop', 0); }
+    else if (s.y != null) { a.place(s.x, s.z, s.yaw); a.setBase('Sitting_Idle_Loop', 0); }
   }
   lie(a, s) {
     const p = s || { x: a.pos.x, z: a.pos.z, yaw: a.yaw };
     a.place(p.x, p.z, p.yaw);
     a.play('Death01', { hold: true, fade: 0.01 });
     a.lieOn = p;
-    a.root.position.y = (p.y || 0) * 0.85;
+    a.floorY = (p.y || 0) * 0.85;
   }
   // Get up; off a bed, step out to the side nearest the middle of the room.
   unlie(a) {
     const p = a.lieOn;
     if (!p) return;
-    a.root.position.y = 0; a.lieOn = null;
+    a.floorY = 0; a.lieOn = null;
     if (p.y) {
       const [cx] = this.set.spots.center;
       a.place(p.x + (cx >= p.x ? 0.95 : -0.95), p.z + 0.4, a.yaw);
@@ -323,6 +377,7 @@ export class Runner {
   async beat(b, tok) {
     if (!b.text && !b.cap && !b.card && !b.song) this.ui.caption('');   // a beat with no words clears the last line
     if (b.say || b.think) return this.line(b);
+    if (b.do && b.async) { this.act(b.who, b.do, b); return this.hold(0.2); }   // starts and lets the next beat run alongside
     if (b.do) return this.act(b.who, b.do, b);
     if (b.enter) return this.enter(b);
     if (b.exit) return this.exit(b);
@@ -334,11 +389,11 @@ export class Runner {
       this.ui.caption('');
       return;
     }
+    if (b.card && this.creditsMode) { this.ui.slate(b.card); await this.hold(0.9); return; }   // a corner slate, not a title card
     if (b.card) { this.ui.caption(''); await this.ui.card(b.card, b.dur || 2.6); return; }
     if (b.song) return this.song(b, tok);
     if (b.fx) return this.fx(b.fx);
     if (b.wait) return this.hold(b.wait);
-    if (b.roll) return this.roll?.(tok);   // the end credits (src/credits.js)
     if (b.shot) return this.cover(b.shot, (b.shot.subjects || []).map((i) => this.actor(i)).filter(Boolean));
   }
 
@@ -359,10 +414,12 @@ export class Runner {
     }
     const text = b.text;
     this.ui.caption(text, { who: member, think: !!b.think });
+    if (id === 'crowd' && /prom|go out|date|dance/i.test(text)) this.extras.suitors([...this.on].filter((o) => ['amy', 'rouge', 'cream', 'blaze', 'sally', 'tikal', 'sonia', 'fiona', 'maria', 'cosmo', 'bunnie'].includes(o.id)));
+    if (id === 'fangirls') this.extras.swarm(this.cast.get(this.alias?.[b.to] || b.to) || [...this.on].find((o) => text.toUpperCase().includes(o.name.toUpperCase().slice(0, 4))) || this.lastSpeaker);
     if ((id === 'crowd' || id === 'fangirls') && this.extras.list.length) this.extras.cheer(readTime(text));
     const shout = /!/.test(text) && speakable(text) === speakable(text).toUpperCase() && /[A-Z]/.test(text);
     this.coverLine(a, listener, { shout, moving: !!b.do && /walk|run/.test(b.do) });
-    const acting = b.do && a ? this.act(id, b.do, { ...b, inline: true }) : null;
+    const acting = b.do && a ? this.act(id, b.do, { ...b, inline: true }) : a && !a.lieOn && !a.path ? this.talkGesture(a, text, b, listener) : null;
     this.sound.duck(true); this.talking = true;
     await Promise.race([
       this.voices.say(text, member, b.think ? null : a, { shout, whisper: !!b.think }),
@@ -383,8 +440,12 @@ export class Runner {
     if (a.lieOn && !/lie|sleep|wake|getup/.test(what)) await this.unlie(a);
     if (a.baseClip.startsWith('Sitting') && /walk|run|approach|hug|kiss|punch|jab|slap|push|exit/.test(what)) await this.standUp(a);
     if (what === 'walk' || what === 'run' || what === 'approach') {
-      const dest = this.near(a, b.to || this.nearestOther(a)?.id, b.close || 1.5);
-      if (dest) await this.go(a, dest, { speed: what === 'run' ? 3.6 * (this.castInfo(id).run || 1) : a.walkSpeed, face: b.to && this.actor(b.to) ? this.actor(b.to).pos : null });
+      // "walking" toward the door while still in the scene reads better as a few steps toward whoever they talk to
+      const target = b.to === 'door' ? this.nearestOther(a)?.id : b.to || this.nearestOther(a)?.id;
+      const dest = this.near(a, target, b.close || 1.5);
+      // a wordless walk holds the scene for at most a couple of seconds; the walker keeps going under the next lines
+      const walking = dest ? this.go(a, dest, { speed: what === 'run' ? 3.6 * (this.castInfo(id).run || 1) : a.walkSpeed, face: b.to && this.actor(b.to) ? this.actor(b.to).pos : null }) : null;
+      if (walking) await (b.inline ? walking : Promise.race([walking, sleep(2.5)]));
       if (b.to === 'off') this.hide(a, 'off');
     } else if (what === 'turn' || what === 'face') {
       const t = b.to ? (this.actor(b.to)?.pos || this.near(a, b.to)) : null;
@@ -395,12 +456,33 @@ export class Runner {
     } else {
       const A = ACTS[what] || { emote: EMOTES[what] ? what : null };
       const tgt = b.to ? this.actor(b.to) : null;
+      if (what === 'sit') {   // always on a real seat: the free one nearest the target ("sits by him") or nearest themself
+        if (a.baseClip.startsWith('Sitting')) return;
+        const near = tgt || a, taken = [...this.on, ...this.extras.list].filter((o) => o !== a).map((o) => o.pos);
+        const seat = (this.set.seats || []).filter(([x, z]) => !taken.some((p) => Math.hypot(p.x - x, p.z - z) < 0.5))
+          .sort((p, q) => Math.hypot(p[0] - near.pos.x, p[1] - near.pos.z) - Math.hypot(q[0] - near.pos.x, q[1] - near.pos.z))[0];
+        if (!seat || Math.hypot(seat[0] - a.pos.x, seat[1] - a.pos.z) > 4) return;   // nowhere to sit nearby: stay standing
+        await this.go(a, V(seat[0], 0, seat[1])); a.place(seat[0], seat[1], seat[2] * DEG);
+        await this.playClip(a, 'Sitting_Enter'); a.setBase('Sitting_Idle_Loop');
+        if (b.cap && !b.inline) this.ui.caption('');
+        return;
+      }
       if (A.close && tgt) {
         a.contact = tgt.id; setTimeout(() => { if (a.contact === tgt.id) a.contact = null; }, 5000);   // bodies may touch
         const p = V().copy(tgt.pos).add(V().subVectors(a.pos, tgt.pos).setY(0).setLength(A.close));
         await this.go(a, p, { face: tgt.pos }); a.faceTo(tgt); tgt.faceTo(a);
       }
       if (A.tpose) { a.tpose = true; setTimeout(() => { a.tpose = false; }, 3500); }
+      if (A.restrain && tgt) {   // grab someone from behind and hold on: they struggle, arms around them
+        a.contact = tgt.id;
+        const back = V(Math.sin(tgt.yaw), 0, Math.cos(tgt.yaw)).multiplyScalar(-0.42);
+        await this.go(a, V().copy(tgt.pos).add(back), {});
+        a.faceYaw(tgt.yaw, 12); a.gesture('present', { target: tgt.chestPos(V()), dur: 30 });
+        tgt.setBase('Push_Loop'); this.emote(tgt, 'angry', 0.8);
+        if (b.cap && !b.inline) this.ui.caption('');
+        return;
+      }
+      if (A.gag) { await this.gag(a, A.gag); if (b.cap && !b.inline) this.ui.caption(''); return; }
       if (A.lie) { this.lie(a, this.spot('bed') && /bed/.test(b.cap || b.to || '') ? this.spot('bed') : null); if (A.mood) a.mood = { ...A.mood }; }
       if (A.mood) a.mood = { ...a.mood, ...A.mood };
       if (A.emote) this.emote(a, A.emote, A.amount);
@@ -447,7 +529,7 @@ export class Runner {
     a.setBase('Idle_Loop', 0);
     if (b.cap) this.ui.caption(b.cap, { who: this.castInfo(b.enter), action: true });
     this.cover({ type: 'track', subjects: [a] }, [a]);
-    await this.go(a, to, { speed: b.run ? 3.6 : a.walkSpeed });
+    await Promise.race([this.go(a, to, { speed: b.run ? 3.6 : a.walkSpeed }), sleep(2.5)]);
     if (b.cap) this.ui.caption('');
   }
   async exit(b) {
@@ -485,7 +567,7 @@ export class Runner {
   // A part's opening montage becomes a title card over the intro music.
   async titleCard(part) {
     this.sound.startScore('title', { vol: 0.7 });
-    await this.ui.card(`Part ${part.part}\n${part.title || ''}`, 3.6);
+    await this.ui.actCard(part.part, part.title);
     this.sound.startScore(this.bed || 'happy', { vol: 0.16 });
   }
 
@@ -528,6 +610,21 @@ export class Runner {
     else if (/punch|jab|slap|hug|kiss/.test(what) && tgt) this.cover({ type: 'two', subjects: [a, tgt], force: true }, [a, tgt]);
     else if (/fall|faint|lie|sleep|wake|getup|sit|stand/.test(what)) this.cover({ type: 'wide', subjects: [a] }, [a]);
     else this.cover({ type: 'mcu', subjects: [a] }, [a]);
+  }
+
+  // Blooper gags: the engine "breaking" on purpose. Each animates the actor's root and leaves it in its new state
+  // for the rest of the reel (the next scene resets everyone).
+  async gag(a, kind) {
+    a.gagging = true;
+    const t0 = performance.now(), R = a.root, y0 = a.floorY || 0, s0 = R.scale.x, yaw0 = a.yaw;
+    const run = (dur, f) => new Promise((res) => { const step = () => { const t = Math.min(1, (performance.now() - t0) / (dur * 1000)); f(t); t < 1 ? requestAnimationFrame(step) : res(); }; step(); });
+    if (kind === 'spin') { this.sound.sfx('whoosh'); await run(2.2, (t) => { a.yaw = yaw0 + t * t * 40; }); a.yaw = yaw0; }
+    else if (kind === 'grow') { this.sound.sfx('zap'); await run(1.2, (t) => R.scale.setScalar(s0 * (1 + 1.1 * (1 - Math.cos(t * Math.PI)) / 2 + Math.sin(t * 60) * 0.03 * (1 - t)))); }
+    else if (kind === 'sink') { await run(3.5, (t) => { a.floorY = y0 - t * 2.2; }); a.root.visible = false; }
+    else if (kind === 'float') { this.sound.sfx('whoosh'); await run(3.0, (t) => { a.floorY = y0 + t * t * 7; }); }
+    else if (kind === 'phase') { a.place(a.pos.x, a.pos.z, a.yaw); a.setBase('Sitting_Idle_Loop', 0); a.contact = '*'; a.floorY = y0 + 0.2;
+      const tab = (this.set.solids || []).find((b) => b.max.y < 1 && b.max.y > 0.6); if (tab) { const c = tab.getCenter(new THREE.Vector3()); a.place(c.x, c.z, 0); } await this.hold(1.0); }
+    else if (kind === 'moonwalk') { const fwd = V(Math.sin(a.yaw), 0, Math.cos(a.yaw)); a.setBase('Walk_Loop'); await run(3.0, (t) => { a.pos.x -= fwd.x * 0.02; a.pos.z -= fwd.z * 0.02; }); a.setBase('Idle_Loop'); }
   }
 
   // ------------------------------------------------------------------ helpers

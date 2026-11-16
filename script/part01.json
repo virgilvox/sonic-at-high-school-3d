@@ -1,54 +1,279 @@
-{ "part": 1, "title": "The Nightmare", "scenes": [
-  { "set": "hallway", "time": "dream", "cast": ["sonic"], "beats": [
-    { "card": "Sonic at High School 3\nLove Story" },
-    { "say": "sonic", "text": "Amy? *walking through the corridors*", "do": "walk", "to": "door", "emote": "worried" },
-    { "say": "sonic", "text": "C'mon Ames, jokes over. We gotta get to class!", "emote": "annoyed", "do": "hands" },
-    { "say": "amy", "text": "Sonic!", "emote": "scared" },
-    { "say": "sonic", "text": "Amy?! *turns around*", "do": "turn", "emote": "surprised" },
-    { "enter": "eggman" },
-    { "say": "sonic", "text": "Huh?", "to": "eggman", "emote": "surprised" },
-    { "say": "eggman", "text": "Why hello there, Sonic", "to": "sonic", "emote": "smirk" },
-    { "say": "sonic", "text": "WHA?! *turns back*", "do": "turn", "to": "eggman", "emote": "shocked" },
-    { "say": "eggman", "text": "What are you doing here, wandering around the corridors?", "to": "sonic", "do": "crossarms" },
-    { "say": "sonic", "text": "I'm looking for Amy, sir", "to": "eggman" },
-    { "enter": "robot" }, { "enter": "amy" },
-    { "say": "eggman", "text": "Well... she's right there *moves out of Sonic's way*", "do": "point", "to": "amy", "emote": "smirk" },
-    { "say": "amy", "text": "UGH! LET GO OF ME!", "do": "struggle", "emote": "angry" },
-    { "say": "sonic", "text": "AMY!! *running towards her*", "do": "run", "to": "robot", "emote": "angry" },
-    { "say": "eggman", "text": "I wouldn't do that if I were you", "emote": "smirk" },
-    { "say": "sonic", "text": "NOOO!!! *about to hit robot but forcefully stops*", "do": "fist", "emote": "angry" },
-    { "say": "sonic", "text": "WHAT?! I CAN'T MOVE!", "do": "freeze", "emote": "shocked" },
-    { "say": "amy", "text": "SONIIIC!", "emote": "crying" },
-    { "do": "struggle", "who": "sonic", "cap": "*trying to move*" },
-    { "do": "fall", "who": "sonic", "cap": "*falls to ground*" },
-    { "say": "sonic", "text": "NO!", "emote": "crying" },
-    { "say": "sonic", "text": "AAAAMMMYYYY!!", "emote": "crying" },
-    { "fx": "flash" }
-  ] },
-  { "set": "bedroom", "time": "day", "cast": ["sonic"], "at": { "sonic": "bed" }, "beats": [
-    { "sfx": "alarm", "cap": "RRRIIINNNGGGG!" },
-    { "do": "wake", "who": "sonic", "cap": "*wakes up*" },
-    { "say": "sonic", "text": "*lays back onto his bed* Phew... What a nightmare...", "emote": "relaxed" },
-    { "do": "pickup", "who": "sonic", "cap": "*grabs picture*" },
-    { "say": "sonic", "text": "I'll never let anyone harm you again, Amy. I promise...", "emote": "sad" },
-    { "exit": "sonic", "cap": "*gets off his bed and walks out his room*" }
-  ] },
-  { "set": "bathroom", "time": "day", "cast": ["sonic"], "at": { "sonic": "mirror" }, "beats": [
-    { "do": "brush", "who": "sonic", "cap": "*brushes his teeth*" },
-    { "sfx": "spit", "cap": "*spit*" },
-    { "say": "sonic", "text": "Looking good, handsome *smirk*", "emote": "smirk", "do": "wink" }
-  ] },
-  { "set": "hallway", "time": "day", "cast": ["sonic"], "beats": [
-    { "enter": "manic" },
-    { "say": "sonic", "text": "Morning, bro! *walking out the bathroom*", "to": "manic", "do": "wave", "emote": "happy" },
-    { "say": "manic", "text": "Morning!", "to": "sonic", "emote": "happy" },
-    { "say": "sonic", "text": "So how's Sal? *smirk*", "to": "manic", "emote": "smirk" },
-    { "say": "manic", "text": "Uhm.. good. Why do you need to know?", "emote": "blush" },
-    { "say": "sonic", "text": "No reason *wink*", "do": "wink", "emote": "smirk" },
-    { "say": "sonic", "text": "You wanna walk with me to school today?", "do": "hands" },
-    { "say": "manic", "text": "I'll be down in a bit *walking into the bathroom*", "emote": "happy" },
-    { "exit": "manic" },
-    { "say": "sonic", "text": "Kay, bro *walking downstairs*", "emote": "happy" },
-    { "exit": "sonic" }
-  ] }
-] }
+{
+ "part": 1,
+ "title": "The Nightmare",
+ "scenes": [
+  {
+   "set": "hallway",
+   "time": "dream",
+   "cast": [
+    "sonic"
+   ],
+   "beats": [
+    {
+     "say": "sonic",
+     "text": "Amy? *walking through the corridors*",
+     "do": "walk",
+     "to": "door",
+     "emote": "worried"
+    },
+    {
+     "say": "sonic",
+     "text": "C'mon Ames, jokes over. We gotta get to class!",
+     "emote": "annoyed",
+     "do": "hands"
+    },
+    {
+     "say": "amy",
+     "text": "Sonic!",
+     "emote": "scared"
+    },
+    {
+     "say": "sonic",
+     "text": "Amy?! *turns around*",
+     "do": "turn",
+     "emote": "surprised"
+    },
+    {
+     "enter": "eggman"
+    },
+    {
+     "say": "sonic",
+     "text": "Huh?",
+     "to": "eggman",
+     "emote": "surprised"
+    },
+    {
+     "say": "eggman",
+     "text": "Why hello there, Sonic",
+     "to": "sonic",
+     "emote": "smirk"
+    },
+    {
+     "say": "sonic",
+     "text": "WHA?! *turns back*",
+     "do": "turn",
+     "to": "eggman",
+     "emote": "shocked"
+    },
+    {
+     "say": "eggman",
+     "text": "What are you doing here, wandering around the corridors?",
+     "to": "sonic",
+     "do": "crossarms"
+    },
+    {
+     "say": "sonic",
+     "text": "I'm looking for Amy, sir",
+     "to": "eggman"
+    },
+    {
+     "enter": "robot"
+    },
+    {
+     "enter": "amy"
+    },
+    {
+     "say": "eggman",
+     "text": "Well... she's right there *moves out of Sonic's way*",
+     "do": "point",
+     "to": "amy",
+     "emote": "smirk"
+    },
+    {
+     "do": "restrain",
+     "who": "robot",
+     "to": "amy",
+     "cap": "*the robot grabs Amy*"
+    },
+    {
+     "say": "amy",
+     "text": "UGH! LET GO OF ME!",
+     "do": "struggle",
+     "emote": "angry"
+    },
+    {
+     "say": "sonic",
+     "text": "AMY!! *running towards her*",
+     "do": "run",
+     "to": "robot",
+     "emote": "angry"
+    },
+    {
+     "say": "eggman",
+     "text": "I wouldn't do that if I were you",
+     "emote": "smirk"
+    },
+    {
+     "say": "sonic",
+     "text": "NOOO!!! *about to hit robot but forcefully stops*",
+     "do": "fist",
+     "emote": "angry"
+    },
+    {
+     "say": "sonic",
+     "text": "WHAT?! I CAN'T MOVE!",
+     "do": "freeze",
+     "emote": "shocked"
+    },
+    {
+     "say": "amy",
+     "text": "SONIIIC!",
+     "emote": "crying"
+    },
+    {
+     "do": "struggle",
+     "who": "sonic",
+     "cap": "*trying to move*"
+    },
+    {
+     "do": "fall",
+     "who": "sonic",
+     "cap": "*falls to ground*"
+    },
+    {
+     "say": "sonic",
+     "text": "NO!",
+     "emote": "crying"
+    },
+    {
+     "say": "sonic",
+     "text": "AAAAMMMYYYY!!",
+     "emote": "crying"
+    },
+    {
+     "fx": "flash"
+    }
+   ]
+  },
+  {
+   "set": "bedroom",
+   "time": "day",
+   "cast": [
+    "sonic"
+   ],
+   "at": {
+    "sonic": "bed"
+   },
+   "beats": [
+    {
+     "sfx": "alarm",
+     "cap": "RRRIIINNNGGGG!"
+    },
+    {
+     "do": "wake",
+     "who": "sonic",
+     "cap": "*wakes up*"
+    },
+    {
+     "say": "sonic",
+     "text": "*lays back onto his bed* Phew... What a nightmare...",
+     "emote": "relaxed"
+    },
+    {
+     "do": "pickup",
+     "who": "sonic",
+     "cap": "*grabs picture*"
+    },
+    {
+     "say": "sonic",
+     "text": "I'll never let anyone harm you again, Amy. I promise...",
+     "emote": "sad"
+    },
+    {
+     "exit": "sonic",
+     "cap": "*gets off his bed and walks out his room*"
+    }
+   ]
+  },
+  {
+   "set": "bathroom",
+   "time": "day",
+   "cast": [
+    "sonic"
+   ],
+   "at": {
+    "sonic": "mirror"
+   },
+   "beats": [
+    {
+     "do": "brush",
+     "who": "sonic",
+     "cap": "*brushes his teeth*"
+    },
+    {
+     "sfx": "spit",
+     "cap": "*spit*"
+    },
+    {
+     "say": "sonic",
+     "text": "Looking good, handsome *smirk*",
+     "emote": "smirk",
+     "do": "wink"
+    }
+   ]
+  },
+  {
+   "set": "hallway",
+   "time": "day",
+   "cast": [
+    "sonic"
+   ],
+   "beats": [
+    {
+     "enter": "manic"
+    },
+    {
+     "say": "sonic",
+     "text": "Morning, bro! *walking out the bathroom*",
+     "to": "manic",
+     "do": "wave",
+     "emote": "happy"
+    },
+    {
+     "say": "manic",
+     "text": "Morning!",
+     "to": "sonic",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "So how's Sal? *smirk*",
+     "to": "manic",
+     "emote": "smirk"
+    },
+    {
+     "say": "manic",
+     "text": "Uhm.. good. Why do you need to know?",
+     "emote": "blush"
+    },
+    {
+     "say": "sonic",
+     "text": "No reason *wink*",
+     "do": "wink",
+     "emote": "smirk"
+    },
+    {
+     "say": "sonic",
+     "text": "You wanna walk with me to school today?",
+     "do": "hands"
+    },
+    {
+     "say": "manic",
+     "text": "I'll be down in a bit *walking into the bathroom*",
+     "emote": "happy"
+    },
+    {
+     "exit": "manic"
+    },
+    {
+     "say": "sonic",
+     "text": "Kay, bro *walking downstairs*",
+     "emote": "happy"
+    },
+    {
+     "exit": "sonic"
+    }
+   ]
+  }
+ ]
+}

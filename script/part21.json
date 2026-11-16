@@ -1,43 +1,275 @@
-{ "part": 21, "title": "Anger Management", "scenes": [
-  { "set": "cafeteria", "time": "day", "cast": ["sonic", "amy", "knuckles", "tikal"], "beats": [
-    { "song": "tense", "title": "pictures over music in the cafeteria", "dur": 20 },
-    { "do": "gasp", "who": "sonic", "to": "knuckles", "cap": "*they both notice Tikal and Knuckles on separate tables keep looking and turning back to each other*" },
-    { "say": "sonic", "text": "*sigh* Poor Knucklehead", "emote": "sad", "do": "sigh" },
-    { "say": "amy", "text": "and Tikal", "to": "sonic", "emote": "worried" },
-    { "say": "amy", "text": "and maybe you should go talk to them", "to": "sonic", "emote": "neutral" },
-    { "say": "amy", "text": "Pssh, I know you don't wanna go to Knuckles when he's pissed, neither do I", "to": "sonic", "emote": "smirk" },
-    { "say": "sonic", "text": "Oh you want me to go talk to Knuckles? You should've said so", "to": "amy", "emote": "smirk", "do": "shrug" },
-    { "say": "amy", "text": "Haha, you're really funny", "to": "sonic", "emote": "happy", "do": "laugh" },
-    { "say": "sonic", "text": "*smirk* You go talk to Tikal.. I'll go talk to Knuckles", "to": "amy", "emote": "smirk", "do": "smirk" },
-    { "say": "amy", "text": "Okay good luck", "to": "sonic", "emote": "happy" },
-    { "say": "sonic", "text": "*grabs her hand* Please come with me", "to": "amy", "emote": "scared", "do": "grab" },
-    { "say": "amy", "text": "Sonic, if he lays a hand on you then he'll get hammered. Don't worry", "to": "sonic", "emote": "annoyed", "do": "fist" },
-    { "say": "sonic", "text": "Yeah... you're right *lets go of her hand*", "to": "amy", "emote": "relaxed" },
-    { "think": "sonic", "text": "*walking towards Knuckles* ( Just be gentle.. if he decides to be a d**k then he knows what he's gonna get )", "emote": "smirk", "do": "walk" },
-    { "say": "sonic", "text": "Hey... Knuckles! *sits by him*", "to": "knuckles", "emote": "happy", "do": "sit" },
-    { "say": "knuckles", "text": "Hmph, what do you want?", "to": "sonic", "emote": "annoyed" },
-    { "say": "sonic", "text": "I was just wondering if you're taking Tikal to prom", "to": "knuckles", "emote": "relaxed", "do": "hands" },
-    { "say": "knuckles", "text": "*grabs him* WHAT'S IT TO DO WITH YOU?!", "to": "sonic", "emote": "angry", "do": "grab" },
-    { "say": "sonic", "text": "because I heard you both had a argument, now put me down cause I'm here to help", "to": "knuckles", "emote": "annoyed", "do": "struggle" },
-    { "say": "knuckles", "text": "SO SHE TOLD YOU? EH? WHAT ELSE DID SHE TELL YOU?!", "to": "sonic", "emote": "angry" },
-    { "say": "sonic", "text": "Nothing else, now put me down or you're gonna have to mess with my tough cookie *points at Amy*", "to": "knuckles", "emote": "smirk", "do": "point" },
-    { "do": "smirk", "who": "amy", "to": "knuckles", "cap": "*smiles evilly at Knuckles*" },
-    { "say": "knuckles", "text": "Fine *lets go of Sonic* So what do you mean you're gonna help me?", "to": "sonic", "emote": "annoyed" },
-    { "say": "sonic", "text": "Well I can tell you miss Tikal, and you want to be back together with her", "to": "knuckles", "emote": "smirk" },
-    { "say": "knuckles", "text": "Who do you think you are? Trying to get into my business!", "to": "sonic", "emote": "angry", "do": "fist" },
-    { "say": "sonic", "text": "*sigh* Fine, if you can handle this yourself, I'll leave you be *about to walk away*", "to": "knuckles", "emote": "annoyed", "do": "walk" },
-    { "say": "knuckles", "text": "Wait!", "to": "sonic", "emote": "worried" },
-    { "say": "sonic", "text": "Hmm? *turns back to Knuckles*", "to": "knuckles", "emote": "smirk", "do": "turn" },
-    { "say": "knuckles", "text": "*sigh* I do need your help", "to": "sonic", "emote": "sad", "do": "sigh" },
-    { "say": "sonic", "text": "At least you admitted it", "to": "knuckles", "emote": "smirk" },
-    { "say": "knuckles", "text": "Don't push it hedgehog", "to": "sonic", "emote": "annoyed" },
-    { "say": "sonic", "text": "but here's the first tip, you need to control your temper. Girls hate seeing boys with anger problems", "to": "knuckles", "emote": "relaxed", "do": "present" },
-    { "say": "knuckles", "text": "What you talking about? I can control my temper", "to": "sonic", "emote": "annoyed" },
-    { "say": "sonic", "text": "Then why is Tikal upset over you?", "to": "knuckles", "emote": "smirk" },
-    { "say": "knuckles", "text": "...because I can't control my temper *sigh*", "to": "sonic", "emote": "sad", "do": "sigh" },
-    { "say": "sonic", "text": "Exactly, she's fed up of you getting grumpy all the time", "to": "knuckles", "emote": "relaxed" },
-    { "say": "knuckles", "text": "Alright I get it, so what else do you want me to do?", "to": "sonic", "emote": "neutral" },
-    { "say": "sonic", "text": "Ask her to prom!", "to": "knuckles", "emote": "excited", "do": "point" },
-    { "say": "knuckles", "text": "WHAT?!", "to": "sonic", "emote": "shocked", "do": "gasp" }
-  ] }
-] }
+{
+ "part": 21,
+ "title": "Anger Management",
+ "scenes": [
+  {
+   "set": "cafeteria",
+   "time": "day",
+   "cast": [
+    "sonic",
+    "amy",
+    "knuckles",
+    "tikal"
+   ],
+   "beats": [
+    {
+     "song": "tense",
+     "title": "pictures over music in the cafeteria",
+     "dur": 20
+    },
+    {
+     "do": "gasp",
+     "who": "sonic",
+     "to": "knuckles",
+     "cap": "*they both notice Tikal and Knuckles on separate tables keep looking and turning back to each other*"
+    },
+    {
+     "say": "sonic",
+     "text": "*sigh* Poor Knucklehead",
+     "emote": "sad",
+     "do": "sigh"
+    },
+    {
+     "say": "amy",
+     "text": "and Tikal",
+     "to": "sonic",
+     "emote": "worried"
+    },
+    {
+     "say": "amy",
+     "text": "and maybe you should go talk to them",
+     "to": "sonic",
+     "emote": "neutral"
+    },
+    {
+     "say": "amy",
+     "text": "Pssh, I know you don't wanna go to Knuckles when he's pissed, neither do I",
+     "to": "sonic",
+     "emote": "smirk"
+    },
+    {
+     "say": "sonic",
+     "text": "Oh you want me to go talk to Knuckles? You should've said so",
+     "to": "amy",
+     "emote": "smirk",
+     "do": "shrug"
+    },
+    {
+     "say": "amy",
+     "text": "Haha, you're really funny",
+     "to": "sonic",
+     "emote": "happy",
+     "do": "laugh"
+    },
+    {
+     "say": "sonic",
+     "text": "*smirk* You go talk to Tikal.. I'll go talk to Knuckles",
+     "to": "amy",
+     "emote": "smirk",
+     "do": "smirk"
+    },
+    {
+     "say": "amy",
+     "text": "Okay good luck",
+     "to": "sonic",
+     "emote": "happy"
+    },
+    {
+     "say": "sonic",
+     "text": "*grabs her hand* Please come with me",
+     "to": "amy",
+     "emote": "scared",
+     "do": "grab"
+    },
+    {
+     "say": "amy",
+     "text": "Sonic, if he lays a hand on you then he'll get hammered. Don't worry",
+     "to": "sonic",
+     "emote": "annoyed",
+     "do": "fist"
+    },
+    {
+     "say": "sonic",
+     "text": "Yeah... you're right *lets go of her hand*",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "think": "sonic",
+     "text": "*walking towards Knuckles* ( Just be gentle.. if he decides to be a d**k then he knows what he's gonna get )",
+     "emote": "smirk",
+     "do": "walk"
+    },
+    {
+     "say": "sonic",
+     "text": "Hey... Knuckles! *sits by him*",
+     "to": "knuckles",
+     "emote": "happy",
+     "do": "sit"
+    },
+    {
+     "say": "knuckles",
+     "text": "Hmph, what do you want?",
+     "to": "sonic",
+     "emote": "annoyed"
+    },
+    {
+     "say": "sonic",
+     "text": "I was just wondering if you're taking Tikal to prom",
+     "to": "knuckles",
+     "emote": "relaxed",
+     "do": "hands"
+    },
+    {
+     "say": "knuckles",
+     "text": "*grabs him* WHAT'S IT TO DO WITH YOU?!",
+     "to": "sonic",
+     "emote": "angry",
+     "do": "grab"
+    },
+    {
+     "say": "sonic",
+     "text": "because I heard you both had a argument, now put me down cause I'm here to help",
+     "to": "knuckles",
+     "emote": "annoyed",
+     "do": "struggle"
+    },
+    {
+     "say": "knuckles",
+     "text": "SO SHE TOLD YOU? EH? WHAT ELSE DID SHE TELL YOU?!",
+     "to": "sonic",
+     "emote": "angry"
+    },
+    {
+     "say": "sonic",
+     "text": "Nothing else, now put me down or you're gonna have to mess with my tough cookie *points at Amy*",
+     "to": "knuckles",
+     "emote": "smirk",
+     "do": "point"
+    },
+    {
+     "do": "smirk",
+     "who": "amy",
+     "to": "knuckles",
+     "cap": "*smiles evilly at Knuckles*"
+    },
+    {
+     "say": "knuckles",
+     "text": "Fine *lets go of Sonic* So what do you mean you're gonna help me?",
+     "to": "sonic",
+     "emote": "annoyed"
+    },
+    {
+     "say": "sonic",
+     "text": "Well I can tell you miss Tikal, and you want to be back together with her",
+     "to": "knuckles",
+     "emote": "smirk"
+    },
+    {
+     "say": "knuckles",
+     "text": "Who do you think you are? Trying to get into my business!",
+     "to": "sonic",
+     "emote": "angry",
+     "do": "fist"
+    },
+    {
+     "say": "sonic",
+     "text": "*sigh* Fine, if you can handle this yourself, I'll leave you be *about to walk away*",
+     "to": "knuckles",
+     "emote": "annoyed",
+     "do": "walk"
+    },
+    {
+     "say": "knuckles",
+     "text": "Wait!",
+     "to": "sonic",
+     "emote": "worried"
+    },
+    {
+     "say": "sonic",
+     "text": "Hmm? *turns back to Knuckles*",
+     "to": "knuckles",
+     "emote": "smirk",
+     "do": "turn"
+    },
+    {
+     "say": "knuckles",
+     "text": "*sigh* I do need your help",
+     "to": "sonic",
+     "emote": "sad",
+     "do": "sigh"
+    },
+    {
+     "say": "sonic",
+     "text": "At least you admitted it",
+     "to": "knuckles",
+     "emote": "smirk"
+    },
+    {
+     "say": "knuckles",
+     "text": "Don't push it hedgehog",
+     "to": "sonic",
+     "emote": "annoyed"
+    },
+    {
+     "say": "sonic",
+     "text": "but here's the first tip, you need to control your temper. Girls hate seeing boys with anger problems",
+     "to": "knuckles",
+     "emote": "relaxed",
+     "do": "present"
+    },
+    {
+     "say": "knuckles",
+     "text": "What you talking about? I can control my temper",
+     "to": "sonic",
+     "emote": "annoyed"
+    },
+    {
+     "say": "sonic",
+     "text": "Then why is Tikal upset over you?",
+     "to": "knuckles",
+     "emote": "smirk"
+    },
+    {
+     "say": "knuckles",
+     "text": "...because I can't control my temper *sigh*",
+     "to": "sonic",
+     "emote": "sad",
+     "do": "sigh"
+    },
+    {
+     "say": "sonic",
+     "text": "Exactly, she's fed up of you getting grumpy all the time",
+     "to": "knuckles",
+     "emote": "relaxed"
+    },
+    {
+     "say": "knuckles",
+     "text": "Alright I get it, so what else do you want me to do?",
+     "to": "sonic",
+     "emote": "neutral"
+    },
+    {
+     "say": "sonic",
+     "text": "Ask her to prom!",
+     "to": "knuckles",
+     "emote": "excited",
+     "do": "point"
+    },
+    {
+     "say": "knuckles",
+     "text": "WHAT?!",
+     "to": "sonic",
+     "emote": "shocked",
+     "do": "gasp"
+    }
+   ],
+   "at": {
+    "knuckles": "seat:0",
+    "tikal": "seat:8",
+    "sonic": "seat:12",
+    "amy": "seat:13"
+   }
+  }
+ ]
+}

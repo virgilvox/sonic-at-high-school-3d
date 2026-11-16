@@ -6,7 +6,10 @@ Live at https://virgilvox.github.io/sonic-at-high-school-3d/, repo github.com/vi
 Every push to `main` rebuilds and deploys Pages through `.github/workflows/pages.yml` (`WEB_ONLY=1 node tools/build.mjs`,
 uploads `dist/web`). `npm run build` locally also writes `dist/love-story.html`, the whole film in one offline file.
 
-The film: 39 parts plus Part 40 (bloopers and the end credits). About 1,430 voiced lines, 20 sets, 29 model files.
+The film: a cold open (the original's opening clip over three blue-graded 3D shots), the 16-bit title sequence, 39
+parts (each opens on a Sonic 2 style act card), then Part 40: the credits crawl beside a window of blooper reels with
+behind-the-scenes polaroids cut between them, over "Bit Shift", ending on THE END. About 1,450 voiced lines, 23 sets,
+31 model files.
 
 ## How it fits together
 
@@ -23,9 +26,10 @@ The film: 39 parts plus Part 40 (bloopers and the end credits). About 1,430 voic
 | Voices: baked Kyutai bank, browser speech, off; settings panel | `src/voice.js`, `src/voicepanel.js` |
 | Music beds, swell and duck, ambience, footsteps, synthesized sound effects | `src/audio.js` |
 | Model browser (title screen, MODELS) | `src/gallery.js` |
-| End credits roll and behind-the-scenes photos (the `roll` beat) | `src/credits.js` |
+| End credits: begin, cut between reels, end; behind-the-scenes photos; credits grouped by publisher | `src/credits.js` |
 | Where data comes from (embedded in the one-file build, fetched in the web build) | `src/assets.js` |
-| Title screen and overlays (retro look, hack.build lockup, links) | `src/template.html`, `src/ui.js` |
+| Title screen and overlays (retro look, hack.build lockup and links top right, act cards, intro, slates) | `src/template.html`, `src/ui.js` |
+| Cold open (rooftop, Amy in the rain, the walk-up) and the rain effect | `src/coldopen.js` |
 
 ## Pipelines
 
@@ -55,12 +59,21 @@ The film: 39 parts plus Part 40 (bloopers and the end credits). About 1,430 voic
 - `node tools/mobile.mjs` emulates a phone: it taps Play, toggles free cam and drags.
 - Headless Chrome runs slower than real time, so walk "timeouts" in probes are expected there.
 
+## Staging rules worth knowing
+
+- Every `sit` lands on a real seat (the free one nearest the target or the sitter, within 4 m), and seated people
+  never turn their bodies, only their heads. `at` can name a numbered seat: `"seat:12"`.
+- Stage scenes list performers in `onstage`; they stand on the platform (a deck at 0.8 m), everyone else takes the
+  audience seats. `music` on a scene picks its track (graduation uses Pomp and Circumstance).
+- `restrain`, `async` walks, and the blooper gags (`tpose`, `spin`, `grow`, `sink`, `float`, `moonwalk`, `phase`).
+- Characters carry `bulk` (how far their quills reach) for camera clearance; very bulky ones get near frontal
+  singles and no over-the-shoulder across them.
+- Height changes go through `Character.floorY` (beds, the stage, gags); `updateHop` adds to it.
+
 ## Open threads
 
 - **Licences:** 15 character VRMs say redistribution: disallow in their own metadata. The owner chose to publish them,
   relying on the VRoid Hub page terms. If an author objects, delete that file and the cast falls back to its stand-in.
-- **hack.build YouTube link:** `HACKBUILD_YOUTUBE` in `tools/build.mjs` is empty, so the link stays hidden until the
-  channel URL is filled in.
 - **Still on stand-ins:** Sonia, Fiona, Cosmo, Bunnie, Amy's mom and the teacher. The Sketchfab Sonia and Fiona
   conversions sit in `source/rigs/unused/`: Fiona's source model has closed eyes, and Sonia's face renders blank.
 - **Shots:** close-ups still get partly blocked in the most crowded scenes, about one sample in ten in the 14-player

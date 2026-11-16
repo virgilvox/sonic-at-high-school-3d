@@ -100,8 +100,10 @@ export class Director {
         // Behind the near character on the camera's side of the line. Quills and ears reach well past a human
         // shoulder, so step wider and further back until the far face is clear of the near head; else a two shot.
         const [near, far] = S, dir = V().subVectors(near.pos, far.pos).setY(0).normalize();
+        if ((near.bulk || 0.55) > 0.8) return this.frame({ ...s, type: 'two' });   // over that much hair you only see hair
         const side = this.lineOf(near, far).side, look = eye(far).add(V(0, -0.08, 0));
-        const at = ([back, wide]) => V().copy(near.pos).addScaledVector(dir, back).addScaledVector(side, wide).setY(eye(near).y + 0.15);
+        const k = Math.max(1, (near.bulk || 0.55) / 0.55);   // big hair: stand further off the shoulder
+        const at = ([back, wide]) => V().copy(near.pos).addScaledVector(dir, back * k).addScaledVector(side, wide * k).setY(eye(near).y + 0.15);
         if (s.ots == null) s.ots = [[1.5, 0.8], [1.7, 1.05], [1.9, 1.3], [2.1, 1.6]].find((o) => { const p = at(o); return this.inside(p) && !this.blocked(p, look, far); }) || false;
         if (!s.ots) return this.frame({ ...s, type: 'two' });
         return { pos: at(s.ots), look, fov: 34 };
@@ -113,7 +115,8 @@ export class Director {
           // a three-quarter single: from the listener's direction, turned about 43 degrees to the camera's side of the
           // line, so the speaker looks just past the lens toward the listener and eyelines match across cuts
           const tl = V().subVectors(s.toward.pos, a.pos).setY(0).normalize(), side = this.lineOf(a, s.toward).side;
-          f = tl.multiplyScalar(Math.cos(0.75)).addScaledVector(side, Math.sin(0.75)).normalize();
+          const ang = (a.bulk || 0.55) > 0.8 ? 0.3 : 0.75;   // big hair hides the face from the side: go nearly head on
+          f = tl.multiplyScalar(Math.cos(ang)).addScaledVector(side, Math.sin(ang)).normalize();
         }
         const dist = s.type === 'cu' ? 1.3 : s.type === 'low' ? 2.0 : 2.1;
         const h = s.type === 'low' ? 0.75 : eye(a).y - 0.02;
@@ -150,7 +153,7 @@ export class Director {
     if (B && !(p.x >= B.x[0] - margin && p.x <= B.x[1] + margin && p.z >= B.z[0] - margin && p.z <= B.z[1] + margin)) return false;
     if (this.solids?.some((b) => b.clone().expandByScalar(0.25).containsPoint(p))) return false;
     // nor inside somebody (a capsule around each visible actor)
-    return !this.actors.some((o) => o.root?.visible && Math.hypot(p.x - o.pos.x, p.z - o.pos.z) < 0.75 && p.y < (o.height || 1.8) + 0.2);
+    return !this.actors.some((o) => o.root?.visible && Math.hypot(p.x - o.pos.x, p.z - o.pos.z) < (o.bulk || 0.55) + 0.2 && p.y < (o.height || 1.8) + 0.2);
   }
 
   // Does a tall prop (tree, lockers, car, wall unit) stand between the camera and the point?
@@ -171,7 +174,7 @@ export class Director {
     return this.actors.some((o) => {
       if (o === subject || !o.root?.visible) return false;
       const c = V().copy(o.pos).setY(Math.min(face.y, 1.4)), t = clamp(V().subVectors(c, cam).dot(seg), 0, len);
-      return V().copy(cam).addScaledVector(seg, t).setY(c.y).distanceTo(c) < 0.6 && t < len - 0.3;
+      return V().copy(cam).addScaledVector(seg, t).setY(c.y).distanceTo(c) < (o.bulk || 0.6) && t < len - 0.3;
     });
   }
 

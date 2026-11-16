@@ -27,18 +27,28 @@ LINES = [
 
 
 
+PARTY = ["This song is so good!", "Let's dance!", "Did you see her dress?", "You look amazing tonight!", "Who's DJing this?", "Turn it up!",
+         "I can't believe it's prom already.", "Where's the punch?", "Take a picture of us!", "Come on, come dance!", "Oh my gosh, I love this one!",
+         "He asked her! Finally!", "My feet are killing me.", "This is the best night ever."]
+AUDIENCE = ["Shh, it's starting.", "Is that the right curtain?", "I can't see from here.", "Where's the program?", "My cousin's in this.",
+            "Turn your phone off.", "Ooh, here they come.", "Scoot over a bit.", "I hope they don't mess up."]
+GYM = ["Over here! Over here!", "Pass it!", "Watch out!", "You're out!", "No way, that hit me!", "Come on, team!", "Get him!",
+       "Duck!", "Nice throw!", "That's not fair!"]
+
+
 def render(model, voice, text):
     st = model.get_state_for_audio_prompt(voice)
     return np.clip(model.generate_audio(st, text).detach().cpu().numpy().reshape(-1), -1, 1), model.sample_rate
 
 
-def make(name, people, seed, model, loop):
+def make(name, people, seed, model, loop, lines=None):
+    lines = lines or LINES
     rnd = random.Random(seed)
     rate = model.sample_rate
     mix = np.zeros(int(loop * rate), dtype=np.float32)
     for k in range(people):
         voice = VOICES[k % len(VOICES)]
-        pcm, _ = render(model, voice, rnd.choice(LINES) + ' ' + rnd.choice(LINES))
+        pcm, _ = render(model, voice, rnd.choice(lines) + ' ' + rnd.choice(lines))
         gain = rnd.uniform(0.25, 0.6) * (0.6 if k % 3 == 0 else 1.0)   # some voices further away
         start = rnd.randint(0, len(mix) - 1)
         for i in range(0, len(pcm)):   # wrap around so the loop has no seam
@@ -61,3 +71,6 @@ if __name__ == '__main__':
     make('hallway', 24, 1, m, 75.0)
     make('hallway2', 18, 3, m, 53.0)
     make('cafeteria', 30, 2, m, 70.0)
+    make('party', 26, 4, m, 64.0, PARTY)
+    make('audience', 18, 5, m, 58.0, AUDIENCE)
+    make('gym', 16, 6, m, 50.0, GYM)

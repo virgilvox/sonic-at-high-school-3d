@@ -91,6 +91,12 @@ export class Bodies {
       b.pos.x += nx * push * (wb / sum); b.pos.z += nz * push * (wb / sum);
     }
     for (const a of L) if (!fixed(a)) this.keepOut(a.pos, radius(a));
+    // stand on raised floors (the stage platform)
+    for (const a of L) {
+      if (a.lieOn || a.gagging) continue;
+      const d = (this.set?.decks || []).find((k) => a.pos.x > k.box.min.x && a.pos.x < k.box.max.x && a.pos.z > k.box.min.z && a.pos.z < k.box.max.z);
+      a.floorY = d ? d.h : 0;
+    }
   }
 
   // Inside the room, outside furniture (pushed to the nearest free edge).

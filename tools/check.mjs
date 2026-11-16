@@ -13,8 +13,8 @@ const SFX = new Set([...src('audio.js').matchAll(/^      ([a-z]+): \(\) =>/gm)].
 const TIMES = new Set(['day', 'sunset', 'night', 'dream']);
 const MOODS = new Set(['sad', 'love', 'happy', 'tense', 'dream']);
 const FX = new Set(['flash', 'shake', 'dream', 'fadeout', 'fadein']);
-const SPOTS = new Set(['bed', 'couch', 'bench', 'teacher', 'seat1', 'seat2', 'mirror', 'boss', 'center']);
-const KINDS = ['say', 'think', 'do', 'enter', 'exit', 'sfx', 'card', 'song', 'fx', 'wait', 'shot', 'roll'];
+const SPOTS = new Set(['bed', 'couch', 'bench', 'teacher', 'seat1', 'seat2', 'mirror', 'boss', 'center', 'railing']);
+const KINDS = ['say', 'think', 'do', 'enter', 'exit', 'sfx', 'card', 'song', 'fx', 'wait', 'shot'];
 
 const files = process.argv.slice(2).length ? process.argv.slice(2)
   : readdirSync(new URL('../script/', import.meta.url)).filter((f) => /^part\d+\.json$/.test(f)).map((f) => 'script/' + f);
@@ -31,8 +31,9 @@ for (const f of files) {
     if (sc.time && !TIMES.has(sc.time)) err(w, `unknown time "${sc.time}"`);
     if (sc.game && sc.game !== 'dodgeball') err(w, `unknown game "${sc.game}"`);
     if (sc.coach && !CAST.has(sc.coach)) err(w, `unknown coach "${sc.coach}"`);
+    for (const id of sc.onstage || []) if (!CAST.has(id)) err(w, `unknown onstage "${id}"`);
     for (const id of sc.cast || []) if (!CAST.has(id)) err(w, `unknown cast "${id}"`);
-    for (const [id, spot] of Object.entries(sc.at || {})) { if (!CAST.has(id)) err(w, `unknown cast "${id}"`); if (!SPOTS.has(spot)) err(w, `unknown spot "${spot}"`); }
+    for (const [id, spot] of Object.entries(sc.at || {})) { if (!CAST.has(id)) err(w, `unknown cast "${id}"`); if (!SPOTS.has(spot) && !/^seat:\d+$/.test(spot)) err(w, `unknown spot "${spot}"`); }
     (sc.beats || []).forEach((b, bi) => {
       beats++;
       const at = `${w} beat ${bi + 1}`;

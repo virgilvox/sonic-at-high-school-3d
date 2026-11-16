@@ -51,7 +51,33 @@ export class Dodgeball {
     return place;
   }
 
-  clear() { if (this.group) this.scene.remove(this.group); this.group = null; this.balls = []; this.teams = null; }
+  // Keep the court busy under the dialogue: players who are not talking strafe around their half or throw at the
+  // other side, and the target jumps it or takes the hit. Stops when the scene changes (clear()).
+  ambient(r) {
+    const tok = (this.tok = Symbol()), rnd = (a, b) => a + Math.random() * (b - a);
+    const free = (a) => a && a.root.visible && !a.speaking && !a.path && !a.oneShot;
+    (async () => {
+      await new Promise((res) => setTimeout(res, 1500));
+      while (tok === this.tok && this.teams) {
+        await new Promise((res) => setTimeout(res, rnd(1400, 2600)));
+        if (tok !== this.tok || r.paused) continue;
+        const side = Math.random() < 0.5 ? 0 : 1, team = this.teams[side].map((id) => r.actor(id)).filter(free);
+        const foes = this.teams[1 - side].map((id) => r.actor(id)).filter((a) => a && a.root.visible);
+        const a = team[Math.floor(Math.random() * team.length)];
+        if (!a) continue;
+        if (Math.random() < 0.55 || !foes.length) {   // strafe
+          const z = (side ? 1 : -1) * rnd(2.2, 4.4), p = r.bodies.walkable(new THREE.Vector3(rnd(-5, 5), 0, z));
+          a.walk([p], { speed: rnd(1.6, 2.6) }).then(() => a.faceYaw(side ? Math.PI : 0, 6));
+        } else {   // throw
+          const t = foes[Math.floor(Math.random() * foes.length)];
+          a.faceTo(t); a.play('OverhandThrow');
+          this.throw(a, t).then(() => { if (Math.random() < 0.5) t.play('NinjaJump_Start'); else { t.play('Hit_Chest'); r.sound.sfx('thud'); } });
+        }
+      }
+    })();
+  }
+
+  clear() { this.tok = null; if (this.group) this.scene.remove(this.group); this.group = null; this.balls = []; this.teams = null; }
 
   // Fly a ball from the thrower's hand to the target's chest. Resolves on impact.
   async throw(thrower, target) {

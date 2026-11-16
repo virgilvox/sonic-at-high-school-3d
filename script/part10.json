@@ -1,67 +1,384 @@
-{ "part": 10, "title": "Rouge Takes the Stage", "scenes": [
-  { "set": "stage", "time": "day", "cast": ["amy", "sonic", "tails", "knuckles", "shadow", "rouge", "silver", "cream", "blaze", "tikal", "espio", "sally", "manic", "sonia"], "at": {}, "beats": [
-    { "song": "sad", "title": "the room is still tense", "dur": 14 },
-    { "say": "amy", "text": "Look... I know half of you liked the musical and half of you didn't", "emote": "sad" },
-    { "say": "amy", "text": "but don't you realise? This is our last chance to do something together!", "emote": "worried", "do": "hands" },
-    { "say": "amy", "text": "I really think what Cream did was really special", "emote": "sad" },
-    { "say": "amy", "text": "So can't we all stop fighting? And let's do this show together?", "emote": "sad" },
-    { "say": "knuckles", "text": "TOGETHER?! WITH HIM?!", "emote": "angry", "do": "point" },
-    { "say": "shadow", "text": "WATCH IT!", "emote": "angry" },
-    { "say": "sally", "text": "NO OFFENSE, BUT YOU'RE MAKING IT WORST", "emote": "angry" },
-    { "say": "manic", "text": "YOU'RE MAKING IT WORST BY SAYING THAT!", "emote": "angry" },
-    { "say": "crowd", "text": "*everyone arguing again*", "emote": "angry" },
-    { "say": "amy", "text": "*sigh*", "emote": "sad", "do": "sigh" },
-    { "say": "shadow", "text": "I'm in", "emote": "neutral" },
-    { "say": "crowd", "text": "*everyone stays quiet*", "emote": "surprised" },
-    { "say": "shadow", "text": "*lights turn back on*", "emote": "neutral" },
-    { "say": "sonic", "text": "Amy's right, this is our last chance to do something together", "to": "amy", "emote": "relaxed" },
-    { "say": "sonic", "text": "Of course we have a game coming, but doesn't mean we can't have a final musical together", "emote": "relaxed", "do": "hands" },
-    { "say": "sonic", "text": "I'll admit it, the musical ain't half bad", "emote": "smirk" },
-    { "say": "blaze", "text": "So I say, are we a team? Or are we loners?", "emote": "relaxed" },
-    { "say": "knuckles", "text": "WHAT TEAM?!", "emote": "excited", "do": "fist" },
-    { "say": "cream", "text": "SEGA!", "emote": "excited", "do": "cheer" },
-    { "say": "knuckles", "text": "WHAT TEAM?!", "emote": "excited", "do": "fist" },
-    { "say": "tikal", "text": "SEGA!", "emote": "excited", "do": "cheer" },
-    { "say": "knuckles", "text": "SEGA!", "emote": "excited", "do": "cheer" },
-    { "say": "crowd", "text": "EVERYONE: GETCHA HEAD IN THE GAME!", "emote": "excited", "do": "cheer" },
-    { "say": "rouge", "text": "HEY, CREAM! HIT THE MUSIC UP! *walking onto the stage*", "to": "cream", "emote": "smirk", "do": "walk" },
-    { "say": "rouge", "text": "AND YOU! *pushes Amy off the stage* THIS IS MY STAGE!", "to": "amy", "emote": "smirk", "do": "push" },
-    { "say": "amy", "text": "AAHH!", "emote": "scared", "do": "fall" },
-    { "say": "knuckles", "text": "Your welcome", "emote": "smirk", "do": "crossarms" },
-    { "say": "sonic", "text": "Ames, are you ok?", "to": "amy", "emote": "worried" },
-    { "say": "amy", "text": "Yeah... don't worry", "to": "sonic", "emote": "blush" },
-    { "say": "rouge", "text": "TAILS! GET ON THE STAGE. I NEED YOU TO BE MY PARTNER!", "to": "tails", "emote": "excited", "do": "beckon" },
-    { "say": "knuckles", "text": "Great, now what is she doing?", "emote": "annoyed" },
-    { "song": "happy", "title": "Rouge and Tails sing about fame and the lead role", "dur": 20 },
-    { "say": "knuckles", "text": "Alright we get it, can you stop please?", "emote": "annoyed" },
-    { "song": "happy", "title": "the duet carries on about superstars and bigger dreams", "dur": 20 },
-    { "say": "sonic", "text": "Can you please get her to shut up?!", "to": "knuckles", "emote": "annoyed" },
-    { "say": "tikal", "text": "Oh stop complaining! This is good!", "emote": "happy" },
-    { "song": "happy", "title": "Tails and Rouge sing about lights, red carpets and applause", "dur": 20 },
-    { "say": "sonic", "text": "ROUGE! GET OFF ME! *getting dragged onto stage*", "to": "rouge", "emote": "scared", "do": "struggle" },
-    { "song": "happy", "title": "the song goes on while Sonic is held on stage", "dur": 6 },
-    { "say": "sonic", "text": "TAILS!", "to": "tails", "emote": "scared" },
-    { "say": "amy", "text": "ROUGE! GET YOUR HANDS OFF HIM!", "to": "rouge", "emote": "angry", "do": "point" },
-    { "song": "happy", "title": "more chorus while Rouge keeps hold of Sonic", "dur": 8 },
-    { "say": "espio", "text": "UGHH! MAKE THIS STOP!", "emote": "annoyed" },
-    { "say": "amy", "text": "SOMEBODY GET HER OFF MY MAN!", "emote": "angry" },
-    { "say": "knuckles", "text": "Serves him right", "emote": "smirk" },
-    { "song": "happy", "title": "Rouge sings on about reviews and record deals", "dur": 8 },
-    { "say": "sonic", "text": "UGH! *rubs cheek*", "emote": "annoyed", "do": "hands" },
-    { "song": "happy", "title": "Cream joins in on the chorus", "dur": 6 },
-    { "say": "knuckles", "text": "GET OFF ME! *getting dragged*", "emote": "scared", "do": "struggle" },
-    { "say": "shadow", "text": "WILL YOU STOP FLIRTING WITH THOSE IDIOTS?!", "to": "rouge", "emote": "angry" },
-    { "say": "shadow", "text": "AAH! *gets grabbed by Rouge*", "emote": "shocked", "do": "struggle" },
-    { "song": "happy", "title": "Rouge sings that she wants the whole show", "dur": 8 },
-    { "say": "rouge", "text": "Thank you, darling *pushes her into Sonic*", "emote": "smirk", "do": "push" },
-    { "song": "happy", "title": "the chorus repeats and more people join in", "dur": 14 },
-    { "say": "sonic", "text": "Amy, we're leaving", "to": "amy", "emote": "annoyed", "do": "beckon" },
-    { "say": "amy", "text": "Aw c'mon Sonic, this isn't bad after all!", "to": "sonic", "emote": "happy" },
-    { "song": "happy", "title": "Rouge belts the chorus again", "dur": 6 },
-    { "say": "silver", "text": "GIRLS?!", "emote": "shocked" },
-    { "say": "sonic", "text": "Oh Amy please don't sing a-", "to": "amy", "emote": "scared" },
-    { "song": "happy", "title": "Amy and Blaze take up the song, then cities are shouted out", "dur": 16 },
-    { "say": "sonic", "text": "THEY'RE ALL SINGING NOW!", "emote": "shocked" },
-    { "song": "happy", "title": "everyone holds the final note", "dur": 6 }
-  ] }
-] }
+{
+ "part": 10,
+ "title": "Rouge Takes the Stage",
+ "scenes": [
+  {
+   "set": "stage",
+   "time": "day",
+   "cast": [
+    "amy",
+    "sonic",
+    "tails",
+    "knuckles",
+    "shadow",
+    "rouge",
+    "silver",
+    "cream",
+    "blaze",
+    "tikal",
+    "espio",
+    "sally",
+    "manic",
+    "sonia"
+   ],
+   "at": {},
+   "beats": [
+    {
+     "song": "sad",
+     "title": "the room is still tense",
+     "dur": 14
+    },
+    {
+     "say": "amy",
+     "text": "Look... I know half of you liked the musical and half of you didn't",
+     "emote": "sad"
+    },
+    {
+     "say": "amy",
+     "text": "but don't you realise? This is our last chance to do something together!",
+     "emote": "worried",
+     "do": "hands"
+    },
+    {
+     "say": "amy",
+     "text": "I really think what Cream did was really special",
+     "emote": "sad"
+    },
+    {
+     "say": "amy",
+     "text": "So can't we all stop fighting? And let's do this show together?",
+     "emote": "sad"
+    },
+    {
+     "say": "knuckles",
+     "text": "TOGETHER?! WITH HIM?!",
+     "emote": "angry",
+     "do": "point"
+    },
+    {
+     "say": "shadow",
+     "text": "WATCH IT!",
+     "emote": "angry"
+    },
+    {
+     "say": "sally",
+     "text": "NO OFFENSE, BUT YOU'RE MAKING IT WORST",
+     "emote": "angry"
+    },
+    {
+     "say": "manic",
+     "text": "YOU'RE MAKING IT WORST BY SAYING THAT!",
+     "emote": "angry"
+    },
+    {
+     "say": "crowd",
+     "text": "*everyone arguing again*",
+     "emote": "angry"
+    },
+    {
+     "say": "amy",
+     "text": "*sigh*",
+     "emote": "sad",
+     "do": "sigh"
+    },
+    {
+     "say": "shadow",
+     "text": "I'm in",
+     "emote": "neutral"
+    },
+    {
+     "say": "crowd",
+     "text": "*everyone stays quiet*",
+     "emote": "surprised"
+    },
+    {
+     "say": "shadow",
+     "text": "*lights turn back on*",
+     "emote": "neutral"
+    },
+    {
+     "say": "sonic",
+     "text": "Amy's right, this is our last chance to do something together",
+     "to": "amy",
+     "emote": "relaxed"
+    },
+    {
+     "say": "sonic",
+     "text": "Of course we have a game coming, but doesn't mean we can't have a final musical together",
+     "emote": "relaxed",
+     "do": "hands"
+    },
+    {
+     "say": "sonic",
+     "text": "I'll admit it, the musical ain't half bad",
+     "emote": "smirk"
+    },
+    {
+     "say": "blaze",
+     "text": "So I say, are we a team? Or are we loners?",
+     "emote": "relaxed"
+    },
+    {
+     "say": "knuckles",
+     "text": "WHAT TEAM?!",
+     "emote": "excited",
+     "do": "fist"
+    },
+    {
+     "say": "cream",
+     "text": "SEGA!",
+     "emote": "excited",
+     "do": "cheer"
+    },
+    {
+     "say": "knuckles",
+     "text": "WHAT TEAM?!",
+     "emote": "excited",
+     "do": "fist"
+    },
+    {
+     "say": "tikal",
+     "text": "SEGA!",
+     "emote": "excited",
+     "do": "cheer"
+    },
+    {
+     "say": "knuckles",
+     "text": "SEGA!",
+     "emote": "excited",
+     "do": "cheer"
+    },
+    {
+     "say": "crowd",
+     "text": "EVERYONE: GETCHA HEAD IN THE GAME!",
+     "emote": "excited",
+     "do": "cheer"
+    },
+    {
+     "say": "rouge",
+     "text": "HEY, CREAM! HIT THE MUSIC UP! *walking onto the stage*",
+     "to": "cream",
+     "emote": "smirk",
+     "do": "walk"
+    },
+    {
+     "say": "rouge",
+     "text": "AND YOU! *pushes Amy off the stage* THIS IS MY STAGE!",
+     "to": "amy",
+     "emote": "smirk",
+     "do": "push"
+    },
+    {
+     "say": "amy",
+     "text": "AAHH!",
+     "emote": "scared",
+     "do": "fall"
+    },
+    {
+     "say": "knuckles",
+     "text": "Your welcome",
+     "emote": "smirk",
+     "do": "crossarms"
+    },
+    {
+     "say": "sonic",
+     "text": "Ames, are you ok?",
+     "to": "amy",
+     "emote": "worried"
+    },
+    {
+     "say": "amy",
+     "text": "Yeah... don't worry",
+     "to": "sonic",
+     "emote": "blush"
+    },
+    {
+     "say": "rouge",
+     "text": "TAILS! GET ON THE STAGE. I NEED YOU TO BE MY PARTNER!",
+     "to": "tails",
+     "emote": "excited",
+     "do": "beckon"
+    },
+    {
+     "say": "knuckles",
+     "text": "Great, now what is she doing?",
+     "emote": "annoyed"
+    },
+    {
+     "song": "happy",
+     "title": "Rouge and Tails sing about fame and the lead role",
+     "dur": 20
+    },
+    {
+     "say": "knuckles",
+     "text": "Alright we get it, can you stop please?",
+     "emote": "annoyed"
+    },
+    {
+     "song": "happy",
+     "title": "the duet carries on about superstars and bigger dreams",
+     "dur": 20
+    },
+    {
+     "say": "sonic",
+     "text": "Can you please get her to shut up?!",
+     "to": "knuckles",
+     "emote": "annoyed"
+    },
+    {
+     "say": "tikal",
+     "text": "Oh stop complaining! This is good!",
+     "emote": "happy"
+    },
+    {
+     "song": "happy",
+     "title": "Tails and Rouge sing about lights, red carpets and applause",
+     "dur": 20
+    },
+    {
+     "say": "sonic",
+     "text": "ROUGE! GET OFF ME! *getting dragged onto stage*",
+     "to": "rouge",
+     "emote": "scared",
+     "do": "struggle"
+    },
+    {
+     "song": "happy",
+     "title": "the song goes on while Sonic is held on stage",
+     "dur": 6
+    },
+    {
+     "say": "sonic",
+     "text": "TAILS!",
+     "to": "tails",
+     "emote": "scared"
+    },
+    {
+     "say": "amy",
+     "text": "ROUGE! GET YOUR HANDS OFF HIM!",
+     "to": "rouge",
+     "emote": "angry",
+     "do": "point"
+    },
+    {
+     "song": "happy",
+     "title": "more chorus while Rouge keeps hold of Sonic",
+     "dur": 8
+    },
+    {
+     "say": "espio",
+     "text": "UGHH! MAKE THIS STOP!",
+     "emote": "annoyed"
+    },
+    {
+     "say": "amy",
+     "text": "SOMEBODY GET HER OFF MY MAN!",
+     "emote": "angry"
+    },
+    {
+     "say": "knuckles",
+     "text": "Serves him right",
+     "emote": "smirk"
+    },
+    {
+     "song": "happy",
+     "title": "Rouge sings on about reviews and record deals",
+     "dur": 8
+    },
+    {
+     "say": "sonic",
+     "text": "UGH! *rubs cheek*",
+     "emote": "annoyed",
+     "do": "hands"
+    },
+    {
+     "song": "happy",
+     "title": "Cream joins in on the chorus",
+     "dur": 6
+    },
+    {
+     "say": "knuckles",
+     "text": "GET OFF ME! *getting dragged*",
+     "emote": "scared",
+     "do": "struggle"
+    },
+    {
+     "say": "shadow",
+     "text": "WILL YOU STOP FLIRTING WITH THOSE IDIOTS?!",
+     "to": "rouge",
+     "emote": "angry"
+    },
+    {
+     "say": "shadow",
+     "text": "AAH! *gets grabbed by Rouge*",
+     "emote": "shocked",
+     "do": "struggle"
+    },
+    {
+     "song": "happy",
+     "title": "Rouge sings that she wants the whole show",
+     "dur": 8
+    },
+    {
+     "say": "rouge",
+     "text": "Thank you, darling *pushes her into Sonic*",
+     "emote": "smirk",
+     "do": "push"
+    },
+    {
+     "song": "happy",
+     "title": "the chorus repeats and more people join in",
+     "dur": 14
+    },
+    {
+     "say": "sonic",
+     "text": "Amy, we're leaving",
+     "to": "amy",
+     "emote": "annoyed",
+     "do": "beckon"
+    },
+    {
+     "say": "amy",
+     "text": "Aw c'mon Sonic, this isn't bad after all!",
+     "to": "sonic",
+     "emote": "happy"
+    },
+    {
+     "song": "happy",
+     "title": "Rouge belts the chorus again",
+     "dur": 6
+    },
+    {
+     "say": "silver",
+     "text": "GIRLS?!",
+     "emote": "shocked"
+    },
+    {
+     "say": "sonic",
+     "text": "Oh Amy please don't sing a-",
+     "to": "amy",
+     "emote": "scared"
+    },
+    {
+     "song": "happy",
+     "title": "Amy and Blaze take up the song, then cities are shouted out",
+     "dur": 16
+    },
+    {
+     "say": "sonic",
+     "text": "THEY'RE ALL SINGING NOW!",
+     "emote": "shocked"
+    },
+    {
+     "song": "happy",
+     "title": "everyone holds the final note",
+     "dur": 6
+    }
+   ],
+   "onstage": [
+    "sonic",
+    "amy"
+   ]
+  }
+ ]
+}

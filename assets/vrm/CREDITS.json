@@ -1,148 +1,183 @@
 {
-  "_about": "Every character model, where it came from and who to credit. Only models from the named, attributed folders are used. VRoid Hub models are used privately under the terms on their VRoid Hub pages (credit required).",
+  "_about": "Every character model: publisher is where it was published (the folder it came in), author is the maker named in the file when known.",
   "sonic.vrm": {
     "title": "Sonic",
     "author": "ANDRENYA",
-    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)"
+    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)",
+    "publisher": "Artyom4ik_72Rus on VRoid Hub"
   },
   "amy.vrm": {
     "title": "Amy Rose",
     "author": "waleedtariqmmd",
-    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)"
+    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)",
+    "publisher": "Artyom4ik_72Rus on VRoid Hub"
   },
   "knuckles.vrm": {
     "title": "Knuckles",
     "author": "kurokishi",
-    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)"
+    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)",
+    "publisher": "Artyom4ik_72Rus on VRoid Hub"
   },
   "shadow.vrm": {
     "title": "Shadow",
     "author": "Artyom4ik_72Rus",
-    "source": "VRoid Hub (hub.vroid.com/en/users/92039721)"
+    "source": "VRoid Hub (hub.vroid.com/en/users/92039721)",
+    "publisher": "Artyom4ik_72Rus on VRoid Hub"
   },
   "tails.vrm": {
     "title": "Tails",
     "author": "Artyom4ik_72Rus",
-    "source": "VRoid Hub (hub.vroid.com/en/users/92039721)"
+    "source": "VRoid Hub (hub.vroid.com/en/users/92039721)",
+    "publisher": "Artyom4ik_72Rus on VRoid Hub"
   },
   "tikal.vrm": {
     "title": "Tikal",
     "author": "unknown author",
-    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)"
+    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)",
+    "publisher": "Artyom4ik_72Rus on VRoid Hub"
   },
   "rouge.vrm": {
     "title": "Rouge",
     "author": "unknown author",
-    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)"
+    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)",
+    "publisher": "Artyom4ik_72Rus on VRoid Hub"
   },
   "blaze.vrm": {
     "title": "Blaze",
     "author": "unknown author",
-    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)"
+    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)",
+    "publisher": "Artyom4ik_72Rus on VRoid Hub"
   },
   "sally.vrm": {
     "title": "Sally",
     "author": "unknown author",
-    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)"
+    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)",
+    "publisher": "Artyom4ik_72Rus on VRoid Hub"
   },
   "silver.vrm": {
     "title": "Silver the Hedgehog",
     "author": "unknown author",
-    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)"
+    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)",
+    "publisher": "Artyom4ik_72Rus on VRoid Hub"
   },
   "cream.vrm": {
     "title": "Cream",
     "author": "unknown author",
-    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)"
+    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)",
+    "publisher": "Artyom4ik_72Rus on VRoid Hub"
   },
   "vanilla.vrm": {
     "title": "Vanilla",
     "author": "unknown author",
-    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)"
+    "source": "VRoid Hub, via Artyom4ik_72Rus (hub.vroid.com/en/users/92039721)",
+    "publisher": "Artyom4ik_72Rus on VRoid Hub"
   },
   "espio.vrm": {
     "title": "Espio",
     "author": "samlssms",
-    "source": "VRoid Hub, via TheBlueBlurHERO"
+    "source": "VRoid Hub, via TheBlueBlurHERO",
+    "publisher": "TheBlueBlurHERO on VRoid Hub"
   },
   "scourge.vrm": {
     "title": "Scourge",
     "author": "unknown author",
-    "source": "VRoid Hub, via TheBlueBlurHERO"
+    "source": "VRoid Hub, via TheBlueBlurHERO",
+    "publisher": "TheBlueBlurHERO on VRoid Hub"
   },
   "eggman.vrm": {
     "title": "Eggman",
     "author": "unknown author",
-    "source": "VRoid Hub, via DragonXEOUi"
+    "source": "VRoid Hub, via DragonXEOUi",
+    "publisher": "DragonXEOUi on VRoid Hub"
   },
   "robot.vrm": {
     "title": "Metal Sonic",
     "author": "unknown author",
-    "source": "VRoid Hub, via DragonXEOUi"
+    "source": "VRoid Hub, via DragonXEOUi",
+    "publisher": "DragonXEOUi on VRoid Hub"
   },
   "maria.vrm": {
     "title": "Maria Robotnik",
     "author": "Milkie Artz",
-    "source": "VRoid Hub"
+    "source": "VRoid Hub",
+    "publisher": "Milkie Artz on VRoid Hub"
   },
   "silvia.vrm": {
     "title": "Silvia The Hedgehog",
     "author": "Iliana",
-    "source": "VRoid Hub, via mythical falls (stand-in for Amy's mom)"
+    "source": "VRoid Hub, via mythical falls (stand-in for Amy's mom)",
+    "publisher": "mythical falls (Iliana) on VRoid Hub"
   },
   "manic.vrm": {
     "title": "Manic The Hedgehog",
     "author": "anderlenolan",
-    "source": "Sketchfab, CC BY 4.0, rigged as VRM by tools/glb2vrm.mjs"
+    "source": "Sketchfab, CC BY 4.0, rigged as VRM by tools/glb2vrm.mjs",
+    "publisher": "anderlenolan on Sketchfab (CC BY 4.0)"
   },
   "amy-popstar.vrm": {
     "title": "Amy Rose 7.0 (Popstar Outfit)",
     "author": "SweetPassion",
-    "source": "VRoid Hub (Amy's stage outfit)"
+    "source": "VRoid Hub (Amy's stage outfit)",
+    "publisher": "SweetPassion on VRoid Hub"
   },
   "vector.vrm": {
     "title": "Vector",
     "author": "unknown author",
-    "source": "VRoid Hub, via TheBlueBlurHERO"
+    "source": "VRoid Hub, via TheBlueBlurHERO",
+    "publisher": "TheBlueBlurHERO on VRoid Hub"
   },
   "x-avatarsample-d.vrm": {
     "title": "VRoid sample avatar",
     "author": "pixiv (VRoid Project)",
-    "source": "CC0, via OpenGameArt 'VRoid Studio CC0 models' (background students)"
+    "source": "CC0, via OpenGameArt 'VRoid Studio CC0 models' (background students)",
+    "publisher": "pixiv VRoid Project (CC0 sample avatars)"
   },
   "x-avatarsample-e.vrm": {
     "title": "VRoid sample avatar",
     "author": "pixiv (VRoid Project)",
-    "source": "CC0, via OpenGameArt 'VRoid Studio CC0 models' (background students)"
+    "source": "CC0, via OpenGameArt 'VRoid Studio CC0 models' (background students)",
+    "publisher": "pixiv VRoid Project (CC0 sample avatars)"
   },
   "x-avatarsample-f.vrm": {
     "title": "VRoid sample avatar",
     "author": "pixiv (VRoid Project)",
-    "source": "CC0, via OpenGameArt 'VRoid Studio CC0 models' (background students)"
+    "source": "CC0, via OpenGameArt 'VRoid Studio CC0 models' (background students)",
+    "publisher": "pixiv VRoid Project (CC0 sample avatars)"
   },
   "x-avatarsample-g.vrm": {
     "title": "VRoid sample avatar",
     "author": "pixiv (VRoid Project)",
-    "source": "CC0, via OpenGameArt 'VRoid Studio CC0 models' (background students)"
+    "source": "CC0, via OpenGameArt 'VRoid Studio CC0 models' (background students)",
+    "publisher": "pixiv VRoid Project (CC0 sample avatars)"
   },
   "x-fumiriya.vrm": {
     "title": "VRoid sample avatar",
     "author": "pixiv (VRoid Project)",
-    "source": "CC0 (background students)"
+    "source": "CC0 (background students)",
+    "publisher": "pixiv VRoid Project (CC0 sample avatars)"
   },
   "x-shino-light.vrm": {
     "title": "VRoid sample avatar",
     "author": "pixiv (VRoid Project)",
-    "source": "CC0 (background students)"
+    "source": "CC0 (background students)",
+    "publisher": "pixiv VRoid Project (CC0 sample avatars)"
   },
   "x-yyc-b.vrm": {
     "title": "VRoid AvatarSample",
     "author": "pixiv (VRoid Project)",
-    "source": "VRoid Hub terms: modification and redistribution allowed (background students)"
+    "source": "VRoid Hub terms: modification and redistribution allowed (background students)",
+    "publisher": "pixiv VRoid Project (CC0 sample avatars)"
   },
   "x-yyc-c.vrm": {
     "title": "VRoid AvatarSample",
     "author": "pixiv (VRoid Project)",
-    "source": "VRoid Hub terms: modification and redistribution allowed (background students)"
+    "source": "VRoid Hub terms: modification and redistribution allowed (background students)",
+    "publisher": "pixiv VRoid Project (CC0 sample avatars)"
+  },
+  "x-yyc-d.vrm": {
+    "title": "VRoid AvatarSample",
+    "author": "pixiv (VRoid Project)",
+    "source": "VRoid Hub terms: modification and redistribution allowed (background students)",
+    "publisher": "pixiv VRoid Project (CC0 sample avatars)"
   }
 }

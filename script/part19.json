@@ -196,15 +196,9 @@
    "time": "night",
    "cast": [
     "tails",
-    "sonic",
     "amy"
    ],
    "beats": [
-    {
-     "song": "love",
-     "title": "a love song plays over pictures of Sonic and Amy, Tails and Cream",
-     "dur": 20
-    },
     {
      "say": "tails",
      "text": "Alright, now wait on the balcony for Sonic to make his way through the audience",
@@ -213,9 +207,14 @@
      "do": "point"
     },
     {
-     "song": "love",
-     "title": "the song goes on, Sonic crosses the crowd",
-     "dur": 20
+     "do": "walk",
+     "who": "amy",
+     "to": "railing",
+     "cap": "*waits at the balcony*"
+    },
+    {
+     "enter": "sonic",
+     "cap": "*makes his way through the audience*"
     },
     {
      "say": "tails",
@@ -224,9 +223,21 @@
      "do": "beckon"
     },
     {
+     "do": "approach",
+     "who": "amy",
+     "to": "sonic",
+     "async": true
+    },
+    {
+     "do": "hug",
+     "who": "sonic",
+     "to": "amy",
+     "cap": "*they meet in the middle*"
+    },
+    {
      "song": "love",
-     "title": "the song ends with Sonic and Amy together",
-     "dur": 12
+     "title": "",
+     "dur": 7
     }
    ]
   }

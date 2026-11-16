@@ -43,13 +43,16 @@ function credits(models) {
   const C = readJson('assets/vrm/CREDITS.json'), music = readJson('assets/music/CREDITS.json');
   const esc = (t) => String(t).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]);
   const sec = (h, rows) => `<section><h6>${h}</h6>${rows.map((r) => `<p>${r}</p>`).join('')}</section>`;
-  const people = models.filter((m) => !m.startsWith('x-')).map((m) => { const c = C[m + '.vrm'] || {}; return `${esc(c.title || m)} <small>by ${esc(c.author || 'unknown author')}${c.source ? ', ' + esc(c.source) : ''}</small>`; });
-  const songs = Object.entries(music).filter(([k]) => !k.startsWith('_')).map(([, t]) => `"${esc(t)}"`);
+  // models grouped by who published them (the folder they came in); each model names its maker when the file does
+  const byPub = {};
+  for (const m of models) { const c = C[m + '.vrm'] || {}; (byPub[c.publisher || 'unknown'] ??= []).push(c); }
+  const pubSecs = Object.entries(byPub).map(([pub, list]) => sec(`MODELS PUBLISHED BY ${esc(pub).toUpperCase()}`,
+    [...new Map(list.map((c) => [c.title, c])).values()].map((c) => `${esc(c.title || '')}${c.author && c.author !== 'unknown author' ? ` <small>made by ${esc(c.author)}</small>` : ''}`))).join('');
+  const songs = Object.entries(music).filter(([k]) => !k.startsWith('_') && k !== 'graduation' && k !== 'coldopen').map(([, t]) => `"${esc(t)}"`);
   return '<h5>CREDITS</h5>'
-    + sec('STORY', ['<i>Sonic at High School 3: Love Story</i> <small>by tarasdiary, YouTube</small>', 'Sonic the Hedgehog characters <small>belong to SEGA</small>'])
-    + sec('CHARACTER MODELS', people)
-    + sec('BACKGROUND STUDENTS', ['VRoid Project sample avatars <small>by pixiv, CC0</small>'])
-    + sec('MUSIC', [songs.join(', '), '<small>Kevin MacLeod (incompetech.com), licensed under Creative Commons: By Attribution 4.0</small>'])
+    + sec('STORY', ['<i>Sonic at High School 3: Love Story</i> <small>by tarasdiary, YouTube</small>', 'Adapted with Clanker assistance by Moheeb Zara <small>@virgilvox · hack.build</small>', 'Sonic the Hedgehog characters <small>belong to SEGA</small>'])
+    + pubSecs
+    + sec('MUSIC', [songs.join(', '), '<small>Kevin MacLeod (incompetech.com), licensed under Creative Commons: By Attribution 4.0</small>', 'Pomp and Circumstance March No. 1 (Elgar) <small>United States Marine Band, public domain</small>'])
     + sec('VOICES', ['Kyutai Pocket TTS <small>built-in voices; see VOICES for who is who</small>'])
     + sec('MOTION', ['Quaternius Universal Animation Library <small>CC0</small>'])
     + sec('SETS', ['Kenney Furniture, Nature, Car, Retro Urban and City kits <small>kenney.nl, CC0</small>'])
@@ -59,11 +62,11 @@ function credits(models) {
 }
 
 // The hack.build YouTube channel for the title screen footer; the link is hidden while this is empty.
-const HACKBUILD_YOUTUBE = '';
+const HACKBUILD_YOUTUBE = 'https://www.youtube.com/@hackbuildvideo';
 
 function page(app, data, credit) {
   let html = readFileSync('src/template.html', 'utf8').replace('/*CREDITS*/', () => credit).replace('/*DATA*/', () => data)
-    .replace('/*HBLOGO*/', () => readFileSync('src/hackbuild-lockup.svg', 'utf8'));
+    .replaceAll('/*HBLOGO*/', () => readFileSync('src/hackbuild-lockup.svg', 'utf8'));
   html = HACKBUILD_YOUTUBE ? html.replace('/*YT*/', HACKBUILD_YOUTUBE) : html.replace(/\s*<a id="ytLink"[^\n]*<\/a>/, '');
   return html.replace('/*APP*/', () => app);
 }

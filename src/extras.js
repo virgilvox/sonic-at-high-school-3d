@@ -7,6 +7,8 @@ import * as THREE from 'three';
 const V = (x = 0, y = 0, z = 0) => new THREE.Vector3(x, y, z);
 const DEG = Math.PI / 180;
 export const EXTRA_IDS = Array.from({ length: 8 }, (_, i) => 'extra' + (i + 1));
+const FANGIRLS = ['extra2', 'extra3', 'extra6', 'extra7'];   // the girls among the background students
+const BOYS = ['extra5', 'extra9'];                         // and the boys ("everyone" asking the girls to prom)
 
 // how many and what they do, per set: walk (patrol), chat (stand in pairs), sit (take free seats), watch, dance
 const PLAN = {   // only where a school crowd belongs; never the ball games, sports or quiet places
@@ -17,20 +19,26 @@ const PLAN = {   // only where a school crowd belongs; never the ball games, spo
 export class Extras {
   constructor(runner) { this.r = runner; this.list = []; this.token = 0; }
 
-  // Which extras a scene wants (so the runner can load them first).
+  // Which extras a scene wants (so the runner can load them first): its place's crowd, plus fangirls when the
+  // script gives them lines.
   want(sc) {
+    const girls = [...(sc.beats?.some((b) => b.say === 'fangirls') ? FANGIRLS : []), ...(sc.beats?.some((b) => b.say === 'crowd' && /prom|go out|date|dance/i.test(b.text)) ? BOYS : [])];
     const p = PLAN[sc.set];
-    if (!p || sc.time === 'dream' || sc.game) return [];
+    if (!p || sc.time === 'dream' || sc.game) return girls;
     const n = Math.min(EXTRA_IDS.length, Object.values(p).reduce((a, b) => a + b, 0));
     const off = (sc.set.length * 3 + (sc.beats?.length || 0)) % EXTRA_IDS.length;   // vary who appears per scene
-    return Array.from({ length: n }, (_, i) => EXTRA_IDS[(off + i) % EXTRA_IDS.length]);
+    return [...new Set([...Array.from({ length: n }, (_, i) => EXTRA_IDS[(off + i) % EXTRA_IDS.length]).filter((id) => !girls.includes(id)), ...girls])];
   }
 
   populate(sc, set, freeSeats) {
     this.clear();
+    // keep background people off the cast's tables and out of their conversation
+    const cast = [...this.r.on];
+    freeSeats = freeSeats.filter(([x, z]) => cast.every((a) => Math.hypot(a.pos.x - x, a.pos.z - z) > 1.8));
     const p = PLAN[sc.set], ids = this.want(sc);
     if (!p || !ids.length) return;
-    const tok = ++this.token, pool = ids.map((id) => this.r.cast.get(id)).filter(Boolean);
+    const reserved = this.want(sc).filter((id) => FANGIRLS.includes(id) || BOYS.includes(id)).filter((id) => (FANGIRLS.includes(id) && sc.beats?.some((b) => b.say === 'fangirls')) || BOYS.includes(id));
+    const tok = ++this.token, pool = ids.filter((id) => !reserved.includes(id)).map((id) => this.r.cast.get(id)).filter(Boolean);
     const take = () => pool.shift();
     const B = set.bounds, open = this.r.director.openDir(V(set.spots.center[0], 0, set.spots.center[1]));
     const back = (t) => this.r.bodies.walkable(V(set.spots.center[0], 0, set.spots.center[1]).addScaledVector(open, -t));
@@ -69,6 +77,31 @@ export class Extras {
         }
       })();
     }
+  }
+
+  // Fangirls run in from the door and surround whoever they are screaming for.
+  swarm(target) {
+    if (!target) return;
+    const girls = FANGIRLS.map((id) => this.r.cast.get(id)).filter((a) => a && !this.list.includes(a));
+    const [x, z] = this.r.set.door;
+    girls.forEach((a, i) => {
+      a.place(x + (i - 1.5) * 0.5, z, 0); a.root.visible = true; a.setBase('Idle_Loop', 0); this.list.push(a);
+      const ang = (i / girls.length) * Math.PI * 2, p = this.r.bodies.walkable(new THREE.Vector3(target.pos.x + Math.sin(ang) * 0.95, 0, target.pos.z + Math.cos(ang) * 0.95));
+      a.walk([p], { speed: 3.2 }).then(() => { a.faceTo(target); a.gesture('cheer', { dur: 4 }); a.emote('happy', 1, 6); });
+    });
+  }
+
+  // Boys walk up to ask the girls to prom.
+  suitors(girls) {
+    const boys = BOYS.map((id) => this.r.cast.get(id)).filter((a) => a && !this.list.includes(a));
+    const [x, z] = this.r.set.door;
+    boys.forEach((a, i) => {
+      const g = girls[i % girls.length];
+      if (!g) return;
+      a.place(x + i * 0.6, z, 0); a.root.visible = true; a.setBase('Idle_Loop', 0); this.list.push(a);
+      const p = this.r.bodies.spotNear(a, g.pos, 1.1);
+      a.walk([p], { speed: 2.0 }).then(() => { a.faceTo(g); a.gesture('present', { target: g.chestPos(new THREE.Vector3()), dur: 4 }); a.emote('happy', 0.9, 5); });
+    });
   }
 
   // The script gave a crowd line: everyone around reacts.
