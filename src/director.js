@@ -19,7 +19,7 @@ export class Director {
     this.pos = V(0, 1.6, 5);
     this.cutCount = 0;
     this.t = 0;
-    this.cutT = -10;
+    this.cutT = -1e9;   // wall-clock ms: a slow device must not stretch the minimum hold across several lines
     this.lines = new Map();
   }
 
@@ -44,9 +44,9 @@ export class Director {
     if (!subj.length && spec.type !== 'fixed') return;
     // hold every shot long enough to read (about 1.2 s); a cut asked for sooner waits its turn instead of
     // being lost, and a newer request replaces it. Scenes and big actions cut at once.
-    if (!spec.force && this.shot && this.t - this.cutT < 1.2) { this.pending = spec; return; }
+    if (!spec.force && this.shot && performance.now() - this.cutT < 1200) { this.pending = spec; return; }
     this.pending = null;
-    this.cutT = this.t;
+    this.cutT = performance.now();
     this.shot = { ...spec, subj, t: 0, seed: Math.random() * 100, orbit0: Math.random() * Math.PI * 2 };
     let f = this.frame(this.shot);
     if (!f) return;
@@ -57,14 +57,22 @@ export class Director {
       const a = sh.subj[sh.type === 'ots' ? 1 : 0];
       return !this.inside(fr.pos, 0.3) || this.facesHidden(fr.pos, sh.subj) || (a?.eyePos && sh.type !== 'wide' && this.blocked(fr.pos, a.eyePos(V()), a));
     };
+    // a single blocked by the person they're talking to (across a table): shoot over that person's shoulder
+    if (['mcu', 'cu'].includes(this.shot.type) && this.shot.toward?.pos && bad(this.shot, f)) {
+      const o = { ...this.shot, type: 'ots', subj: [this.shot.toward, subj[0]], ots: null, swing: null }, fo = this.frame(o);
+      if (fo && o.type === 'ots' && o.ots && !bad(o, fo)) { this.shot = o; f = fo; }
+    }
     for (let i = 0; i < 4 && bad(this.shot, f) && FALLBACK[this.shot.type]; i++) {
       if (FALLBACK[this.shot.type] === 'two' && this.shot.subj.length < 2 && this.shot.toward) this.shot.subj = [this.shot.subj[0], this.shot.toward];
       this.shot.type = FALLBACK[this.shot.type];
-      this.shot.swing = null; this.shot.ots = null;
+      this.shot.swing = null; this.shot.ots = null; this.shot.pick = null;
       f = this.frame(this.shot);
     }
     this.pos.copy(f.pos); this.lookAt.copy(f.look); this.fov = f.fov;
     this.cutCount++;
+    // the last cuts, asked-for versus used, for tests (tools/camaudit.mjs)
+    (this.history ||= []).push(`${spec.type}${spec.type !== this.shot.type ? '>' + this.shot.type : ''}${spec.force ? '!' : ''}`);
+    if (this.history.length > 40) this.history.shift();
   }
 
   // Where the camera wants to be for this shot right now.
@@ -92,8 +100,20 @@ export class Director {
       case 'two': {
         if (S.length < 2) return this.frame({ ...s, type: 'mcu' });
         const [a, b] = S, d = Math.max(0.6, a.pos.distanceTo(b.pos)), { side } = this.lineOf(a, b);
-        const mid = V().addVectors(a.pos, b.pos).multiplyScalar(0.5);
-        return { pos: toward(mid, side, 1.8 + d * 1.1, eyeH - 0.05), look: V().copy(mid).setY(eyeH - 0.15), fov: 36 };
+        const mid = V().addVectors(a.pos, b.pos).multiplyScalar(0.5), look = V().copy(mid).setY(eyeH - 0.15);
+        // keep to our side of the line, but come closer or swing up to 40 degrees when a wall or a body is in the way
+        // (a fixed spot put the lens outside the room half the time, and every such two shot became a wide)
+        if (s.pick == null) {
+          const clear = (p) => this.inside(p, 0.3) && !this.blocked(p, eye(a), a) && !this.blocked(p, eye(b), b);
+          s.pick = null;
+          for (const k of [1, 0.8, 0.62]) for (const r of [0, 0.35, -0.35, 0.7, -0.7]) {
+            if (s.pick) break;
+            if (clear(toward(mid, side.clone().applyAxisAngle(UP, r), (1.8 + d * 1.1) * k, eyeH - 0.05))) s.pick = [k, r];
+          }
+          s.pick ||= [1, 0];
+        }
+        const [k, r] = s.pick;
+        return { pos: toward(mid, side.clone().applyAxisAngle(UP, r), (1.8 + d * 1.1) * k, eyeH - 0.05), look, fov: k < 1 ? 40 : 36 };
       }
       case 'ots': {   // over S[0]'s shoulder, onto S[1]'s face
         if (S.length < 2) return this.frame({ ...s, type: 'mcu' });
@@ -111,25 +131,38 @@ export class Director {
       case 'mcu': case 'cu': case 'low': {
         const a = S[0];
         let f = fwd(a);
-        if (s.toward?.pos && s.toward !== a) {
+        // seated people keep facing their table or desk (only the head turns), so frame them from the front,
+        // swung up to 35 degrees toward whoever they're talking to
+        const sat = a.seated && s.toward?.pos && s.toward !== a;
+        if (sat) {
+          const tl = V().subVectors(s.toward.pos, a.pos).setY(0).normalize();
+          const off = Math.atan2(V().crossVectors(f, tl).y, f.dot(tl));
+          f.applyAxisAngle(UP, Math.max(-0.6, Math.min(0.6, off)));
+        } else if (s.toward?.pos && s.toward !== a) {
           // a three-quarter single: from the listener's direction, turned about 43 degrees to the camera's side of the
           // line, so the speaker looks just past the lens toward the listener and eyelines match across cuts
           const tl = V().subVectors(s.toward.pos, a.pos).setY(0).normalize(), side = this.lineOf(a, s.toward).side;
           const ang = (a.bulk || 0.55) > 0.8 ? 0.3 : 0.75;   // big hair hides the face from the side: go nearly head on
           f = tl.multiplyScalar(Math.cos(ang)).addScaledVector(side, Math.sin(ang)).normalize();
         }
-        const dist = s.type === 'cu' ? 1.3 : s.type === 'low' ? 2.0 : 2.1;
-        const h = s.type === 'low' ? 0.75 : eye(a).y - 0.02;
+        const dist = (s.type === 'cu' ? 1.3 : s.type === 'low' ? 2.0 : 2.1) * Math.max(1, (a.bulk || 0.55) / 0.75);   // big hair, or a giant, needs room
+        const h = s.type === 'low' ? eye(a).y - 0.6 : eye(a).y - 0.02;   // low is relative: performers stand on a stage
         const look = eye(a).add(V(0, s.type === 'low' ? 0.05 : -0.12, 0));
         // swing around the subject until nobody stands between lens and face; keep the swing for the whole shot
         if (s.swing == null) {
-          const ok = (r) => { const p = toward(a.pos, f.clone().applyAxisAngle(UP, r), dist, h); return this.inside(p) && !this.blocked(p, look, a); };
+          // blocked at eye level (a row of heads in front): look for the shot a little higher, aiming down
           // with a listener, only swing further to the camera's side (crossing the line would flip the eyeline)
-          const sideSign = s.toward?.pos ? Math.sign(V().crossVectors(V().subVectors(s.toward.pos, a.pos), f).y) || 1 : 0;
+          const sideSign = s.toward?.pos && !sat ? Math.sign(V().crossVectors(V().subVectors(s.toward.pos, a.pos), f).y) || 1 : 0;
           const tries = sideSign ? [0, 0.25, 0.5, 0.75, -0.2].map((r) => -r * sideSign) : [0, 0.6, -0.6, 1.1, -1.1, 1.6, -1.6, 2.2, -2.2];
-          s.swing = tries.find(ok) ?? 0;
+          // every swing at eye level first; only if a row of heads blocks them all, the same swings higher, aiming down
+          s.lift = 0; s.swing = null;
+          for (const up of [0, 0.5, 0.9]) {
+            const r = tries.find((r) => { const p = toward(a.pos, f.clone().applyAxisAngle(UP, r), dist, h + up); return this.inside(p) && !this.blocked(p, look, a); });
+            if (r !== undefined) { s.lift = up; s.swing = r; break; }
+          }
+          s.swing ??= 0;
         }
-        return { pos: toward(a.pos, f.clone().applyAxisAngle(UP, s.swing), dist, h), look, fov: s.type === 'cu' ? 26 : s.type === 'low' ? 36 : 32 };
+        return { pos: toward(a.pos, f.clone().applyAxisAngle(UP, s.swing), dist, h + (s.lift || 0)), look, fov: s.type === 'cu' ? 26 : s.type === 'low' ? 36 : 32 };
       }
       case 'track': {
         // alongside, slightly ahead, looking a metre in front of the subject: lead room for the move
@@ -151,7 +184,8 @@ export class Director {
   inside(p, margin = 0) {
     const B = this.bounds;
     if (B && !(p.x >= B.x[0] - margin && p.x <= B.x[1] + margin && p.z >= B.z[0] - margin && p.z <= B.z[1] + margin)) return false;
-    if (this.solids?.some((b) => b.clone().expandByScalar(0.25).containsPoint(p))) return false;
+    // keep 25 cm clear of furniture sideways, but a lens just above a table top is fine (seated eye level)
+    if (this.solids?.some((b) => p.y < b.max.y + 0.05 && p.y > b.min.y - 0.25 && p.x > b.min.x - 0.25 && p.x < b.max.x + 0.25 && p.z > b.min.z - 0.25 && p.z < b.max.z + 0.25)) return false;
     // nor inside somebody (a capsule around each visible actor)
     return !this.actors.some((o) => o.root?.visible && Math.hypot(p.x - o.pos.x, p.z - o.pos.z) < (o.bulk || 0.55) + 0.2 && p.y < (o.height || 1.8) + 0.2);
   }
@@ -174,7 +208,9 @@ export class Director {
     return this.actors.some((o) => {
       if (o === subject || !o.root?.visible) return false;
       const c = V().copy(o.pos).setY(Math.min(face.y, 1.4)), t = clamp(V().subVectors(c, cam).dot(seg), 0, len);
-      return V().copy(cam).addScaledVector(seg, t).setY(c.y).distanceTo(c) < (o.bulk || 0.6) && t < len - 0.3;
+      const at = V().copy(cam).addScaledVector(seg, t);
+      if (o.eyePos && at.y > o.eyePos(V()).y + 0.5 * Math.max(1, (o.bulk || 0.55) / 0.55)) return false;   // the line passes well over their head (quills and ears included)
+      return at.setY(c.y).distanceTo(c) < (o.bulk || 0.6) && t < len - 0.3;
     });
   }
 
@@ -189,7 +225,7 @@ export class Director {
 
   update(dt) {
     this.t += dt;
-    if (this.pending && this.t - this.cutT >= 1.2) this.cut(this.pending);
+    if (this.pending && performance.now() - this.cutT >= 1200) this.cut(this.pending);
     const s = this.shot;
     if (!s) return;
     s.t += dt;
@@ -200,7 +236,10 @@ export class Director {
     const watch = s.subj[s.type === 'ots' ? 1 : 0];
     if (watch?.eyePos && !['establish', 'fixed', 'orbit'].includes(s.type) && (this.blocked(this.cam.position, watch.eyePos(V()), watch) || this.facesHidden(this.cam.position, s.subj))) {
       s.blockT = (s.blockT || 0) + dt;
-      if (s.blockT > 0.8) { this.cut({ type: s.type === 'wide' ? 'establish' : s.type === 'two' ? 'wide' : 'two', subjects: s.subj.length > 1 ? s.subj : [watch, s.toward].filter(Boolean), force: true }); return; }
+      // the next line's shot is waiting: take it rather than widening this one; and widen a shot only once, so a
+      // blocked scene never loops on re-cuts that starve the queued cuts (Part 22 sat on one angle for minutes)
+      if (s.blockT > 0.8 && this.pending) { this.cut({ ...this.pending, force: true }); return; }
+      if (s.blockT > 0.8 && !s.rescued) { this.cut({ type: s.type === 'wide' ? 'establish' : s.type === 'two' ? 'wide' : 'two', subjects: s.subj.length > 1 ? s.subj : [watch, s.toward].filter(Boolean), force: true }); this.shot.rescued = true; return; }
     } else s.blockT = 0;
     const lead = s.subj[0], face = lead?.eyePos?.(V());
     if (this.inside(f.pos) && !this.facesHidden(f.pos, s.subj) && !(face && s.type !== 'ots' && this.blocked(f.pos, face, lead))) s.good = f.pos.clone();
@@ -213,6 +252,8 @@ export class Director {
     const n = (a, b) => Math.sin(this.t * a + s.seed) * 0.6 + Math.sin(this.t * b + s.seed * 2) * 0.4;
     p.add(V(n(0.7, 1.9), n(0.9, 2.3) * 0.6, n(0.6, 1.7)).multiplyScalar(0.012));
     if (this.shake > 0) { p.add(V(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).multiplyScalar(this.shake * 0.15)); this.shake = Math.max(0, this.shake - dt * 1.6); }
+    // a lens over a table or bench looks down past its edge rather than skimming it
+    for (const b of this.solids || []) if (b.max.y < 1.3 && p.x > b.min.x - 0.3 && p.x < b.max.x + 0.3 && p.z > b.min.z - 0.3 && p.z < b.max.z + 0.3) p.y = Math.max(p.y, b.max.y + 0.45);
     const B = this.bounds;
     if (B) { p.x = clamp(p.x, B.x[0], B.x[1]); p.z = clamp(p.z, B.z[0], B.z[1]); p.y = clamp(p.y, 0.35, B.y); }
     this.cam.position.copy(p);

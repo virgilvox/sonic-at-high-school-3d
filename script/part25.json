@@ -167,9 +167,6 @@
     "sonic",
     "bunnie"
    ],
-   "at": {
-    "sonic": "seat1"
-   },
    "beats": [
     {
      "say": "sonic",
@@ -306,6 +303,10 @@
      "exit": "sonic",
      "cap": "*walking out the restaurant*"
     }
+   ],
+   "stand": [
+    "sonic",
+    "bunnie"
    ]
   },
   {

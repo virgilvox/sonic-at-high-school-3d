@@ -11,7 +11,7 @@ export const CAST = [
   { id: 'tikal', name: 'Tikal', model: 'tikal', height: 1.55, color: '#ff9f6b', voice: { gender: 'f', pitch: 1.1, rate: 0.95 } },
   { id: 'tails', name: 'Tails', model: 'tails', height: 1.35, standin: 'espio', tint: '#f2a23a', color: '#ffc341', voice: { gender: 'm', pitch: 1.55, rate: 1.1 } },
   { id: 'manic', bulk: 0.95, name: 'Manic', model: 'manic', height: 1.6, standin: 'scourge', tint: '#2fb36a', color: '#4fd18a', voice: { gender: 'm', pitch: 1.05, rate: 1.15 } },
-  { id: 'sonia', name: 'Sonia', model: 'sonia', fix: { doubleSided: true }, height: 1.6, standin: 'silvia', tint: '#d63fa0', color: '#ff9bd0', voice: { gender: 'f', pitch: 1.2, rate: 1.05 } },
+  { id: 'sonia', name: 'Sonia', model: 'sonia', fix: { doubleSided: true, shrink: { mesh: 'Amy000', by: 0.68 } }, height: 1.6, standin: 'silvia', tint: '#d63fa0', color: '#ff9bd0', voice: { gender: 'f', pitch: 1.2, rate: 1.05 } },
   { id: 'sally', name: 'Sally', model: 'sally', height: 1.6, standin: 'silvia', tint: '#b8733a', color: '#d9a066', voice: { gender: 'f', pitch: 1.1, rate: 1.02 } },
   { id: 'cream', name: 'Cream', model: 'cream', height: 1.15, standin: 'silvia', tint: '#f5dcb0', color: '#ffe0b0', voice: { gender: 'f', pitch: 1.6, rate: 1.0 } },
   { id: 'rouge', name: 'Rouge', model: 'rouge', height: 1.65, standin: 'silvia', tint: '#e9e9ef', color: '#d9d9ff', voice: { gender: 'f', pitch: 0.95, rate: 0.98 } },

@@ -26,7 +26,7 @@
     {
      "song": "sad",
      "title": "the room is still tense",
-     "dur": 14
+     "dur": 5
     },
     {
      "say": "amy",
@@ -162,11 +162,26 @@
      "do": "walk"
     },
     {
+     "enter": "rouge",
+     "at": [
+      0.9,
+      -2.6
+     ],
+     "cap": "*struts onto the stage*"
+    },
+    {
      "say": "rouge",
      "text": "AND YOU! *pushes Amy off the stage* THIS IS MY STAGE!",
      "to": "amy",
      "emote": "smirk",
      "do": "push"
+    },
+    {
+     "enter": "amy",
+     "at": [
+      0.8,
+      -0.7
+     ]
     },
     {
      "say": "amy",
@@ -200,6 +215,13 @@
      "do": "beckon"
     },
     {
+     "enter": "tails",
+     "at": [
+      -1.0,
+      -2.8
+     ]
+    },
+    {
      "say": "knuckles",
      "text": "Great, now what is she doing?",
      "emote": "annoyed"
@@ -207,7 +229,7 @@
     {
      "song": "happy",
      "title": "Rouge and Tails sing about fame and the lead role",
-     "dur": 20
+     "dur": 4
     },
     {
      "say": "knuckles",
@@ -217,7 +239,7 @@
     {
      "song": "happy",
      "title": "the duet carries on about superstars and bigger dreams",
-     "dur": 20
+     "dur": 4
     },
     {
      "say": "sonic",
@@ -233,7 +255,14 @@
     {
      "song": "happy",
      "title": "Tails and Rouge sing about lights, red carpets and applause",
-     "dur": 20
+     "dur": 4
+    },
+    {
+     "enter": "sonic",
+     "at": [
+      2.0,
+      -2.8
+     ]
     },
     {
      "say": "sonic",
@@ -245,7 +274,7 @@
     {
      "song": "happy",
      "title": "the song goes on while Sonic is held on stage",
-     "dur": 6
+     "dur": 4
     },
     {
      "say": "sonic",
@@ -263,7 +292,7 @@
     {
      "song": "happy",
      "title": "more chorus while Rouge keeps hold of Sonic",
-     "dur": 8
+     "dur": 4
     },
     {
      "say": "espio",
@@ -283,7 +312,7 @@
     {
      "song": "happy",
      "title": "Rouge sings on about reviews and record deals",
-     "dur": 8
+     "dur": 4
     },
     {
      "say": "sonic",
@@ -292,9 +321,23 @@
      "do": "hands"
     },
     {
+     "enter": "cream",
+     "at": [
+      -2.2,
+      -3.0
+     ]
+    },
+    {
      "song": "happy",
      "title": "Cream joins in on the chorus",
-     "dur": 6
+     "dur": 4
+    },
+    {
+     "enter": "knuckles",
+     "at": [
+      -3.2,
+      -2.9
+     ]
     },
     {
      "say": "knuckles",
@@ -315,9 +358,16 @@
      "do": "struggle"
     },
     {
+     "enter": "shadow",
+     "at": [
+      3.2,
+      -3.0
+     ]
+    },
+    {
      "song": "happy",
      "title": "Rouge sings that she wants the whole show",
-     "dur": 8
+     "dur": 4
     },
     {
      "say": "rouge",
@@ -328,7 +378,7 @@
     {
      "song": "happy",
      "title": "the chorus repeats and more people join in",
-     "dur": 14
+     "dur": 4
     },
     {
      "say": "sonic",
@@ -346,7 +396,7 @@
     {
      "song": "happy",
      "title": "Rouge belts the chorus again",
-     "dur": 6
+     "dur": 4
     },
     {
      "say": "silver",
@@ -360,9 +410,23 @@
      "emote": "scared"
     },
     {
+     "enter": "amy",
+     "at": [
+      0.2,
+      -2.4
+     ]
+    },
+    {
+     "enter": "blaze",
+     "at": [
+      -0.9,
+      -2.3
+     ]
+    },
+    {
      "song": "happy",
      "title": "Amy and Blaze take up the song, then cities are shouted out",
-     "dur": 16
+     "dur": 4
     },
     {
      "say": "sonic",
@@ -372,11 +436,10 @@
     {
      "song": "happy",
      "title": "everyone holds the final note",
-     "dur": 6
+     "dur": 4
     }
    ],
    "onstage": [
-    "sonic",
     "amy"
    ]
   }

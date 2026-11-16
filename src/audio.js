@@ -98,6 +98,27 @@ export class Sound {
     this[name] ??= (() => { const g = this.ctx.createGain(); g.gain.value = level; g.connect(this.out); return g; })();
     return this[name];
   }
+  // A real laugh (recorded, CC0): one of the solo laughs at a rate that suits the voice, or the group giggle.
+  // Drives the actor's mouth from the sound's level. Resolves when it ends.
+  laugh({ rate = 1, crowd = false, actor = null, vol = 0.9 } = {}) {
+    const names = Object.keys(this.sampleData || {}).filter((n) => (crowd ? n === 'laugh-crowd' : /^laugh-\d$/.test(n)));
+    if (!names.length || !this.ensure()) return Promise.resolve();
+    let pick = names[(Math.random() * names.length) | 0];
+    if (names.length > 1 && pick === this.lastLaugh) pick = names[(names.indexOf(pick) + 1) % names.length];   // not the same one twice running
+    this.lastLaugh = pick;
+    return this.sample(pick).then((buf) => new Promise((resolve) => {
+      if (!buf) return resolve();
+      const src = this.ctx.createBufferSource(), g = this.ctx.createGain(), an = this.ctx.createAnalyser();
+      src.buffer = buf; src.playbackRate.value = rate; g.gain.value = vol; an.fftSize = 512;
+      src.connect(g); g.connect(an); g.connect(this.voiceBus());
+      const data = new Float32Array(an.fftSize);
+      const tick = actor ? setInterval(() => { an.getFloatTimeDomainData(data); let e = 0; for (const v of data) e += v * v; actor.mouth.level = Math.min(1, Math.sqrt(e / data.length) * 6); actor.mouth.shape = 0.7; }, 40) : null;
+      if (actor) actor.speaking = true;
+      src.onended = () => { clearInterval(tick); if (actor) { actor.speaking = false; actor.mouth.level = 0; } resolve(); };
+      src.start();
+    }));
+  }
+
   // One footstep on a surface (tile, wood, grass); vol 0..1, pan -1..1.
   step(surface, vol = 0.5, pan = 0) {
     const names = Object.keys(this.sampleData || {}).filter((n) => n.startsWith('step-' + surface + '-'));
@@ -180,6 +201,7 @@ export class Sound {
     this.swelling = false;
     if (!this.ensure()) return;
     this.stopScore(true);
+    this.mood = mood;
     const want = (this.scoreWant = Symbol());
     const buf = await this.track(mood).catch(() => null);
     if (want !== this.scoreWant) return;   // stopped or replaced while decoding
@@ -220,6 +242,14 @@ export class Sound {
     schedule();
     this.timer = setInterval(schedule, 400);
   }
+  // Ride the current track's level without restarting it (a number that dips under dialogue and comes back).
+  level(vol, fade = 0.8) {
+    if (!this.ctx || !this.playing) return false;
+    const g = this.music.gain, t = this.ctx.currentTime;
+    g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(vol, t + fade);
+    return true;
+  }
+
   stopScore(now = false) {
     if (!this.ctx) return;
     this.scoreWant = null;

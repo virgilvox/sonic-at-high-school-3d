@@ -52,7 +52,10 @@ function sceneMood(sc) {
   return Object.entries(n).sort((a, b) => b[1] - a[1])[0][0];
 }
 
-const MONTAGE_MAX = 10;   // seconds; the videos' long picture montages are trimmed to a short sequence
+const MONTAGE_MAX = 4.5;   // seconds between lines: a breath of the number, not a music video
+// The upbeat numbers play over a fuller track than the scene beds (Carefree read as a jingle)
+const SONG_TRACK = { happy: 'action' };
+const _MONTAGE_OLD = 10;   // seconds; the videos' long picture montages are trimmed to a short sequence
 
 // Tidy a scene's beats for playback: back to back song beats become one (moods differ? the first wins).
 function mergeSongs(beats) {
@@ -151,7 +154,7 @@ export class Runner {
     for (const a of this.on) {
       if (!a.root.visible) out.push(a.id + ' invisible');
       else if (B && (a.pos.x < B.x[0] - 0.5 || a.pos.x > B.x[1] + 0.5 || a.pos.z < B.z[0] - 0.5 || a.pos.z > B.z[1] + 0.5)) out.push(a.id + ' out of the room');
-      else if (!a.lieOn && !this.creditsMode && Math.abs(a.root.position.y - (a.floorY || 0)) > 0.15) out.push(a.id + ' off the floor ' + a.root.position.y.toFixed(2));
+      else if (!a.lieOn && !a.path && !this.creditsMode && a.groundY === (a.floorY || 0) && Math.abs(a.root.position.y - (a.floorY || 0)) > 0.15) out.push(a.id + ' off the floor ' + a.root.position.y.toFixed(2));
       else if (!a.root.parent) out.push(a.id + ' not in the scene graph');
     }
     for (const h of this.hidden || []) if (h.why === 'script') out.push(h.id + ' hidden without an exit');
@@ -217,7 +220,7 @@ export class Runner {
       await this.prepare?.([...sceneIds(sc).map((id) => this.alias[id] || id), ...this.extras.want(sc)]);
       if (tok !== this.token) return false;
       this.loadScene(sc);
-      const beats = mergeSongs(sc.beats);
+      const beats = (this.beats = mergeSongs(sc.beats));
       // the opening picture montage of a part is its title: a card over the intro music instead
       if (part.credits) { /* the credits sequence has its own opening */ }
       else if (si === 0 && beats[0]?.song) { beats.shift(); await this.titleCard(part); }
@@ -251,9 +254,9 @@ export class Runner {
     this.lights.apply(this.set);
     if (this.creditsMode) this.dressStudio();   // the bloopers show the crew's gear around the set
     this.set.showCeiling(!this.freeCam);
-    this.director.setWorld(this.set.statics, this.set.bounds, this.set.solids);
+    this.director.setWorld(this.set.statics, this.set.camBounds, this.set.solids);
     this.bodies.use(this.set, []);
-    for (const a of this.cast.values()) { a.root.visible = false; a.path = null; a.speaking = false; a.floorY = 0; a.gagging = false; a.root.scale.setScalar(a.scale ? 1 : 1); a.tpose = false; a.stopOneShot(); a.setBase('Idle_Loop', 0); a.mood = { happy: 0.15 }; a.lieOn = null; }
+    for (const a of this.cast.values()) { a.root.visible = false; a.path = null; a.speaking = false; a.floorY = 0; a.gagging = false; a.root.scale.setScalar(1); if (a.bulk0) a.bulk = a.bulk0; a.tpose = false; a.stopOneShot(); a.setBase('Idle_Loop', 0); a.mood = { happy: 0.15 }; a.lieOn = null; }
     this.on.clear();
     this.notLoaded = (sc.cast || []).filter((id) => !this.actor(id) && !['crowd', 'fangirls', 'narrator'].includes(id));
     const ids = (sc.cast || []).filter((id) => this.actor(id));
@@ -292,12 +295,12 @@ export class Runner {
     if (sc.set === 'stage' && sc.onstage) {   // performers along the front of the platform, everyone else in the seats
       const F = set.def.stageFront, on = sc.onstage.filter((id) => ids.includes(id));
       on.forEach((id, i) => { const a = this.actor(id); a.place((i - (on.length - 1) / 2) * 1.6, F.z, 0); a.floorY = F.h; this.show(a); placed.add(id); });
-      for (const id of ids) if (!placed.has(id) && seats.length && !['crowd', 'fangirls'].includes(id)) sit(id, seats.shift());
+      for (const id of ids) if (!sc.stand?.includes(id) && !placed.has(id) && seats.length && !['crowd', 'fangirls'].includes(id)) sit(id, seats.shift());
     } else if (sc.set === 'classroom') {
       for (const id of teachers) { const a = this.actor(id), [x, z, yaw] = set.front; a.place(x + placed.size * 0.8, z, yaw * DEG); this.show(a); placed.add(id); }
-      for (const id of ids) if (!placed.has(id) && seats.length) sit(id, seats.shift());
+      for (const id of ids) if (!sc.stand?.includes(id) && !placed.has(id) && seats.length) sit(id, seats.shift());
     } else if (sc.set === 'cafeteria' || sc.set === 'stage' || sc.set === 'diner' || sc.set === 'lockerroom' || (sc.set === 'park' && ids.length <= 2)) {
-      for (const id of ids) if (seats.length && !['crowd', 'fangirls'].includes(id)) sit(id, seats.shift());
+      for (const id of ids) if (!sc.stand?.includes(id) && seats.length && !['crowd', 'fangirls'].includes(id)) sit(id, seats.shift());
     }
     const rest = ids.filter((id) => !placed.has(id));
     if (!rest.length) return;
@@ -421,18 +424,32 @@ export class Runner {
     this.coverLine(a, listener, { shout, moving: !!b.do && /walk|run/.test(b.do) });
     const acting = b.do && a ? this.act(id, b.do, { ...b, inline: true }) : a && !a.lieOn && !a.path ? this.talkGesture(a, text, b, listener) : null;
     this.sound.duck(true); this.talking = true;
+    // laughter is laughed, not read out: a line that is only "HAHAHA" plays a recorded laugh, and a line whose
+    // stage direction says they laugh gets one after the words
+    const laughOnly = this.voices.mode !== 'off' && /^\s*((h[aeo]){2,}h?|(he){2,}|lol)[!?. ]*$/i.test(speakable(text));
+    const laughAfter = this.voices.mode !== 'off' && !laughOnly && /\*[^*]*laugh/i.test(text);
     await Promise.race([
-      this.voices.say(text, member, b.think ? null : a, { shout, whisper: !!b.think }),
+      laughOnly ? this.laughFor(a, id, member) : this.voices.say(text, member, b.think ? null : a, { shout, whisper: !!b.think }),
       this.waitSkip(),
     ]);
+    if (laughAfter) await Promise.race([this.laughFor(a, id, member), this.waitSkip()]);
     this.sound.duck(false); this.talking = false; this.quietSince = performance.now();
     if (acting && b.wait !== false && /walk|run|enter|exit/.test(b.do)) await Promise.race([acting, this.waitSkip()]);
     await this.hold(0.22);
     this.lastSpeaker = a;
   }
 
+  // A recorded laugh in this character's register (the recording is a man's voice: raised for higher voices).
+  laughFor(a, id, member = this.castInfo(id)) {
+    if (id === 'crowd' || id === 'fangirls') return this.sound.laugh({ crowd: true, vol: 0.7 });
+    const v = member?.voice || {}, rate = Math.min(1.55, Math.max(0.78, (v.gender === 'f' ? 1.24 : 0.97) * Math.sqrt(v.pitch || 1)));
+    if (a) this.emote(a, 'happy', 1);
+    return this.sound.laugh({ rate, actor: a });
+  }
+
   async act(id, what, b = {}) {
     const a = this.actor(id);
+    if (what === 'laugh' && !b.inline && this.voices.mode !== 'off') this.laughFor(a, id);   // heard as well as seen (not over their own words)
     if (!a) return;
     if (!this.on.has(a)) this.show(a);
     if (b.cap && !b.inline) this.ui.caption(b.cap, { who: this.castInfo(id), action: true });
@@ -463,6 +480,7 @@ export class Runner {
           .sort((p, q) => Math.hypot(p[0] - near.pos.x, p[1] - near.pos.z) - Math.hypot(q[0] - near.pos.x, q[1] - near.pos.z))[0];
         if (!seat || Math.hypot(seat[0] - a.pos.x, seat[1] - a.pos.z) > 4) return;   // nowhere to sit nearby: stay standing
         await this.go(a, V(seat[0], 0, seat[1])); a.place(seat[0], seat[1], seat[2] * DEG);
+        for (const e of this.extras.list) if (e.root.visible && Math.hypot(e.pos.x - seat[0], e.pos.z - seat[1]) < 1.6) e.root.visible = false;   // no stranger at the cast's table
         await this.playClip(a, 'Sitting_Enter'); a.setBase('Sitting_Idle_Loop');
         if (b.cap && !b.inline) this.ui.caption('');
         return;
@@ -520,7 +538,9 @@ export class Runner {
     if (!a) return;
     if (this.on.has(a) && a.root.visible) {   // already here: the script means "comes over", not "walks in again"
       const gs = this.gameSpots?.[b.enter], to = b.at ? V(b.at[0], 0, b.at[1]) : gs ? V(gs[0], 0, gs[1]) : b.to ? this.near(a, b.to, 1.3) : null;
+      if (to && a.baseClip.startsWith('Sitting')) await this.standUp(a);   // up out of the seat before walking anywhere
       if (to) await this.go(a, to, { speed: b.run ? 3.6 : undefined });
+      if (this.set.def.stageFront && (a.floorY || 0) > 0.5) a.faceYaw(0, 6);   // on stage: face the house
       return;
     }
     const [x, z, yaw] = this.set.door;
@@ -552,20 +572,31 @@ export class Runner {
   // A song montage: letterboxed, wordless, the mood's music, and a slow shot of each person on stage in turn.
   // Nobody on stage means nothing to show, so it is skipped. Runs of song beats were merged by the scene cleanup.
   async song(b, tok) {
-    const subj = [...this.on];
+    // on a stage, the montage watches the performers, not the audience
+    const all = [...this.on].filter((a) => a.root.visible), up = all.filter((a) => (a.floorY || 0) > 0.5);
+    const subj = up.length ? up : all;
     if (!subj.length) return;
     this.ui.caption('');
     this.ui.letterbox(true, '');
-    this.sound.startScore(b.song);
-    const dur = Math.min(b.dur || 8, MONTAGE_MAX), shots = ['orbit', 'mcu', 'two', 'low', 'wide'];
+    const track = SONG_TRACK[b.song] || b.song;
+    if (!(this.sound.mood === track && this.sound.level(0.85))) this.sound.startScore(track);   // one song, never restarted
+    // an orbit only when the room holds just the singers; with an audience it would swing through their heads
+    const dur = Math.min(b.dur || 8, MONTAGE_MAX), shots = subj.length === all.length ? ['orbit', 'mcu', 'two', 'low', 'wide'] : ['wide', 'mcu', 'two', 'mcu', 'low'];
+    if (up.length) for (const a of up) if (!a.speaking && !a.path && !a.held && a.baseClip !== 'Dance_Loop') a.setBase('Dance_Loop');   // a number: the stage dances
     for (let t = 0, i = 0; t < dur && tok === this.token && !this.skipLine; t += 3.2, i++) {
       const a = subj[i % subj.length], other = subj[(i + 1) % subj.length];
-      const type = subj.length > 1 && i % 3 === 2 ? 'two' : shots[i % shots.length];
-      this.cover({ type, subjects: type === 'two' || type === 'orbit' ? [a, other].filter((x, k, l) => l.indexOf(x) === k) : [a], toward: other !== a ? other : null, force: true }, [a]);
+      const sp = this.set.def.stageFront && up.length && (i % 3 === 0 ? this.stageShot(a, 'house') : this.stageShot(a));
+      if (sp) this.cover({ ...sp, force: true }, sp.subjects);
+      else {
+        const type = subj.length > 1 && i % 3 === 2 ? 'two' : shots[i % shots.length];
+        this.cover({ type, subjects: type === 'two' || type === 'orbit' ? [a, other].filter((x, k, l) => l.indexOf(x) === k) : [a], toward: other !== a ? other : null, force: true }, [a]);
+      }
       if (b.song === 'love' || b.song === 'happy') this.emote(a, 'happy', 0.6); else if (b.song === 'sad') this.emote(a, 'sad', 0.7);
       await this.hold(Math.min(3.2, dur - t));
     }
-    this.sound.startScore(this.bed || 'happy', { vol: 0.16 });   // back to the scene's quiet bed
+    // more of the same number to come in this scene: keep it playing quietly under the lines; else back to the bed
+    if (this.beats?.slice(this.at.beat + 1).some((x) => x.song === b.song)) this.sound.level(0.22);
+    else this.sound.startScore(this.bed || 'happy', { vol: 0.16 });
     this.ui.letterbox(false);
   }
 
@@ -592,8 +623,34 @@ export class Runner {
   // over the shoulder reverses carry it, and once it runs on it pushes in to singles (internal reverses).
   // A run of lines by one speaker holds the shot; a shout punches in; walking lines track; bigger groups get a
   // wide shot now and then to re-establish who is where.
+  // Stage scenes are shot like a live show: the house wide from the back, performers from the lip of the stage,
+  // and anyone in the audience from the stage looking out over the rows (they all face the stage).
+  stageShot(a, kind = 'close') {
+    const st = this.set.def.stageFront, eye = a.eyePos(V());
+    if (kind === 'house') return { type: 'fixed', pos: [0, 3.0, 5.2], look: [0, 1.9, st.z - 0.6], fov: 31, subjects: [a] };
+    const onStage = (a.floorY || 0) > 0.5;
+    if (!onStage && !a.seated) return null;   // standing on the floor: the ordinary coverage handles them
+    const tryAt = (pos) => !this.director.blocked(pos, eye, a) && this.director.inside(pos, 0.2);
+    const sf = Math.sign(Math.sin(a.yaw)) || 1;   // start on the side they face, so we see a face and not a tail
+    for (const dx of [0.6 * sf, 0.15 * sf, 1.2 * sf, -0.5 * sf]) {
+      // performers from the floor in front of the stage lip; the audience from high over the lip, looking down the rows
+      const cz = st.z + 1.3, run = Math.abs(eye.z - cz);   // audience: about 20 degrees down from over the stage lip
+      const pos = onStage ? V(eye.x + dx, eye.y - 0.05, st.z + 1.7) : V(eye.x * 0.7 + dx, Math.max(2.0, eye.y + 0.36 * run + 0.25), cz);
+      if (tryAt(pos)) {
+        const dist = pos.distanceTo(eye), fov = (2 * Math.atan(0.5 / dist) * 180) / Math.PI;   // head and torso fill the frame
+        return { type: 'fixed', pos: pos.toArray(), look: eye.add(V(0, -0.15, 0)).toArray(), fov: Math.max(14, Math.min(40, fov)), subjects: [a] };
+      }
+    }
+    return this.stageShot(a, 'house');
+  }
+
   coverLine(a, listener, { shout, moving }) {
     if (!a) return;
+    const staged = this.set.def.stageFront && !moving && (this.shotN % 6 === 5 && (a.floorY || 0) > 0.5 ? this.stageShot(a, 'house') : this.stageShot(a));   // the house wide only for the stage
+    if (staged) {   // see stageShot
+      if (this.lastSpeaker === a && this.pairN++ % 3 !== 0) return;
+      return this.cover(staged, staged.subjects);
+    }
     const n = this.shotN, others = [...this.on].filter((o) => o !== a);
     const pair = listener ? [a.id, listener.id].sort().join('|') : a.id;
     if (pair !== this.pairKey) { this.pairKey = pair; this.pairN = 0; } else this.pairN++;
@@ -603,11 +660,16 @@ export class Runner {
     else if (shout && k > 0 && n % 2 === 0) spec = { type: n % 4 === 0 ? 'cu' : 'low', subjects: [a] };
     else if (this.lastSpeaker === a && k % 3 !== 0) return;
     else if (!listener) spec = { type: 'mcu', subjects: [a] };
-    else if (k === 0) spec = others.length >= 2 && n % 3 === 0 ? { type: 'wide', subjects: [...this.on] } : { type: 'two', subjects: [a, listener] };
+    else if (k === 0) spec = others.length >= 2 && n % 3 === 0 ? { type: 'wide', subjects: this.group(a, listener) } : { type: 'two', subjects: [a, listener] };
     else if (k < 4) spec = { type: 'ots', subjects: [listener, a] };
-    else if (others.length >= 2 && k % 7 === 0) spec = { type: 'wide', subjects: [...this.on] };
+    else if (others.length >= 2 && k % 7 === 0) spec = { type: 'wide', subjects: this.group(a, listener) };
     else spec = k % 3 === 0 ? { type: 'ots', subjects: [listener, a] } : { type: 'mcu', subjects: [a], toward: listener };
     this.cover(spec, spec.subjects);
+  }
+  // The speaker, the listener and whoever stands within 3 m of them: what a wide shot should hold.
+  group(a, listener) {
+    const core = [a, listener].filter(Boolean);
+    return [...this.on].filter((o) => o.root.visible && (core.includes(o) || core.some((c) => c.pos.distanceTo(o.pos) < 3)));
   }
   coverAction(a, what, to) {
     const tgt = to && this.actor(to);
@@ -624,7 +686,7 @@ export class Runner {
     const t0 = performance.now(), R = a.root, y0 = a.floorY || 0, s0 = R.scale.x, yaw0 = a.yaw;
     const run = (dur, f) => new Promise((res) => { const step = () => { const t = Math.min(1, (performance.now() - t0) / (dur * 1000)); f(t); t < 1 ? requestAnimationFrame(step) : res(); }; step(); });
     if (kind === 'spin') { this.sound.sfx('whoosh'); await run(2.2, (t) => { a.yaw = yaw0 + t * t * 40; }); a.yaw = yaw0; }
-    else if (kind === 'grow') { this.sound.sfx('zap'); await run(1.2, (t) => R.scale.setScalar(s0 * (1 + 1.1 * (1 - Math.cos(t * Math.PI)) / 2 + Math.sin(t * 60) * 0.03 * (1 - t)))); }
+    else if (kind === 'grow') { this.sound.sfx('zap'); await run(1.2, (t) => R.scale.setScalar(s0 * (1 + 1.1 * (1 - Math.cos(t * Math.PI)) / 2 + Math.sin(t * 60) * 0.03 * (1 - t)))); a.bulk0 ??= a.bulk; a.bulk = (a.bulk0 || 0.55) * 2.1; }   // the camera has to give a giant room
     else if (kind === 'sink') { await run(3.5, (t) => { a.floorY = y0 - t * 2.2; }); a.root.visible = false; }
     else if (kind === 'float') { this.sound.sfx('whoosh'); await run(3.0, (t) => { a.floorY = y0 + t * t * 7; }); }
     else if (kind === 'phase') { a.place(a.pos.x, a.pos.z, a.yaw); a.setBase('Sitting_Idle_Loop', 0); a.contact = '*'; a.floorY = y0 + 0.2;

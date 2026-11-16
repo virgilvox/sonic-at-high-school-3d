@@ -52,6 +52,21 @@ function kitProp(g, type, o, x, z) {
 }
 
 const BOX = (w, h, d) => geo('box', w, h, d);
+// A rod from point a to point b (stand legs, poles); radius r.
+function rod(g, a, b, r, color) {
+  const A = new THREE.Vector3(...a), B = new THREE.Vector3(...b), d = B.clone().sub(A), len = d.length();
+  const e = new THREE.Euler().setFromQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), d.normalize()));
+  return part(geo('cyl', r, r, len, 8), color, g, { pos: A.clone().add(B).multiplyScalar(0.5).toArray(), rot: [e.x, e.y, e.z], outline: false });
+}
+// Three splayed legs meeting at height h, feet on a circle of radius spread, with a centre spreader.
+function tripod(g, h, spread, color) {
+  for (let i = 0; i < 3; i++) {
+    const t = (i / 3) * Math.PI * 2 + Math.PI, foot = [Math.sin(t) * spread, 0, Math.cos(t) * spread];
+    rod(g, [0, h, 0], foot, 0.016, color);
+    rod(g, [0, h * 0.28, 0], [foot[0] * 0.7, h * 0.28 * 0.3, foot[2] * 0.7], 0.008, color);
+    part(geo('sphere', 0.025, 8, 6), '#111', g, { pos: foot, outline: false });
+  }
+}
 
 // ---------------------------------------------------------------- props
 // Each prop builds into g at the origin facing +z; the set places and turns it.
@@ -195,33 +210,67 @@ const PROPS = {
     for (let i = 0; i < w / 0.5; i++) part(geo('sphere', 0.05, 8, 6), toon(cols[i % 5], { emissive: cols[i % 5] }), g, { pos: [-w / 2 + i * 0.5, -Math.sin((i / (w / 0.5)) * Math.PI) * 0.5, 0], outline: false, shadow: false });
   },
   discoball(g) { part(geo('sphere', 0.35, 12, 8), toon('#dfe6ee', { emissive: '#5a6070' }), g, { pos: [0, 0, 0] }); part(geo('cyl', 0.01, 0.01, 1.2, 4), '#888', g, { pos: [0, 0.75, 0], outline: false }); },
+  // a place setting on a table top: plate with a burger or pancakes, fries, a drink (o.side: +1 or -1 toward the seat)
+  meal(g, o) {
+    const at = (type, x, z, y = 0) => { const m = makeProp(type); m.position.set(x, y, z); g.add(m); };
+    const k = o.side || 1, alt = o.alt;
+    at('plate', 0, 0.2 * k); at(alt ? 'pancakes' : 'burger', 0, 0.2 * k, 0.02);
+    at('fries', 0.2, 0.18 * k); at(alt ? 'coffee' : 'soda', -0.22, 0.14 * k);
+  },
   ledge(g, o) { part(BOX(o.w || 8, 0.5, 0.6), '#7d8494', g, { pos: [0, 0.25, 0] }); part(BOX(o.w || 8, 0.06, 0.66), '#9aa1b0', g, { pos: [0, 0.52, 0] }); },
   // film crew props for the behind-the-scenes photos
-  camrig(g) {
-    for (let i = 0; i < 3; i++) { const a = (i / 3) * Math.PI * 2; part(geo('cyl', 0.02, 0.02, 1.5, 6), '#222', g, { pos: [Math.sin(a) * 0.3, 0.7, Math.cos(a) * 0.3], rot: [Math.cos(a) * 0.38, 0, -Math.sin(a) * 0.38] }); }
-    part(BOX(0.35, 0.3, 0.5), '#1c1d21', g, { pos: [0, 1.55, 0] });
-    part(geo('cyl', 0.09, 0.11, 0.3, 14), '#30333a', g, { pos: [0, 1.58, 0.38], rot: [Math.PI / 2, 0, 0] });
-    part(BOX(0.18, 0.12, 0.02), '#7fd3ff', g, { pos: [0.2, 1.62, -0.2], rot: [0, 0.6, 0], outline: false });
+  // Film gear for the bloopers and behind-the-scenes photos. Everything faces +z (toward the action).
+  camrig(g) {   // cinema camera on a fluid head and tripod, matte box, side monitor, tally light
+    tripod(g, 1.12, 0.42, '#1b1c20');
+    part(geo('cyl', 0.07, 0.08, 0.08, 16), '#2a2c31', g, { pos: [0, 1.16, 0] });                           // fluid head
+    rod(g, [0, 1.17, -0.02], [0.05, 0.98, -0.5], 0.012, '#2a2c31');                                       // pan bar
+    part(BOX(0.16, 0.2, 0.36), '#202226', g, { pos: [0, 1.32, 0] });                                    // body
+    part(BOX(0.04, 0.04, 0.26), '#202226', g, { pos: [0, 1.45, 0.02] });                                 // top handle
+    part(geo('cyl', 0.055, 0.055, 0.2, 18), '#111214', g, { pos: [0, 1.31, 0.27], rot: [Math.PI / 2, 0, 0] });   // lens
+    part(geo('cyl', 0.07, 0.07, 0.02, 18), '#3a3d44', g, { pos: [0, 1.31, 0.22], rot: [Math.PI / 2, 0, 0], outline: false });   // focus ring
+    part(BOX(0.24, 0.17, 0.12), '#111214', g, { pos: [0, 1.31, 0.42] });                                // matte box
+    part(BOX(0.2, 0.13, 0.01), '#05070a', g, { pos: [0, 1.31, 0.485], outline: false });               // its dark opening
+    part(BOX(0.2, 0.13, 0.025), '#18191c', g, { pos: [0.17, 1.4, -0.05], rot: [0, 0.5, 0] });          // monitor
+    part(BOX(0.17, 0.1, 0.005), toon('#7fd3ff', { emissive: '#3b86b8' }), g, { pos: [0.165, 1.4, -0.065], rot: [0, 0.5 + Math.PI, 0], outline: false });
+    part(geo('sphere', 0.018, 8, 6), toon('#ff3030', { emissive: '#ff2020' }), g, { pos: [0, 1.44, 0.17], outline: false });   // tally
   },
-  lightstand(g) {
-    part(geo('cyl', 0.02, 0.02, 2.2, 6), '#333', g, { pos: [0, 1.1, 0] });
-    part(BOX(0.7, 0.55, 0.12), toon('#fffbe8', { emissive: '#fff4c8' }), g, { pos: [0, 2.25, 0.1], rot: [-0.3, 0, 0] });
+  lightstand(g) {   // softbox on a stand, aimed down at the set
+    tripod(g, 0.55, 0.45, '#26272b');
+    rod(g, [0, 0.5, 0], [0, 1.35, 0], 0.022, '#2f3035');
+    rod(g, [0, 1.35, 0], [0, 2.05, 0], 0.016, '#55585f');
+    part(geo('sphere', 0.035, 10, 8), '#1d1e22', g, { pos: [0, 2.07, 0] });                             // knuckle
+    const box = new THREE.Group(); box.position.set(0, 2.1, 0.05); box.rotation.x = 0.45; g.add(box);
+    part(geo('cyl', 0.36, 0.1, 0.42, 4, 1), '#151618', box, { pos: [0, 0, 0.22], rot: [Math.PI / 2, Math.PI / 4, 0] });   // the box
+    part(BOX(0.5, 0.5, 0.006), toon('#fffaf0', { emissive: '#fff1cc' }), box, { pos: [0, 0, 0.435], outline: false });  // diffuser
   },
-  boom(g) {
-    part(geo('cyl', 0.02, 0.02, 1.8, 6), '#444', g, { pos: [0, 0.9, 0] });
-    part(geo('cyl', 0.015, 0.015, 2.4, 6), '#666', g, { pos: [0, 1.8, 1.0], rot: [Math.PI / 2 - 0.25, 0, 0] });
-    part(geo('capsule', 0.06, 0.28), '#2b2b2b', g, { pos: [0, 2.05, 2.15], rot: [Math.PI / 2, 0, 0] });
+  boom(g) {   // C-stand holding a boom pole; shotgun mic in a furry windshield hangs over the action
+    tripod(g, 0.45, 0.4, '#3a3b40');
+    rod(g, [0, 0.4, 0], [0, 1.95, 0], 0.018, '#7a7d84');
+    part(geo('cyl', 0.04, 0.04, 0.08, 10), '#1d1e22', g, { pos: [0, 1.97, 0] });                       // gobo head
+    rod(g, [0, 1.98, -0.6], [0, 2.18, 2.0], 0.014, '#9a9da4');                                         // the pole
+    rod(g, [0, 2.18, 2.0], [0, 2.02, 2.0], 0.008, '#222');                                             // drop to the mount
+    part(geo('capsule', 0.055, 0.26, 6, 10), '#8d8a84', g, { pos: [0, 1.97, 2.0], rot: [Math.PI / 2, 0, 0] });   // windshield
+    part(geo('cyl', 0.03, 0.03, 0.04, 8), '#222', g, { pos: [0, 1.97, 2.2], rot: [Math.PI / 2, 0, 0] });
+    for (let k = 0; k < 5; k++) rod(g, [0, 0.4 - k * 0.07, 0.03], [0, 0.33 - k * 0.07, 0.03], 0.006, '#111');   // cable down the stand
   },
-  dchair(g) {
-    part(BOX(0.6, 0.05, 0.5), '#5a3b24', g, { pos: [0, 0.6, 0] });
-    part(BOX(0.62, 0.32, 0.03), '#1d1d1d', g, { pos: [0, 0.95, -0.24] });
-    g.add(textPlane('DIRECTOR', 0.6, 0.18, '#ffffff', 0));
-    g.children[g.children.length - 1].position.set(0, 0.95, -0.22);
-    for (const x of [-0.27, 0.27]) for (const z of [-0.22, 0.22]) part(geo('cyl', 0.02, 0.02, 0.62, 6), '#5a3b24', g, { pos: [x, 0.31, z], outline: false });
+  dchair(g) {   // director's chair: crossed legs, canvas seat and back
+    const wood = '#6b4a2c', canvas = '#1d1d1d';
+    for (const x of [-0.28, 0.28]) {
+      rod(g, [x, 0, -0.22], [x, 0.62, 0.22], 0.018, wood); rod(g, [x, 0, 0.22], [x, 0.62, -0.22], 0.018, wood);   // the X
+      rod(g, [x, 0.62, -0.24], [x, 1.08, -0.26], 0.018, wood);                                                     // back post
+      rod(g, [x, 0.8, -0.24], [x, 0.8, 0.22], 0.016, wood);                                                        // arm
+    }
+    part(BOX(0.56, 0.03, 0.44), canvas, g, { pos: [0, 0.62, 0] });
+    part(BOX(0.58, 0.24, 0.02), canvas, g, { pos: [0, 0.96, -0.26] });
+    g.add(textPlane('DIRECTOR', 0.5, 0.15, '#ffffff', 0));
+    g.children[g.children.length - 1].position.set(0, 0.96, -0.245);
   },
-  clapper(g) {
-    part(BOX(0.35, 0.26, 0.02), '#151515', g, { pos: [0, 0.13, 0] });
-    for (let i = 0; i < 5; i++) part(BOX(0.07, 0.05, 0.025), i % 2 ? '#151515' : '#f4f4f4', g, { pos: [-0.14 + i * 0.07, 0.29, 0], outline: false });
+  clapper(g) {   // slate on the floor against the chair, sticks open
+    part(BOX(0.3, 0.24, 0.02), '#151515', g, { pos: [0, 0.12, 0] });
+    for (let i = 0; i < 3; i++) part(BOX(0.26, 0.004, 0.005), '#dddddd', g, { pos: [0, 0.07 + i * 0.05, 0.011], outline: false });
+    const stick = new THREE.Group(); stick.position.set(-0.15, 0.255, 0); stick.rotation.z = 0.35; g.add(stick);
+    for (let i = 0; i < 6; i++) part(BOX(0.05, 0.035, 0.022), i % 2 ? '#151515' : '#f4f4f4', stick, { pos: [0.025 + i * 0.05, 0, 0], outline: false });
+    for (let i = 0; i < 6; i++) part(BOX(0.05, 0.03, 0.022), i % 2 ? '#f4f4f4' : '#151515', g, { pos: [-0.125 + i * 0.05, 0.255, 0], outline: false });
   },
   pic(g, o) {
     part(BOX(0.5, 0.4, 0.04), '#c8a24a', g, { pos: [0, 0, 0] });
@@ -275,13 +324,14 @@ export const SETS = {
   stage: { size: [14, 12], h: 6, wall: '#2a1e2a', floor: '#6b3f2a', trim: '#7c1d2a', door: [-6.8, 3, 90],
     props: [['stage', 0, -3.8, 0, { w: 10, d: 4 }], ...[-4, -2, 0, 2, 4].flatMap((x) => [1.0, 2.2, 3.4, 4.6].map((z) => ['chair', x, z, 180, { color: '#7c1d2a' }]))],
     seats: [1.0, 2.2, 3.4, 4.6].flatMap((z) => [-2, 0, 2, -4, 4].map((x) => [x, z, 180])), front: [0, -1.3, 180],
-    stageFront: { z: -2.4, h: 0.8, w: 9 } },   // where performers stand: on the platform, facing the audience
+    stageFront: { z: -2.4, h: 0.8, w: 9 }, camZ: [-4.4, 6] },   // camera stays clear of the backdrop curtain (z -5.8); performers stand: on the platform, facing the audience
   lockerroom: { size: [10, 7], h: 3.0, wall: '#d9e2e8', floor: '#9aa5ad', trim: '#2e86de', door: [4.8, 2.5, -90],
     props: [['lockers', 0, -3.25, 0, { n: 14, color: '#5d6d7e' }], ['lockers', -4.75, 0, 90, { n: 8, color: '#5d6d7e' }], ['bench', 0, -1.6, 0, { w: 4 }], ['bench', 0, 1.2, 0, { w: 4 }], ['trash', 4.3, -3.0, 0]],
     seats: [[-1.2, -1.6, 0], [0, -1.6, 0], [1.2, -1.6, 0], [-1.2, 1.2, 180], [1.2, 1.2, 180]] },
   diner: { size: [12, 9], h: 3.2, wall: '#f6e2b3', floor: '#e8e2d6', trim: '#c0392b', door: [5.3, 2.6, -90],
     props: [['counter', -1, -4.0, 0, { w: 5.6 }], ...[-3, -1.6, -0.2, 1.2].map((x) => ['stoolbar', x, -3.25, 0]),
-      ...[[-3.5, 0.6], [0.5, 0.6], [-3.5, 3.0], [0.5, 3.0], [4.0, -0.4]].flatMap(([x, z]) => [['table', x, z, 0, { w: 1.1, d: 0.8 }], ['chair', x, z - 0.72, 0], ['chair', x, z + 0.72, 180]]),
+      ...[[-3.5, 0.6], [0.5, 0.6], [-3.5, 3.0], [0.5, 3.0], [4.0, -0.4]].flatMap(([x, z], i) => [['table', x, z, 0, { w: 1.1, d: 0.8 }], ['chair', x, z - 0.72, 0], ['chair', x, z + 0.72, 180],
+        ['meal', x, z, 0, { y: 0.76, side: -1, alt: i % 2 }], ['meal', x, z, 0, { y: 0.76, side: 1, alt: (i + 1) % 2 }], ['ketchup', x + 0.42, z, 0, { y: 0.76 }]]),
       ['window', -2, 4.45, 180, { y: 1.6, w: 3 }], ['window', 2.5, 4.45, 180, { y: 1.6, w: 3 }], ['plant', 5.4, -3.8, 0], ['floorlamp', -5.4, 3.8, 0], ['rug', 0.5, 1.8, 0, { w: 7, d: 4.4 }]],
     seats: [[-3.5, 0.6], [0.5, 0.6], [-3.5, 3.0], [0.5, 3.0], [4.0, -0.4]].flatMap(([x, z]) => [[x, z - 0.72, 0], [x, z + 0.72, 180]]) },
   infirmary: { size: [8, 7], h: 3.0, wall: '#eef3f6', floor: '#dfe6ea', trim: '#7fa7c9', door: [3.8, 2.4, -90],
@@ -392,7 +442,8 @@ export function buildSet(name, time = 'day') {
   const spots = { center: [0, def.outdoor ? 1.5 : 0.4, 0], ...def.spots };
   const m = 0.25;   // stay this far inside the walls
   const bounds = def.outdoor ? { x: [-w, w], z: [-d, d], y: 12 } : { x: [-w / 2 + m, w / 2 - m], z: [-d / 2 + m, d / 2 - m], y: def.h - 0.2 };
-  return { name, def, group, statics, solids, decks, spots, bounds, door, updateDoors, showCeiling, seats: def.seats || [], front: def.front || null, light: L, outdoor: !!def.outdoor, size: def.size };
+  const camBounds = def.camZ ? { ...bounds, z: [Math.max(bounds.z[0], def.camZ[0]), Math.min(bounds.z[1], def.camZ[1])] } : bounds;   // keep the camera off a backdrop
+  return { name, def, group, statics, solids, decks, spots, bounds, camBounds, door, updateDoors, showCeiling, seats: def.seats || [], front: def.front || null, light: L, outdoor: !!def.outdoor, size: def.size };
 }
 
 // One prop on its own (kit model when there is one), for scenes built outside the set table such as the credits photos.

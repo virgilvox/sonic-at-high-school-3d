@@ -137,7 +137,11 @@
    ],
    "beats": [
     {
-     "enter": "bunnie"
+     "enter": "bunnie",
+     "at": [
+      -2.55,
+      0.6
+     ]
     },
     {
      "say": "bunnie",
@@ -256,7 +260,11 @@
     },
     {
      "enter": "bunnie",
-     "cap": "*walking towards their table*"
+     "cap": "*walking towards their table*",
+     "at": [
+      -2.55,
+      0.6
+     ]
     },
     {
      "say": "bunnie",
@@ -283,7 +291,10 @@
    "at": {
     "sonic": "seat:0",
     "amy": "seat:1"
-   }
+   },
+   "stand": [
+    "bunnie"
+   ]
   }
  ]
 }

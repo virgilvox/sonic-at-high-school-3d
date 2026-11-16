@@ -165,6 +165,12 @@ function modelFix(vrm, fix) {
   vrm.scene.traverse((o) => {
     if (!o.isMesh) return;
     if (fix.hide?.some((n) => o.name.includes(n))) { o.visible = false; return; }
+    if (fix.shrink && o.name.includes(fix.shrink.mesh)) {   // an oversized part (Sonia's eyeballs swallowed her muzzle)
+      const p = o.geometry.attributes.position, k = fix.shrink.by;
+      o.geometry.computeBoundingBox(); const c = o.geometry.boundingBox.getCenter(new THREE.Vector3());
+      for (let i = 0; i < p.count; i++) p.setXYZ(i, c.x + (p.getX(i) - c.x) * k, c.y + (p.getY(i) - c.y) * k, c.z + (p.getZ(i) - c.z) * k);
+      p.needsUpdate = true; o.geometry.computeBoundingSphere();
+    }
     for (const m of [].concat(o.material)) {
       if (seen.has(m)) continue; seen.add(m);
       if (fix.doubleSided) m.side = THREE.DoubleSide;
@@ -192,6 +198,8 @@ async function loadFile(file) {
   const vrm = gltf.userData.vrm;
   VRMUtils.rotateVRM0(vrm);
   fixShade(vrm); shrinkTextures(vrm);
+  const own = CAST.find((c) => c.model === file && c.id === file);   // the same repairs the film uses (not variants like Amy's mom)
+  if (own?.fix) modelFix(vrm, own.fix);
   vrm.scene.updateMatrixWorld(true);
   const box = new THREE.Box3().setFromObject(vrm.scene, true), h = file.startsWith('x-') ? 1.72 : 1.6;
   const scale = h / Math.max(0.01, box.max.y - box.min.y);

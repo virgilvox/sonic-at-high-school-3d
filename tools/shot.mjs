@@ -13,7 +13,7 @@ const browser = await puppeteer.launch({ executablePath: CHROME, headless: 'new'
 const page = await browser.newPage();
 await page.setViewport({ width: 960, height: 540 });
 page.on('console', (m) => { if (['error', 'warning'].includes(m.type()) && !/LookAtDegreeMap|GPU stall/.test(m.text())) console.log(m.type(), m.text().slice(0, 300)); });
-page.on('pageerror', (e) => console.log('pageerror', e.message));
+page.on('pageerror', (e) => console.log('pageerror', e.message, (e.stack || '').split('\n').slice(1, 4).join(' | ')));
 await page.evaluateOnNewDocument(() => { window.__maxDt = 1 / 6; });
 const query = process.env.QUERY || `autoplay&part=${part}`;   // QUERY='test=lineup' for diagnostics
 await page.goto('file://' + resolve('dist/love-story.html') + '?' + query, { timeout: 120000 });

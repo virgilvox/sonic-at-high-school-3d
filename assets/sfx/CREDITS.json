@@ -2,5 +2,7 @@
   "_about": "Sound effects and ambience.",
   "step-*": "Footsteps on different surfaces by congusbongus (opengameart.org/content/footsteps-on-different-surfaces), derived from recordings by swuing on freesound.org; CC BY 3.0",
   "amb-crowd": "Crowd Shouting/Speaking Ambience (opengameart.org/content/crowd-shoutingspeaking-ambience); CC0",
-  "amb-hallway, amb-cafeteria": "Made for this film with Kyutai Pocket TTS built-in voices (tools/voices/walla.py)"
+  "amb-hallway, amb-cafeteria": "Made for this film with Kyutai Pocket TTS built-in voices (tools/voices/walla.py)",
+  "laugh-0..4": "\"Do you remember laughter?\" by Supergeek, OpenGameArt.org, CC0 (split into single laughs)",
+  "laugh-crowd": "\"Group giggling\", OpenGameArt.org, CC0"
 }

@@ -114,7 +114,7 @@ export class Character {
   }
   stopOneShot() { if (this.oneShot) { this.oneShot.hold = false; this.oneShot.t = Math.max(this.oneShot.t, this.oneShot.dur - this.oneShot.fade); } }
 
-  place(x, z, yaw = 0) { this.pos.set(x, 0, z); this.yaw = yaw; this.speed = 0; this.path = null; this.turnTarget = null; this.held = false; this.root.rotation.y = yaw; }
+  place(x, z, yaw = 0) { this.pos.set(x, this.groundY ?? this.floorY ?? 0, z); this.yaw = yaw; this.speed = 0; this.path = null; this.turnTarget = null; this.held = false; this.root.rotation.y = yaw; }
 
   walk(points, { speed, face } = {}) {
     if (this.path && this.path.resolve) this.path.resolve();
@@ -252,10 +252,14 @@ export class Character {
   updateHop(dt) {
     const on = this.hop.until && this.t < this.hop.until;
     this.hop.amp = damp(this.hop.amp, on ? this.hop.target : 0, 6, dt);
+    // floorY: a bed, a stage, a seat height. Walking onto a stage eases up the step instead of popping 0.8 m;
+    // placed actors (beds, seats, gags) jump straight there
+    const target = this.floorY || 0;
+    this.groundY = this.path && Math.abs(target - (this.groundY ?? target)) < 1 ? damp(this.groundY ?? target, target, 14, dt) : target;
     if (this.hop.amp > 0.002) {
       const y = this.hop.amp * Math.abs(Math.sin(this.t * Math.PI * 2.3));
-      this.root.position.y = (this.floorY || 0) + y;
-    } else this.root.position.y = this.floorY || 0;   // floorY: a bed, a stage, a seat height
+      this.root.position.y = this.groundY + y;
+    } else this.root.position.y = this.groundY;
   }
 
   // rotate a normalized bone by a world-space delta, keeping parents
