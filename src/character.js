@@ -137,7 +137,9 @@ export class Character {
 
   headPos(out = V()) { return this.bone('head').getWorldPosition(out); }
   chestPos(out = V()) { return (this.bone('upperChest') || this.bone('chest') || this.bone('spine')).getWorldPosition(out); }
-  eyePos(out = V()) { this.headPos(out); out.y += 0.06 * this.scale; return out; }
+  // eyes sit a little above the head bone; measured in the character's own height, since model units differ wildly
+  // (converted Sketchfab rigs are in centimetres: scale 17, or 0.05)
+  eyePos(out = V()) { this.headPos(out); out.y += (this.eyeLift ?? 0.07 * (this.height || 1.6)) * this.root.scale.y; return out; }
 
   gesture(kind, { target = null, dur = 2.2, side = null } = {}) {
     let sd = side;

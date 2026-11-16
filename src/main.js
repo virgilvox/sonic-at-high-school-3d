@@ -152,6 +152,8 @@ async function loadActor(id) {
   vrm.scene.position.y = -box.min.y * scale;
   const a = new Character(vrm, animData, { ...c, scale, walkSpeed: 1.5 });
   a.bulk = c.bulk || 0.55;
+  a.height = c.height || DEFAULT_HEIGHT;   // metres, from the cast (the rig's own units vary)
+  if (c.eyeLift != null) a.eyeLift = c.eyeLift;   // eyes above the head bone, where a rig puts that bone oddly
   a.root.visible = false;
   scene.add(a.root);
   actors.set(id, a);
