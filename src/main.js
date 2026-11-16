@@ -143,6 +143,7 @@ async function loadActor(id) {
   window.__freeze = new URLSearchParams(location.search).has('freeze');   // debug: load models untouched
   if (!raw) { fixShade(vrm); shrinkTextures(vrm); }
   if (file !== c.model && c.tint && TINTABLE.has(file)) tint(vrm, c.tint);
+  if (file === c.model && c.fix) modelFix(vrm, c.fix);
   // Scale to the character's height from the real skinned bounds (head-bone heights vary too much between rigs:
   // big-headed models came out giant), and stand the soles on the floor.
   vrm.scene.updateMatrixWorld(true);
@@ -155,6 +156,32 @@ async function loadActor(id) {
   scene.add(a.root);
   actors.set(id, a);
   return a;
+}
+
+// Per-model repairs and variants from the cast entry's `fix`: draw both sides (Sketchfab exports with flipped
+// faces), hide meshes by name (Fiona's closed eyelids), hue-shift textures and colours (Amy's mom from Amy).
+function modelFix(vrm, fix) {
+  const seen = new Set();
+  vrm.scene.traverse((o) => {
+    if (!o.isMesh) return;
+    if (fix.hide?.some((n) => o.name.includes(n))) { o.visible = false; return; }
+    for (const m of [].concat(o.material)) {
+      if (seen.has(m)) continue; seen.add(m);
+      if (fix.doubleSided) m.side = THREE.DoubleSide;
+      if (fix.hue) {
+        for (const k of ['color', 'shadeColorFactor']) m[k]?.offsetHSL?.(fix.hue / 360, fix.sat || 0, fix.light || 0);
+        for (const k of ['map', 'shadeMultiplyTexture']) {
+          const t = m[k], img = t?.image;
+          if (!img || img.__hued) continue;
+          const cv = document.createElement('canvas'); cv.width = img.width; cv.height = img.height;
+          const g = cv.getContext('2d'); g.filter = `hue-rotate(${fix.hue}deg) saturate(${1 + (fix.sat || 0)}) brightness(${1 + (fix.light || 0)})`; g.drawImage(img, 0, 0);
+          cv.__hued = true; t.image = cv; t.needsUpdate = true;
+        }
+      }
+      m.needsUpdate = true;
+    }
+  });
+  if (fix.headScale) vrm.humanoid?.getRawBoneNode('head')?.scale.setScalar(fix.headScale);
 }
 
 // Load any model file as a standalone actor (for the gallery): untinted, fitted to 1.6 m.

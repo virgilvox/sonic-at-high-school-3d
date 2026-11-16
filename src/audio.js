@@ -175,7 +175,7 @@ export class Sound {
   }
 
   // Start the music for a mood, fading in: the real track when the page has one, else the synthesized score.
-  async startScore(mood = 'sad', { from = 0, vol = 0.85 } = {}) {
+  async startScore(mood = 'sad', { from = 0, vol = 0.85, loop = true, fade = 1.2 } = {}) {
     this.bedLevel = vol < 0.5 ? vol : 0;   // quiet beds duck under voices; montages do not
     this.swelling = false;
     if (!this.ensure()) return;
@@ -185,8 +185,8 @@ export class Sound {
     if (want !== this.scoreWant) return;   // stopped or replaced while decoding
     if (buf) {
       const t = this.ctx.currentTime, src = this.ctx.createBufferSource(), g = this.music.gain;
-      src.buffer = buf; src.loop = true; src.connect(this.music);
-      g.cancelScheduledValues(t); g.setValueAtTime(0, t); g.linearRampToValueAtTime(vol, t + 1.2);
+      src.buffer = buf; src.loop = loop; src.connect(this.music);
+      g.cancelScheduledValues(t); g.setValueAtTime(fade ? 0 : vol, t); g.linearRampToValueAtTime(vol, t + Math.max(0.01, fade));
       src.start(t, from % buf.duration);
       this.playing = src;
       return;

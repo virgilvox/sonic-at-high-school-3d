@@ -475,8 +475,13 @@ export class Runner {
       if (A.tpose) { a.tpose = true; setTimeout(() => { a.tpose = false; }, 3500); }
       if (A.restrain && tgt) {   // grab someone from behind and hold on: they struggle, arms around them
         a.contact = tgt.id;
+        const other = [...this.on].filter((o) => o !== a && o !== tgt && o.root.visible).sort((p, q) => p.pos.distanceTo(tgt.pos) - q.pos.distanceTo(tgt.pos))[0];
+        if (other) tgt.place(tgt.pos.x, tgt.pos.z, Math.atan2(other.pos.x - tgt.pos.x, other.pos.z - tgt.pos.z));   // held facing the one who would save them
+        tgt.held = true;
         const back = V(Math.sin(tgt.yaw), 0, Math.cos(tgt.yaw)).multiplyScalar(-0.42);
-        await this.go(a, V().copy(tgt.pos).add(back), {});
+        const hold = V().copy(tgt.pos).add(back);
+        await this.go(a, hold, {});
+        if (a.pos.distanceTo(hold) > 0.3) a.place(hold.x, hold.z, tgt.yaw);   // never grab at thin air
         a.faceYaw(tgt.yaw, 12); a.gesture('present', { target: tgt.chestPos(V()), dur: 30 });
         tgt.setBase('Push_Loop'); this.emote(tgt, 'angry', 0.8);
         if (b.cap && !b.inline) this.ui.caption('');
@@ -514,14 +519,14 @@ export class Runner {
     const a = this.actor(b.enter);
     if (!a) return;
     if (this.on.has(a) && a.root.visible) {   // already here: the script means "comes over", not "walks in again"
-      const gs = this.gameSpots?.[b.enter], to = gs ? V(gs[0], 0, gs[1]) : b.to ? this.near(a, b.to, 1.3) : null;
+      const gs = this.gameSpots?.[b.enter], to = b.at ? V(b.at[0], 0, b.at[1]) : gs ? V(gs[0], 0, gs[1]) : b.to ? this.near(a, b.to, 1.3) : null;
       if (to) await this.go(a, to, { speed: b.run ? 3.6 : undefined });
       return;
     }
     const [x, z, yaw] = this.set.door;
     a.place(x, z, yaw * DEG);
     const gs = this.gameSpots?.[b.enter];
-    const to = gs ? V(gs[0], 0, gs[1]) : b.to ? this.near(a, b.to, 1.3) : this.freeSlot(a);
+    const to = b.at ? V(b.at[0], 0, b.at[1]) : gs ? V(gs[0], 0, gs[1]) : b.to ? this.near(a, b.to, 1.3) : this.freeSlot(a);
     // come in from the door's direction, but never from further than a few steps away
     if (this.set.outdoor) { const from = V(x, 0, z).sub(to); if (from.length() > 4) { from.setLength(4); a.place(to.x + from.x, to.z + from.z, Math.atan2(-from.x, -from.z)); } }
     else this.sound.sfx('door');

@@ -137,7 +137,8 @@
     },
     {
      "enter": "amy",
-     "cap": "*steps through the crowd*"
+     "cap": "*steps through the crowd*",
+     "to": "maria"
     },
     {
      "say": "amy",

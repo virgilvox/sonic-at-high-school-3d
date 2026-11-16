@@ -74,8 +74,9 @@ behind-the-scenes polaroids cut between them, over "Bit Shift", ending on THE EN
 
 - **Licences:** 15 character VRMs say redistribution: disallow in their own metadata. The owner chose to publish them,
   relying on the VRoid Hub page terms. If an author objects, delete that file and the cast falls back to its stand-in.
-- **Still on stand-ins:** Sonia, Fiona, Cosmo, Bunnie, Amy's mom and the teacher. The Sketchfab Sonia and Fiona
-  conversions sit in `source/rigs/unused/`: Fiona's source model has closed eyes, and Sonia's face renders blank.
+- **Still on a stand-in:** the teacher (no model given). Cosmo (aschiechan21, VRoid Hub) and Bunnie (mikomagallona,
+  Sketchfab CC BY 4.0, rig map `source/rigs/bunnie.json`) have their own models. Amy's mom is Amy recoloured and
+  taller (`fix` in `src/cast.js`); Sonia and Fiona use their Sketchfab models with `fix` repairs.
 - **Shots:** close-ups still get partly blocked in the most crowded scenes, about one sample in ten in the 14-player
   dodgeball. Portrait phones frame tighter than landscape.
 - **Not checked by ear yet:** the Kyutai voice pacing (93 takes were off pace and kept their nearest take) and the

@@ -67,10 +67,18 @@
      "to": "eggman"
     },
     {
-     "enter": "robot"
+     "enter": "robot",
+     "at": [
+      3.9,
+      0.0
+     ]
     },
     {
-     "enter": "amy"
+     "enter": "amy",
+     "at": [
+      3.4,
+      0.5
+     ]
     },
     {
      "say": "eggman",
@@ -78,6 +86,13 @@
      "do": "point",
      "to": "amy",
      "emote": "smirk"
+    },
+    {
+     "enter": "eggman",
+     "at": [
+      1.7,
+      -2.0
+     ]
     },
     {
      "do": "restrain",

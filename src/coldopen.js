@@ -72,8 +72,8 @@ export class ColdOpen {
     this.el.hidden = false;
     this.titleEl = this.el.querySelector('.cotitle');
     this.sound.ambience([]);
-    this.sound.startScore('coldopen', { vol: 0.95 });
     const sonic = await this.loadActor('sonic'), amy = await this.loadActor('amy');
+    this.sound.startScore('coldopen', { vol: 1, loop: false, fade: 0 });   // the clip as given: from its first note, once
     const show = (a, x, z, yaw) => { a.place(x, z, yaw); a.root.visible = true; a.stopOneShot(); return a; };
     // 1. Sonic alone on a rooftop ledge at dusk, the city behind him; the camera drifts toward him
     await this.shot({ set: 'rooftop', time: 'sunset', dur: 3.5, title: 'an adaptation of tarasdiary\'s story',

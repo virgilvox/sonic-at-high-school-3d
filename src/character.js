@@ -114,7 +114,7 @@ export class Character {
   }
   stopOneShot() { if (this.oneShot) { this.oneShot.hold = false; this.oneShot.t = Math.max(this.oneShot.t, this.oneShot.dur - this.oneShot.fade); } }
 
-  place(x, z, yaw = 0) { this.pos.set(x, 0, z); this.yaw = yaw; this.speed = 0; this.path = null; this.turnTarget = null; this.root.rotation.y = yaw; }
+  place(x, z, yaw = 0) { this.pos.set(x, 0, z); this.yaw = yaw; this.speed = 0; this.path = null; this.turnTarget = null; this.held = false; this.root.rotation.y = yaw; }
 
   walk(points, { speed, face } = {}) {
     if (this.path && this.path.resolve) this.path.resolve();
@@ -127,11 +127,11 @@ export class Character {
   get seated() { return this.baseClip?.startsWith('Sitting'); }
 
   faceTo(target, rate = 5) {
-    if (this.seated) return;
+    if (this.seated || this.held) return;
     const p = target.isVector3 ? target : target.pos || target;
     this.turnTarget = { yaw: Math.atan2(p.x - this.pos.x, p.z - this.pos.z), rate };
   }
-  faceYaw(yaw, rate = 5) { if (!this.seated) this.turnTarget = { yaw, rate }; }
+  faceYaw(yaw, rate = 5) { if (!this.seated && !this.held) this.turnTarget = { yaw, rate }; }
 
   lookAt(target) { this.look.target = target; }
 

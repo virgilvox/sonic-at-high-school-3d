@@ -179,5 +179,29 @@
     "author": "pixiv (VRoid Project)",
     "source": "VRoid Hub terms: modification and redistribution allowed (background students)",
     "publisher": "pixiv VRoid Project (CC0 sample avatars)"
+  },
+  "sonia.vrm": {
+    "title": "Sonia the Hedgehog",
+    "author": "DetexkiModels",
+    "source": "Sketchfab, CC BY 4.0, rigged as VRM by tools/glb2vrm.mjs",
+    "publisher": "DetexkiModels on Sketchfab (CC BY 4.0)"
+  },
+  "fiona.vrm": {
+    "title": "Fiona the Fox",
+    "author": "DetexkiModels",
+    "source": "Sketchfab, CC BY 4.0, rigged as VRM by tools/glb2vrm.mjs",
+    "publisher": "DetexkiModels on Sketchfab (CC BY 4.0)"
+  },
+  "bunnie.vrm": {
+    "title": "Bunnie Rabbot D'Coolette (Modern)",
+    "author": "mikomagallona",
+    "source": "Sketchfab, CC BY 4.0, rigged as VRM by tools/glb2vrm.mjs",
+    "publisher": "Zeztz777 / mikomagallona on Sketchfab (CC BY 4.0)"
+  },
+  "cosmo.vrm": {
+    "title": "Cosmo",
+    "author": "aschiechan21",
+    "source": "VRoid Hub: use, modification and redistribution allowed with credit",
+    "publisher": "aschiechan21 on VRoid Hub"
   }
 }
